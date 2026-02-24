@@ -2,11 +2,13 @@
 hessian_bounds.py
 
 Implements rigorous upper and lower bounds for the Hessian of a neural network
-using Interval Bound Propagation (IBP).
+using Interval Bound Propagation (IBP) and RecurJac.
 
 OPTIMIZATIONS:
-- Decomposed the O(N^4) backpropagation term into two O(N^3) matrix multiplications.
-- Reduced memory overhead by processing per-output-dimension.
+- Replaced the dense O(N^4) backpropagation term with hardware-accelerated
+  fully vectorized O(N^3) batched NumPy/BLAS matrix multiplications.
+- Utilizes Einstein Summation (einsum) to map 1D curvature arrays to 2D weight matrices.
+- Retains Numba JIT loops EXCLUSIVELY for sparse entry queries to avoid unnecessary dense compute.
 """
 
 import numpy as np
@@ -14,7 +16,8 @@ import numba
 from flex_model import extract_numpy_params
 from jacobian_bounds import (
     compute_deltas, compute_omega,
-    compute_jac_bounds as compute_jacobian_ibp_bounds
+    compute_jac_bounds as compute_jacobian_ibp_bounds,
+    compute_recurjac_bounds
 )
 from activations import (
     compute_sigma_jac_intervals_all_layers,
@@ -25,7 +28,7 @@ from activations import (
 from network_ops import forward_pass, backward_pass
 
 
-# --- Helper for Interval Arithm ---
+# --- Helper for Interval Arithm (Kept for Sparse Fallback) ---
 @numba.jit(nopython=True, fastmath=True, inline='always')
 def _interval_mul(a_lo, a_hi, b_lo, b_hi):
     """Interval multiplication."""
@@ -44,118 +47,14 @@ def _scalar_mul_interval(scalar, lo, hi):
         return scalar * hi, scalar * lo
 
 
-# --- 1. JIT-compiled Core Loops (Optimized) ---
-
-@numba.jit(nopython=True, fastmath=True)
-def _jit_hessian_loop_full(d_out, d_l, d_lp1, H_next_low, H_next_high,
-                           alpha_vec, beta_vec, W, J_next_low, J_next_high,
-                           gamma_vec, eta_vec):
-    """
-    Optimized core loop for the FULL Hessian matrix.
-    Decomposes the W^T * H * W operation to reduce complexity from O(N^4) to O(N^3).
-    """
-    H_low = np.zeros((d_out, d_l, d_l))
-    H_high = np.zeros((d_out, d_l, d_l))
-
-    # Iterate over each output dimension k
-    for k in range(d_out):
-
-        # --- TERM 1: Backpropagated Curvature (W^T * (H * sigma_prod) * W) ---
-
-        # 1. Compute Intermediate Matrix M = (H * sigma_prod) @ W
-        # M has shape (d_lp1, d_l)
-        # This reduces the complexity significantly.
-        M_low = np.zeros((d_lp1, d_l))
-        M_high = np.zeros((d_lp1, d_l))
-
-        for p in range(d_lp1):
-            # Pre-load Hessian row and sigma intervals for p
-            alpha_p, beta_p = alpha_vec[p], beta_vec[p]
-
-            for q in range(d_lp1):
-                # Calculate Sigma Product Interval for (p, q)
-                # sigma_prod = [alpha_p, beta_p] * [alpha_q, beta_q]
-                alpha_q, beta_q = alpha_vec[q], beta_vec[q]
-                if p == q:
-                    # We are squaring the interval [alpha_p, beta_p]^2
-                    if alpha_p < 0 and beta_p > 0:
-                        s_lo = 0.0
-                        s_hi = max(alpha_p ** 2, beta_p ** 2)
-                    else:
-                        s_lo = min(alpha_p ** 2, beta_p ** 2)
-                        s_hi = max(alpha_p ** 2, beta_p ** 2)
-                else:
-                    # Independent interval multiplication
-                    s_lo, s_hi = _interval_mul(alpha_p, beta_p, alpha_q, beta_q)
-
-                # Calculate V = H_next[k, p, q] * sigma_prod
-                h_lo, h_hi = H_next_low[k, p, q], H_next_high[k, p, q]
-                v_lo, v_hi = _interval_mul(h_lo, h_hi, s_lo, s_hi)
-
-                # Row multiply: M[p, j] += V * W[q, j]
-                for j in range(d_l):
-                    w_val = W[q, j]
-                    # term = v * w_val
-                    t_lo, t_hi = _scalar_mul_interval(w_val, v_lo, v_hi)
-
-                    M_low[p, j] += t_lo
-                    M_high[p, j] += t_hi
-
-        # 2. Compute Final Term 1: H = W^T @ M
-        # H[i, j] += sum_p W[p, i] * M[p, j]
-        for i in range(d_l):
-            for p in range(d_lp1):
-                w_val = W[p, i]
-                m_lo, m_hi = M_low[p, :], M_high[p, :]
-
-                # Vectorized update over j
-                if w_val >= 0:
-                    H_low[k, i, :] += w_val * m_lo
-                    H_high[k, i, :] += w_val * m_hi
-                else:
-                    H_low[k, i, :] += w_val * m_hi
-                    H_high[k, i, :] += w_val * m_lo
-
-        # --- TERM 2: Local Curvature (W^T * diag(J * sigma'') * W) ---
-
-        # Precompute the diagonal vector D = J * [gamma, eta]
-        # D_lo, D_hi are shape (d_lp1,)
-        D_low = np.zeros(d_lp1)
-        D_high = np.zeros(d_lp1)
-
-        for p in range(d_lp1):
-            j_lo, j_hi = J_next_low[k, p], J_next_high[k, p]
-            g_lo, g_hi = gamma_vec[p], eta_vec[p]
-            D_low[p], D_high[p] = _interval_mul(j_lo, j_hi, g_lo, g_hi)
-
-        # Compute W^T * D * W
-        # H[i, j] += sum_p (D[p] * W[p, i] * W[p, j])
-        for i in range(d_l):
-            for j in range(d_l):
-                t2_min = 0.0
-                t2_max = 0.0
-
-                for p in range(d_lp1):
-                    # Scalar factor = W[p, i] * W[p, j]
-                    w_prod = W[p, i] * W[p, j]
-
-                    t_lo, t_hi = _scalar_mul_interval(w_prod, D_low[p], D_high[p])
-                    t2_min += t_lo
-                    t2_max += t_hi
-
-                H_low[k, i, j] += t2_min
-                H_high[k, i, j] += t2_max
-
-    return H_low, H_high
-
-
+# --- JIT-compiled Sparse Loop (Optimized for single entries) ---
 @numba.jit(nopython=True, fastmath=True)
 def _jit_hessian_loop_sparse(d_out, d_l, d_lp1, H_next_low, H_next_high,
                              alpha_vec, beta_vec, W, J_next_low, J_next_high,
                              gamma_vec, eta_vec, entries_to_compute):
     """
     Numba-compiled core loop for SPARSE Hessian entries.
-    Kept as explicit loops because decomposition is inefficient for sparse entries.
+    Kept as explicit loops because dense decomposition is inefficient for sparse entry queries.
     """
     H_low = np.zeros((d_out, d_l, d_l))
     H_high = np.zeros((d_out, d_l, d_l))
@@ -176,7 +75,16 @@ def _jit_hessian_loop_sparse(d_out, d_l, d_lp1, H_next_low, H_next_high,
                 for q in range(d_lp1):
                     # Sigma product
                     alpha_q, beta_q = alpha_vec[q], beta_vec[q]
-                    s_lo, s_hi = _interval_mul(alpha_p, beta_p, alpha_q, beta_q)
+
+                    if p == q:
+                        if alpha_p < 0 and beta_p > 0:
+                            s_lo = 0.0
+                            s_hi = max(alpha_p ** 2, beta_p ** 2)
+                        else:
+                            s_lo = min(alpha_p ** 2, beta_p ** 2)
+                            s_hi = max(alpha_p ** 2, beta_p ** 2)
+                    else:
+                        s_lo, s_hi = _interval_mul(alpha_p, beta_p, alpha_q, beta_q)
 
                     # H * Sigma
                     h_lo, h_hi = H_next_low[k, p, q], H_next_high[k, p, q]
@@ -207,24 +115,82 @@ def _jit_hessian_loop_sparse(d_out, d_l, d_lp1, H_next_low, H_next_high,
     return H_low, H_high
 
 
+# --- VECTORIZED Core Computation (Replaces dense Numba loops) ---
 def compute_entrywise_hessian_bounds_layer(W, H_next_low, H_next_high, J_next_low, J_next_high,
                                            alpha_vec, beta_vec, gamma_vec, eta_vec,
                                            entries_to_compute=None):
     d_lp1, d_l = W.shape
     d_out = H_next_low.shape[0]
 
-    # Ensure inputs are float64 for stability
-    W = W.astype(np.float64)
-
-    args = (d_out, d_l, d_lp1, H_next_low, H_next_high,
-            alpha_vec, beta_vec, W, J_next_low, J_next_high,
-            gamma_vec, eta_vec)
-
-    if entries_to_compute is None:
-        H_low, H_high = _jit_hessian_loop_full(*args)
-    else:
+    # Fallback to the explicit loop for sparse entry requests
+    if entries_to_compute is not None:
         entries_arr = np.array(entries_to_compute, dtype=np.int64)
-        H_low, H_high = _jit_hessian_loop_sparse(*args, entries_arr)
+        W_np = W.astype(np.float64)
+        return _jit_hessian_loop_sparse(d_out, d_l, d_lp1, H_next_low, H_next_high,
+                                        alpha_vec, beta_vec, W_np, J_next_low, J_next_high,
+                                        gamma_vec, eta_vec, entries_arr)
+
+    # ==========================================================
+    # FULL VECTORIZED HESSIAN COMPUTATION (NO NUMBA LOOPS)
+    # ==========================================================
+    W_f64 = W.astype(np.float64)
+    W_p = np.maximum(W_f64, 0.0)
+    W_n = np.minimum(W_f64, 0.0)
+
+    # --- 1. Sigma Product S = [alpha, beta] (Outer Product) ---
+    p1_s = np.outer(alpha_vec, alpha_vec)
+    p2_s = np.outer(alpha_vec, beta_vec)
+    p3_s = np.outer(beta_vec, alpha_vec)
+    p4_s = np.outer(beta_vec, beta_vec)
+
+    s_lo = np.minimum.reduce([p1_s, p2_s, p3_s, p4_s])
+    s_hi = np.maximum.reduce([p1_s, p2_s, p3_s, p4_s])
+
+    # Diagonal Zero-Crossing Fix for [alpha, beta]^2
+    crosses_zero = (alpha_vec < 0) & (beta_vec > 0)
+    if np.any(crosses_zero):
+        diag_idx = np.arange(len(alpha_vec))
+        s_lo[diag_idx, diag_idx] = np.where(crosses_zero, 0.0, s_lo[diag_idx, diag_idx])
+
+    # --- 2. V = H_next * S (Broadcasting across d_out) ---
+    # s_lo and s_hi broadcast perfectly with H_next (d_out, d_lp1, d_lp1)
+    p1_v = H_next_low * s_lo
+    p2_v = H_next_low * s_hi
+    p3_v = H_next_high * s_lo
+    p4_v = H_next_high * s_hi
+
+    V_low = np.minimum.reduce([p1_v, p2_v, p3_v, p4_v])
+    V_high = np.maximum.reduce([p1_v, p2_v, p3_v, p4_v])
+
+    # --- 3. TERM 1 Projection: H_new = W^T V W ---
+    # Batched matrix multiplication handles all d_out matrices simultaneously
+    M_high = V_high @ W_p + V_low @ W_n
+    M_low  = V_low @ W_p + V_high @ W_n
+
+    T1_high = W_p.T @ M_high + W_n.T @ M_low
+    T1_low  = W_p.T @ M_low + W_n.T @ M_high
+
+    # --- 4. TERM 2: Local Curvature D = J * sigma'' ---
+    p1_d = J_next_low * gamma_vec
+    p2_d = J_next_low * eta_vec
+    p3_d = J_next_high * gamma_vec
+    p4_d = J_next_high * eta_vec
+
+    D_low = np.minimum.reduce([p1_d, p2_d, p3_d, p4_d])
+    D_high = np.maximum.reduce([p1_d, p2_d, p3_d, p4_d])
+
+    # Precalculate W_i * W_j
+    W_sq = W_f64[:, :, None] * W_f64[:, None, :]
+    W_sq_p = np.maximum(W_sq, 0.0)
+    W_sq_n = np.minimum(W_sq, 0.0)
+
+    # Einstein Summation to map 1D vector D onto 2D matrix W_sq
+    T2_high = np.einsum('kp, pij -> kij', D_high, W_sq_p) + np.einsum('kp, pij -> kij', D_low, W_sq_n)
+    T2_low  = np.einsum('kp, pij -> kij', D_low, W_sq_p) + np.einsum('kp, pij -> kij', D_high, W_sq_n)
+
+    # --- 5. Combine Terms ---
+    H_high = T1_high + T2_high
+    H_low  = T1_low + T2_low
 
     return H_low, H_high
 
@@ -236,8 +202,13 @@ def compute_jacobian_bounds_for_hessian(model, weights, z_l, J_all, omega_all, d
             weights, alpha_all, beta_all, d_out
         )
         return jac_bound_up, jac_bound_down
+    elif method == 'recurjac':
+        jac_bound_up, jac_bound_down = compute_recurjac_bounds(
+            weights, alpha_all, beta_all, d_out
+        )
+        return jac_bound_up, jac_bound_down
     else:
-        raise ValueError("Only 'ibp' method is supported in this fix.")
+        raise ValueError("Method must be 'ibp' or 'recurjac'.")
 
 
 def compute_hessian_bounds_only(model, x, delta, weights=None, x_l=None, z_l=None,
@@ -249,16 +220,20 @@ def compute_hessian_bounds_only(model, x, delta, weights=None, x_l=None, z_l=Non
                                 entries_to_compute=None):
     if weights is None: weights, _ = extract_numpy_params(model)
     L, d_out = len(weights), weights[-1].shape[0]
+
     if x_l is None or z_l is None:
         x_l, z_l = forward_pass(model, x.reshape(-1, 1))
+
     if delta_prime_jac is None or omega_all is None:
         delta_prime_jac, _, _ = compute_deltas(model, x_l, delta)
         omega_all = compute_omega(L, weights, delta_prime_jac)
+
     if J_all is None:
         J_all = backward_pass(model, z_l)
 
     if alpha_all is None or beta_all is None:
         alpha_all, beta_all = compute_sigma_jac_intervals_all_layers(model, z_l, omega_all)
+
     if gamma_all is None or eta_all is None:
         gamma_all, eta_all = compute_sigma_hess_intervals_all_layers(model, z_l, omega_all)
 
@@ -321,7 +296,7 @@ def compute_hessian_bounds(model, x, delta,
     )
 
 
-# --- 5. EXACT Hessian Computation ---
+# --- EXACT Hessian Computation ---
 def compute_hessian(model, x, weights=None, x_l=None, z_l=None, J_all=None, **kwargs):
     if weights is None: weights, _ = extract_numpy_params(model)
     L, d_out = len(weights), weights[-1].shape[0]

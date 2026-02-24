@@ -1,5 +1,5 @@
 """
-run_doerfler_theorem_compliant_2d.py
+run_doerfler_theorem_compliant_2d_rate.py
 
 Comparison of W1p and W2p norms using Dynamic Refinement with DÖRFLER MARKING.
 ADAPTED FOR 2D "SMOOTH COIN" FUNCTION.
@@ -9,6 +9,8 @@ Updates:
 - Plots Geometric Decay against theoretical q = 1 - theta*(1 - rho).
 - Plots Local Error Reduction scatter against theoretical y = rho * x AND a y = x reference line.
 - All plots saved as PDFs.
+- Integrates optimized network settings (tanh, weight decay, 4 layers).
+- Passes Jacobian method down the call stack.
 """
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
@@ -36,26 +38,28 @@ from training import train_model
 from w1p_bounds import compute_w1p_bounds
 from w2p_bounds import compute_w2p_bounds
 
-# Model & Training
-LAYERS = [2, 32, 32, 32, 32, 1]
-ACTIVATION = 'sigmoid'
-EPOCHS = 6000
-N_SAMPLES = 5000
-MODEL_PATH = f"model_smooth_coin_2d_{LAYERS}.pth"
-
-# --- CONFIGURATION ---
-FIG_DIR = f"fig_doerfler_geometric_decay_{LAYERS}"
-os.makedirs(FIG_DIR, exist_ok=True)
-
 # Data Generation Settings
 EPSILON_TRANSITION = 0.5
 TRANSITION_SAMPLE_RATIO = 0.1
 
+# Model & Training
+LAYERS = [2, 32, 32, 32, 1]
+weight_decay = 1e-4
+ACTIVATION = 'tanh'
+EPOCHS = 10000
+N_SAMPLES = 5000
+MODEL_PATH = f"model_smooth_coin_2d_{LAYERS}_{EPSILON_TRANSITION}_wd{weight_decay}_{ACTIVATION}.pth"
+
+# --- CONFIGURATION ---
+FIG_DIR = f"fig_doerfler_geometric_decay_{LAYERS}_{EPSILON_TRANSITION}_wd{weight_decay}_{ACTIVATION}"
+os.makedirs(FIG_DIR, exist_ok=True)
+
 # Refinement Settings
 P_NORM = 2.0
-MAX_ITER = 30  # Increased to 40 to match your reference plot
+MAX_ITER = 30  # Increased to match your reference plot
 THETA = 0.2
 RHO = 0.25     # Theoretical local error reduction factor (1/4)
+JACOBIAN_METHOD = 'ibp'  # Options: 'recurjac' or 'ibp'
 
 
 # --- SMOOTH COIN FUNCTION DEFINITION ---
@@ -113,8 +117,8 @@ def split_points(points, delta):
 
 
 # --- DÖRFLER REFINEMENT LOGIC ---
-def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, theta=0.5, p=2.0, norm_type='w1p'):
-    print(f"\n--- Running Dörfler Refinement (theta={theta}, p={p}) for {norm_type.upper()} ---")
+def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, theta=0.5, p=2.0, norm_type='w1p', jac_method='recurjac'):
+    print(f"\n--- Running Dörfler Refinement (theta={theta}, p={p}, method={jac_method}) for {norm_type.upper()} ---")
 
     active_cells = []
     bound_fn = compute_w1p_bounds if norm_type == 'w1p' else compute_w2p_bounds
@@ -125,7 +129,7 @@ def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, 
         initial_batch = zip(initial_centers, initial_delta)
 
     for x, d in initial_batch:
-        lb, ub = bound_fn(model, x, d, p=p)
+        lb, ub = bound_fn(model, x, d, p=p, jacobian_method=jac_method)
         error_mass = 0.5 * ((ub ** p) - (lb ** p))
         active_cells.append({
             'center': x, 'delta': d,
@@ -168,7 +172,7 @@ def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, 
             children_for_this_parent = []
 
             for cx in child_centers:
-                cl, cu = bound_fn(model, cx, child_delta, p=p)
+                cl, cu = bound_fn(model, cx, child_delta, p=p, jacobian_method=jac_method)
                 child_error_mass = 0.5 * ((cu ** p) - (cl ** p))
                 children_for_this_parent.append({
                     'center': cx, 'delta': child_delta,
@@ -204,14 +208,14 @@ def plot_geometric_decay(history, theta, rho, norm_type):
     plt.plot(iterations, theory_gaps, '--k', linewidth=2.5, label=theory_label)
 
     plt.yscale('log')
-    plt.title(f"Geometric Convergence Decay ({norm_type.upper()})", fontsize=24)
+    plt.title(f"Geometric Convergence Decay ({norm_type.upper()}) | Method: {JACOBIAN_METHOD.upper()}", fontsize=24)
     plt.xlabel("Iteration Step $k$", fontsize=20)
     plt.ylabel("Global Error Bound $R_k$", fontsize=20)
     plt.grid(True, which="both", alpha=0.3)
     plt.legend()
     plt.tight_layout()
 
-    save_path = os.path.join(FIG_DIR, f"geometric_decay_{norm_type}.pdf")
+    save_path = os.path.join(FIG_DIR, f"geometric_decay_{norm_type}_{JACOBIAN_METHOD}.pdf")
     plt.savefig(save_path, dpi=300, format='pdf')
     print(f"Saved Geometric Decay Plot to {save_path}")
     plt.close()
@@ -242,7 +246,7 @@ def plot_local_error_reduction(split_data, rho, norm_type):
 
     plt.xscale('log')
     plt.yscale('log')
-    plt.title(f"Local Error Reduction ($R_K \\to \\sum R_{{K'}}$) ({norm_type.upper()})", fontsize=22)
+    plt.title(f"Local Error Reduction ($R_K \\to \\sum R_{{K'}}$) ({norm_type.upper()})\nMethod: {JACOBIAN_METHOD.upper()}", fontsize=22)
     plt.xlabel(r"Parent Error $R(K)$", fontsize=20)
     plt.ylabel(r"Sum Children Error $\sum R_{K'}$", fontsize=20)
 
@@ -254,7 +258,7 @@ def plot_local_error_reduction(split_data, rho, norm_type):
     plt.legend(loc='upper left')
     plt.tight_layout()
 
-    save_path = os.path.join(FIG_DIR, f"local_error_reduction_{norm_type}_{LAYERS}.pdf")
+    save_path = os.path.join(FIG_DIR, f"local_error_reduction_{norm_type}_{LAYERS}_{JACOBIAN_METHOD}.pdf")
     plt.savefig(save_path, dpi=300, format='pdf')
     print(f"Saved Local Error Reduction Plot to {save_path}")
     plt.close()
@@ -274,7 +278,7 @@ def run_experiment():
         model.load_state_dict(torch.load(MODEL_PATH))
     else:
         print(f"No trained model found. Training on {len(X_np)} samples...")
-        train_model(model, torch.from_numpy(X_np), torch.from_numpy(y_np), epochs=EPOCHS)
+        train_model(model, torch.from_numpy(X_np), torch.from_numpy(y_np), epochs=EPOCHS, weight_decay=weight_decay)
         torch.save(model.state_dict(), MODEL_PATH)
 
     model.eval()
@@ -288,9 +292,9 @@ def run_experiment():
     gx, gy = np.meshgrid(c1d, c1d)
     centers_init = np.stack([gx.ravel(), gy.ravel()], axis=1)
 
-    # Run Refinements
-    w1_hist, w1_splits = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, THETA, P_NORM, 'w1p')
-    w2_hist, w2_splits = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, THETA, P_NORM, 'w2p')
+    # Run Refinements (Passing JACOBIAN_METHOD)
+    w1_hist, w1_splits = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, THETA, P_NORM, 'w1p', JACOBIAN_METHOD)
+    w2_hist, w2_splits = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, THETA, P_NORM, 'w2p', JACOBIAN_METHOD)
 
     # Generate Plots
     print("\n--- Generating W1p Plots ---")

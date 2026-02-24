@@ -1,51 +1,44 @@
 """
 lp_bounds.py
+
+OPTIMIZATIONS:
+- Removed Numba JIT overhead.
+- Fully vectorized the Lp integrand bound calculations using native NumPy arrays,
+  logical masks for zero-crossings, and parallelized reductions.
 """
 
 import numpy as np
-import numba
-from jacobian_bounds import compute_deltas, compute_jac_bounds, compute_omega
+from jacobian_bounds import (
+    compute_deltas,
+    compute_jac_bounds,
+    compute_recurjac_bounds,
+    compute_omega
+)
 from network_ops import forward_pass
 from activations import compute_sigma_jac_intervals_all_layers
 from flex_model import extract_numpy_params
 from hessian_bounds import compute_hessian_bounds
 
 
-# --- 1. Numba JIT-compiled Helper (Theorem Logic) ---
-
-@numba.jit(nopython=True, fastmath=True)
-def _compute_lp_integrand_bounds_jit(low_tensor, high_tensor, p):
+def _compute_lp_integrand_bounds_vectorized(low_tensor, high_tensor, p):
     """
-    Computes bounds on sum(|x_i|^p).
-    Logic derived exactly from Theorem:
-      - Upper: sum(max(|low|, |high|)^p)
-      - Lower: If low < 0 < high -> 0, else sum(min(|low|, |high|)^p)
+    Vectorized computation of the L_p norm integrand bounds.
+    Replaces the element-wise Numba loop with hardware-accelerated NumPy operations.
     """
-    low_flat = low_tensor.flatten()
-    high_flat = high_tensor.flatten()
+    abs_low = np.abs(low_tensor)
+    abs_high = np.abs(high_tensor)
 
-    sum_min_p = 0.0
-    sum_max_p = 0.0
+    # Max bound logic
+    max_vals = np.maximum(abs_low, abs_high)
+    sum_max_p = np.sum(max_vals ** p)
 
-    for i in range(low_flat.size):
-        l = low_flat[i]
-        h = high_flat[i]
+    # Min bound logic with zero-crossing check
+    crosses_zero = (low_tensor < 0) & (high_tensor > 0)
+    min_vals = np.where(crosses_zero, 0.0, np.minimum(abs_low, abs_high))
+    sum_min_p = np.sum(min_vals ** p)
 
-        max_val = max(abs(l), abs(h))
-        sum_max_p += max_val ** p
+    return float(sum_min_p), float(sum_max_p)
 
-        if l < 0 and h > 0:
-            current_min_p = 0.0
-        else:
-            min_val = min(abs(l), abs(h))
-            current_min_p = min_val ** p
-
-        sum_min_p += current_min_p
-
-    return sum_min_p, sum_max_p
-
-
-# --- 2. Functional Bounds (Phi) ---
 
 def compute_phi_lp_bounds(model, x, delta, p=2.0, volume_lambda=None):
     weights, _ = extract_numpy_params(model)
@@ -61,19 +54,15 @@ def compute_phi_lp_bounds(model, x, delta, p=2.0, volume_lambda=None):
     phi_low = center_output - delta_low_bar[-1]
     phi_high = center_output + delta_up_bar[-1]
 
-    # Pass float(p) to the JIT compiler to ensure type stability
-    sum_min_p, sum_max_p = _compute_lp_integrand_bounds_jit(phi_low, phi_high, float(p))
+    sum_min_p, sum_max_p = _compute_lp_integrand_bounds_vectorized(phi_low, phi_high, float(p))
 
-    # Match Theorem: ( lambda(Omega) * sum(h^p) )^(1/p)
     lower_Lp = (volume_lambda * sum_min_p) ** (1.0 / p)
     upper_Lp = (volume_lambda * sum_max_p) ** (1.0 / p)
 
     return lower_Lp, upper_Lp, x_l, z_l
 
 
-# --- 3. Derivative Bounds (Gradient/Jacobian) ---
-
-def compute_grad_lp_bounds(model, x, delta, x_l=None, z_l=None, p=2.0, volume_lambda=None):
+def compute_grad_lp_bounds(model, x, delta, x_l=None, z_l=None, p=2.0, volume_lambda=None, jacobian_method='recurjac'):
     weights, _ = extract_numpy_params(model)
     d_out = weights[-1].shape[0]
     d_in = weights[0].shape[1]
@@ -87,11 +76,15 @@ def compute_grad_lp_bounds(model, x, delta, x_l=None, z_l=None, p=2.0, volume_la
     omega_all = compute_omega(len(weights), weights, delta_prime_jac)
     alpha_all, beta_all = compute_sigma_jac_intervals_all_layers(model, z_l, omega_all)
 
-    jac_bound_up_list, jac_bound_down_list = compute_jac_bounds(weights, alpha_all, beta_all, d_out)
+    if jacobian_method == "recurjac":
+        jac_bound_up_list, jac_bound_down_list = compute_recurjac_bounds(weights, alpha_all, beta_all, d_out)
+    else:
+        jac_bound_up_list, jac_bound_down_list = compute_jac_bounds(weights, alpha_all, beta_all, d_out)
+
     J_low = jac_bound_down_list[0]
     J_high = jac_bound_up_list[0]
 
-    sum_min_p, sum_max_p = _compute_lp_integrand_bounds_jit(J_low, J_high, float(p))
+    sum_min_p, sum_max_p = _compute_lp_integrand_bounds_vectorized(J_low, J_high, float(p))
 
     lower_Lp = (volume_lambda * sum_min_p) ** (1.0 / p)
     upper_Lp = (volume_lambda * sum_max_p) ** (1.0 / p)
@@ -99,22 +92,18 @@ def compute_grad_lp_bounds(model, x, delta, x_l=None, z_l=None, p=2.0, volume_la
     return lower_Lp, upper_Lp
 
 
-# --- 4. Hessian Bounds (Second Derivative) ---
-
-def compute_hess_lp_bounds(model, x, delta, p=2.0, volume_lambda=None):
+def compute_hess_lp_bounds(model, x, delta, p=2.0, volume_lambda=None, jacobian_method='recurjac'):
     weights, _ = extract_numpy_params(model)
     d_in = weights[0].shape[1]
 
     if volume_lambda is None:
         volume_lambda = (2.0 * delta) ** d_in
 
-    # Get Intervals [H_low, H_high] from IBP
     H_low, H_high = compute_hessian_bounds(
-        model, x, delta, jacobian_bound_method='ibp', entries_to_compute=None
+        model, x, delta, jacobian_bound_method=jacobian_method, entries_to_compute=None
     )
 
-    # Apply Case Distinction Lemma (Theorem logic)
-    sum_min_p, sum_max_p = _compute_lp_integrand_bounds_jit(H_low, H_high, float(p))
+    sum_min_p, sum_max_p = _compute_lp_integrand_bounds_vectorized(H_low, H_high, float(p))
 
     lower_Lp = (volume_lambda * sum_min_p) ** (1.0 / p)
     upper_Lp = (volume_lambda * sum_max_p) ** (1.0 / p)

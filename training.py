@@ -15,25 +15,29 @@ def generate_sine_data(n_samples, noise_std=0.0):
     return X, y
 
 
-def train_model(model, X_train, y_train, epochs=2000, lr=1e-2):
-    """
-    Trains a flexible_model.FlexibleNet model.
-    """
-    optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+
+def train_model(model, X_train, y_train, epochs=8000, lr=0.001, weight_decay=1e-4):
+    model.train()
     criterion = nn.MSELoss()
 
-    print("Training model...")
+    # HIER WIRD WEIGHT DECAY AKTIVIERT:
+    optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
+
     for epoch in range(epochs):
         optimizer.zero_grad()
+
         outputs = model(X_train)
         loss = criterion(outputs, y_train)
+
         loss.backward()
         optimizer.step()
-        if (epoch + 1) % (epochs // 4) == 0 or epoch == epochs - 1:
-            print(f"Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.6f}")
 
-    print(f"Training complete. Final loss: {loss.item()}")
-    return model
+        if epoch % 1000 == 0:
+            print(f"Epoch {epoch}/{epochs} | Loss: {loss.item():.6f}")
 
 
 def compute_first_derivative_autograd(model, x_test):
