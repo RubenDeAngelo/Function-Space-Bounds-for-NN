@@ -1,17 +1,33 @@
 import os
+
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 import time
 import logging
 import warnings
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
 from contextlib import contextmanager, redirect_stdout, redirect_stderr
 import matplotlib.pyplot as plt
-import numpy as np
+import matplotlib.patches as patches
 
-# --- Lokale Imports ---
+# --- Global Font Size Configuration ---
+global_font_size = 20
+plt.rcParams.update({
+    'font.size': global_font_size,
+    'axes.titlesize': global_font_size,
+    'axes.labelsize': global_font_size,
+    'xtick.labelsize': global_font_size,
+    'ytick.labelsize': global_font_size,
+    'legend.fontsize': global_font_size,
+    'figure.titlesize': global_font_size
+})
+
+# --- Local Imports ---
 from adaptive_lp_core import (
     ReLUNetwork,
-    init_many_affine_pieces,
     AdaptiveLpNorm,
     monte_carlo_lp_norm
 )
@@ -19,18 +35,16 @@ from adaptive_lp_core import (
 
 @contextmanager
 def silence_everything(disable_logging: bool = True, disable_warnings: bool = True):
-    """
-    Unterdrückt Warnungen und Konsolen-Spam von externen Bibliotheken (z.B. auto_LiRPA).
-    """
+    """Suppresses warnings and console spam from external bounding libraries."""
     prev_disable_level = logging.root.manager.disable
     prev_warning_filters = warnings.filters[:]
 
     with open(os.devnull, "w") as devnull, redirect_stdout(devnull), redirect_stderr(devnull):
         try:
             if disable_logging:
-                logging.disable(logging.CRITICAL)  # Blockiert Logs
+                logging.disable(logging.CRITICAL)
             if disable_warnings:
-                warnings.simplefilter("ignore")  # Blockiert Warnungen
+                warnings.simplefilter("ignore")
             yield
         finally:
             if disable_warnings:
@@ -39,167 +53,259 @@ def silence_everything(disable_logging: bool = True, disable_warnings: bool = Tr
                 logging.disable(prev_disable_level)
 
 
+# ==========================================
+# DATA GENERATION (Smooth Disk)
+# ==========================================
+def h(t):
+    return np.where(t > 0, np.exp(-1.0 / np.maximum(t, 1e-16)), 0.0)
+
+
+def smooth_disk(x, y, epsilon=0.1):
+    r = np.sqrt(x ** 2 + y ** 2)
+    r_inner = 1.0
+    r_outer = 1.0 + epsilon
+    term1 = h(r_outer - r)
+    term2 = h(r - r_inner)
+    denom = term1 + term2
+    val = np.zeros_like(r)
+    val[r <= r_inner] = 1.0
+    mask = (r > r_inner) & (r < r_outer)
+    transition_vals = np.divide(term1, denom, where=denom != 0)
+    val[mask] = transition_vals[mask]
+    return val
+
+
+def generate_disk_data(n_samples=5000, domain_start=-1.5, domain_end=1.5, epsilon=0.5):
+    X = np.random.uniform(domain_start, domain_end, (n_samples, 2)).astype(np.float32)
+    y = smooth_disk(X[:, 0], X[:, 1], epsilon=epsilon)
+    return torch.from_numpy(X), torch.from_numpy(y.reshape(-1, 1))
+
+
+# ==========================================
+# TRAINING LOOP
+# ==========================================
+def train_model(model, X_train, y_train, epochs=2000, lr=1e-3, weight_decay=0.0):
+    print(f"Training model for {epochs} epochs...")
+    model.train()
+    optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
+    criterion = nn.MSELoss()
+
+    for epoch in range(epochs):
+        optimizer.zero_grad()
+        predictions = model(X_train)
+        loss = criterion(predictions, y_train)
+        loss.backward()
+        optimizer.step()
+
+        if (epoch + 1) % 500 == 0:
+            print(f"  Epoch {epoch + 1}/{epochs} - Loss: {loss.item():.6f}")
+
+    model.eval()
+    print("Training complete.")
+
+
+# ==========================================
+# LAYER EXTRACTION UTILITY
+# ==========================================
+def get_flattened_layers(model):
+    """Recursively searches for native Linear/ReLU layers to avoid Nested-Sequentials."""
+    layers = []
+    for module in model.children():
+        if isinstance(module, nn.Sequential):
+            layers.extend(get_flattened_layers(module))
+        else:
+            layers.append(module)
+    return layers
+
+
+# ==========================================
+# PLOTTING FUNCTIONS
+# ==========================================
+def extract_and_plot_heatmap(partition, iteration, domain_start, domain_width, p, scale_factor, epsilon=0.5):
+    """Extracts internal boxes and plots a heatmap of the local error bounds."""
+    ids = list(partition.leaves)
+    if not ids: return
+
+    # Retrieve coordinates in the library's internal [0,1] space
+    slots = torch.tensor([partition.id2slot[i] for i in ids], dtype=torch.long, device=partition.storage.device)
+    cr = partition.storage.index_select(0, slots).cpu().numpy()
+
+    # Map back to the original [-1.5, 1.5] domain
+    centers = domain_start + domain_width * cr[:, :, 0]
+    radii = domain_width * cr[:, :, 1]
+
+    # Scale errors (remains in L_p^p space)
+    raw_etas = np.array([partition.eta[i] for i in ids])
+    etas = raw_etas * scale_factor
+
+    fig, ax = plt.subplots(figsize=(12, 12))
+    min_err, max_err = etas.min(), etas.max()
+    if max_err == min_err: max_err += 1e-9
+
+    cmap = plt.cm.viridis
+    norm = plt.Normalize(vmin=min_err, vmax=max_err)
+
+    for i in range(len(ids)):
+        cx, cy = centers[i, 0], centers[i, 1]
+        rx, ry = radii[i, 0], radii[i, 1]
+
+        x0, y0 = cx - rx, cy - ry
+        width, height = 2.0 * rx, 2.0 * ry
+
+        color = cmap(norm(etas[i]))
+        rect = patches.Rectangle((x0, y0), width, height,
+                                 linewidth=0.5, edgecolor='white', facecolor=color, alpha=0.9)
+        ax.add_patch(rect)
+
+    # Draw smooth disk boundaries
+    circle = plt.Circle((0, 0), 1.0, color='red', fill=False, linestyle='--', linewidth=2.0, label='Inner Radius')
+    circle_outer = plt.Circle((0, 0), 1.0 + epsilon, color='orange', fill=False, linestyle='--', linewidth=2.0,
+                              label='Outer Radius')
+    ax.add_patch(circle)
+    ax.add_patch(circle_outer)
+
+    domain_end = domain_start + domain_width
+    ax.set_xlim(domain_start, domain_end)
+    ax.set_ylim(domain_start, domain_end)
+    ax.set_title(
+        rf"Adaptive Grid $L_{{{int(p)}}}^{{{int(p)}}}$ - Iteration {iteration}" + "\n" + rf"$N={len(ids)}$ Boxes",
+        fontsize=global_font_size + 4)
+    ax.set_aspect('equal')
+
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
+    cbar.set_label(rf'Local Gap ($L_{{{int(p)}}}^{{{int(p)}}}$)', fontsize=global_font_size)
+
+    plt.tight_layout()
+    plt.savefig("lp_heatmap_final.pdf", dpi=300)
+    plt.close()
+    print("Saved: lp_heatmap_final.pdf")
+
+
+def plot_normalized_convergence(results, mc_truth, theta, p, rho=0.5):
+    """Plots the geometric convergence rate of the global bound gap normalized by MC truth."""
+    post_err = np.array(results["post_hist"])
+    iterations = np.arange(len(post_err))
+
+    # Normalize (Error and mc_truth are both in L_p^p space)
+    normalized_gaps = post_err / mc_truth
+
+    # Calculate exact q value (L_p^p Integral theory rate)
+    q = 1.0 - theta * (1.0 - rho)
+    theory_decay = normalized_gaps[0] * (q ** iterations)
+
+    plt.figure(figsize=(12, 9))
+
+    # Empirical Line
+    plt.plot(iterations, normalized_gaps, '-o', markersize=8, color='#D55E00', linewidth=2.5,
+             label=rf'Empirical Bound Gap ($L_{{{int(p)}}}^{{{int(p)}}}$)')
+
+    # Theory Line
+    plt.plot(iterations, theory_decay, '--', color='#D55E00', linewidth=2.0, alpha=0.7,
+             label=fr'Theory $q^k={q:.4f}^k$')
+
+    plt.yscale('log')
+    plt.title(rf"Geometric Convergence Decay | $\theta$={theta}", fontsize=global_font_size + 4)
+    plt.xlabel("Iteration Step $k$", fontsize=global_font_size)
+    plt.ylabel("Normalized Global Error Bound", fontsize=global_font_size)
+    plt.grid(True, which="both", alpha=0.3)
+    plt.legend(loc='best')
+    plt.tight_layout()
+
+    plt.savefig("lp_norm_normalized_decay.pdf", dpi=300)
+    print("Saved: lp_norm_normalized_decay.pdf")
+    plt.close()
+
+
 def main():
     # ==========================================
-    # 1. PARAMETER KONFIGURATION
+    # 1. PARAMETER CONFIGURATION
     # ==========================================
-    d = 2  # Eingabedimension
-    p = 2.0  # Exponent der L_p Norm
-    m = 30  # Anzahl der Adaptions-Iterationen
-    theta = 0.2  # Dörfler Marking Parameter (0 < theta < 1)
-    refiner = "max"  # Halbierungsstrategie ("max" oder "all")
+    d = 2
+    p = 2.0
+    m = 30
+    theta = 0.5
+    refiner = "max"
+
+    domain_start = -1.5
+    domain_end = 1.5
+    domain_width = domain_end - domain_start
+    volume = domain_width ** d
+
+    # Scale factor represents the volume to map L_p^p accurately
+    scale_factor = volume
 
     # ==========================================
-    # 2. NETZWERK INITIALISIERUNG
+    # 2. NETWORK INITIALIZATION & TRAINING
     # ==========================================
-    print("--- Initialisiere Netzwerk ---")
-    net = ReLUNetwork(input_dim=d, output_dim=1, width=32, depth=2, init_method="he_normal")
+    print("--- 1. Network Setup & Training ---")
+    net = ReLUNetwork(input_dim=d, output_dim=1, width=200, depth=1, init_method="he_normal")
 
-    # Spezielle Initialisierung, damit das Netz im Integrationsbereich viele Falten hat
-    init_many_affine_pieces(net)
-    net.eval()  # Wichtig: Immer in den Evaluierungsmodus setzen!
+    X_train, y_train = generate_disk_data(n_samples=5000, domain_start=domain_start, domain_end=domain_end, epsilon=0.5)
+    train_model(net, X_train, y_train, epochs=2000, lr=1e-3)
 
     # ==========================================
-    # 3. ADAPTIVE L_P NORM BERECHNUNG
+    # 3. DOMAIN SCALING WRAPPER
     # ==========================================
-    lp = AdaptiveLpNorm(d=d, neural_net=net, is_relu=True)
+    scaling_layer = nn.Linear(d, d)
+    scaling_layer.weight.data = torch.eye(d) * domain_width
+    scaling_layer.bias.data = torch.full((d,), float(domain_start))
+    scaling_layer.requires_grad_(False)
 
-    print(f"\nStarte adaptive L_{int(p)}-Norm Berechnung (m={m}, theta={theta})...")
+    inner_layers = get_flattened_layers(net)
+    wrapped_model = nn.Sequential(scaling_layer, *inner_layers)
+    wrapped_model.eval()
+
+    # ==========================================
+    # 4. ADAPTIVE L_P NORM COMPUTATION
+    # ==========================================
+    lp = AdaptiveLpNorm(d=d, neural_net=wrapped_model, is_relu=True)
+
+    print(f"\n--- 2. Starting adaptive L_{int(p)} Bound Computation (m={m}, theta={theta}) ---")
     start_time = time.time()
 
-    # Unterdrücke die ausufernden Warnungen der Bounding-Bibliothek
     with silence_everything():
-        # WICHTIG: eta_type="fval" nutzt die native auto_LiRPA Funktion!
         out = lp.norm(p=p, m=m, theta=theta, refiner=refiner, eta_type="fval")
 
     duration = time.time() - start_time
     results = lp.out_adap
 
     # ==========================================
-    # 4. MONTE CARLO GROUND TRUTH & AUSGABE
+    # 5. L_P CORRECTION & MONTE CARLO
     # ==========================================
-    print("\nBerechne Monte Carlo Ground Truth zum Vergleich...")
-    mc_truth = monte_carlo_lp_norm(net, d=d, p=p, n_samples=500_000)
+    print("\n--- 3. Evaluation & Monte Carlo Validation ---")
+    raw_post_err = np.array(results["post_hist"])
+
+    # Apply volume scaling to keep tracking in L_p^p space
+    results["post_hist"] = raw_post_err * scale_factor
+
+    # The library `approx` returns the L_p NORM.
+    # Exponentiate by `p` to revert back to the L_p^p INTEGRAL.
+    final_approx = (results['approx'] ** p) * scale_factor
+
+    # `error` natively represents the sum of the L_p^p integrals.
+    final_error = results['error'] * scale_factor
+
+    # Compute Monte Carlo Truth (returns L_p norm), then transform to L_p^p space
+    raw_mc_truth = monte_carlo_lp_norm(wrapped_model, d=d, p=p, n_samples=500_000)
+    mc_truth = (raw_mc_truth ** p) * scale_factor
 
     print(f"\n{'=' * 40}")
-    print(f"ERGEBNISSE (Dauer: {duration:.2f} Sekunden)")
+    print(f"RESULTS (Duration: {duration:.2f} seconds)")
     print(f"{'=' * 40}")
-    print(f"Finale berechnete L_{int(p)} Norm : {results['approx']:.6f}")
-    print(f"Finaler a-posteriori Fehler : {results['error']:.6f}")
-    print(f"Monte Carlo Ground Truth    : {mc_truth:.6f}")
-    print(f"Anzahl der Boxen am Ende    : {results['size']}")
-    print(f"{'=' * 40}")
-    plot_convergence(results, d)
-    plot_theorem_convergence(results, d, theta, rho=0.5)
+    print(f"Final Calculated L_{int(p)}^{int(p)} Integral : {final_approx:.6f}")
+    print(f"Final a-posteriori Error Gap : {final_error:.6f}")
+    print(f"Monte Carlo Ground Truth     : {mc_truth:.6f}")
+    print(f"Total Number of Grid Boxes   : {results['size']}")
+    print(f"{'=' * 40}\n")
+
+    # ==========================================
+    # 6. PLOTTING
+    # ==========================================
+    extract_and_plot_heatmap(lp.partition_adaptive, m, domain_start, domain_width, p, scale_factor, epsilon=0.5)
+    plot_normalized_convergence(results, mc_truth, theta, p, rho=0.5)
 
 
-def plot_convergence(results, d):
-    sizes = np.array(results["size_hist"])
-    post_err = np.array(results["post_hist"])
-    prior_err = np.array(results["prior_hist"])
-    iterations = np.arange(len(sizes))
-
-    # --- Plot 1: Konvergenzrate über Anzahl der Boxen (N) ---
-    plt.figure(figsize=(10, 8))
-
-    plt.plot(sizes, post_err, '-o', color='#D55E00', linewidth=2.5, markersize=8, label='A-posteriori Error (Adaptive)')
-    plt.plot(sizes, prior_err, '--', color='#4A7BC7', linewidth=2, label='A-priori Bound')
-
-    # Referenzlinie (O(N^{-1/d})) für gleichmäßige Verfeinerung
-    n0, e0 = sizes[0], post_err[0]
-    x_theory = np.linspace(n0, sizes[-1], 100)
-    rate = -1.0 / d
-    plt.plot(x_theory, e0 * (x_theory / n0) ** rate, 'k--', linewidth=2, label=f'Reference Rate $O(N^{{{rate:.2f}}})$')
-
-    plt.xscale('log')
-    plt.yscale('log')
-    plt.xlabel('Number of Grid Boxes ($N$)', fontsize=16)
-    plt.ylabel(r'$L_p$ Error Bound', fontsize=16)
-    plt.title(f'Adaptive $L_p$ Norm Convergence ($d={d}$)', fontsize=18)
-    plt.grid(True, which="both", alpha=0.3)
-    plt.legend(fontsize=14)
-    plt.tight_layout()
-    plt.savefig("lp_norm_convergence_boxes.pdf", dpi=300)
-    plt.show()
-
-    # --- Plot 2: Geometrischer Abfall über Iterationen ---
-    plt.figure(figsize=(10, 8))
-    plt.plot(iterations, post_err, '-s', color='#85C57A', linewidth=2.5, markersize=8, label='A-posteriori Error')
-
-    plt.yscale('log')
-    plt.xlabel('Adaption Iteration $k$', fontsize=16)
-    plt.ylabel(r'Global Error Bound $\eta_k$', fontsize=16)
-    plt.title('Geometric Error Decay (Dörfler Marking)', fontsize=18)
-    plt.grid(True, which="both", alpha=0.3)
-    plt.legend(fontsize=14)
-    plt.tight_layout()
-    plt.savefig("lp_norm_geometric_decay.pdf", dpi=300)
-    plt.show()
-
-
-def plot_theorem_convergence(results, d, theta, rho=0.5):
-    """
-    Generiert die Konvergenzplots basierend auf dem Theorem.
-    rho: Die theoretische lokale Fehlerrate aus deinem Beweis (z.B. 0.5 bei Halbierung).
-    """
-    sizes = np.array(results["size_hist"])
-    post_err = np.array(results["post_hist"])
-    prior_err = np.array(results["prior_hist"])
-    iterations = np.arange(len(sizes))
-
-    # ==========================================================
-    # PLOT 1: Geometrischer Abfall über Iterationen (Dein Theorem)
-    # ==========================================================
-    plt.figure(figsize=(10, 8))
-
-    # Empirischer Fehler
-    plt.plot(iterations, post_err, '-s', color='#85C57A', linewidth=2.5, markersize=8,
-             label=r'Empirische Schranke $\tilde{\eta}_n$')
-
-    # Theoretische Rate berechnen: q = 1 - theta * (1 - rho)
-    q = 1.0 - theta * (1.0 - rho)
-    eta_0 = post_err[0]
-    theory_decay = eta_0 * (q ** iterations)
-
-    # Theoretische Kurve einzeichnen
-    plt.plot(iterations, theory_decay, '--k', linewidth=2.5,
-             label=fr'Theorem Rate $q^n \tilde{{\eta}}_0$ ($q={q:.3f}$)')
-
-    plt.yscale('log')
-    plt.xlabel('Adaptions-Iteration $n$', fontsize=16)
-    plt.ylabel(r'Globaler Fehler-Estimator $\tilde{\eta}_n$', fontsize=16)
-    plt.title('Geometrischer Abfall gemäß Theorem', fontsize=18)
-    plt.grid(True, which="both", alpha=0.3)
-    plt.legend(fontsize=14)
-    plt.tight_layout()
-    plt.savefig("lp_norm_theorem_decay.pdf", dpi=300)
-    print("Gespeichert: lp_norm_theorem_decay.pdf")
-
-    # ==========================================================
-    # PLOT 2: Konvergenzrate über Anzahl der Boxen (N)
-    # ==========================================================
-    plt.figure(figsize=(10, 8))
-
-    plt.plot(sizes, post_err, '-o', color='#D55E00', linewidth=2.5, markersize=8,
-             label=r'A-posteriori Error $\tilde{\eta}_n$')
-    plt.plot(sizes, prior_err, '--', color='#4A7BC7', linewidth=2, label='A-priori Bound')
-
-    # Referenzlinie für Standard-Konvergenz O(N^{-1/d})
-    n0, e0 = sizes[0], post_err[0]
-    x_theory = np.linspace(n0, sizes[-1], 100)
-    rate = -1.0 / d
-    plt.plot(x_theory, e0 * (x_theory / n0) ** rate, 'k--', linewidth=2,
-             label=f'Reference Rate $\mathcal{{O}}(N^{{{rate:.2f}}})$')
-
-    plt.xscale('log')
-    plt.yscale('log')
-    plt.xlabel('Anzahl der Boxen ($N$)', fontsize=16)
-    plt.ylabel(r'$L_p$ Fehlerschranke', fontsize=16)
-    plt.title(f'Adaptive $L_p$ Norm Konvergenz ($d={d}$)', fontsize=18)
-    plt.grid(True, which="both", alpha=0.3)
-    plt.legend(fontsize=14)
-    plt.tight_layout()
-    plt.savefig("lp_norm_convergence_boxes.pdf", dpi=300)
-    print("Gespeichert: lp_norm_convergence_boxes.pdf")
 if __name__ == "__main__":
     main()

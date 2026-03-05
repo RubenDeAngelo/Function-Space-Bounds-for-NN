@@ -5,7 +5,7 @@ from lp_bounds import (
     compute_hess_lp_bounds
 )
 
-def compute_w2p_bounds(model, x, delta, p=2.0, volume_lambda=None, jacobian_method='recurjac'):
+def compute_w2p_bounds(model, x, delta, p=2.0, volume_lambda=None, jacobian_method='ibp'):
     if volume_lambda is None:
         weights, _ = extract_numpy_params(model)
         d_in = weights[0].shape[1]

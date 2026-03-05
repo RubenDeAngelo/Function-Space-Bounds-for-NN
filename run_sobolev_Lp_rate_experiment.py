@@ -2,8 +2,9 @@
 run_combined_convergence_experiments.py
 
 Computes the convergence rates for W1p, W2p, and Lp norms using Dörfler marking.
-Normalizes the empirical error bounds using Monte Carlo estimations and plots
-the convergence against theoretical rates. Includes combined overview plots.
+Normalizes the empirical error bounds using Monte Carlo estimations.
+Plots ONLY the combined geometric error decay (no theoretical lines), utilizing models
+trained with Weight Decay for Sobolev (tanh) and without Weight Decay for Lp (ReLU).
 """
 
 import os
@@ -13,7 +14,9 @@ import sys
 import time
 import numpy as np
 import torch
+import torch.nn as nn
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 import itertools
 import logging
 import warnings
@@ -33,6 +36,7 @@ plt.rcParams.update({
 
 # --- Imports for Sobolev (W1p, W2p) ---
 from flex_model import FlexibleNet
+from training import train_model
 from w1p_bounds import compute_w1p_bounds
 from w2p_bounds import compute_w2p_bounds
 from run_doerfler_theorem_compliant_2d import compute_monte_carlo_sobolev
@@ -40,7 +44,6 @@ from run_doerfler_theorem_compliant_2d import compute_monte_carlo_sobolev
 # --- Imports for Lp ---
 from adaptive_lp_core import (
     ReLUNetwork,
-    init_many_affine_pieces,
     AdaptiveLpNorm,
     monte_carlo_lp_norm
 )
@@ -50,23 +53,31 @@ FIG_DIR = "fig_combined_convergence"
 os.makedirs(FIG_DIR, exist_ok=True)
 
 # SPECIFIC THETAS FOR EACH METHOD
-THETA_W1P = 0.25
-THETA_W2P = 0.25
+THETA_W1P = 0.35
+THETA_W2P = 0.35
 THETA_LP = 0.4
+JACOBIAN_METHOD = 'ibp'  # Explicitly force IBP for massive speedup
 
 MAX_ITER = 30
 P_NORM = 2.0
 D_DIM = 2
 MC_SAMPLES = 500000
 
-# Sobolev Model Config
-LAYERS = [2, 32, 32, 32, 32, 1]
-ACTIVATION = 'sigmoid'
-SOBOLEV_MODEL_PATH = f"model_smooth_coin_2d_{LAYERS}.pth"
+# Data Gen Settings
+EPOCHS = 10000
+N_SAMPLES = 5000
+EPSILON_TRANSITION = 0.5
 
-# Theoretical rho values
-RHO_SOBOLEV = 0.25  # Splitting a 2D box into 4
-RHO_LP = 0.50       # Bisecting the largest dimension
+# Sobolev Model Config
+SOBOLEV_LAYERS = [2, 32, 32, 32, 1]
+SOBOLEV_ACTIVATION = 'tanh'
+WEIGHT_DECAY = 1e-3
+SOBOLEV_MODEL_PATH = f"model_smooth_coin_2d_{SOBOLEV_LAYERS}_{EPSILON_TRANSITION}_wd{WEIGHT_DECAY}_{SOBOLEV_ACTIVATION}.pth"
+
+# Lp Model Config
+LP_LAYERS = [2, 32, 32, 32, 1]
+LP_ACTIVATION = 'relu'
+LP_MODEL_PATH = f"model_smooth_coin_2d_{LP_LAYERS}_{EPSILON_TRANSITION}_wd0.0_{LP_ACTIVATION}.pth"
 
 
 @contextmanager
@@ -83,6 +94,36 @@ def silence_everything(disable_logging: bool = True, disable_warnings: bool = Tr
             if disable_logging: logging.disable(prev_disable_level)
 
 
+# --- Data Generation Functions ---
+def h(t):
+    return np.where(t > 0, np.exp(-1.0 / np.maximum(t, 1e-16)), 0.0)
+
+def smooth_disk(x, y, epsilon=0.1):
+    r = np.sqrt(x ** 2 + y ** 2)
+    r_inner = 1.0
+    r_outer = 1.0 + epsilon
+    term1 = h(r_outer - r)
+    term2 = h(r - r_inner)
+    denom = term1 + term2
+    val = np.zeros_like(r)
+    val[r <= r_inner] = 1.0
+    mask = (r > r_inner) & (r < r_outer)
+    transition_vals = np.divide(term1, denom, where=denom != 0)
+    val[mask] = transition_vals[mask]
+    return val
+
+def generate_balanced_2d_coin_data(N=3000, epsilon=0.1, transition_ratio=0.5):
+    N_transition = int(N * transition_ratio)
+    N_uniform = N - N_transition
+    low, high = -1.5, 1.5
+    X_uni = np.random.uniform(low, high, (N_uniform, 2)).astype(np.float32)
+    X = X_uni
+    indices = np.random.permutation(len(X))
+    X = X[indices]
+    y = smooth_disk(X[:, 0], X[:, 1], epsilon=epsilon)
+    return X, y.reshape(-1, 1).astype(np.float32)
+
+
 # --- Utility Functions ---
 def split_points(points, delta):
     new_points = []
@@ -95,14 +136,123 @@ def split_points(points, delta):
     return new_points, new_delta
 
 
+def get_flattened_layers(model):
+    """Recursively searches for native Linear/ReLU layers to avoid Nested-Sequentials."""
+    layers = []
+    for module in model.children():
+        if isinstance(module, nn.Sequential):
+            layers.extend(get_flattened_layers(module))
+        else:
+            layers.append(module)
+    return layers
+
+
+# --- Plotting Functions ---
+def extract_and_plot_heatmap(partition, iteration, domain_start, domain_width, p, scale_factor, epsilon=0.5):
+    """Extracts internal boxes and plots a heatmap of the local error bounds."""
+    ids = list(partition.leaves)
+    if not ids: return
+
+    # Retrieve coordinates in the library's internal [0,1] space
+    slots = torch.tensor([partition.id2slot[i] for i in ids], dtype=torch.long, device=partition.storage.device)
+    cr = partition.storage.index_select(0, slots).cpu().numpy()
+
+    # Map back to the original [-1.5, 1.5] domain
+    centers = domain_start + domain_width * cr[:, :, 0]
+    radii = domain_width * cr[:, :, 1]
+
+    # Scale errors (remains in L_p^p space)
+    raw_etas = np.array([partition.eta[i] for i in ids])
+    etas = raw_etas * scale_factor
+
+    fig, ax = plt.subplots(figsize=(12, 12))
+    min_err, max_err = etas.min(), etas.max()
+    if max_err == min_err: max_err += 1e-9
+
+    cmap = plt.cm.viridis
+    norm = plt.Normalize(vmin=min_err, vmax=max_err)
+
+    for i in range(len(ids)):
+        cx, cy = centers[i, 0], centers[i, 1]
+        rx, ry = radii[i, 0], radii[i, 1]
+
+        x0, y0 = cx - rx, cy - ry
+        width, height = 2.0 * rx, 2.0 * ry
+
+        color = cmap(norm(etas[i]))
+        rect = patches.Rectangle((x0, y0), width, height,
+                                 linewidth=0.5, edgecolor='white', facecolor=color, alpha=0.9)
+        ax.add_patch(rect)
+
+    # Draw smooth disk boundaries
+    circle = plt.Circle((0, 0), 1.0, color='red', fill=False, linestyle='--', linewidth=2.0, label='Inner Radius')
+    circle_outer = plt.Circle((0, 0), 1.0 + epsilon, color='orange', fill=False, linestyle='--', linewidth=2.0,
+                              label='Outer Radius')
+    ax.add_patch(circle)
+    ax.add_patch(circle_outer)
+
+    domain_end = domain_start + domain_width
+    ax.set_xlim(domain_start, domain_end)
+    ax.set_ylim(domain_start, domain_end)
+    ax.set_title(
+        rf"Adaptive Grid $L_{{{int(p)}}}^{{{int(p)}}}$ - Iteration {iteration}" + "\n" + rf"$N={len(ids)}$ Boxes",
+        fontsize=global_size_para + 4)
+    ax.set_aspect('equal')
+
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
+    cbar.set_label(rf'Local Gap ($L_{{{int(p)}}}^{{{int(p)}}}$)', fontsize=global_size_para)
+
+    plt.tight_layout()
+    save_path = os.path.join(FIG_DIR, "lp_heatmap_combined_run.pdf")
+    plt.savefig(save_path, dpi=300)
+    plt.close()
+    print(f"Saved: {save_path}")
+
+
+def plot_combined_geometric_decay(all_results):
+    plt.figure(figsize=(12, 9))
+
+    styles = {
+        'w1p': {'color': '#1f77b4', 'marker': 'o', 'label': r'$W^{1,p}$'},
+        'w2p': {'color': '#ff7f0e', 'marker': 's', 'label': r'$W^{2,p}$'},
+        'lp': {'color': '#2ca02c', 'marker': '^', 'label': r'$L^p$'}
+    }
+
+    for norm_type, data in all_results.items():
+        gaps = data['res']['gaps']
+        theta = data['theta']
+        iterations = np.arange(len(gaps))
+
+        style = styles[norm_type]
+
+        # Plot Empirical Only
+        plt.plot(iterations, gaps, linestyle='-', marker=style['marker'], color=style['color'],
+                 linewidth=2.5, markersize=7, label=rf"{style['label']} ($\theta={theta}$)")
+
+    plt.yscale('log')
+    plt.title("Combined Geometric Error Decay", fontsize=global_size_para)
+    plt.xlabel("Adaptation Iteration $k$", fontsize=global_size_para)
+    plt.ylabel(r"Normalized Error Bound", fontsize=global_size_para)
+    plt.grid(True, which="both", alpha=0.3)
+
+    plt.legend(loc='best', fontsize=global_size_para-5, markerscale=1.5)
+    plt.tight_layout()
+
+    save_path = os.path.join(FIG_DIR, "combined_geometric_decay.pdf")
+    plt.savefig(save_path, dpi=300, format='pdf')
+    plt.close()
+
+
 # --- Sobolev Run Logic ---
-def run_sobolev_doerfler(model, initial_centers, initial_delta, max_iter, theta, p, norm_type):
-    print(f"  -> Running {norm_type.upper()} Refinement (theta={theta})...")
+def run_sobolev_doerfler(model, initial_centers, initial_delta, max_iter, theta, p, norm_type, jac_method):
+    print(f"  -> Running {norm_type.upper()} Refinement (theta={theta}, method={jac_method.upper()})...")
     active_cells = []
     bound_fn = compute_w1p_bounds if norm_type == 'w1p' else compute_w2p_bounds
 
     for x in initial_centers:
-        lb, ub = bound_fn(model, x, initial_delta, p=p)
+        lb, ub = bound_fn(model, x, initial_delta, p=p, jacobian_method=jac_method)
         error_mass = 0.5 * ((ub ** p) - (lb ** p))
         active_cells.append({'center': x, 'delta': initial_delta, 'error': error_mass})
 
@@ -110,6 +260,7 @@ def run_sobolev_doerfler(model, initial_centers, initial_delta, max_iter, theta,
 
     for i in range(max_iter + 1):
         global_gap = sum(c['error'] for c in active_cells)
+        print(f"    Iter {i:<3} | Cells: {len(active_cells):<6} | Gap: {global_gap:.6e}")
         sizes.append(len(active_cells))
         gaps.append(global_gap)
 
@@ -130,7 +281,7 @@ def run_sobolev_doerfler(model, initial_centers, initial_delta, max_iter, theta,
         for parent in marked_set:
             child_centers, child_delta = split_points([parent['center']], parent['delta'])
             for cx in child_centers:
-                cl, cu = bound_fn(model, cx, child_delta, p=p)
+                cl, cu = bound_fn(model, cx, child_delta, p=p, jacobian_method=jac_method)
                 new_cells.append({
                     'center': cx, 'delta': child_delta,
                     'error': 0.5 * ((cu ** p) - (cl ** p))
@@ -140,224 +291,114 @@ def run_sobolev_doerfler(model, initial_centers, initial_delta, max_iter, theta,
     return {'sizes': np.array(sizes), 'gaps': np.array(gaps)}
 
 
-# --- Individual Plotting Functions ---
-def plot_geometric_decay(results, norm_type, theta, rho):
-    gaps = results['gaps']
-    iterations = np.arange(len(gaps))
-
-    plt.figure(figsize=(10, 8))
-    plt.plot(iterations, gaps, '-s', color='#85C57A', linewidth=2.5, markersize=8, label=rf'Empirical $\theta={theta}$')
-
-    q = 1.0 - theta * (1.0 - rho)
-    theory_gaps = gaps[0] * (q ** iterations)
-    plt.plot(iterations, theory_gaps, '--k', linewidth=2.5, label=rf'Theory $q={q:.3f}$')
-
-    plt.yscale('log')
-    plt.title(f"Geometric Error Decay ({norm_type.upper()})", fontsize=global_size_para)
-    plt.xlabel("Adaptation Iteration $k$", fontsize=global_size_para)
-    plt.ylabel(r"Global Normalized Error $R_k / R_{MC}$", fontsize=global_size_para)
-    plt.grid(True, which="both", alpha=0.3)
-    plt.legend(loc='best')
-    plt.tight_layout()
-
-    save_path = os.path.join(FIG_DIR, f"{norm_type}_geometric_decay.pdf")
-    plt.savefig(save_path, dpi=300, format='pdf')
-    plt.close()
-
-
-def plot_n_convergence(results, norm_type, d):
-    sizes = results['sizes']
-    gaps = results['gaps']
-
-    plt.figure(figsize=(10, 8))
-    plt.plot(sizes, gaps, '-o', color='#D55E00', linewidth=2.5, markersize=8, label=rf'Empirical Rate')
-
-    n0, e0 = sizes[0], gaps[0]
-    x_theory = np.linspace(n0, sizes[-1], 100)
-    rate = -1.0 / d
-    plt.plot(x_theory, e0 * (x_theory / n0) ** rate, 'k--', linewidth=2.5, label=rf'Reference $\mathcal{{O}}(N^{{{rate:.2f}}})$')
-
-    plt.xscale('log')
-    plt.yscale('log')
-    plt.title(f"Adaptive Convergence Rate ({norm_type.upper()})", fontsize=global_size_para)
-    plt.xlabel("Number of Grid Boxes $N$", fontsize=global_size_para)
-    plt.ylabel(r"Normalized Error Bound $R_k / R_{MC}$", fontsize=global_size_para)
-    plt.grid(True, which="both", alpha=0.3)
-    plt.legend(loc='best')
-    plt.tight_layout()
-
-    save_path = os.path.join(FIG_DIR, f"{norm_type}_n_convergence.pdf")
-    plt.savefig(save_path, dpi=300, format='pdf')
-    plt.close()
-
-
-# --- Combined Plotting Functions ---
-def plot_combined_geometric_decay(all_results):
-    plt.figure(figsize=(12, 9))
-
-    styles = {
-        'w1p': {'color': '#1f77b4', 'marker': 'o', 'label': r'$W^{1,p}$'},
-        'w2p': {'color': '#ff7f0e', 'marker': 's', 'label': r'$W^{2,p}$'},
-        'lp': {'color': '#2ca02c', 'marker': '^', 'label': r'$L^p$'}
-    }
-
-    for norm_type, data in all_results.items():
-        gaps = data['res']['gaps']
-        theta = data['theta']
-        rho = data['rho']
-        iterations = np.arange(len(gaps))
-
-        style = styles[norm_type]
-
-        # Plot Empirical
-        plt.plot(iterations, gaps, linestyle='-', marker=style['marker'], color=style['color'],
-                 linewidth=2.5, markersize=7, label=f"Empirical {style['label']} ($\\theta={theta}$)")
-
-        # Plot Theoretical
-        q = 1.0 - theta * (1.0 - rho)
-        theory_gaps = gaps[0] * (q ** iterations)
-        plt.plot(iterations, theory_gaps, linestyle='--', color=style['color'],
-                 linewidth=2, alpha=0.8, label=f"Theory {style['label']} ($q={q:.3f}$)")
-
-    plt.yscale('log')
-    plt.title("Combined Geometric Error Decay", fontsize=global_size_para)
-    plt.xlabel("Adaptation Iteration $k$", fontsize=global_size_para)
-    plt.ylabel(r"Normalized Error Bound $R_k / R_{MC}$", fontsize=global_size_para)
-    plt.grid(True, which="both", alpha=0.3)
-
-    # --- UPDATED LEGEND ---
-    # Set fontsize to global_size_para (or increase it, e.g., global_size_para + 5)
-    # Use markerscale to scale up the symbols inside the legend box
-    plt.legend(loc='best', fontsize=global_size_para-5, markerscale=1.5)
-
-    plt.tight_layout()
-
-    save_path = os.path.join(FIG_DIR, "combined_geometric_decay.pdf")
-    plt.savefig(save_path, dpi=300, format='pdf')
-    plt.close()
-
-def plot_combined_n_convergence(all_results, d):
-    plt.figure(figsize=(12, 9))
-
-    styles = {
-        'w1p': {'color': '#1f77b4', 'marker': 'o', 'label': r'$W^{1,p}$'},
-        'w2p': {'color': '#ff7f0e', 'marker': 's', 'label': r'$W^{2,p}$'},
-        'lp':  {'color': '#2ca02c', 'marker': '^', 'label': r'$L^p$'}
-    }
-
-    max_size = 0
-    for norm_type, data in all_results.items():
-        sizes = data['res']['sizes']
-        gaps = data['res']['gaps']
-        style = styles[norm_type]
-
-        max_size = max(max_size, np.max(sizes))
-
-        plt.plot(sizes, gaps, linestyle='-', marker=style['marker'], color=style['color'],
-                 linewidth=2.5, markersize=7, label=f"{style['label']} Rate")
-
-    # Use W1P's first point as the anchor for the theoretical line (arbitrary choice for reference)
-    base_sizes = all_results['w1p']['res']['sizes']
-    base_gaps = all_results['w1p']['res']['gaps']
-    n0, e0 = base_sizes[0], base_gaps[0]
-
-    x_theory = np.linspace(n0, max_size, 100)
-    rate = -1.0 / d
-    plt.plot(x_theory, e0 * (x_theory / n0) ** rate, 'k--', linewidth=2.5,
-             label=rf'Reference $\mathcal{{O}}(N^{{{rate:.2f}}})$')
-
-    plt.xscale('log')
-    plt.yscale('log')
-    plt.title(f"Combined Adaptive Convergence Rate", fontsize=global_size_para)
-    plt.xlabel("Number of Grid Boxes $N$", fontsize=global_size_para)
-    plt.ylabel(r"Normalized Error Bound $R_k / R_{MC}$", fontsize=global_size_para)
-    plt.grid(True, which="both", alpha=0.3)
-    plt.legend(loc='best')
-    plt.tight_layout()
-
-    save_path = os.path.join(FIG_DIR, "combined_n_convergence.pdf")
-    plt.savefig(save_path, dpi=300, format='pdf')
-    plt.close()
-
-
 # --- Main Execution ---
 def main():
     print("=== Starting Combined Convergence Experiments ===")
 
-    # 1. Initialize Sobolev Model
-    print("\n--- Setup Sobolev Model ---")
-    sobolev_model = FlexibleNet(LAYERS, activation=ACTIVATION)
+    # Generate Shared Data once if training is needed
+    X_np, y_np = generate_balanced_2d_coin_data(N=N_SAMPLES, epsilon=EPSILON_TRANSITION)
+
+    # 1. Initialize Sobolev Model (Train if needed)
+    print("\n--- Setup Sobolev Model (tanh, weight decay) ---")
+    sobolev_model = FlexibleNet(SOBOLEV_LAYERS, activation=SOBOLEV_ACTIVATION)
     if os.path.exists(SOBOLEV_MODEL_PATH):
+        print(f"Loading existing Sobolev model from {SOBOLEV_MODEL_PATH}...")
         sobolev_model.load_state_dict(torch.load(SOBOLEV_MODEL_PATH))
     else:
-        print(f"Model {SOBOLEV_MODEL_PATH} not found. Train it first!")
-        sys.exit(1)
+        print(f"Training Sobolev model on {N_SAMPLES} samples with Weight Decay {WEIGHT_DECAY}...")
+        train_model(sobolev_model, torch.from_numpy(X_np), torch.from_numpy(y_np), epochs=EPOCHS, weight_decay=WEIGHT_DECAY)
+        torch.save(sobolev_model.state_dict(), SOBOLEV_MODEL_PATH)
+        print(f"Sobolev Model saved to {SOBOLEV_MODEL_PATH}.")
     sobolev_model.eval()
 
-    # Initial Grid for Sobolev
-    domain_start, domain_end = -1.5, 1.5
-    N_side = 2
-    delta_init = ((domain_end - domain_start) / N_side) / 2.0
-    c1d = np.linspace(domain_start + delta_init, domain_end - delta_init, N_side).astype(np.float32)
-    gx, gy = np.meshgrid(c1d, c1d)
-    centers_init = np.stack([gx.ravel(), gy.ravel()], axis=1)
-
-    # 2. Initialize Lp Model
-    print("\n--- Setup Lp Model ---")
-    lp_model = ReLUNetwork(input_dim=D_DIM, output_dim=1, width=32, depth=2, init_method="he_normal")
-    init_many_affine_pieces(lp_model)
+    # 2. Initialize Lp Model (Train if needed)
+    print("\n--- Setup Lp Model (ReLU, no weight decay) ---")
+    lp_model = ReLUNetwork(input_dim=D_DIM, output_dim=1, width=32, depth=3, init_method="he_normal")
+    if os.path.exists(LP_MODEL_PATH):
+        print(f"Loading existing Lp model from {LP_MODEL_PATH}...")
+        lp_model.load_state_dict(torch.load(LP_MODEL_PATH))
+    else:
+        print(f"Training Lp model on {N_SAMPLES} samples with NO Weight Decay...")
+        train_model(lp_model, torch.from_numpy(X_np), torch.from_numpy(y_np), epochs=EPOCHS, weight_decay=0.0)
+        torch.save(lp_model.state_dict(), LP_MODEL_PATH)
+        print(f"Lp Model saved to {LP_MODEL_PATH}.")
     lp_model.eval()
 
+    # Apply Domain Scaling Wrapper for Lp Bounder
+    domain_start, domain_end = -1.5, 1.5
+    domain_width = domain_end - domain_start
+    volume_scale = domain_width ** D_DIM
+
+    scaling_layer = nn.Linear(D_DIM, D_DIM)
+    scaling_layer.weight.data = torch.eye(D_DIM) * domain_width
+    scaling_layer.bias.data = torch.full((D_DIM,), float(domain_start))
+    scaling_layer.requires_grad_(False)
+
+    wrapped_lp_model = nn.Sequential(scaling_layer, *get_flattened_layers(lp_model))
+    wrapped_lp_model.eval()
+
     # 3. Compute Monte Carlo Truths
+    print("\n--- Computing Monte Carlo Ground Truths ---")
     mc_w1p, mc_w2p = compute_monte_carlo_sobolev(sobolev_model, num_samples=MC_SAMPLES, p=P_NORM, domain=(domain_start, domain_end))
 
-    mc_lp = monte_carlo_lp_norm(lp_model, d=D_DIM, p=P_NORM, n_samples=MC_SAMPLES)
-    print(f"LP MC Truth: {mc_lp:.6f}")
+    # Calculate MC Truth (returns L_p norm), then transform to L_p^p integral space
+    raw_mc_lp = monte_carlo_lp_norm(wrapped_lp_model, d=D_DIM, p=P_NORM, n_samples=MC_SAMPLES)
+    mc_lp = (raw_mc_lp ** P_NORM) * volume_scale
+    print(f"LP MC Truth (Integral): {mc_lp:.6f}")
 
     # 4. Run Experiments
     print("\n=== Running Experiments ===")
 
+    # Initial Grid for Sobolev
+    N_side = 2
+    delta_init = (domain_width / N_side) / 2.0
+    c1d = np.linspace(domain_start + delta_init, domain_end - delta_init, N_side).astype(np.float32)
+    gx, gy = np.meshgrid(c1d, c1d)
+    centers_init = np.stack([gx.ravel(), gy.ravel()], axis=1)
+
     # W1p
-    res_w1p = run_sobolev_doerfler(sobolev_model, centers_init, delta_init, MAX_ITER, THETA_W1P, P_NORM, 'w1p')
+    res_w1p = run_sobolev_doerfler(sobolev_model, centers_init, delta_init, MAX_ITER+2, THETA_W1P, P_NORM, 'w1p', JACOBIAN_METHOD)
     res_w1p['gaps'] = res_w1p['gaps'] / mc_w1p  # Normalize
 
     # W2p
-    res_w2p = run_sobolev_doerfler(sobolev_model, centers_init, delta_init, MAX_ITER, THETA_W2P, P_NORM, 'w2p')
+    res_w2p = run_sobolev_doerfler(sobolev_model, centers_init, delta_init, MAX_ITER+4, THETA_W2P, P_NORM, 'w2p', JACOBIAN_METHOD)
     res_w2p['gaps'] = res_w2p['gaps'] / mc_w2p  # Normalize
 
     # Lp
     print(f"  -> Running LP Refinement (theta={THETA_LP})...")
-    lp_runner = AdaptiveLpNorm(d=D_DIM, neural_net=lp_model, is_relu=True)
+    lp_runner = AdaptiveLpNorm(d=D_DIM, neural_net=wrapped_lp_model, is_relu=True)
     with silence_everything():
-        lp_runner.norm(p=P_NORM, m=MAX_ITER, theta=THETA_LP, refiner="max", eta_type="fval")
+        lp_runner.norm(p=P_NORM, m=MAX_ITER+2, theta=THETA_LP, refiner="max", eta_type="fval")
+
+    # Extract, scale to L_p^p space, and normalize
+    raw_lp_gaps = np.array(lp_runner.out_adap['post_hist']) * volume_scale
+    normalized_lp_gaps = raw_lp_gaps / mc_lp
 
     res_lp = {
         'sizes': np.array(lp_runner.out_adap['size_hist']),
-        'gaps': np.array(lp_runner.out_adap['post_hist']) / mc_lp  # Normalize
+        'gaps': normalized_lp_gaps
     }
 
     # Structure data for combined plotting
     all_results = {
-        'w1p': {'res': res_w1p, 'theta': THETA_W1P, 'rho': RHO_SOBOLEV},
-        'w2p': {'res': res_w2p, 'theta': THETA_W2P, 'rho': RHO_SOBOLEV},
-        'lp':  {'res': res_lp,  'theta': THETA_LP,  'rho': RHO_LP}
+        'w1p': {'res': res_w1p, 'theta': THETA_W1P},
+        'w2p': {'res': res_w2p, 'theta': THETA_W2P},
+        'lp':  {'res': res_lp,  'theta': THETA_LP}
     }
 
     # 5. Generate Plots
     print("\n=== Generating Plots ===")
 
-    # Individual Plots
-    for norm_type, data in all_results.items():
-        print(f"Plotting individual charts for {norm_type.upper()}...")
-        plot_geometric_decay(data['res'], norm_type, data['theta'], data['rho'])
-        plot_n_convergence(data['res'], norm_type, D_DIM)
-
-    # Combined Plots
-    print("Plotting combined charts...")
+    # Combined Plots Only
+    print("Plotting combined geometric decay chart...")
     plot_combined_geometric_decay(all_results)
-    plot_combined_n_convergence(all_results, D_DIM)
+
+    # Print Heatmap to verify Lp isolation
+    print("Generating Heatmap for Lp evaluation...")
+    extract_and_plot_heatmap(lp_runner.partition_adaptive, MAX_ITER, domain_start, domain_width, P_NORM, volume_scale, epsilon=EPSILON_TRANSITION)
 
     print(f"\nAll done! Plots saved to '{FIG_DIR}' directory.")
+
 
 if __name__ == "__main__":
     main()

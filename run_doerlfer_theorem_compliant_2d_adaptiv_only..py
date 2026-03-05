@@ -15,7 +15,7 @@ import matplotlib.patches as patches
 import itertools
 
 # --- Global Font Size Configuration ---
-gloabal_size_para = 20
+gloabal_size_para = 25
 plt.rcParams.update({
     'font.size': gloabal_size_para,
     'axes.titlesize': gloabal_size_para,
@@ -37,8 +37,8 @@ EPSILON_TRANSITION = 0.5
 
 
 # Model & Training
-LAYERS = [2, 32, 32, 32, 1]
-weight_decay = 1e-4
+LAYERS = [2, 300, 1]
+weight_decay = 0.0
 ACTIVATION = 'tanh'
 EPOCHS = 10000
 N_SAMPLES = 5000
@@ -50,8 +50,8 @@ os.makedirs(FIG_DIR, exist_ok=True)
 
 # Refinement Settings
 P_NORM = 2.0
-MAX_ITER = 3
-THETA = 0.35
+MAX_ITER = 32
+THETA = 0.22
 JACOBIAN_METHOD = 'ibp'  # Options: 'recurjac' or 'ibp'
 
 
@@ -278,7 +278,7 @@ def run_experiment():
 
     # Reiche JACOBIAN_METHOD als Parameter durch
     w1_history = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, THETA, P_NORM, 'w1p', JACOBIAN_METHOD)
-    w2_history = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, THETA, P_NORM, 'w2p', JACOBIAN_METHOD)
+    w2_history = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER+3, THETA, P_NORM, 'w2p', JACOBIAN_METHOD)
 
     print("\n--- Computing Static Baselines (Subsampled) ---")
     w1_counts = [h['count'] for h in w1_history]
@@ -294,21 +294,7 @@ def run_experiment():
     # --- PLOTS ---
     plt.figure(figsize=(16, 12))
 
-    # --- Theory O(N^-1) anchored EXACTLY at first data point ---
 
-    n0_w1 = w1_counts[0]
-    e0_w1 = w1_dyn_gaps[0]
-    y_theory_w1 = e0_w1 * (np.array(w1_counts) / n0_w1) ** (-1)
-
-    n0_w2 = w2_counts[0]
-    e0_w2 = w2_dyn_gaps[0]
-    y_theory_w2 = e0_w2 * (np.array(w2_counts) / n0_w2) ** (-1)
-
-    plt.plot(w1_counts, y_theory_w1 / mc_w1p, 'k--',
-             linewidth=1.5, label=r'Theory $O(N^{-1})$')
-
-    plt.plot(w2_counts, y_theory_w2 / mc_w2p, 'k:',
-             linewidth=1.5)
 
     plt.plot(w1_counts, w1_dyn_gaps/mc_w1p, '-o', color='#D55E00', linewidth=2,
              label=r'Dörfler $W^{1,2}$ ($\theta=' + str(THETA) + r'$)')

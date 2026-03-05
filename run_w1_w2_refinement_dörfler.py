@@ -2,11 +2,16 @@
 run_combined_doerfler_1d_experiment.py
 
 100-Run Statistical Analysis comparing W1p and W2p norms.
-Includes interpolated tracking over grid cell counts, confidence intervals,
-and clean, marker-free mean lines. Images saved as PDF.
+Tracks Geometric Decay over Iteration steps (k), includes 95% confidence intervals.
+Normalizes the empirical error bounds using individual Monte Carlo estimations for
+both untrained and trained networks.
 """
 
 import os
+import sys
+from contextlib import contextmanager
+
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
@@ -30,19 +35,32 @@ from w1p_bounds import compute_w1p_bounds
 from w2p_bounds import compute_w2p_bounds
 
 # --- CONFIGURATION ---
-LAYERS = [1, 200, 1]
-ACTIVATION = 'sigmoid'
-EPOCHS = 2000
+LAYERS = [1, 32, 32, 32, 1]
+ACTIVATION = 'tanh'
+EPOCHS = 3000
 NUM_RUNS = 100
-MAX_ITER = 20
+MAX_ITER = 30
 THETA = 0.3
 P_NORM = 2.0
+JACOBIAN_METHOD = 'ibp'  # Enforce fast Interval Bound Propagation
 
 FIG_DIR = f"fig_combined_norms_waterfall"
 os.makedirs(FIG_DIR, exist_ok=True)
 
 
-# --- DATA GENERATION ---
+# --- UTILITIES ---
+@contextmanager
+def suppress_stdout():
+    """Temporarily suppresses print statements during training."""
+    with open(os.devnull, "w") as devnull:
+        old_stdout = sys.stdout
+        sys.stdout = devnull
+        try:
+            yield
+        finally:
+            sys.stdout = old_stdout
+
+
 def generate_localized_data(N=150):
     """Generates 1D Gaussian pulse data."""
     X = np.linspace(0, 2 * np.pi, N)
@@ -50,7 +68,27 @@ def generate_localized_data(N=150):
     return X.reshape(-1, 1).astype(np.float32), y.reshape(-1, 1).astype(np.float32)
 
 
-# --- 1D UTILITIES ---
+def compute_monte_carlo_sobolev_1d(model, num_samples=100000, p=2.0, domain=(0.0, 2 * np.pi)):
+    """Computes exact analytical Sobolev bounds via 1D Monte Carlo sampling."""
+    device = next(model.parameters()).device
+    X = torch.empty(num_samples, 1, device=device).uniform_(domain[0], domain[1]).requires_grad_(True)
+    volume = domain[1] - domain[0]
+
+    Y = model(X)
+    grad_outputs = torch.ones_like(Y)
+    grad_Y = torch.autograd.grad(Y, X, grad_outputs=grad_outputs, create_graph=True)[0]
+    hess_Y = torch.autograd.grad(grad_Y, X, grad_outputs=torch.ones_like(grad_Y), retain_graph=False)[0]
+
+    phi_p = torch.abs(Y).pow(p).sum(dim=1)
+    grad_p = torch.abs(grad_Y).pow(p).sum(dim=1)
+    hess_p = torch.abs(hess_Y).pow(p).sum(dim=1)
+
+    w1p_mc = volume * (phi_p + grad_p).mean().item()
+    w2p_mc = volume * (phi_p + grad_p + hess_p).mean().item()
+
+    return w1p_mc, w2p_mc
+
+
 def split_points_1d(points, delta):
     new_points = []
     new_delta = delta / 2.0
@@ -60,36 +98,34 @@ def split_points_1d(points, delta):
     return new_points, new_delta
 
 
-def get_interpolated_stats(data_list, num_points=150):
+def get_iteration_stats(data_list):
     """
-    Interpolates varying grid-cell counts onto a common log-spaced axis
-    to calculate means and 95% confidence intervals.
+    Stacks arrays of bounds by iteration index to calculate
+    the mean and 95% confidence intervals across all runs.
     """
-    all_x = np.concatenate([d[0] for d in data_list])
-    min_x, max_x = np.min(all_x), np.max(all_x)
+    max_len = max(len(d[1]) for d in data_list)
 
-    x_common = np.logspace(np.log10(min_x), np.log10(max_x), num_points)
+    padded_gaps = []
+    for d in data_list:
+        gaps = d[1]
+        if len(gaps) < max_len:
+            gaps = np.pad(gaps, (0, max_len - len(gaps)), mode='edge')
+        padded_gaps.append(gaps)
 
-    interpolated_gaps = []
-    for x, y in data_list:
-        x_unique, idx = np.unique(x, return_index=True)
-        y_unique = y[idx]
-        y_interp = np.interp(x_common, x_unique, y_unique)
-        interpolated_gaps.append(y_interp)
+    stacked = np.vstack(padded_gaps)
 
-    interpolated_gaps = np.array(interpolated_gaps)
-
-    mean_gaps = np.mean(interpolated_gaps, axis=0)
-    lower_ci = np.percentile(interpolated_gaps, 2.5, axis=0)
-    upper_ci = np.percentile(interpolated_gaps, 97.5, axis=0)
+    mean_gaps = np.mean(stacked, axis=0)
+    lower_ci = np.percentile(stacked, 2.5, axis=0)
+    upper_ci = np.percentile(stacked, 97.5, axis=0)
 
     lower_ci = np.maximum(lower_ci, 1e-16)
+    iterations = np.arange(max_len)
 
-    return x_common, mean_gaps, lower_ci, upper_ci
+    return iterations, mean_gaps, lower_ci, upper_ci
 
 
 # --- DÖRFLER REFINEMENT ---
-def run_doerfler_refinement_1d(model, domain_start, domain_end, bound_fn, p=2.0, max_iter=30, theta=0.2):
+def run_doerfler_refinement_1d(model, domain_start, domain_end, bound_fn, p=2.0, max_iter=30, theta=0.2, jac_method='ibp'):
     N_cells_init = 2
     total_width = domain_end - domain_start
     delta_init = (total_width / N_cells_init) / 2.0
@@ -99,11 +135,10 @@ def run_doerfler_refinement_1d(model, domain_start, domain_end, bound_fn, p=2.0,
 
     for x in centers_1d:
         cx = np.array([x])
-        lb, ub = bound_fn(model, cx, delta_init, p=p)
+        lb, ub = bound_fn(model, cx, delta_init, p=p, jacobian_method=jac_method)
         error_mass = 0.5 * ((ub ** p) - (lb ** p))
         active_cells.append({
             'center': cx, 'delta': delta_init,
-            'low': lb, 'high': ub,
             'error': error_mass
         })
 
@@ -137,10 +172,9 @@ def run_doerfler_refinement_1d(model, domain_start, domain_end, bound_fn, p=2.0,
         for parent in marked_set:
             child_centers, child_delta = split_points_1d([parent['center']], parent['delta'])
             for cx in child_centers:
-                cl, cu = bound_fn(model, cx, child_delta, p=p)
+                cl, cu = bound_fn(model, cx, child_delta, p=p, jacobian_method=jac_method)
                 new_cells.append({
                     'center': cx, 'delta': child_delta,
-                    'low': cl, 'high': cu,
                     'error': 0.5 * ((cu ** p) - (cl ** p))
                 })
         active_cells = unmarked_set + new_cells
@@ -171,65 +205,76 @@ def run_combined_experiment():
 
         # --- UNTRAINED ---
         model.eval()
-        c_w1, g_w1 = run_doerfler_refinement_1d(model, domain_start, domain_end, compute_w1p_bounds, p=P_NORM, max_iter=MAX_ITER, theta=THETA)
-        results['untrained']['w1'].append((c_w1, g_w1))
 
-        c_w2, g_w2 = run_doerfler_refinement_1d(model, domain_start, domain_end, compute_w2p_bounds, p=P_NORM, max_iter=MAX_ITER, theta=THETA)
-        results['untrained']['w2'].append((c_w2, g_w2))
+        # Calculate MC Truth for normalization on Untrained Network
+        mc_w1_untrained, mc_w2_untrained = compute_monte_carlo_sobolev_1d(model, num_samples=50000, p=P_NORM, domain=(domain_start, domain_end))
+
+        c_w1, g_w1 = run_doerfler_refinement_1d(model, domain_start, domain_end, compute_w1p_bounds, p=P_NORM, max_iter=MAX_ITER, theta=THETA, jac_method=JACOBIAN_METHOD)
+        results['untrained']['w1'].append((c_w1, g_w1 / mc_w1_untrained))
+
+        c_w2, g_w2 = run_doerfler_refinement_1d(model, domain_start, domain_end, compute_w2p_bounds, p=P_NORM, max_iter=MAX_ITER, theta=THETA, jac_method=JACOBIAN_METHOD)
+        results['untrained']['w2'].append((c_w2, g_w2 / mc_w2_untrained))
 
         # --- TRAINING ---
         model.train()
-        train_model(model, X_tensor, y_tensor, epochs=EPOCHS)
+        with suppress_stdout():
+            train_model(model, X_tensor, y_tensor, epochs=EPOCHS)
 
         # --- TRAINED ---
         model.eval()
-        c_w1, g_w1 = run_doerfler_refinement_1d(model, domain_start, domain_end, compute_w1p_bounds, p=P_NORM, max_iter=MAX_ITER, theta=THETA)
-        results['trained']['w1'].append((c_w1, g_w1))
 
-        c_w2, g_w2 = run_doerfler_refinement_1d(model, domain_start, domain_end, compute_w2p_bounds, p=P_NORM, max_iter=MAX_ITER, theta=THETA)
-        results['trained']['w2'].append((c_w2, g_w2))
+        # Calculate MC Truth for normalization on Trained Network
+        mc_w1_trained, mc_w2_trained = compute_monte_carlo_sobolev_1d(model, num_samples=50000, p=P_NORM, domain=(domain_start, domain_end))
+
+        c_w1, g_w1 = run_doerfler_refinement_1d(model, domain_start, domain_end, compute_w1p_bounds, p=P_NORM, max_iter=MAX_ITER, theta=THETA, jac_method=JACOBIAN_METHOD)
+        results['trained']['w1'].append((c_w1, g_w1 / mc_w1_trained))
+
+        c_w2, g_w2 = run_doerfler_refinement_1d(model, domain_start, domain_end, compute_w2p_bounds, p=P_NORM, max_iter=MAX_ITER, theta=THETA, jac_method=JACOBIAN_METHOD)
+        results['trained']['w2'].append((c_w2, g_w2 / mc_w2_trained))
 
         print("Done.")
 
     # --- PLOTTING FUNCTION ---
-    def plot_with_shading(scenario_key, title_prefix):
+    def plot_with_shading(scenario_key, title_prefix, is_normalized=False):
         plt.figure(figsize=(10, 7))
 
-        c_w1_dyn = '#D55E00' # Vermillion
-        c_w2_dyn = '#009E73' # Bluish Green
+        c_w1_dyn = '#D55E00'
+        c_w2_dyn = '#009E73'
         data = results[scenario_key]
 
-        def plot_curve(data_list, color, label):
-            x, mean, lower, upper = get_interpolated_stats(data_list)
+        def plot_curve(data_list, color, label, marker):
+            x, mean, lower, upper = get_iteration_stats(data_list)
 
-            # Explicitly setting linestyle and removing markers
-            plt.plot(x, mean, linestyle='-', marker='', color=color, linewidth=2.5, label=label)
+            # Plot the mean empirical curve
+            plt.plot(x, mean, linestyle='-', marker=marker, color=color, linewidth=2.5, markersize=8, label=label)
 
             # Confidence interval shading
-            plt.fill_between(x, lower, upper, color=color, alpha=0.2, label=f"95% CI ({label.split()[-1]})")
+            plt.fill_between(x, lower, upper, color=color, alpha=0.2)
 
         # Plot Curves for W1 and W2 in the same plot
-        plot_curve(data['w1'], c_w1_dyn, r'Adaptive $W^{1,p}$')
-        plot_curve(data['w2'], c_w2_dyn, r'Adaptive $W^{2,p}$')
+        plot_curve(data['w1'], c_w1_dyn, r'Adaptive $W^{1,2}$', 'o')
+        plot_curve(data['w2'], c_w2_dyn, r'Adaptive $W^{2,2}$', 's')
 
-        plt.xscale('log')
+        plt.xscale('linear')
         plt.yscale('log')
-        plt.title(f"{title_prefix}: Adaptive Refinement", fontsize=16)
-        plt.xlabel("Number of Grid Cells", fontsize=14)
-        plt.ylabel("Global Bound Gap", fontsize=14)
-        plt.grid(True, which="both", alpha=0.3)
-        plt.legend()
+        plt.title(rf"{title_prefix}: Geometric Decay | $\theta={THETA}$", fontsize=gloabal_size_para + 2)
+        plt.xlabel("Iteration Step $k$", fontsize=gloabal_size_para)
 
-        # UPDATED: Changed .png to .pdf
+        y_label = "Normalized Global Bound Gap" if is_normalized else "Global Bound Gap"
+        plt.ylabel(y_label, fontsize=gloabal_size_para)
+
+        plt.grid(True, which="both", alpha=0.3)
+        plt.legend(loc='best', fontsize=gloabal_size_para - 4)
+
         path = os.path.join(FIG_DIR, f"adaptive_waterfall_{scenario_key}_{LAYERS}.pdf")
         plt.tight_layout()
         plt.savefig(path, dpi=300, format='pdf')
         print(f"Saved {path}")
 
     print("\nGenerating Plots...")
-    plot_with_shading('untrained', 'Untrained Networks')
-    plot_with_shading('trained', 'Trained Networks')
-    plt.show()
+    # BOTH are now normalized
+    plot_with_shading('untrained', 'Untrained Networks', is_normalized=True)
+    plot_with_shading('trained', 'Trained Networks', is_normalized=True)
 
 if __name__ == "__main__":
     run_combined_experiment()

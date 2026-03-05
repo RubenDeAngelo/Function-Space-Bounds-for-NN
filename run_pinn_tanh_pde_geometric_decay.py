@@ -4,19 +4,24 @@ run_pinn_tanh_pde_geometric_decay.py
 Tracks and plots the Geometric Decay and Local Error Reduction
 for the Tanh Wavefront PDE using Adaptive Dörfler Marking.
 Compliant with the Energy Norm Bound Reduction framework.
+Configured for the Tanh PDE: Delta u = -4k^2(1 - tanh^2(z))tanh(z)
+Includes Heatmaps visualizing the adaptive grid refinement.
 """
 
 import os
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import grad
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 import itertools
 
 # --- Global Font Size Configuration ---
-global_size_para = 16
+global_size_para = 20
 plt.rcParams.update({
     'font.size': global_size_para,
     'axes.titlesize': global_size_para + 2,
@@ -38,21 +43,27 @@ from jacobian_bounds import compute_jac_bounds, compute_deltas, compute_omega
 from hessian_bounds import compute_hessian_bounds_only
 
 # --- CONFIGURATION ---
-LAYERS = [2, 32, 32, 32, 32, 1]
-ACTIVATION = 'tanh'
+LAYERS = [2, 32, 32, 32, 1]
+ACTIVATION = 'tanh'        # Updated for better gradient flow
+WEIGHT_DECAY = 1e-3        # Added to prevent vanishing weights
 EPOCHS = 6000
 
 # PDE Parameters
-K_PARAM = 5.0  # Steepness parameter for z = k(x + y - 1)
+K_PARAM = 1.0  # Steepness parameter for z = k(x + y - 1)
 
-FIG_DIR = f"fig_pinn_tanh_pde_geometric_decay"
+FIG_DIR = f"fig_pinn_tanh_pde_geometric_{LAYERS}_wd{WEIGHT_DECAY}_{ACTIVATION}"
 os.makedirs(FIG_DIR, exist_ok=True)
-MODEL_PATH = f"model_pinn_tanh_pde_{LAYERS}.pth"
+MODEL_PATH = f"model_pinn_tanh_pde_{LAYERS}_wd{WEIGHT_DECAY}_{ACTIVATION}_k{K_PARAM}.pth"
 
 # Dörfler Parameters
-THETA = 0.32
-MAX_ITER = 30  # Increased for geometric decay visualization
+THETA = 0.35
+MAX_ITER = 30
 RHO = 0.25  # Theoretical local error reduction factor (1/4)
+HEATMAP_STEP = 5
+
+# Toggles for features
+PLOT_LOCAL_REDUCTION = True
+NORMALIZE_ERROR = False # Set to False to plot absolute errors and skip MC computation
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -80,6 +91,7 @@ def get_forcing_interval(x_c, y_c, delta, k=K_PARAM):
     Rigorous interval bounds [f_min, f_max] for f(z) = -4k^2(1 - tanh^2(z))tanh(z)
     where z = k(x + y - 1).
     """
+    # 1. Determine the interval of z for the current cell
     z_min = k * (x_c - delta + y_c - delta - 1.0)
     z_max = k * (x_c + delta + y_c + delta - 1.0)
 
@@ -87,9 +99,11 @@ def get_forcing_interval(x_c, y_c, delta, k=K_PARAM):
         t = np.tanh(z)
         return -4.0 * (k ** 2) * (1.0 - t ** 2) * t
 
+    # Evaluate at the interval boundaries
     vals = [f_val(z_min), f_val(z_max)]
 
-    # Critical points of f(z) occur where tanh^2(z) = 1/3
+    # 2. Add critical points of f(z) to the evaluation pool
+    # The derivative of f(z) w.r.t z roots at tanh^2(z) = 1/3
     z_c1 = np.arctanh(1.0 / np.sqrt(3.0))
     z_c2 = -np.arctanh(1.0 / np.sqrt(3.0))
 
@@ -99,6 +113,87 @@ def get_forcing_interval(x_c, y_c, delta, k=K_PARAM):
         vals.append(f_val(z_c2))
 
     return min(vals), max(vals)
+
+
+def compute_mc_residual(model, num_samples=100000, k=K_PARAM):
+    """Computes the true integrated squared residual using Monte Carlo integration."""
+    print(f"\n--- Computing Monte Carlo Ground Truth Residual (N={num_samples}) ---")
+    model.eval()
+
+    # Domain is [0, 1] x [0, 1], volume = 1.0
+    raw_data = torch.rand((num_samples, 2), device=device)
+    x_in = raw_data[:, 0:1].requires_grad_(True)
+    y_in = raw_data[:, 1:2].requires_grad_(True)
+
+    xy = torch.cat([x_in, y_in], dim=1)
+    u = model(xy)
+
+    d_xy = grad(u.sum(), [x_in, y_in], create_graph=True)
+    u_x, u_y = d_xy[0], d_xy[1]
+
+    u_xx = grad(u_x.sum(), x_in, create_graph=True)[0]
+    u_yy = grad(u_y.sum(), y_in, create_graph=True)[0]
+
+    # Forcing term
+    z = k * (x_in + y_in - 1.0)
+    tanh_z = torch.tanh(z)
+    f = -4.0 * (k ** 2) * (1.0 - tanh_z ** 2) * tanh_z
+
+    res_sq = (u_xx + u_yy - f) ** 2
+    mc_integral = res_sq.mean().item() * 1.0  # Volume is 1.0
+
+    print(f"MC Residual True Value: {mc_integral:.8f}")
+    return mc_integral
+
+
+# --- PLOTTING HELPER (HEATMAP) ---
+def plot_pinn_heatmap(active_cells, iteration):
+    """Generates a heatmap of the adaptive grid colored by local error gap."""
+    fig, ax = plt.subplots(figsize=(10, 10))
+
+    errors = [c['error_gap'] for c in active_cells]
+
+    if len(errors) > 0:
+        min_err, max_err = min(errors), max(errors)
+        if max_err == min_err:
+            max_err += 1e-9
+    else:
+        min_err, max_err = 0, 1
+
+    cmap = plt.cm.viridis
+    norm = plt.Normalize(vmin=min_err, vmax=max_err)
+
+    for cell, err in zip(active_cells, errors):
+        cx, cy = cell['center'][0], cell['center'][1]
+        delta = cell['delta']
+        width = 2.0 * delta
+        x0 = cx - delta
+        y0 = cy - delta
+
+        color = cmap(norm(err))
+        rect = patches.Rectangle((x0, y0), width, width,
+                                 linewidth=0.5, edgecolor='white', facecolor=color, alpha=0.9)
+        ax.add_patch(rect)
+
+    # PINN Domain is [0, 1] x [0, 1]
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.set_title(f"PINN Adaptive Grid - Iteration {iteration}\nN={len(active_cells)} Boxes", fontsize=20)
+    ax.set_aspect('equal')
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
+    cbar.set_label(r'Local Residual Error Gap', fontsize=16)
+
+    save_name = f"pinn_heatmap_iter_{iteration:03d}.pdf"
+    save_path = os.path.join(FIG_DIR, save_name)
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150, format='pdf')
+    plt.close()
+    print(f"    [Plot] Saved heatmap to {save_path}")
 
 
 # --- CORE BOUNDING LOGIC ---
@@ -127,17 +222,17 @@ def compute_cell_metrics(model, weights, xc, d):
         jac_bound_up=jac_bound_up, jac_bound_down=jac_bound_down
     )
 
-    # 1. Extract Differential Operator Bounds
+    # 1. Extract Differential Operator Bounds (D_under and D_over)
     D_under = (H_low[0, 0, 0] + H_low[0, 1, 1]).item()
     D_over = (H_high[0, 0, 0] + H_high[0, 1, 1]).item()
 
-    # 2. Extract Forcing Term Bounds
+    # 2. Extract Forcing Term Bounds using the new Tanh function
     f_min, f_max = get_forcing_interval(xc[0], xc[1], d)
 
-    # 3. Upper Bound Calculation
+    # 3. Upper Bound Calculation (Theorem Compliant)
     E_upper = max(abs(D_under - f_max) ** 2, abs(D_over - f_min) ** 2)
 
-    # 4. Lower Bound Calculation (Piecewise logic)
+    # 4. Lower Bound Calculation (Theorem Compliant Piecewise Logic)
     if f_max < D_under:
         E_lower = (D_under - f_max) ** 2
     elif D_under <= f_min and f_max <= D_over:
@@ -167,20 +262,21 @@ def split_cell_2d(cell):
     return [{'center': c + np.array(off, dtype=np.float32), 'delta': new_d} for off in offsets]
 
 
-def run_pinn_doerfler_refinement_tracked(model, max_iter=40, theta=0.3):
+def run_pinn_doerfler_refinement_tracked(model, max_iter=40, theta=0.3, track_splits=True):
     model.eval()
     weights, _ = extract_numpy_params(model)
 
+    # Initial Coarse Grid for [0,1]x[0,1]
     active_cells = [{'center': np.array(c, dtype=np.float32), 'delta': 0.25}
                     for c in itertools.product([0.25, 0.75], repeat=2)]
 
     history = []
-    split_data = []  # To store (parent_error, sum_children_error)
+    split_data = []
 
-    print(f"\n--- Starting Adaptive Refinement (Theta={theta}) ---")
+    print(f"\n  Starting Adaptive Refinement (Theta={theta})...")
 
     for iteration in range(max_iter + 1):
-        # Calculation Step
+        # 1. Calculation Step
         for cell in active_cells:
             if 'error_gap' not in cell:
                 err_gap, q = compute_cell_metrics(model, weights, cell['center'], cell['delta'])
@@ -195,11 +291,14 @@ def run_pinn_doerfler_refinement_tracked(model, max_iter=40, theta=0.3):
             'gap_dyn': total_error_gap
         })
 
-        print(f"Iter {iteration:<3}: Cells={len(active_cells):<5}, Gap={total_error_gap:.6f}")
+        print(f"    Iter {iteration:<3}: Cells={len(active_cells):<5}, Gap={total_error_gap:.6e}")
+
+        if iteration % HEATMAP_STEP == 0 or iteration == max_iter:
+            plot_pinn_heatmap(active_cells, iteration)
 
         if iteration == max_iter: break
 
-        # Marking & Refining Step
+        # 2. Marking Step
         active_cells.sort(key=lambda c: c['error_gap'], reverse=True)
         target = theta * total_error_gap
         current_sum = 0.0
@@ -213,6 +312,7 @@ def run_pinn_doerfler_refinement_tracked(model, max_iter=40, theta=0.3):
 
         if split_idx == 0: split_idx = 1
 
+        # 3. Refining Step
         new_cells = []
         unmarked_set = active_cells[split_idx:]
 
@@ -227,19 +327,26 @@ def run_pinn_doerfler_refinement_tracked(model, max_iter=40, theta=0.3):
 
             new_cells.extend(children_for_this_parent)
 
-            # Extract Local Error Reduction Data
-            sum_child_error = sum(c['error_gap'] for c in children_for_this_parent)
-            split_data.append((parent['error_gap'], sum_child_error))
+            if track_splits:
+                sum_child_error = sum(c['error_gap'] for c in children_for_this_parent)
+                split_data.append((parent['error_gap'], sum_child_error))
 
         active_cells = unmarked_set + new_cells
 
-    return history, np.array(split_data)
+    return history, np.array(split_data) if track_splits else np.array([])
 
 
 # --- PLOTTING FUNCTIONS ---
-def plot_geometric_decay(history, theta, rho):
+def plot_geometric_decay(history, theta, rho, mc_val=None, normalize=True):
     iterations = np.array([h['iter'] for h in history])
     empirical_gaps = np.array([h['gap_dyn'] for h in history])
+
+    # Conditional Normalization
+    if normalize and mc_val is not None:
+        empirical_gaps = empirical_gaps / mc_val
+        y_label = r"Normalized Residual Bound Gap$"
+    else:
+        y_label = r"Global Residual Error Bound$"
 
     # Calculate Theoretical Line: R_k = R_0 * (1 - theta * (1 - rho))^k
     q = 1.0 - theta * (1.0 - rho)
@@ -249,16 +356,16 @@ def plot_geometric_decay(history, theta, rho):
     plt.figure(figsize=(10, 8))
     plt.plot(iterations, empirical_gaps, '-o', markersize=8, color='#4A7BC7', linewidth=2.5, label='Empirical Error')
 
-    theory_label = r'Theory $(1 - ' + str(
-        int((1 - rho) * 4)) + r'\theta/4)^k$' if rho == 0.25 else f'Theory $q={q:.3f}$'
+    # Explicitly print the actual q value in the label
+    theory_label = rf'Theory $q={q:.4f}$'
     plt.plot(iterations, theory_gaps, '--k', linewidth=2.5, label=theory_label)
 
     plt.yscale('log')
-    plt.title("Geometric Convergence Decay (Residual Bound)", fontsize=20)
-    plt.xlabel("Iteration Step $k$", fontsize=18)
-    plt.ylabel("Global Residual Error Bound $R_k^{\mathrm{res}}(f)$", fontsize=18)
+    plt.title(rf"Geometric Convergence Decay | $\theta$={theta}", fontsize=global_size_para + 2)
+    plt.xlabel("Iteration Step $k$", fontsize=global_size_para)
+    plt.ylabel(y_label, fontsize=global_size_para)
     plt.grid(True, which="both", alpha=0.3)
-    plt.legend()
+    plt.legend(loc='best')
     plt.tight_layout()
 
     save_path = os.path.join(FIG_DIR, "geometric_decay_pinn_tanh.pdf")
@@ -280,10 +387,13 @@ def plot_local_error_reduction(split_data, rho):
     min_err = min(np.min(parent_errors), np.min(children_errors))
     max_err = max(np.max(parent_errors), np.max(children_errors))
 
+    # Protect against min_err exactly 0 for log10
+    min_err = max(min_err, 1e-16)
+
     x_theory = np.logspace(np.log10(min_err / 10), np.log10(max_err * 10), 100)
     y_theory = rho * x_theory
 
-    theory_label = r'Theory $y = 1/4 x$' if rho == 0.25 else f'Theory $y = {rho} x$'
+    theory_label = rf'Theory $y = {rho:.2f} x$'
     plt.plot(x_theory, y_theory, '--k', linewidth=2.5, label=theory_label)
 
     # Red line for y = x
@@ -291,9 +401,9 @@ def plot_local_error_reduction(split_data, rho):
 
     plt.xscale('log')
     plt.yscale('log')
-    plt.title(r"Local Error Reduction ($R_K \to \sum R_{K'}$)", fontsize=20)
-    plt.xlabel(r"Parent Error $R(K)$", fontsize=18)
-    plt.ylabel(r"Sum Children Error $\sum R_{K'}$", fontsize=18)
+    plt.title(r"Local Error Reduction", fontsize=global_size_para + 2)
+    plt.xlabel(r"Parent Error", fontsize=global_size_para)
+    plt.ylabel(r"Sum Children Error", fontsize=global_size_para)
 
     plt.xlim(min_err / 5, max_err * 5)
     plt.ylim(min_err / 5, max_err * 5)
@@ -321,10 +431,12 @@ def run_experiment():
         model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
     else:
         print(f"No trained model found. Starting training for {EPOCHS} epochs...")
-        optimizer = optim.Adam(model.parameters(), lr=1e-3)
+        optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=WEIGHT_DECAY)
 
         for epoch in range(EPOCHS):
             optimizer.zero_grad()
+
+            # Domain is [0,1]x[0,1]
             raw_data = torch.rand((1000, 2), device=device)
             x_in = raw_data[:, 0:1].requires_grad_(True)
             y_in = raw_data[:, 1:2].requires_grad_(True)
@@ -332,18 +444,20 @@ def run_experiment():
 
             u = model(xy)
 
+            # Residual Loss calculation
             d_xy = grad(u.sum(), [x_in, y_in], create_graph=True)
             u_x, u_y = d_xy[0], d_xy[1]
             u_xx = grad(u_x.sum(), x_in, create_graph=True)[0]
             u_yy = grad(u_y.sum(), y_in, create_graph=True)[0]
 
+            # New Forcing term
             z = K_PARAM * (x_in + y_in - 1.0)
             tanh_z = torch.tanh(z)
             f = -4.0 * (K_PARAM ** 2) * (1.0 - tanh_z ** 2) * tanh_z
 
             loss_res = nn.MSELoss()(u_xx + u_yy, f)
 
-            # Boundary Loss
+            # Boundary Loss calculation (u*(x,y) = tanh(z))
             x_bnd = torch.rand((200, 1), device=device)
             y_bnd_0 = torch.zeros_like(x_bnd)
             y_bnd_1 = torch.ones_like(x_bnd)
@@ -359,28 +473,38 @@ def run_experiment():
                 torch.cat([x_bnd_1, y_bnd], dim=1)
             ], dim=0)
 
+            # Target boundary values mapped to z
             z_bnd = K_PARAM * (xy_bnd[:, 0:1] + xy_bnd[:, 1:2] - 1.0)
             u_target = torch.tanh(z_bnd)
 
             u_pred_bnd = model(xy_bnd)
             loss_bnd = nn.MSELoss()(u_pred_bnd, u_target)
 
+            # Total Loss
             loss = loss_res + loss_bnd
+
             loss.backward()
             optimizer.step()
 
             if epoch % 1000 == 0:
-                print(f"  Epoch {epoch}, Total Loss: {loss.item():.6f}")
+                print(f"  Epoch {epoch}, Total Loss: {loss.item():.6f}, Res Loss: {loss_res.item():.6f}")
 
         torch.save(model.state_dict(), MODEL_PATH)
         print(f"Model saved to {MODEL_PATH}.")
 
-    print("\n--- 2. Analysis ---")
-    hist, splits = run_pinn_doerfler_refinement_tracked(model, MAX_ITER, THETA)
+    mc_truth = None
+    if NORMALIZE_ERROR:
+        mc_truth = compute_mc_residual(model, k=K_PARAM)
+    else:
+        print("\n--- 2. Skipping Monte Carlo Truth (Normalization Disabled) ---")
 
-    print("\n--- 3. Generating Plots ---")
-    plot_geometric_decay(hist, THETA, RHO)
-    plot_local_error_reduction(splits, RHO)
+    print("\n--- 3. Analysis ---")
+    hist, splits = run_pinn_doerfler_refinement_tracked(model, MAX_ITER, THETA, track_splits=PLOT_LOCAL_REDUCTION)
+
+    print("\n--- 4. Generating Plots ---")
+    plot_geometric_decay(hist, THETA, RHO, mc_val=mc_truth, normalize=NORMALIZE_ERROR)
+    if PLOT_LOCAL_REDUCTION and len(splits) > 0:
+        plot_local_error_reduction(splits, RHO)
 
 
 if __name__ == "__main__":

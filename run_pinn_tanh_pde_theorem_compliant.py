@@ -18,15 +18,15 @@ import matplotlib.patches as patches
 import itertools
 
 # --- Global Font Size Configuration ---
-global_size_para = 16
+global_size_para = 20
 plt.rcParams.update({
     'font.size': global_size_para,
-    'axes.titlesize': global_size_para + 2,
+    'axes.titlesize': global_size_para ,
     'axes.labelsize': global_size_para,
-    'xtick.labelsize': global_size_para - 2,
-    'ytick.labelsize': global_size_para - 2,
-    'legend.fontsize': global_size_para - 2,
-    'figure.titlesize': global_size_para + 4
+    'xtick.labelsize': global_size_para,
+    'ytick.labelsize': global_size_para,
+    'legend.fontsize': global_size_para,
+    'figure.titlesize': global_size_para
 })
 
 # --- Import from your library ---
@@ -436,20 +436,24 @@ def run_experiment():
     # --- Plotting ---
     print("\n--- 3. Generating Plots ---")
 
+    # Normalize gaps for plotting
+    dyn_gaps_norm = dyn_gaps / mc_truth
+    stat_gaps_norm = np.array(stat_gaps) / mc_truth
+
     # 1. Residual Convergence Plot
     plt.figure(figsize=(12, 9))
-    n0, e0 = dyn_counts[0], dyn_gaps[0]
+    n0, e0 = dyn_counts[0], dyn_gaps_norm[0]
     x_theory = np.linspace(n0, dyn_counts[-1], 100)
     plt.plot(x_theory, e0 * (x_theory / n0) ** (-1), 'k--', linewidth=2, label=r'Optimal Rate $O(N^{-1})$')
 
-    plt.plot(dyn_counts, dyn_gaps, '-o', color='#D55E00', linewidth=2.5, markersize=8,
-             label=f'Dörfler Adaptive ($\\theta={THETA}$)')
-    plt.plot(stat_counts, stat_gaps, '--s', color='#D55E00', alpha=0.5, linewidth=2, label='Static Grid')
+    plt.plot(dyn_counts, dyn_gaps_norm, '-o', color='#D55E00', linewidth=2.5, markersize=8,
+             label=rf'Dörfler Adaptive ($\theta={THETA}$)')
+    plt.plot(stat_counts, stat_gaps_norm, '--s', color='#D55E00', alpha=0.5, linewidth=2, label='Static Grid')
 
     plt.xscale('log')
     plt.yscale('log')
-    plt.xlabel('Number of Grid Cells (N)')
-    plt.ylabel(r'Global Residual Error Gap $R_n^{\mathrm{res}}(f)$')
+    plt.xlabel('Number of Grid Boxes (N)')
+    plt.ylabel(r'Normalized Residual Bound Gap $R^{\mathrm{res}}_n(f) / MC$')
     plt.title('PINN Interior Residual Bound Convergence (Tanh PDE)')
     plt.grid(True, which="both", alpha=0.3)
     plt.legend()
@@ -474,7 +478,7 @@ def run_experiment():
     plt.axhline(y=mc_truth, color='black', linestyle='-.', linewidth=2, alpha=0.8, label='MC True Residual')
 
     plt.xscale('log')
-    plt.xlabel('Number of Grid Cells (N)')
+    plt.xlabel('Number of Grid Boxes (N)')
     plt.ylabel(r'Calculated Residual Energy $Q_n(f)$')
     plt.title('PINN Residual Quadrature Convergence (Tanh PDE)')
     plt.grid(True, which="both", alpha=0.3)
