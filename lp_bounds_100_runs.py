@@ -34,16 +34,15 @@ from adaptive_lp_core import (
 
 # --- CONFIGURATION ---
 NUM_RUNS = 100
-EPOCHS = 2000
-D_DIM = 2
+EPOCHS = 3000
+D_DIM = 1
 P_NORM = 2.0
 MAX_ITER = 30
 THETA = 0.3
-RHO = 0.50
 REFINER = "max"
 
-DOMAIN_START = -1.5
-DOMAIN_END = 1.5
+DOMAIN_START = 0.0
+DOMAIN_END = 2 * np.pi
 DOMAIN_WIDTH = DOMAIN_END - DOMAIN_START
 VOLUME_SCALE = DOMAIN_WIDTH ** D_DIM
 
@@ -82,29 +81,11 @@ def silence_everything(disable_logging: bool = True, disable_warnings: bool = Tr
 # ==========================================
 # DATA GENERATION
 # ==========================================
-def h(t):
-    return np.where(t > 0, np.exp(-1.0 / np.maximum(t, 1e-16)), 0.0)
-
-
-def smooth_disk(x, y, epsilon=0.1):
-    r = np.sqrt(x ** 2 + y ** 2)
-    r_inner = 1.0
-    r_outer = 1.0 + epsilon
-    term1 = h(r_outer - r)
-    term2 = h(r - r_inner)
-    denom = term1 + term2
-    val = np.zeros_like(r)
-    val[r <= r_inner] = 1.0
-    mask = (r > r_inner) & (r < r_outer)
-    transition_vals = np.divide(term1, denom, where=denom != 0)
-    val[mask] = transition_vals[mask]
-    return val
-
-
-def generate_disk_data(n_samples=5000, domain_start=-1.5, domain_end=1.5, epsilon=0.5):
-    X = np.random.uniform(domain_start, domain_end, (n_samples, 2)).astype(np.float32)
-    y = smooth_disk(X[:, 0], X[:, 1], epsilon=epsilon)
-    return torch.from_numpy(X), torch.from_numpy(y.reshape(-1, 1))
+def generate_localized_1d_data(n_samples=150, domain_start=0.0, domain_end=2 * np.pi):
+    """Generates the 1D Gaussian pulse data."""
+    X = np.linspace(domain_start, domain_end, n_samples)
+    y = np.exp(-20 * (X - np.pi)**2)
+    return torch.from_numpy(X.reshape(-1, 1).astype(np.float32)), torch.from_numpy(y.reshape(-1, 1).astype(np.float32))
 
 
 def train_model(model, X_train, y_train, epochs=2000, lr=1e-3):
@@ -154,7 +135,7 @@ def get_iteration_stats(data_list):
     return iterations, mean_vals, lower_ci, upper_ci
 
 
-def plot_combined_with_shading(data_dict, title_prefix, filename_suffix, is_normalized=False):
+def plot_combined_with_shading(data_dict, title_prefix, filename_suffix, is_normalized=True):
     plt.figure(figsize=(12, 9))
 
     color_deep = '#D55E00'  # Vermillion
@@ -169,14 +150,7 @@ def plot_combined_with_shading(data_dict, title_prefix, filename_suffix, is_norm
                  label=rf"{label_prefix} ($L_{{{int(P_NORM)}}}^{{{int(P_NORM)}}}$)")
 
         # Plot Confidence Interval
-        plt.fill_between(x, lower, upper, color=color, alpha=0.2, label=f"95% CI ({label_prefix})")
-
-        # Plot Theory Line for normalized data
-        if is_normalized:
-            q = 1.0 - THETA * (1.0 - RHO)
-            theory_line = mean[0] * (q ** x)
-            plt.plot(x, theory_line, linestyle='--', color=color, linewidth=2.0, alpha=0.7,
-                     label=rf'Theory $q={q:.4f}$ ({label_prefix})')
+        plt.fill_between(x, lower, upper, color=color, alpha=0.2)
 
     # Plot both architectures
     plot_curve(data_dict['deep'], color_deep, 'Deep Arch.', 'o')
@@ -205,7 +179,7 @@ def plot_combined_with_shading(data_dict, title_prefix, filename_suffix, is_norm
 def main():
     print(f"--- Starting {NUM_RUNS}-Run Statistical Experiment (L_p^p Integral) ---")
 
-    X_train, y_train = generate_disk_data(n_samples=5000, domain_start=DOMAIN_START, domain_end=DOMAIN_END)
+    X_train, y_train = generate_localized_1d_data(n_samples=150, domain_start=DOMAIN_START, domain_end=DOMAIN_END)
 
     results_untrained = {'deep': [], 'wide': []}
     results_trained = {'deep': [], 'wide': []}
@@ -237,13 +211,18 @@ def main():
             wrapped_model.eval()
 
             # ================== UNTRAINED EVALUATION ==================
+            # Calculate MC Truth for untrained, then transform to L_p^p space
+            raw_mc_truth_untrained = monte_carlo_lp_norm(wrapped_model, d=D_DIM, p=P_NORM, n_samples=100_000)
+            mc_truth_untrained = (raw_mc_truth_untrained ** P_NORM) * VOLUME_SCALE
+
             lp_untrained = AdaptiveLpNorm(d=D_DIM, neural_net=wrapped_model, is_relu=True)
             with silence_everything():
                 lp_untrained.norm(p=P_NORM, m=MAX_ITER, theta=THETA, refiner=REFINER, eta_type="fval")
 
-            # Extract and scale to L_p^p Volume
+            # Extract, scale to L_p^p Volume, and normalize
             raw_untrained = np.array(lp_untrained.out_adap["post_hist"]) * VOLUME_SCALE
-            results_untrained[arch_name].append(raw_untrained)
+            normalized_untrained = raw_untrained / mc_truth_untrained
+            results_untrained[arch_name].append(normalized_untrained)
 
             # ================== TRAINING ==================
             with suppress_stdout():
@@ -269,7 +248,8 @@ def main():
 
     # 3. Generate Plots
     print("\nGenerating Statistical Plots...")
-    plot_combined_with_shading(results_untrained, 'Untrained Networks', 'untrained', is_normalized=False)
+    # Both sets are now fully normalized
+    plot_combined_with_shading(results_untrained, 'Untrained Networks', 'untrained', is_normalized=True)
     plot_combined_with_shading(results_trained, 'Trained Networks', 'trained', is_normalized=True)
     print("Experiment Complete.")
 

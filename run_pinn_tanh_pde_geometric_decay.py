@@ -21,15 +21,15 @@ import matplotlib.patches as patches
 import itertools
 
 # --- Global Font Size Configuration ---
-global_size_para = 20
+global_size_para = 25
 plt.rcParams.update({
     'font.size': global_size_para,
-    'axes.titlesize': global_size_para + 2,
+    'axes.titlesize': global_size_para ,
     'axes.labelsize': global_size_para,
-    'xtick.labelsize': global_size_para - 2,
-    'ytick.labelsize': global_size_para - 2,
-    'legend.fontsize': global_size_para - 2,
-    'figure.titlesize': global_size_para + 4
+    'xtick.labelsize': global_size_para,
+    'ytick.labelsize': global_size_para,
+    'legend.fontsize': global_size_para,
+    'figure.titlesize': global_size_para
 })
 
 # --- Import from your library ---
@@ -46,7 +46,7 @@ from hessian_bounds import compute_hessian_bounds_only
 LAYERS = [2, 32, 32, 32, 1]
 ACTIVATION = 'tanh'        # Updated for better gradient flow
 WEIGHT_DECAY = 1e-3        # Added to prevent vanishing weights
-EPOCHS = 6000
+EPOCHS = 10000
 
 # PDE Parameters
 K_PARAM = 1.0  # Steepness parameter for z = k(x + y - 1)
@@ -186,7 +186,7 @@ def plot_pinn_heatmap(active_cells, iteration):
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
-    cbar.set_label(r'Local Residual Error Gap', fontsize=16)
+    cbar.set_label(r'Local Bound Gap', fontsize=20)
 
     save_name = f"pinn_heatmap_iter_{iteration:03d}.pdf"
     save_path = os.path.join(FIG_DIR, save_name)
@@ -344,25 +344,16 @@ def plot_geometric_decay(history, theta, rho, mc_val=None, normalize=True):
     # Conditional Normalization
     if normalize and mc_val is not None:
         empirical_gaps = empirical_gaps / mc_val
-        y_label = r"Normalized Residual Bound Gap$"
+        y_label = r"Normalized Global Bound Gap"
     else:
-        y_label = r"Global Residual Error Bound$"
-
-    # Calculate Theoretical Line: R_k = R_0 * (1 - theta * (1 - rho))^k
-    q = 1.0 - theta * (1.0 - rho)
-    R_0 = empirical_gaps[0]
-    theory_gaps = R_0 * (q ** iterations)
+        y_label = r"Global Bound"
 
     plt.figure(figsize=(10, 8))
-    plt.plot(iterations, empirical_gaps, '-o', markersize=8, color='#4A7BC7', linewidth=2.5, label='Empirical Error')
-
-    # Explicitly print the actual q value in the label
-    theory_label = rf'Theory $q={q:.4f}$'
-    plt.plot(iterations, theory_gaps, '--k', linewidth=2.5, label=theory_label)
+    plt.plot(iterations, empirical_gaps, '-o', markersize=8, color='#4A7BC7', linewidth=2.5)
 
     plt.yscale('log')
     plt.title(rf"Geometric Convergence Decay | $\theta$={theta}", fontsize=global_size_para + 2)
-    plt.xlabel("Iteration Step $k$", fontsize=global_size_para)
+    plt.xlabel("Iteration Step", fontsize=global_size_para)
     plt.ylabel(y_label, fontsize=global_size_para)
     plt.grid(True, which="both", alpha=0.3)
     plt.legend(loc='best')
@@ -401,9 +392,9 @@ def plot_local_error_reduction(split_data, rho):
 
     plt.xscale('log')
     plt.yscale('log')
-    plt.title(r"Local Error Reduction", fontsize=global_size_para + 2)
-    plt.xlabel(r"Parent Error", fontsize=global_size_para)
-    plt.ylabel(r"Sum Children Error", fontsize=global_size_para)
+    plt.title(r"Local Bound Gap Reduction", fontsize=global_size_para + 2)
+    plt.xlabel(r"Parent Bound Gap", fontsize=global_size_para)
+    plt.ylabel(r"Sum Children Bound Gap", fontsize=global_size_para)
 
     plt.xlim(min_err / 5, max_err * 5)
     plt.ylim(min_err / 5, max_err * 5)

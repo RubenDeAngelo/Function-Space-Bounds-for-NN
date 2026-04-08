@@ -39,13 +39,13 @@ from w1p_bounds import compute_w1p_bounds
 from w2p_bounds import compute_w2p_bounds
 
 # --- CONFIGURATION ---
-LAYERS = [1, 32,32,32,32, 1]
+LAYERS = [1, 32, 32, 32, 32, 1]
 ACTIVATION = 'tanh'
 P_NORM = 2.0
 MAX_ITER = 30
 THETA = 0.4         # Dörfler Parameter
-RHO = 0.50          # Theoretical reduction factor for 1D (bisecting 1 dimension)
-JACOBIAN_METHOD = 'ibp'  # Enforce fast Interval Bound Propagation
+RHO = 0.50          # Theoretical reduction factor for 1D
+JACOBIAN_METHOD = 'ibp'  # Interval Bound Propagation
 
 FIG_DIR = f"fig_independent_refinement_{LAYERS}"
 os.makedirs(FIG_DIR, exist_ok=True)

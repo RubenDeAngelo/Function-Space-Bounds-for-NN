@@ -252,20 +252,22 @@ def compute_hessian_bounds_only(model, x, delta, weights=None, x_l=None, z_l=Non
 
     for l in range(L - 1, -1, -1):
         if l == L - 1:
-            J_next_low = weights[L - 1]
-            J_next_high = weights[L - 1]
-            alpha_l = np.ones_like(alpha_all[l])
-            beta_l = np.ones_like(beta_all[l])
-            gamma_l = np.zeros_like(gamma_all[l])
-            eta_l = np.zeros_like(eta_all[l])
+            # FIX: The Jacobian of the network output w.r.t itself is the Identity Matrix
+            J_next_low = np.eye(d_out, dtype=np.float64)
+            J_next_high = np.eye(d_out, dtype=np.float64)
+
+            # Flatten to guarantee 1D shape for safe NumPy broadcasting
+            alpha_l = np.ones_like(alpha_all[l]).flatten()
+            beta_l = np.ones_like(beta_all[l]).flatten()
+            gamma_l = np.zeros_like(gamma_all[l]).flatten()
+            eta_l = np.zeros_like(eta_all[l]).flatten()
         else:
             J_next_low = jac_bound_down[l + 1]
             J_next_high = jac_bound_up[l + 1]
-            alpha_l = alpha_all[l]
-            beta_l = beta_all[l]
-            gamma_l = gamma_all[l]
-            eta_l = eta_all[l]
-
+            alpha_l = alpha_all[l].flatten()
+            beta_l = beta_all[l].flatten()
+            gamma_l = gamma_all[l].flatten()
+            eta_l = eta_all[l].flatten()
         current_layer_entries = None
         if l == 0 and entries_to_compute is not None:
             current_layer_entries = entries_to_compute

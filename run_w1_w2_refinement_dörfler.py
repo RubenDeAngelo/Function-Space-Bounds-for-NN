@@ -35,7 +35,7 @@ from w1p_bounds import compute_w1p_bounds
 from w2p_bounds import compute_w2p_bounds
 
 # --- CONFIGURATION ---
-LAYERS = [1, 32, 32, 32, 1]
+LAYERS = [1, 200, 1]
 ACTIVATION = 'tanh'
 EPOCHS = 3000
 NUM_RUNS = 100

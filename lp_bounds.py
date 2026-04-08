@@ -50,9 +50,14 @@ def compute_phi_lp_bounds(model, x, delta, p=2.0, volume_lambda=None):
     x_l, z_l = forward_pass(model, x.reshape(-1, 1))
     _, delta_low_bar, delta_up_bar = compute_deltas(model, x_l, delta)
 
-    center_output = x_l[-1]
-    phi_low = center_output - delta_low_bar[-1]
-    phi_high = center_output + delta_up_bar[-1]
+    # THE FIX: Explicitly reshape to (-1, 1) to prevent NumPy from
+    # broadcasting (30, 1) and (30,) into a (30, 30) matrix!
+    center_output = x_l[-1].reshape(-1, 1)
+    d_low = delta_low_bar[-1].reshape(-1, 1)
+    d_up = delta_up_bar[-1].reshape(-1, 1)
+
+    phi_low = center_output - d_low
+    phi_high = center_output + d_up
 
     sum_min_p, sum_max_p = _compute_lp_integrand_bounds_vectorized(phi_low, phi_high, float(p))
 

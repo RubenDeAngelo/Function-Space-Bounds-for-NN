@@ -121,8 +121,8 @@ def get_flattened_layers(model):
 # ==========================================
 # PLOTTING FUNCTIONS
 # ==========================================
-def extract_and_plot_heatmap(partition, iteration, domain_start, domain_width, p, scale_factor, epsilon=0.5):
-    """Extracts internal boxes and plots a heatmap of the local error bounds."""
+def extract_and_plot_heatmap(partition, iteration, domain_start, domain_width, p, scale_factor, mc_truth, epsilon=0.5):
+    """Extracts internal boxes and plots a heatmap of the local error bounds normalized by MC Truth."""
     ids = list(partition.leaves)
     if not ids: return
 
@@ -134,9 +134,9 @@ def extract_and_plot_heatmap(partition, iteration, domain_start, domain_width, p
     centers = domain_start + domain_width * cr[:, :, 0]
     radii = domain_width * cr[:, :, 1]
 
-    # Scale errors (remains in L_p^p space)
+    # Scale errors to L_p^p space and normalize with global MC Truth
     raw_etas = np.array([partition.eta[i] for i in ids])
-    etas = raw_etas * scale_factor
+    etas = (raw_etas * scale_factor) / mc_truth
 
     fig, ax = plt.subplots(figsize=(12, 12))
     min_err, max_err = etas.min(), etas.max()
@@ -168,22 +168,23 @@ def extract_and_plot_heatmap(partition, iteration, domain_start, domain_width, p
     ax.set_xlim(domain_start, domain_end)
     ax.set_ylim(domain_start, domain_end)
     ax.set_title(
-        rf"Adaptive Grid $L_{{{int(p)}}}^{{{int(p)}}}$ - Iteration {iteration}" + "\n" + rf"$N={len(ids)}$ Boxes",
+        rf"Normalized Adaptive Grid $L_{{{int(p)}}}^{{{int(p)}}}$ - Iteration {iteration}" + "\n" + rf"$N={len(ids)}$ Boxes",
         fontsize=global_font_size + 4)
     ax.set_aspect('equal')
 
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
-    cbar.set_label(rf'Local Gap ($L_{{{int(p)}}}^{{{int(p)}}}$)', fontsize=global_font_size)
+    cbar.set_label(rf'Normalized Local Gap ($L_{{{int(p)}}}^{{{int(p)}}}$)', fontsize=global_font_size)
 
     plt.tight_layout()
-    plt.savefig("lp_heatmap_final.pdf", dpi=300)
+    file_name = f"lp_heatmap_iter_{iteration:02d}.pdf"
+    plt.savefig(file_name, dpi=300)
     plt.close()
-    print("Saved: lp_heatmap_final.pdf")
+    print(f"Saved: {file_name}")
 
 
-def plot_normalized_convergence(results, mc_truth, theta, p, rho=0.5):
+def plot_normalized_convergence(results, mc_truth, theta, p):
     """Plots the geometric convergence rate of the global bound gap normalized by MC truth."""
     post_err = np.array(results["post_hist"])
     iterations = np.arange(len(post_err))
@@ -191,19 +192,11 @@ def plot_normalized_convergence(results, mc_truth, theta, p, rho=0.5):
     # Normalize (Error and mc_truth are both in L_p^p space)
     normalized_gaps = post_err / mc_truth
 
-    # Calculate exact q value (L_p^p Integral theory rate)
-    q = 1.0 - theta * (1.0 - rho)
-    theory_decay = normalized_gaps[0] * (q ** iterations)
-
     plt.figure(figsize=(12, 9))
 
     # Empirical Line
     plt.plot(iterations, normalized_gaps, '-o', markersize=8, color='#D55E00', linewidth=2.5,
              label=rf'Empirical Bound Gap ($L_{{{int(p)}}}^{{{int(p)}}}$)')
-
-    # Theory Line
-    plt.plot(iterations, theory_decay, '--', color='#D55E00', linewidth=2.0, alpha=0.7,
-             label=fr'Theory $q^k={q:.4f}^k$')
 
     plt.yscale('log')
     plt.title(rf"Geometric Convergence Decay | $\theta$={theta}", fontsize=global_font_size + 4)
@@ -243,7 +236,7 @@ def main():
     net = ReLUNetwork(input_dim=d, output_dim=1, width=200, depth=1, init_method="he_normal")
 
     X_train, y_train = generate_disk_data(n_samples=5000, domain_start=domain_start, domain_end=domain_end, epsilon=0.5)
-    train_model(net, X_train, y_train, epochs=2000, lr=1e-3)
+    train_model(net, X_train, y_train, epochs=4000, lr=1e-3)
 
     # ==========================================
     # 3. DOMAIN SCALING WRAPPER
@@ -258,11 +251,19 @@ def main():
     wrapped_model.eval()
 
     # ==========================================
-    # 4. ADAPTIVE L_P NORM COMPUTATION
+    # 4. MONTE CARLO TRUTH (Moved up for normalization)
+    # ==========================================
+    print("\n--- 2. Monte Carlo Validation ---")
+    raw_mc_truth = monte_carlo_lp_norm(wrapped_model, d=d, p=p, n_samples=500_000)
+    mc_truth = (raw_mc_truth ** p) * scale_factor
+    print(f"Monte Carlo Ground Truth     : {mc_truth:.6f}")
+
+    # ==========================================
+    # 5. ADAPTIVE L_P NORM COMPUTATION
     # ==========================================
     lp = AdaptiveLpNorm(d=d, neural_net=wrapped_model, is_relu=True)
 
-    print(f"\n--- 2. Starting adaptive L_{int(p)} Bound Computation (m={m}, theta={theta}) ---")
+    print(f"\n--- 3. Starting adaptive L_{int(p)} Bound Computation (m={m}, theta={theta}) ---")
     start_time = time.time()
 
     with silence_everything():
@@ -271,40 +272,43 @@ def main():
     duration = time.time() - start_time
     results = lp.out_adap
 
-    # ==========================================
-    # 5. L_P CORRECTION & MONTE CARLO
-    # ==========================================
-    print("\n--- 3. Evaluation & Monte Carlo Validation ---")
+    # Calculate final corrected L_p^p numbers
     raw_post_err = np.array(results["post_hist"])
-
-    # Apply volume scaling to keep tracking in L_p^p space
     results["post_hist"] = raw_post_err * scale_factor
-
-    # The library `approx` returns the L_p NORM.
-    # Exponentiate by `p` to revert back to the L_p^p INTEGRAL.
     final_approx = (results['approx'] ** p) * scale_factor
-
-    # `error` natively represents the sum of the L_p^p integrals.
     final_error = results['error'] * scale_factor
-
-    # Compute Monte Carlo Truth (returns L_p norm), then transform to L_p^p space
-    raw_mc_truth = monte_carlo_lp_norm(wrapped_model, d=d, p=p, n_samples=500_000)
-    mc_truth = (raw_mc_truth ** p) * scale_factor
 
     print(f"\n{'=' * 40}")
     print(f"RESULTS (Duration: {duration:.2f} seconds)")
     print(f"{'=' * 40}")
     print(f"Final Calculated L_{int(p)}^{int(p)} Integral : {final_approx:.6f}")
     print(f"Final a-posteriori Error Gap : {final_error:.6f}")
-    print(f"Monte Carlo Ground Truth     : {mc_truth:.6f}")
     print(f"Total Number of Grid Boxes   : {results['size']}")
     print(f"{'=' * 40}\n")
 
     # ==========================================
     # 6. PLOTTING
     # ==========================================
-    extract_and_plot_heatmap(lp.partition_adaptive, m, domain_start, domain_width, p, scale_factor, epsilon=0.5)
-    plot_normalized_convergence(results, mc_truth, theta, p, rho=0.5)
+    print("--- 4. Generating Plots ---")
+    plot_normalized_convergence(results, mc_truth, theta, p)
+
+    # Generate a heatmap snapshot every 5 iterations
+    print("\nGenerating intermediate heatmaps...")
+    for it in range(5, m + 1, 5):
+        lp_step = AdaptiveLpNorm(d=d, neural_net=wrapped_model, is_relu=True)
+        with silence_everything():
+            lp_step.norm(p=p, m=it, theta=theta, refiner=refiner, eta_type="fval")
+
+        extract_and_plot_heatmap(
+            partition=lp_step.partition_adaptive,
+            iteration=it,
+            domain_start=domain_start,
+            domain_width=domain_width,
+            p=p,
+            scale_factor=scale_factor,
+            mc_truth=mc_truth,
+            epsilon=0.5
+        )
 
 
 if __name__ == "__main__":

@@ -37,7 +37,7 @@ EPSILON_TRANSITION = 0.5
 
 
 # Model & Training
-LAYERS = [2, 300, 1]
+LAYERS = [2, 200, 1]
 weight_decay = 0.0
 ACTIVATION = 'tanh'
 EPOCHS = 10000
@@ -115,10 +115,11 @@ def generate_2d_coin_data(N=3000, epsilon=0.1):
 
 # --- PLOTTING UTILS ---
 
-def plot_grid_heatmap(active_cells, iteration, norm_type, p=2.0, domain=(-1.5, 1.5)):
+def plot_grid_heatmap(active_cells, iteration, norm_type, mc_truth, p=2.0, domain=(-1.5, 1.5)):
     fig, ax = plt.subplots(figsize=(12, 12))
 
-    visual_errors = [c['error'] for c in active_cells]
+    # Normalize the local errors by the global MC truth
+    visual_errors = [c['error'] / mc_truth for c in active_cells]
 
     if len(visual_errors) > 0:
         min_err, max_err = min(visual_errors), max(visual_errors)
@@ -154,7 +155,7 @@ def plot_grid_heatmap(active_cells, iteration, norm_type, p=2.0, domain=(-1.5, 1
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
-    cbar.set_label('Local Gap', fontsize=30)
+    cbar.set_label('Normalized Local Gap', fontsize=30)
 
     save_name = f"heatmap_theorem_compliant_{norm_type}_iter_{iteration:03d}.pdf"
     save_path = os.path.join(FIG_DIR, save_name)
@@ -179,7 +180,7 @@ def split_points(points, delta):
 
 
 # --- DÖRFLER REFINEMENT LOGIC ---
-def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, theta=0.5, p=2.0, norm_type='w1p', jac_method='recurjac'):
+def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, mc_truth, theta=0.5, p=2.0, norm_type='w1p', jac_method='recurjac'):
     print(f"\n--- Running Dörfler Refinement (theta={theta}, p={p}, method={jac_method}) for {norm_type.upper()} ---")
 
     active_cells = []
@@ -210,8 +211,9 @@ def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, 
         history.append({'iter': i, 'count': count, 'gap_dyn': global_gap, 'q_dyn': global_q})
         print(f"Iter {i:<3} | Cells: {count:<5} | {norm_type.upper()} Gap: {global_gap:.6f} | Q_n: {global_q:.6f}")
 
+        # Pass mc_truth down to the plotting function
         if i % 5 == 0 or i == max_iter:
-            plot_grid_heatmap(active_cells, i, norm_type, p=p)
+            plot_grid_heatmap(active_cells, i, norm_type, mc_truth, p=p)
 
         if i == max_iter: break
 
@@ -269,6 +271,10 @@ def run_experiment():
     model.eval()
 
     domain_start, domain_end = -1.5, 1.5
+
+    # Calculate MC Baseline BEFORE refinement loop
+    mc_w1p, mc_w2p = compute_monte_carlo_sobolev(model, num_samples=100000, p=P_NORM, domain=(domain_start, domain_end))
+
     N_side = 2
     total_width = domain_end - domain_start
     delta_init = (total_width / N_side) / 2.0
@@ -276,9 +282,9 @@ def run_experiment():
     gx, gy = np.meshgrid(c1d, c1d)
     centers_init = np.stack([gx.ravel(), gy.ravel()], axis=1)
 
-    # Reiche JACOBIAN_METHOD als Parameter durch
-    w1_history = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, THETA, P_NORM, 'w1p', JACOBIAN_METHOD)
-    w2_history = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER+3, THETA, P_NORM, 'w2p', JACOBIAN_METHOD)
+    # Pass MC values down to refinement function
+    w1_history = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, mc_w1p, THETA, P_NORM, 'w1p', JACOBIAN_METHOD)
+    w2_history = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER+3, mc_w2p, THETA, P_NORM, 'w2p', JACOBIAN_METHOD)
 
     print("\n--- Computing Static Baselines (Subsampled) ---")
     w1_counts = [h['count'] for h in w1_history]
@@ -288,8 +294,6 @@ def run_experiment():
     w2_counts = [h['count'] for h in w2_history]
     w2_dyn_gaps = np.array([h['gap_dyn'] for h in w2_history])
     w2_dyn_qs = np.array([h['q_dyn'] for h in w2_history])
-
-    mc_w1p, mc_w2p = compute_monte_carlo_sobolev(model, num_samples=100000, p=P_NORM, domain=(domain_start, domain_end))
 
     # --- PLOTS ---
     plt.figure(figsize=(16, 12))

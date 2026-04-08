@@ -8,12 +8,9 @@ Updates:
 - Tracks Local Error Reduction during splits (Parent vs Sum of Children).
 - COMBINED PLOT: Geometric Decay for W1p and W2p are now in a single plot.
 - NORMALIZED: Geometric Decay plot divides error by MC Ground Truth.
-- LEGEND: Shows exact calculated q-value in the plot.
-- Plots Local Error Reduction scatter against theoretical y = rho * x AND a y = x reference line.
 - All plots saved as PDFs.
 - Integrates optimized network settings (tanh, weight decay, 4 layers).
 - Passes Jacobian method down the call stack.
-- Optional tracking and plotting of local error reduction to save memory/runtime.
 """
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
@@ -45,8 +42,8 @@ from w2p_bounds import compute_w2p_bounds
 EPSILON_TRANSITION = 0.5
 
 # Model & Training
-LAYERS = [2, 200, 1]
-weight_decay = 1e-3
+LAYERS = [2, 32, 32, 32, 1]
+weight_decay = 0.001
 ACTIVATION = 'tanh'
 EPOCHS = 10000
 N_SAMPLES = 5000
@@ -58,12 +55,14 @@ os.makedirs(FIG_DIR, exist_ok=True)
 
 # Refinement Settings
 P_NORM = 2.0
-MAX_ITER = 32
+MAX_ITER = 30
 THETA = 0.35
-RHO = 0.25     # Theoretical local error reduction factor (1/4)
+RHO = 0.25     # Theoretical local error reduction factor (1/4) - used only for scatter plot reference
 JACOBIAN_METHOD = 'ibp'  # Options: 'recurjac' or 'ibp'
 
-# Toggle to save memory and skip slow scatter plot rendering
+# --- OPTIONAL PLOTS TOGGLE ---
+# Set to True to track and render slow local error reduction scatter plots.
+# Set to False to save memory and runtime.
 PLOT_LOCAL_REDUCTION = True
 
 
@@ -214,9 +213,10 @@ def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, 
 
 
 # --- PLOTTING FUNCTIONS ---
-def plot_geometric_decay_combined(w1_hist, w2_hist, theta, rho, mc_w1, mc_w2):
+def plot_geometric_decay_combined(w1_hist, w2_hist, theta, mc_w1, mc_w2):
     """
     Plots the geometric decay of BOTH W1p and W2p norms in a single chart.
+    (Theory lines removed)
     """
     # Extract data for W1p
     iter_w1 = np.array([h['iter'] for h in w1_hist])
@@ -226,27 +226,18 @@ def plot_geometric_decay_combined(w1_hist, w2_hist, theta, rho, mc_w1, mc_w2):
     iter_w2 = np.array([h['iter'] for h in w2_hist])
     err_w2 = np.array([h['gap_dyn'] for h in w2_hist]) / mc_w2
 
-    # Calculate exact q value
-    q = 1.0 - theta * (1.0 - rho)
-
-    # Theory lines based on normalized starting gaps
-    theory_w1 = err_w1[0] * (q ** iter_w1)
-    theory_w2 = err_w2[0] * (q ** iter_w2)
-
     plt.figure(figsize=(12, 9))
 
     # Plot W1p
     plt.plot(iter_w1, err_w1, '-o', markersize=8, color='#D55E00', linewidth=2.5, label=r'Empirical $W^{1,2}$')
-    plt.plot(iter_w1, theory_w1, '--', color='#D55E00', linewidth=2.0, alpha=0.7, label=f'Theory $q^k={q:.4f}^k$')
 
     # Plot W2p
     plt.plot(iter_w2, err_w2, '-s', markersize=8, color='#009E73', linewidth=2.5, label=r'Empirical $W^{2,2}$')
-    plt.plot(iter_w2, theory_w2, ':', color='#009E73', linewidth=2.0, alpha=0.7, label=f'Theory $q^k={q:.4f}^k$')
 
     plt.yscale('log')
     plt.title(rf"Geometric Convergence Decay | $\theta$={theta}", fontsize=26)
     plt.xlabel("Iteration Step $k$", fontsize=22)
-    plt.ylabel("Normalized Global Error Bound", fontsize=22)
+    plt.ylabel("Normalized Global Bound Gap", fontsize=22)
     plt.grid(True, which="both", alpha=0.3)
     plt.legend(loc='best')
     plt.tight_layout()
@@ -258,6 +249,8 @@ def plot_geometric_decay_combined(w1_hist, w2_hist, theta, rho, mc_w1, mc_w2):
 
 
 def plot_local_error_reduction(split_data, rho, norm_type):
+    if len(split_data) == 0: return # Safety check
+
     parent_errors = split_data[:, 0]
     children_errors = split_data[:, 1]
 
@@ -278,9 +271,9 @@ def plot_local_error_reduction(split_data, rho, norm_type):
 
     plt.xscale('log')
     plt.yscale('log')
-    plt.title(f"Local Error Reduction", fontsize=22)
-    plt.xlabel(r"Parent Error", fontsize=20)
-    plt.ylabel(r"Sum Children Error", fontsize=20)
+    plt.title(f"Local Bound Gap Reduction", fontsize=22)
+    plt.xlabel(r"Parent Bound Gap", fontsize=22)
+    plt.ylabel(r"Sum Children Bound Gap", fontsize=22)
 
     plt.xlim(min_err/5, max_err*5)
     plt.ylim(min_err/5, max_err*5)
@@ -323,12 +316,13 @@ def run_experiment():
     gx, gy = np.meshgrid(c1d, c1d)
     centers_init = np.stack([gx.ravel(), gy.ravel()], axis=1)
 
+    # Pass PLOT_LOCAL_REDUCTION toggle down to refinement function
     w1_hist, w1_splits = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, THETA, P_NORM, 'w1p', JACOBIAN_METHOD, track_splits=PLOT_LOCAL_REDUCTION)
-    w2_hist, w2_splits = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER+3, THETA, P_NORM, 'w2p', JACOBIAN_METHOD, track_splits=PLOT_LOCAL_REDUCTION)
+    w2_hist, w2_splits = run_doerfler_grid_for_norm(model, centers_init, delta_init, MAX_ITER, THETA, P_NORM, 'w2p', JACOBIAN_METHOD, track_splits=PLOT_LOCAL_REDUCTION)
 
-    # Generate Combined Geometric Plot
+    # Generate Combined Geometric Plot (RHO removed from arguments)
     print("\n--- Generating Combined Geometric Decay Plot ---")
-    plot_geometric_decay_combined(w1_hist, w2_hist, THETA, RHO, mc_w1p, mc_w2p)
+    plot_geometric_decay_combined(w1_hist, w2_hist, THETA, mc_w1p, mc_w2p)
 
     # Optional Local Reduction Plots
     if PLOT_LOCAL_REDUCTION:
