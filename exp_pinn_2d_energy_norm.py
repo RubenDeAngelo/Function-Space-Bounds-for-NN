@@ -1,11 +1,7 @@
-"""
-run_pinn_tanh_pde_geometric_decay.py
-
-Tracks and plots the Geometric Decay and Local Error Reduction
-for the Tanh Wavefront PDE using Adaptive Dörfler Marking.
-Compliant with the Energy Norm Bound Reduction framework.
+"""Fig. 9: Certified bound gap convergence, local error reduction, and adaptive-grid heatmap
+for the PINN energy-norm residual of the tanh-wavefront elliptic PDE (Eqs. 49-50).
+Tracks geometric decay and local error reduction via Dörfler marking.
 Configured for the Tanh PDE: Delta u = -4k^2(1 - tanh^2(z))tanh(z)
-Includes Heatmaps visualizing the adaptive grid refinement.
 """
 
 import os
