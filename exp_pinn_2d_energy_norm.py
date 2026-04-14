@@ -176,7 +176,7 @@ def plot_pinn_heatmap(active_cells, iteration):
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
-    cbar.set_label(r'Local Bound Gap', fontsize=20)
+    cbar.set_label(r'Local Error', fontsize=20)
 
     save_name = f"pinn_heatmap_iter_{iteration:03d}.pdf"
     save_path = os.path.join(FIG_DIR, save_name)
@@ -276,7 +276,7 @@ def run_pinn_doerfler_refinement_tracked(model, max_iter=40, theta=0.3, track_sp
             'gap_dyn': total_error_gap
         })
 
-        print(f"    Iter {iteration:<3}: Cells={len(active_cells):<5}, Gap={total_error_gap:.6e}")
+        print(f"    Iter {iteration:<3}: Cells={len(active_cells):<5}, Error={total_error_gap:.6e}")
 
         if iteration % HEATMAP_STEP == 0 or iteration == max_iter:
             plot_pinn_heatmap(active_cells, iteration)
@@ -327,7 +327,7 @@ def plot_geometric_decay(history, theta, rho, mc_val=None, normalize=True):
     # Conditional Normalization
     if normalize and mc_val is not None:
         empirical_gaps = empirical_gaps / mc_val
-        y_label = r"Normalized Global Bound Gap"
+        y_label = r"Normalized Global Error"
     else:
         y_label = r"Global Bound"
 
@@ -374,9 +374,9 @@ def plot_local_error_reduction(split_data, rho):
 
     plt.xscale('log')
     plt.yscale('log')
-    plt.title(r"Local Bound Gap Reduction", fontsize=global_size_para + 2)
-    plt.xlabel(r"Parent Bound Gap", fontsize=global_size_para)
-    plt.ylabel(r"Sum Children Bound Gap", fontsize=global_size_para)
+    plt.title(r"Local Error Reduction", fontsize=global_size_para + 2)
+    plt.xlabel(r"Parent Error", fontsize=global_size_para)
+    plt.ylabel(r"Sum Children Error", fontsize=global_size_para)
 
     plt.xlim(min_err / 5, max_err * 5)
     plt.ylim(min_err / 5, max_err * 5)

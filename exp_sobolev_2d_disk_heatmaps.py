@@ -139,7 +139,7 @@ def plot_grid_heatmap(active_cells, iteration, norm_type, p=2.0, domain=(-1.5, 1
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
-    cbar.set_label('Local Gap', fontsize=30)
+    cbar.set_label('Local Error', fontsize=30)
 
     save_name = f"heatmap_theorem_compliant_{norm_type}_iter_{iteration:03d}.pdf"
     save_path = os.path.join(FIG_DIR, save_name)
@@ -207,7 +207,7 @@ def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, 
         global_q = sum(c['q_val'] for c in active_cells)
 
         history.append({'iter': i, 'count': count, 'gap_dyn': global_gap, 'q_dyn': global_q})
-        print(f"Iter {i:<3} | Cells: {count:<5} | {norm_type.upper()} Gap: {global_gap:.6f} | Q_n: {global_q:.6f}")
+        print(f"Iter {i:<3} | Cells: {count:<5} | {norm_type.upper()} Error: {global_gap:.6f} | Q_n: {global_q:.6f}")
 
         if i % 5 == 0 or i == max_iter:
             plot_grid_heatmap(active_cells, i, norm_type, p=p)
@@ -335,7 +335,7 @@ def run_experiment():
     plt.yscale('log')
     plt.title(f"2D Coin - Residual Convergence R_n(f)\nMethod: {JACOBIAN_METHOD.upper()}", fontsize=30)
     plt.xlabel("Number of Grid Box", fontsize=30)
-    plt.ylabel("Global Residual Bound Gap", fontsize=30)
+    plt.ylabel("Global Residual Error", fontsize=30)
     plt.grid(True, which="both", alpha=0.3)
     plt.legend()
 

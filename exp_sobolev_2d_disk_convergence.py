@@ -142,7 +142,7 @@ def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, 
         global_gap = sum(c['error'] for c in active_cells)
 
         history.append({'iter': i, 'count': count, 'gap_dyn': global_gap})
-        print(f"Iter {i:<3} | Cells: {count:<5} | {norm_type.upper()} Gap: {global_gap:.6f}")
+        print(f"Iter {i:<3} | Cells: {count:<5} | {norm_type.upper()} Error: {global_gap:.6f}")
 
         if i == max_iter: break
 
@@ -211,7 +211,7 @@ def plot_geometric_decay_combined(w1_hist, w2_hist, theta, mc_w1, mc_w2):
     plt.yscale('log')
     plt.title(rf"Geometric Convergence Decay | $\theta$={theta}", fontsize=26)
     plt.xlabel("Iteration Step $k$", fontsize=22)
-    plt.ylabel("Normalized Global Bound Gap", fontsize=22)
+    plt.ylabel("Normalized Global Error", fontsize=22)
     plt.grid(True, which="both", alpha=0.3)
     plt.legend(loc='best')
     plt.tight_layout()
@@ -244,9 +244,9 @@ def plot_local_error_reduction(split_data, rho, norm_type):
 
     plt.xscale('log')
     plt.yscale('log')
-    plt.title(f"Local Bound Gap Reduction", fontsize=22)
-    plt.xlabel(r"Parent Bound Gap", fontsize=22)
-    plt.ylabel(r"Sum Children Bound Gap", fontsize=22)
+    plt.title(f"Local Error Reduction", fontsize=22)
+    plt.xlabel(r"Parent Error", fontsize=22)
+    plt.ylabel(r"Sum Children Error", fontsize=22)
 
     plt.xlim(min_err/5, max_err*5)
     plt.ylim(min_err/5, max_err*5)

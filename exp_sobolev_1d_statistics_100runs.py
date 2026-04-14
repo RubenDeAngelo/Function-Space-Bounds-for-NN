@@ -237,7 +237,7 @@ def run_combined_experiment():
         plt.title(rf"{title_prefix}: Geometric Decay | $\theta={THETA}$", fontsize=gloabal_size_para + 2)
         plt.xlabel("Iteration Step $k$", fontsize=gloabal_size_para)
 
-        y_label = "Normalized Global Bound Gap" if is_normalized else "Global Bound Gap"
+        y_label = "Normalized Global Error" if is_normalized else "Global Error"
         plt.ylabel(y_label, fontsize=gloabal_size_para)
 
         plt.grid(True, which="both", alpha=0.3)

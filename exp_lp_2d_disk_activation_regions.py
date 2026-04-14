@@ -156,7 +156,7 @@ def extract_and_plot_heatmap(partition, iteration, domain_start, domain_width, p
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
-    cbar.set_label(rf'Normalized Local Gap ($L_{{{int(p)}}}^{{{int(p)}}}$)', fontsize=global_font_size)
+    cbar.set_label(rf'Normalized Local Error ($L_{{{int(p)}}}^{{{int(p)}}}$)', fontsize=global_font_size)
 
     plt.tight_layout()
     file_name = f"lp_heatmap_iter_{iteration:02d}.pdf"
@@ -176,12 +176,12 @@ def plot_normalized_convergence(results, mc_truth, theta, p):
 
     # Empirical Line
     plt.plot(iterations, normalized_gaps, '-o', markersize=8, color='#D55E00', linewidth=2.5,
-             label=rf'Empirical Bound Gap ($L_{{{int(p)}}}^{{{int(p)}}}$)')
+             label=rf'Empirical Error ($L_{{{int(p)}}}^{{{int(p)}}}$)')
 
     plt.yscale('log')
     plt.title(rf"Geometric Convergence Decay | $\theta$={theta}", fontsize=global_font_size + 4)
     plt.xlabel("Iteration Step $k$", fontsize=global_font_size)
-    plt.ylabel("Normalized Global Error Bound", fontsize=global_font_size)
+    plt.ylabel("Normalized Global Error", fontsize=global_font_size)
     plt.grid(True, which="both", alpha=0.3)
     plt.legend(loc='best')
     plt.tight_layout()
@@ -246,7 +246,7 @@ def main():
     print(f"RESULTS (Duration: {duration:.2f} seconds)")
     print(f"{'=' * 40}")
     print(f"Final Calculated L_{int(p)}^{int(p)} Integral : {final_approx:.6f}")
-    print(f"Final a-posteriori Error Gap : {final_error:.6f}")
+    print(f"Final a-posteriori Error : {final_error:.6f}")
     print(f"Total Number of Grid Boxes   : {results['size']}")
     print(f"{'=' * 40}\n")
 

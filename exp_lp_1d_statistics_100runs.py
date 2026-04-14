@@ -145,7 +145,7 @@ def plot_combined_with_shading(data_dict, title_prefix, filename_suffix, is_norm
     plt.title(rf"{title_prefix}: Geometric Decay | $\theta={THETA}$", fontsize=global_font_size + 4)
     plt.xlabel("Iteration Step $k$", fontsize=global_font_size)
 
-    y_label = "Normalized Global Bound Gap" if is_normalized else "Global Bound Gap"
+    y_label = "Normalized Global Error" if is_normalized else "Global Error"
     plt.ylabel(y_label, fontsize=global_font_size)
 
     plt.grid(True, which="both", alpha=0.3)

@@ -183,7 +183,7 @@ def extract_and_plot_heatmap(partition, iteration, domain_start, domain_width, p
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, fraction=0.046, pad=0.04)
-    cbar.set_label(rf'Local Gap ($L_{{{int(p)}}}^{{{int(p)}}}$)', fontsize=global_size_para)
+    cbar.set_label(rf'Local Error ($L_{{{int(p)}}}^{{{int(p)}}}$)', fontsize=global_size_para)
 
     plt.tight_layout()
     save_path = os.path.join(FIG_DIR, "lp_heatmap_combined_run.pdf")
@@ -213,7 +213,7 @@ def plot_combined_geometric_decay(all_results):
     plt.yscale('log')
     plt.title("Combined Geometric Error Decay", fontsize=global_size_para)
     plt.xlabel("Adaptation Iteration $k$", fontsize=global_size_para)
-    plt.ylabel(r"Normalized Error Bound", fontsize=global_size_para)
+    plt.ylabel(r"Normalized Error", fontsize=global_size_para)
     plt.grid(True, which="both", alpha=0.3)
 
     plt.legend(loc='best', fontsize=global_size_para-5, markerscale=1.5)
@@ -237,7 +237,7 @@ def run_sobolev_doerfler(model, initial_centers, initial_delta, max_iter, theta,
 
     for i in range(max_iter + 1):
         global_gap = sum(c['error'] for c in active_cells)
-        print(f"    Iter {i:<3} | Cells: {len(active_cells):<6} | Gap: {global_gap:.6e}")
+        print(f"    Iter {i:<3} | Cells: {len(active_cells):<6} | Error: {global_gap:.6e}")
         sizes.append(len(active_cells))
         gaps.append(global_gap)
 
