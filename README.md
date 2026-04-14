@@ -11,7 +11,7 @@ Code for the paper:
 This repository implements the **AdaQuad** framework for computing certified lower and upper bounds on Lebesgue and Sobolev norms of feedforward neural networks. The approach combines:
 
 - **Interval arithmetic enclosures** for neural network function values, Jacobians, and Hessians on axis-aligned boxes (Algorithms 6, 7, 8);
-- **Dörfler adaptive marking** (Algorithm 4) to concentrate refinement where the local bound gap is largest;
+- **Dörfler adaptive marking** (Algorithm 4) to concentrate refinement where the local error is largest;
 - **Hölder refinement** (Algorithm 5) and **uniform bisection** as complementary refinement strategies;
 - **Gauss–Legendre quadrature** with an exact-integration shortcut for ReLU networks on affine-linear boxes (Proposition 4.15 / Remark 4.16).
 
