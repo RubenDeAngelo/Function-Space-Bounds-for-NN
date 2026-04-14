@@ -232,6 +232,7 @@ def compute_local_lipschitz_boxes2(
 
 
 import os
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 import logging
 import warnings
 from contextlib import contextmanager, redirect_stdout, redirect_stderr

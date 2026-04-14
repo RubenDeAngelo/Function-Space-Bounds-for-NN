@@ -8,6 +8,7 @@ Includes Heatmaps visualizing the adaptive grid refinement.
 """
 
 import os
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 import numpy as np
 import torch
 import torch.nn as nn

@@ -8,6 +8,7 @@ Outputs the results as two separate PDFs.
 """
 
 import os
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 import numpy as np
 import torch
 import matplotlib.pyplot as plt

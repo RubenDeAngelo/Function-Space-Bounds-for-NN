@@ -1,6 +1,7 @@
 """Dev: visualization helpers for PINN dynamic vs static grid comparisons."""
 
 import os
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
