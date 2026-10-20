@@ -6,11 +6,17 @@ decisions go through verified_* modules. Plot floats are display-only.
 import argparse
 import hashlib
 import json
+import os
 import platform
 from pathlib import Path
 import subprocess
 import sys
 from time import perf_counter
+
+# Keep plotting caches in this checkout, including in a restricted workspace.
+_cache = Path(__file__).resolve().parent / ".cache"
+os.environ.setdefault("MPLCONFIGDIR", str(_cache / "matplotlib"))
+os.environ.setdefault("XDG_CACHE_HOME", str(_cache))
 
 
 def dump(path, data):
@@ -19,6 +25,25 @@ def dump(path, data):
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load_saved_network(directory, arithmetic):
+    """Check provenance before using the portable exact-coefficient record."""
+    import torch
+    from lib_nn_model import FlexibleNet
+    from verified_network import VerifiedNetwork
+    training = json.loads((directory / "training.json").read_text())
+    for name, key in (("checkpoint.pt", "checkpoint_sha256"),
+                      ("training_data.npz", "training_data_sha256")):
+        if sha(directory / name) != training[key]:
+            raise ValueError(f"Saved artifact checksum mismatch: {name}")
+    model = FlexibleNet(training["architecture"], training["activation"]).double()
+    model.load_state_dict(torch.load(directory / "checkpoint.pt", map_location="cpu", weights_only=True))
+    checkpoint_network = VerifiedNetwork.from_torch(model, arithmetic)
+    record = json.loads((directory / "network.json").read_text())
+    if checkpoint_network.serialise() != record:
+        raise ValueError("Exact coefficient record does not match the checkpoint")
+    return VerifiedNetwork.from_record(record, arithmetic)
 
 
 def train(output, epochs, seed):
@@ -169,7 +194,7 @@ def main():
     a = Arithmetic(args.bits)
     if args.reuse:
         import shutil
-        network = VerifiedNetwork.from_record(json.loads((args.reuse / "network.json").read_text()), a)
+        network = load_saved_network(args.reuse, a)
         for file in ("checkpoint.pt", "training_data.npz", "fit_grid.npz", "training.json"):
             shutil.copy2(args.reuse / file, args.output / file)
     else:

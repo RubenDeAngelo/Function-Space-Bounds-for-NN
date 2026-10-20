@@ -201,6 +201,16 @@ class IntegrationTests(unittest.TestCase):
             for c in run.cells:
                 self.assertTrue(c.box.volume > 0)
 
+    def test_nonlinear_analytic_integral(self):
+        a, ref = Arithmetic(80), Arithmetic(512)
+        network = VerifiedNetwork(a, [[[1]], [[1]]], [[0], [0]])
+        run = Integrator(a, lambda b: network.sobolev_integrand(b, order=0),
+                         Box(((0, 1),))).run(max_leaves=128)
+        # Integral_0^1 tanh(x)^2 dx = 1 - tanh(1).
+        exact = ref.interval(1) - tanh_ranges(ref.interval(1))[0]
+        self.assertLessEqual(run.total().lo, exact.lo)
+        self.assertGreaterEqual(run.total().hi, exact.hi)
+
     def test_zero_budgets_tolerance_and_stagnation(self):
         a, box = Arithmetic(53), Box(((0, 1),))
         constant = lambda b: a.interval(4)
