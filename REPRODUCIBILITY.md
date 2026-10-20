@@ -162,3 +162,54 @@ comparison scripts check identical training arrays and enclosure settings and
 require an explicit option for different training schedules. Candidate figures,
 fit diagnostics and deep/shallow comparison plots were visually inspected.
 The verified arithmetic/network/integration modules were not changed in this pass.
+
+## Current Figure 1: L2 only
+
+The current candidate reuses the original deep checkpoint and integrates only
+`|Phi|^2`. There is no retraining. Exact coefficient-record equality with the
+original deep run was checked. The network's value-only path now omits unused
+derivative-range calculations; it still applies the same outward-rounded tanh
+endpoint formula. The existing 15 tests, including the nonlinear analytic L2
+integral case, pass after this change.
+
+Executed numerical run at source revision `c1bc41f`:
+
+```sh
+.venv/bin/python -u exp_verified_two_bumps.py --reuse results/two-bumps-figure1 --output results/two-bumps-deep-l2 --norm L2 --reference-slope --max-leaves 4096
+```
+
+Both policies use 128-bit MPFR arithmetic, theta=7/20 for adaptive marking,
+all-coordinate halving, the same root box and zero stopping tolerance.
+
+| Policy | Leaves | Evaluations | Integration seconds | Integral gap (approx.) | Actual L2 norm gap (approx.) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Adaptive | 3850 | 5133 | 20.29 | 0.8771074 | 0.8053895 |
+| Uniform | 4096 | 5461 | 22.72 | 1.1719976 | 1.0581944 |
+
+Both stopped with `leaf_budget_exhausted`. Conservative outward decimal
+summaries of the final bounds are:
+
+- Adaptive integral: `[0.0201154, 0.8972229]`; actual L2 norm: `[0.14182, 0.94722]`.
+- Uniform integral: `[0.00060886, 1.17260644]`; actual L2 norm: `[0.02467, 1.08288]`.
+
+Panel (a) shows the integral gap `U-L` for the square of the L2 norm, rather
+than the actual norm gap. The slope triangle has a fourfold horizontal increase
+in N and a twofold vertical decrease in gap, giving slope -1/2 on logarithmic
+axes. It is a **theoretical reference**, not a fitted rate or a prediction that
+every finite segment follows that slope. Its position does not specify a
+theoretical constant. The reference comes from gamma=1 width decay in d=2 in
+the exact-arithmetic theorem; fixed-precision computations can reach a rounding
+floor. For the rooted norm gap, the same rate requires a positive integral
+lower bound; the general near-zero root estimate alone gives exponent -1/4.
+
+The triangle's factor labels were clarified after the numerical run. The
+saved `figure_render_source.py` and `figure_metadata.json` record that graphical
+revision independently of the immutable numerical-source hashes. The candidate
+PNG was visually inspected and exported-record checks pass for partition
+coverage, local/global endpoints, roots, widths and evaluation counts. All
+numerical source hashes match the recorded numerical Git revision.
+
+These bounds are much smaller in absolute value than for H2 but remain broad
+relative to the integral's scale. Restricting the quantity to L2 has not by
+itself established a practically tight first-figure result. The figure remains
+a candidate illustrating localization and gap reduction at the stated budget.

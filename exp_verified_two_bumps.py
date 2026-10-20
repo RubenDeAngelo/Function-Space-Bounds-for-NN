@@ -148,9 +148,9 @@ def add_rate_triangle(axis):
     y1 = y0/2
     axis.add_patch(Polygon([(x0,y0),(x1,y0),(x1,y1)], closed=True,
                           fill=False, edgecolor="#555555", linewidth=1.2))
-    axis.annotate("4", (math.sqrt(x0*x1), y0), xytext=(0,4),
+    axis.annotate(r"$\times4$", (math.sqrt(x0*x1), y0), xytext=(0,4),
                   textcoords="offset points", ha="center", fontsize=9)
-    axis.annotate("2", (x1,math.sqrt(y0*y1)), xytext=(4,0),
+    axis.annotate(r"$\div2$", (x1,math.sqrt(y0*y1)), xytext=(4,0),
                   textcoords="offset points", va="center", fontsize=9)
     axis.annotate(r"Reference: $N^{-1/2}$", (x0,y1), xytext=(-3,-15),
                   textcoords="offset points", fontsize=9, color="#444444")

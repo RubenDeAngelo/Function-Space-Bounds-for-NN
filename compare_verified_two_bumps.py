@@ -69,9 +69,11 @@ def compare(deep, shallow, output, allow_training_schedule_difference=False):
         axis.set_xlabel("Leaf boxes $N$")
         axis.grid(alpha=0.2, which="both")
         axis.legend(fontsize=9)
-    axes[0].set(ylabel="Squared $H^2$-norm enclosure gap $U-L$",
+    norm_name = manifests["Deep"].get("norm", "H2")
+    symbol = {"L2": r"L^2", "H1": r"H^1", "H2": r"H^2"}[norm_name]
+    axes[0].set(ylabel=rf"Squared ${symbol}$-norm enclosure gap $U-L$",
                 title="(a) Integral enclosure gap")
-    axes[1].set(ylabel=r"$H^2$-norm enclosure gap $\sqrt{U}-\sqrt{L}$",
+    axes[1].set(ylabel=rf"${symbol}$-norm enclosure gap $\sqrt{{U}}-\sqrt{{L}}$",
                 title="(b) Norm enclosure gap")
     fig.savefig(output / "deep-versus-shallow.png", dpi=220)
     fig.savefig(output / "deep-versus-shallow.svg")

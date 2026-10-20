@@ -26,6 +26,18 @@ certificates. Their old algorithm numbering, figure descriptions and metrics
 refer to the original submission. They are retained for provenance, not used by
 `exp_verified_two_bumps.py`, and are not upgraded by the new backend.
 
+The current Figure 1 candidate uses only the L2 norm of the saved deep network:
+
+```sh
+.venv/bin/python exp_verified_two_bumps.py --reuse results/two-bumps-figure1 --output results/two-bumps-deep-l2 --norm L2 --reference-slope --max-leaves 4096
+```
+
+Panel (a) shows the full enclosure gap for the *squared* L2 norm integral.
+The triangle marks the theoretical reference exponent -1/2 in two dimensions,
+not a fitted slope. Actual norm endpoints are exported separately. The current
+enclosures remain broad; see the experiment registry before drawing conclusions
+about achievable accuracy.
+
 For the full mathematical treatment — convergence proofs, interval enclosure constructions, and a detailed discussion of related work — please refer to the paper.
 
 ---
