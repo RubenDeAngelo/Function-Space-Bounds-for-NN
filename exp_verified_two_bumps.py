@@ -46,7 +46,7 @@ def load_saved_network(directory, arithmetic):
     return VerifiedNetwork.from_record(record, arithmetic)
 
 
-def train(output, epochs, seed):
+def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None):
     import numpy as np
     import torch
     from lib_nn_model import FlexibleNet
@@ -70,9 +70,24 @@ def train(output, epochs, seed):
         return (torch.exp(-((x[:, 0]+0.4)**2+(x[:, 1]+0.3)**2)/(2*0.18**2))
                 + 0.7*torch.exp(-((x[:, 0]-0.4)**2+(x[:, 1]-0.35)**2)/(2*0.09**2)))[:, None]
 
-    inputs = torch.tensor(x, dtype=torch.float64)
-    targets = target(inputs)
-    model = FlexibleNet([2, 32, 32, 32, 1], activation="tanh").double()
+    if training_data is not None:
+        with np.load(training_data, allow_pickle=False) as saved:
+            x = saved["x"].copy()
+            y = saved["y"].copy()
+        if (x.ndim != 2 or x.shape[1] != 2 or y.shape != (len(x), 1)
+                or len(x) == 0 or x.dtype != np.float64 or y.dtype != np.float64
+                or not np.isfinite(x).all() or not np.isfinite(y).all()
+                or (abs(x) > 1).any()):
+            raise ValueError("Invalid saved two-bump training data")
+        inputs = torch.tensor(x, dtype=torch.float64)
+        targets = torch.tensor(y, dtype=torch.float64)
+        if not torch.allclose(targets, target(inputs), rtol=1e-13, atol=1e-15):
+            raise ValueError("Saved labels do not match the two-bump target")
+    else:
+        inputs = torch.tensor(x, dtype=torch.float64)
+        targets = target(inputs)
+    architecture = [2, *hidden_widths, 1]
+    model = FlexibleNet(architecture, activation="tanh").double()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     started = perf_counter()
     for epoch in range(epochs):
@@ -107,8 +122,11 @@ def train(output, epochs, seed):
     np.savez_compressed(output / "fit_grid.npz", x=xx, y=yy,
                         target=truth.numpy().reshape(xx.shape),
                         prediction=prediction.numpy().reshape(xx.shape))
-    dump(output / "training.json", {"seed": seed, "architecture": [2, 32, 32, 32, 1],
-         "activation": "tanh", "dtype": "float64", "training_points": 4096,
+    dump(output / "training.json", {"seed": seed, "architecture": architecture,
+         "activation": "tanh", "dtype": "float64", "training_points": len(x),
+         "parameter_count": sum(p.numel() for p in model.parameters()),
+         "training_data_source": str(training_data) if training_data else "generated from seed",
+         "training_data_source_sha256": sha(training_data) if training_data else None,
          "sampling": "2048 uniform; 1024 each N(centre,(2*width)^2 I), reject outside domain",
          "adam_epochs": epochs, "adam_lr": 0.001, "lbfgs_max_iter": 250,
          "metrics": metrics, "checkpoint_sha256": sha(output / "checkpoint.pt"),
@@ -135,7 +153,7 @@ def render(output, records):
         axes[0].loglog([r["leaves"] for r in record["history"]],
                        [float(rational(r["gap_upper"])) for r in record["history"]],
                        "o-", markersize=3, label=policy.capitalize(), color=colors[policy])
-    axes[0].set(xlabel="Leaf boxes $N$", ylabel="Integral enclosure gap $U-L$",
+    axes[0].set(xlabel="Leaf boxes $N$", ylabel="Squared $H^2$-norm enclosure gap $U-L$",
                 title="(a) Adaptive versus uniform")
     axes[0].grid(alpha=0.2, which="both")
     axes[0].legend()
@@ -183,9 +201,17 @@ def main():
     parser.add_argument("--seed", type=int, default=20261020)
     parser.add_argument("--bits", type=int, default=128)
     parser.add_argument("--max-leaves", type=int, default=1024)
+    parser.add_argument("--hidden-widths", type=int, nargs="+",
+                        help="Hidden widths for training, e.g. --hidden-widths 200")
+    parser.add_argument("--training-data", type=Path,
+                        help="Reuse exact saved x/y arrays when training another architecture")
     args = parser.parse_args()
     if args.epochs < 1 or args.max_leaves < 1:
         parser.error("Positive epochs and leaf budget required")
+    if args.hidden_widths is not None and any(w < 1 for w in args.hidden_widths):
+        parser.error("Hidden widths must be positive")
+    if args.reuse and (args.hidden_widths is not None or args.training_data is not None):
+        parser.error("--reuse loads an existing network; do not combine with training options")
     args.output.mkdir(parents=True, exist_ok=False)
     import gmpy2 as g
     from verified_arithmetic import Arithmetic
@@ -198,7 +224,8 @@ def main():
         for file in ("checkpoint.pt", "training_data.npz", "fit_grid.npz", "training.json"):
             shutil.copy2(args.reuse / file, args.output / file)
     else:
-        network = VerifiedNetwork.from_torch(train(args.output, args.epochs, args.seed), a)
+        network = VerifiedNetwork.from_torch(train(args.output, args.epochs, args.seed,
+            args.hidden_widths or (32, 32, 32), args.training_data), a)
     dump(args.output / "network.json", network.serialise())
     source_files = [Path(__file__), Path("verified_arithmetic.py"),
                     Path("verified_network.py"), Path("verified_integration.py")]
