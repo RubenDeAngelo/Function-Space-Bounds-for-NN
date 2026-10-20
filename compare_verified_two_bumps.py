@@ -2,7 +2,7 @@
 import argparse
 import json
 from pathlib import Path
-from exp_verified_two_bumps import dump
+from exp_verified_two_bumps import dump, sha
 
 
 def compare(deep, shallow, output, allow_training_schedule_difference=False):
@@ -36,6 +36,8 @@ def compare(deep, shallow, output, allow_training_schedule_difference=False):
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.3), layout="constrained")
     summary = {"same_training_arrays": True, "same_training_protocol": not schedule_differences,
                "training_schedule_differences": schedule_differences,
+               "comparison_source_sha256": sha(Path(__file__)),
+               "input_network_sha256": {name: sha(p / "network.json") for name, p in paths.items()},
                "same_enclosure_settings": True, "experiments": {}}
     for name, path in paths.items():
         network = json.loads((path / "network.json").read_text())

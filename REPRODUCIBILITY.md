@@ -96,3 +96,69 @@ archive. Their manifests and exact JSON records are necessary for provenance.
 The numerical checks support the implementation; the trusted MPFR rounding
 guarantees and documented operation-level inclusion argument are the basis for
 the enclosure claim. No independent backend audit or formal verification is claimed.
+
+## Shallow-network comparison
+
+Added one-hidden-layer tanh architecture `[2,200,1]` (801 parameters), compared
+with the existing `[2,32,32,32,1]` deep model (2241 parameters). The shallow
+training loads the exact saved x/y arrays from the deep pilot; both arrays were
+checked for exact equality. The domain, target, seed, dtype, Adam configuration,
+MPFR precision, norm convention, initial box, refinement rules and 4096-leaf
+budget are unchanged. The initial shallow run has the same 3000 Adam steps and
+250-iteration LBFGS budget. It underfits substantially, so a second, explicitly
+separate shallow run uses a 5000-iteration LBFGS budget. Neither is claimed to
+match the deep model's fit quality.
+
+Commands executed:
+
+```sh
+.venv/bin/python -u exp_verified_two_bumps.py --output results/two-bumps-shallow --hidden-widths 200 --training-data results/two-bumps-pilot/training_data.npz --max-leaves 4096
+.venv/bin/python -u exp_verified_two_bumps.py --output results/two-bumps-shallow-longer-fit --hidden-widths 200 --training-data results/two-bumps-pilot/training_data.npz --lbfgs-iterations 5000 --max-leaves 4096
+.venv/bin/python compare_verified_two_bumps.py --deep results/two-bumps-figure1 --shallow results/two-bumps-shallow --output results/deep-vs-shallow-same-training
+.venv/bin/python compare_verified_two_bumps.py --deep results/two-bumps-figure1 --shallow results/two-bumps-shallow-longer-fit --output results/deep-vs-shallow-longer-fit --allow-training-schedule-difference
+```
+
+Numerical source revisions: `649129c` for the same-schedule shallow run;
+`f6282b9` for the longer-fit run. Both manifests' numerical-source hashes were
+checked against their recorded Git revisions. Comparison records additionally
+include source and input-network hashes and identify training-schedule differences.
+
+All following gap and fit values are approximate display summaries. Full
+endpoint records remain exact rational strings.
+
+| Network / training | Grid MSE | Maximum grid fit error | Uniform leaves | Squared-H2 gap | Actual H2 norm gap |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Deep, original | 4.4698e-6 | 0.01081 | 4096 | 9825.69 | 98.39 |
+| Shallow, same schedule | 1.9866e-3 | 0.26049 | 4096 | 1050.22 | 25.68 |
+| Shallow, longer LBFGS | 1.7731e-4 | 0.07877 | 4096 | 28357.34 | 165.50 |
+
+| Shallow run / policy | Leaves | Evaluations | Integration seconds | Squared-H2 gap | Actual H2 norm gap |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Same schedule / adaptive | 3772 | 5029 | 112.05 | 1024.77 | 24.25 |
+| Same schedule / uniform | 4096 | 5461 | 125.60 | 1050.22 | 25.68 |
+| Longer LBFGS / adaptive | 3322 | 4429 | 97.46 | 22762.49 | 148.47 |
+| Longer LBFGS / uniform | 4096 | 5461 | 117.41 | 28357.34 | 165.50 |
+
+All four new policy runs stop with `leaf_budget_exhausted`; no tolerance success
+is claimed. The actual-norm gap is computed from stored outward roots, not by
+taking the square root of the integral gap. Runtime observations are single
+runs on this host; some shallow integrations/training overlap in time, so these
+timings are not controlled architecture-performance measurements.
+
+The same-schedule shallow checkpoint has narrower enclosures but a much worse
+fit. Longer training improves that fit and produces much wider bounds, including
+at identical uniform leaf counts. The largest absolute hidden-layer weight grows
+from about 4.85 to 9.64 and the output-weight absolute sum from about 53.62 to
+110.88 (ordinary numerical diagnostics). Increased coefficient magnitudes and
+possible cancellation are consistent with larger interval overestimation; this
+observation does not isolate its causes. No general conclusion that shallow
+networks give tighter bounds follows from these runs. The networks also have
+different parameter counts and represent different functions.
+
+Validation: the existing 15 tests pass; the exact-record partition, local volume,
+global sum, root, width and evaluation-count checks pass for both shallow runs;
+checkpoint/training-data hashes and every portable checkpoint coefficient match;
+comparison scripts check identical training arrays and enclosure settings and
+require an explicit option for different training schedules. Candidate figures,
+fit diagnostics and deep/shallow comparison plots were visually inspected.
+The verified arithmetic/network/integration modules were not changed in this pass.
