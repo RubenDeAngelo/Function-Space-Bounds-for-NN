@@ -46,7 +46,8 @@ def load_saved_network(directory, arithmetic):
     return VerifiedNetwork.from_record(record, arithmetic)
 
 
-def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None):
+def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None,
+          lbfgs_iterations=250):
     import numpy as np
     import torch
     from lib_nn_model import FlexibleNet
@@ -97,7 +98,7 @@ def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None):
         optimizer.step()
         if epoch % 500 == 0 or epoch == epochs - 1:
             print(f"training {epoch+1}/{epochs}: MSE={loss.item():.6g}", flush=True)
-    optimizer = torch.optim.LBFGS(model.parameters(), max_iter=250,
+    optimizer = torch.optim.LBFGS(model.parameters(), max_iter=lbfgs_iterations,
                                   line_search_fn="strong_wolfe", tolerance_grad=1e-10)
 
     def closure():
@@ -128,7 +129,7 @@ def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None):
          "training_data_source": str(training_data) if training_data else "generated from seed",
          "training_data_source_sha256": sha(training_data) if training_data else None,
          "sampling": "2048 uniform; 1024 each N(centre,(2*width)^2 I), reject outside domain",
-         "adam_epochs": epochs, "adam_lr": 0.001, "lbfgs_max_iter": 250,
+         "adam_epochs": epochs, "adam_lr": 0.001, "lbfgs_max_iter": lbfgs_iterations,
          "metrics": metrics, "checkpoint_sha256": sha(output / "checkpoint.pt"),
          "training_data_sha256": sha(output / "training_data.npz")})
     print("fit diagnostics:", metrics, flush=True)
@@ -205,9 +206,10 @@ def main():
                         help="Hidden widths for training, e.g. --hidden-widths 200")
     parser.add_argument("--training-data", type=Path,
                         help="Reuse exact saved x/y arrays when training another architecture")
+    parser.add_argument("--lbfgs-iterations", type=int, default=250)
     args = parser.parse_args()
-    if args.epochs < 1 or args.max_leaves < 1:
-        parser.error("Positive epochs and leaf budget required")
+    if args.epochs < 1 or args.max_leaves < 1 or args.lbfgs_iterations < 1:
+        parser.error("Positive training and leaf budgets required")
     if args.hidden_widths is not None and any(w < 1 for w in args.hidden_widths):
         parser.error("Hidden widths must be positive")
     if args.reuse and (args.hidden_widths is not None or args.training_data is not None):
@@ -225,7 +227,7 @@ def main():
             shutil.copy2(args.reuse / file, args.output / file)
     else:
         network = VerifiedNetwork.from_torch(train(args.output, args.epochs, args.seed,
-            args.hidden_widths or (32, 32, 32), args.training_data), a)
+            args.hidden_widths or (32, 32, 32), args.training_data, args.lbfgs_iterations), a)
     dump(args.output / "network.json", network.serialise())
     source_files = [Path(__file__), Path("verified_arithmetic.py"),
                     Path("verified_network.py"), Path("verified_integration.py")]
