@@ -8,14 +8,23 @@ Code for the paper:
 
 ## Overview
 
-This repository implements the **AdaQuad** framework for computing certified lower and upper bounds on Lebesgue and Sobolev norms of feedforward neural networks. The approach combines:
+The revision branch adds an explicitly outward-rounded MPFR implementation in
+`verified_arithmetic.py`, `verified_network.py`, and `verified_integration.py`.
+See [VERIFIED_ARITHMETIC.md](VERIFIED_ARITHMETIC.md) for the arithmetic audit,
+inclusion argument, supported scope, tests and reproducible two-bump experiment.
 
-- **Interval arithmetic enclosures** for neural network function values, Jacobians, and Hessians on axis-aligned boxes (Algorithms 6, 7, 8);
-- **Dörfler adaptive marking** (Algorithm 4) to concentrate refinement where the local error is largest;
-- **Hölder refinement** (Algorithm 5) and **uniform bisection** as complementary refinement strategies;
-- **Gauss–Legendre quadrature** with an exact-integration shortcut for ReLU networks on affine-linear boxes (Proposition 4.15 / Remark 4.16).
+The verified path computes integral endpoints `[L,U]` for nonnegative norm
+integrands and derives norm intervals by outward-rounded roots. It supports
+tanh networks through derivative order two, positive integer p, exact box
+geometry, and uniform or Dörfler dyadic refinement. Stored binary checkpoint
+weights define exact real coefficients. Fixed precision can reach a rounding
+floor; budget exhaustion is not a claim of tolerance success or geometric decay.
 
-The output of each run is a certified interval `[Q_n - η_n, Q_n + η_n]` containing the true norm, with `η_n → 0` at a guaranteed geometric rate (Theorem 4.1, Proposition 3.7). This yields certified computation of L^p, W^{1,p}, and W^{2,p} norms, as well as PINN interior residuals.
+The historical `lib_*` routines and experiment scripts listed below use ordinary
+floating-point arithmetic and have **not** been validated as finite-precision
+certificates. Their old algorithm numbering, figure descriptions and metrics
+refer to the original submission. They are retained for provenance, not used by
+`exp_verified_two_bumps.py`, and are not upgraded by the new backend.
 
 For the full mathematical treatment — convergence proofs, interval enclosure constructions, and a detailed discussion of related work — please refer to the paper.
 
