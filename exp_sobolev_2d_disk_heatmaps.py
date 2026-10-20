@@ -348,11 +348,11 @@ def run_experiment():
 
     plt.plot(w1_counts, w1_dyn_qs, '-o', color='#D55E00', linewidth=2, label=r'Dörfler $Q_n(f)$ for $W^{1,2}$')
     plt.fill_between(w1_counts, w1_dyn_qs - w1_dyn_gaps, w1_dyn_qs + w1_dyn_gaps, color='#D55E00', alpha=0.2,
-                     label=r'Uncertainty $\pm R_n(f)$ ($W^{1,2}$)')
+                     label=r'Reported half-width $\pm R_n(f)$ ($W^{1,2}$)')
 
     plt.plot(w2_counts, w2_dyn_qs, '-o', color='#009E73', linewidth=2, label=r'Dörfler $Q_n(f)$ for $W^{2,2}$')
     plt.fill_between(w2_counts, w2_dyn_qs - w2_dyn_gaps, w2_dyn_qs + w2_dyn_gaps, color='#009E73', alpha=0.2,
-                     label=r'Uncertainty $\pm R_n(f)$ ($W^{2,2}$)')
+                     label=r'Reported half-width $\pm R_n(f)$ ($W^{2,2}$)')
 
     plt.plot(w1_stat_counts_sub, w1_stat_qs_sub, '--s', color='#D55E00', alpha=0.4,
              label=r'Static $Q_n(f)$ ($W^{1,2}$)')

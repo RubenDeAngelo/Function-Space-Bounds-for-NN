@@ -70,9 +70,9 @@ def compare(deep, shallow, output, allow_training_schedule_difference=False):
         axis.grid(alpha=0.2, which="both")
         axis.legend(fontsize=9)
     axes[0].set(ylabel="Squared $H^2$-norm enclosure gap $U-L$",
-                title="(a) Integral uncertainty")
+                title="(a) Integral enclosure gap")
     axes[1].set(ylabel=r"$H^2$-norm enclosure gap $\sqrt{U}-\sqrt{L}$",
-                title="(b) Norm uncertainty")
+                title="(b) Norm enclosure gap")
     fig.savefig(output / "deep-versus-shallow.png", dpi=220)
     fig.savefig(output / "deep-versus-shallow.svg")
     plt.close(fig)

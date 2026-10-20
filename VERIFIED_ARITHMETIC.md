@@ -1,5 +1,10 @@
 # Verified arithmetic: implementation boundary and audit
 
+Terminology: use **integral enclosure gap** for `U-L`, **norm enclosure gap**
+for the difference of the rooted endpoints, and **half-width** for half an
+enclosure gap. These are deterministic interval quantities and carry no
+statistical interpretation.
+
 ## Audit of the archived path
 
 Inspected baseline: `887a4c6852c61d05b8174ba46bb173909821da96`.
