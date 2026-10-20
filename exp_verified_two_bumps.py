@@ -136,7 +136,29 @@ def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None,
     return model
 
 
-def render(output, records):
+def add_rate_triangle(axis):
+    """Reference slope -1/2 in log data coordinates; not a fitted rate."""
+    import math
+    from matplotlib.patches import Polygon
+    xmin, xmax = axis.get_xlim()
+    ymin, ymax = axis.get_ylim()
+    x0 = 10 ** (math.log10(xmin) + 0.14 * math.log10(xmax/xmin))
+    x1 = 4*x0
+    y0 = max(2.8*ymin, 10 ** (math.log10(ymin) + 0.23*math.log10(ymax/ymin)))
+    y1 = y0/2
+    axis.add_patch(Polygon([(x0,y0),(x1,y0),(x1,y1)], closed=True,
+                          fill=False, edgecolor="#555555", linewidth=1.2))
+    axis.annotate("4", (math.sqrt(x0*x1), y0), xytext=(0,4),
+                  textcoords="offset points", ha="center", fontsize=9)
+    axis.annotate("2", (x1,math.sqrt(y0*y1)), xytext=(4,0),
+                  textcoords="offset points", va="center", fontsize=9)
+    axis.annotate(r"Reference: $N^{-1/2}$", (x0,y1), xytext=(-3,-15),
+                  textcoords="offset points", fontsize=9, color="#444444")
+    axis.set_xlim(xmin,xmax)
+    axis.set_ylim(ymin,ymax)
+
+
+def render(output, records, norm_name="H2", reference_slope=False):
     import numpy as np
     import matplotlib
     matplotlib.use("Agg")
@@ -154,10 +176,13 @@ def render(output, records):
         axes[0].loglog([r["leaves"] for r in record["history"]],
                        [float(rational(r["gap_upper"])) for r in record["history"]],
                        "o-", markersize=3, label=policy.capitalize(), color=colors[policy])
-    axes[0].set(xlabel="Leaf boxes $N$", ylabel="Squared $H^2$-norm enclosure gap $U-L$",
+    symbol = {"L2": r"L^2", "H1": r"H^1", "H2": r"H^2"}[norm_name]
+    axes[0].set(xlabel="Leaf boxes $N$", ylabel=rf"Squared ${symbol}$-norm enclosure gap $U-L$",
                 title="(a) Adaptive versus uniform")
     axes[0].grid(alpha=0.2, which="both")
     axes[0].legend()
+    if reference_slope:
+        add_rate_triangle(axes[0])
     positive = [float(rational(c["indicator"])) for r in records.values()
                 for c in r["cells"] if rational(c["indicator"]) > 0]
     norm = LogNorm(min(positive), max(positive)) if positive else LogNorm(1e-30, 1)
@@ -207,6 +232,10 @@ def main():
     parser.add_argument("--training-data", type=Path,
                         help="Reuse exact saved x/y arrays when training another architecture")
     parser.add_argument("--lbfgs-iterations", type=int, default=250)
+    parser.add_argument("--norm", choices=("L2", "H1", "H2"), default="H2",
+                        help="Integrand for the square of this norm")
+    parser.add_argument("--reference-slope", action="store_true",
+                        help="Draw the theoretical N^(-1/2) integral-gap reference triangle")
     args = parser.parse_args()
     if args.epochs < 1 or args.max_leaves < 1 or args.lbfgs_iterations < 1:
         parser.error("Positive training and leaf budgets required")
@@ -229,6 +258,7 @@ def main():
         network = VerifiedNetwork.from_torch(train(args.output, args.epochs, args.seed,
             args.hidden_widths or (32, 32, 32), args.training_data, args.lbfgs_iterations), a)
     dump(args.output / "network.json", network.serialise())
+    order = {"L2": 0, "H1": 1, "H2": 2}[args.norm]
     source_files = [Path(__file__), Path("verified_arithmetic.py"),
                     Path("verified_network.py"), Path("verified_integration.py")]
     manifest = {"command": sys.argv, "python": sys.version, "platform": platform.platform(),
@@ -239,7 +269,9 @@ def main():
                 "git_status": subprocess.check_output(["git", "status", "--short"], text=True),
                 "source_sha256": {p.name: sha(p) for p in source_files},
                 "network_sha256": sha(args.output / "network.json"),
-                "quantity": "integral sum_{|alpha|<=2} |D^alpha Phi|^2; mixed derivative once",
+                "quantity": f"integral sum_{{|alpha|<={order}}} |D^alpha Phi|^2; mixed derivative once",
+                "norm": args.norm, "derivative_order": order,
+                "reference_slope": "N^(-1/2), theoretical integral-gap reference" if args.reference_slope else None,
                 "domain": [["-1", "1"], ["-1", "1"]], "theta": "0.35",
                 "max_leaves": args.max_leaves, "tolerance": "0",
                 "target": "exp(-((x+.4)^2+(y+.3)^2)/(2*.18^2)) + .7*exp(-((x-.4)^2+(y-.35)^2)/(2*.09^2))",
@@ -249,7 +281,8 @@ def main():
     records = {}
     for policy in ("adaptive", "uniform"):
         print(f"{policy}: starting verified integration at {args.bits} bits", flush=True)
-        run = Integrator(a, network.sobolev_integrand, Box(((-1, 1), (-1, 1))))
+        run = Integrator(a, lambda bounds: network.sobolev_integrand(bounds, order=order),
+                         Box(((-1, 1), (-1, 1))))
         # Run in individual steps to expose progress without changing the rule.
         while True:
             run.run(policy=policy, max_leaves=args.max_leaves, max_steps=1)
@@ -267,7 +300,7 @@ def main():
         records[policy] = run.serialise()
         dump(args.output / f"{policy}.json", records[policy])
         print(policy, run.status, flush=True)
-    render(args.output, records)
+    render(args.output, records, args.norm, args.reference_slope)
 
 
 if __name__ == "__main__":

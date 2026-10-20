@@ -87,12 +87,15 @@ class VerifiedNetwork:
                 hessian = tuple(a.sum(c * jet.hessian[k] for c, jet in zip(row, jets))
                                 for k in range(len(pairs)))
                 if layer_index < len(self._weights) - 1 and self.activation == "tanh":
-                    v, first, second = tanh_ranges(value)
-                    hessian = tuple(second * (gradient[i].abs_power(2) if i == j
-                                              else gradient[i] * gradient[j])
-                                    + first * hessian[k] for k, (i, j) in enumerate(pairs))
-                    gradient = tuple(first * gi for gi in gradient)
-                    value = v
+                    if order == 0:
+                        value = a.raw(a.down.tanh(value.lo), a.up.tanh(value.hi))
+                    else:
+                        v, first, second = tanh_ranges(value)
+                        hessian = tuple(second * (gradient[i].abs_power(2) if i == j
+                                                  else gradient[i] * gradient[j])
+                                        + first * hessian[k] for k, (i, j) in enumerate(pairs))
+                        gradient = tuple(first * gi for gi in gradient)
+                        value = v
                 outputs.append(Jet(value, gradient, hessian))
             jets = outputs
         return tuple(jets)
