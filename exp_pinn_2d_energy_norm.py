@@ -362,7 +362,7 @@ def plot_local_error_reduction(split_data, rho):
     x_theory = np.logspace(np.log10(min_err / 10), np.log10(max_err * 10), 100)
     y_theory = rho * x_theory
 
-    theory_label = rf'Theory $y = {rho:.2f} x$'
+    theory_label = rf'Reference $y = {rho:.2f} x$'
     plt.plot(x_theory, y_theory, '--k', linewidth=2.5, label=theory_label)
 
     # Red line for y = x

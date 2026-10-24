@@ -1,109 +1,109 @@
-# Certified and Accurate Computation of Function Space Norms of Deep Neural Networks
+# Certified adaptive integration for neural-network function-space norms
 
-Code for the paper:
+Local revision code for Johannes Gründler, Moritz Maibaum and Philipp Petersen.
+The manuscript is in the parent paper directory, `../../LaTeX/main.tex` relative
+to this checkout. This checkout remains an independent Git repository.
 
-> **Certified and accurate computation of function space norms of deep neural networks**  
-> Johannes Gründler, Moritz Maibaum, Philipp Petersen  
-> arXiv:2603.06431 (2026)
+## Install the verified workflow
 
-## Overview
-
-The revision branch adds an explicitly outward-rounded MPFR implementation in
-`verified_arithmetic.py`, `verified_network.py`, and `verified_integration.py`.
-See [VERIFIED_ARITHMETIC.md](VERIFIED_ARITHMETIC.md) for the arithmetic audit,
-inclusion argument, supported scope, tests and reproducible two-bump experiment.
-
-The verified path computes integral endpoints `[L,U]` for nonnegative norm
-integrands and derives norm intervals by outward-rounded roots. It supports
-tanh networks through derivative order two, positive integer p, exact box
-geometry, and uniform or Dörfler dyadic refinement. Stored binary checkpoint
-weights define exact real coefficients. Fixed precision can reach a rounding
-floor; budget exhaustion is not a claim of tolerance success or geometric decay.
-
-The historical `lib_*` routines and experiment scripts listed below use ordinary
-floating-point arithmetic and have **not** been validated as finite-precision
-certificates. Their old algorithm numbering, figure descriptions and metrics
-refer to the original submission. They are retained for provenance, not used by
-`exp_verified_two_bumps.py`, and are not upgraded by the new backend.
-
-The current Figure 1 candidate uses only the L2 norm of the saved deep network:
+Use Python 3.13 and a CPU environment matching `requirements-verified-lock.txt`:
 
 ```sh
-.venv/bin/python exp_verified_two_bumps.py --reuse results/two-bumps-figure1 --output results/two-bumps-deep-l2 --norm L2 --reference-slope --max-leaves 4096
+python3.13 -m venv .venv
+.venv/bin/python -m pip install -r requirements-verified-lock.txt
+.venv/bin/python -m unittest discover -s tests -v
 ```
 
-Panel (a) shows the full enclosure gap for the *squared* L2 norm integral.
-The triangle marks the theoretical reference exponent -1/2 in two dimensions,
-not a fitted slope. Actual norm endpoints are exported separately. The current
-enclosures remain broad; see the experiment registry before drawing conclusions
-about achievable accuracy.
+The lockfile records the tested macOS environment, not a guarantee of identical
+training on all platforms. MPFR/GMP versions, Python/platform, source hashes and
+installed packages are recorded for each suite. Stored binary checkpoint values
+are exact real coefficients of the network being enclosed. Ordinary training and
+plotting arithmetic does not enter certificates.
 
-For the full mathematical treatment — convergence proofs, interval enclosure constructions, and a detailed discussion of related work — please refer to the paper.
+## Current Figure 1: preserve the agreed deep checkpoint
 
----
-
-## Repository Structure
-
-### Core Library (`lib_*.py`)
-
-| File | Contents |
-|---|---|
-| `lib_nn_model.py` | `FlexibleNet`: configurable feedforward network (ReLU / tanh / sigmoid). Parameter extraction utilities. |
-| `lib_nn_interval_ops.py` | Layer-wise interval arithmetic forward and backward passes (Algorithms 6–8 substrate). |
-| `lib_activation_enclosures.py` | Interval enclosures Σ, Σ′, Σ″ for σ, σ′, σ″ (tanh, ReLU, sigmoid) required by the bounding algorithms. |
-| `lib_jacobian_enclosures.py` | Certified Jacobian bounds via IBP (Algorithm 7) and RecurJac. |
-| `lib_hessian_enclosures.py` | Certified Hessian bounds via vectorized IBP with optional Numba JIT (Algorithm 8). |
-| `lib_lp_enclosures.py` | Local L^p enclosures for function values, gradient, and Hessian components. |
-| `lib_w1p_enclosures.py` | W^{1,p} norm enclosure combining φ-L^p and gradient-L^p bounds (Corollary 4.22). |
-| `lib_w2p_enclosures.py` | W^{2,p} norm enclosure combining φ-L^p, gradient-L^p, and Hessian-L^p bounds (Corollary 4.27). |
-| `lib_adaquad_lp.py` | Full AdaQuad pipeline for the L^p case (Algorithm 3): `ReLUNetwork`, activation-region check (Proposition 4.15), `AdaptiveLpNorm` with Dörfler marking and Gauss–Legendre quadrature. |
-| `lib_eta_bounds.py` | Utilities for assembling global error bound η_n from local contributions η_K. |
-| `lib_training.py` | Adam training loop wrapper shared across experiments. |
-| `lib_utils.py` | Miscellaneous helpers (domain grids, smooth-disk target, etc.). |
-
-### Experiments (`exp_*.py`) and Figure Mapping
-
-Each experiment script is self-contained and saves its figures to a dedicated `fig_*/` directory that it creates automatically.  Networks are trained on first run and cached as `.pth` files; subsequent runs load the cached weights.
-
-| Script | Paper figures |
-|---|---|
-| `exp_combined_lp_sobolev_convergence.py` | **Figure 1 (left)** — combined geometric decay of the certified bound gap for L^p, W^{1,p}, W^{2,p} on the 2D smooth-disk target. Also produces the **Figure 1 (right)** adaptive-partition heatmap for the L^p run. |
-| `exp_sobolev_1d_statistics_100runs.py` | **Figures 3 & 4** — mean normalized bound gap and 95 % CI over 100 random seeds for W^{1,2} and W^{2,2}, for both untrained (Fig. 3) and trained (Fig. 4) tanh networks. Run once with `LAYERS = [1, 32, 32, 32, 1]` (deep) and once with `LAYERS = [1, 200, 1]` (wide). Target: 1D Gaussian peak (Eq. 47). |
-| `exp_lp_1d_statistics_100runs.py` | **Figure 5** — analogous 100-run statistics for the L^p bound gap, comparing deep and wide ReLU architectures on the same 1D Gaussian-peak target. |
-| `exp_lp_2d_disk_activation_regions.py` | **Figure 6** — adaptive L^2 refinement heatmaps on the 2D smooth-disk domain (deep and wide ReLU architectures, θ = 0.5), demonstrating the activation-region exact-integration shortcut. |
-| `exp_sobolev_2d_disk_convergence.py` | **Figure 7** — geometric convergence of W^{1,p} and W^{2,p} bound gaps on the 2D smooth-disk domain (single run, deep and wide tanh architectures), plus local bound-gap reduction scatter plots verifying Remark 4.2. |
-| `exp_sobolev_2d_disk_heatmaps.py` | **Figure 8** — adaptive-grid heatmaps of the local W^{1,p} and W^{2,p} bound gaps for both architectures at iteration 25 of the 2D smooth-disk experiment. Also provides `compute_monte_carlo_sobolev` used by `exp_combined_lp_sobolev_convergence.py`. |
-| `exp_pinn_2d_energy_norm.py` | **Figure 9** — certified bound gap convergence and local reduction for the PINN energy-norm residual of the tanh-wavefront elliptic PDE (Eqs. 49–50), including the adaptive-grid heatmap. |
-
----
-
-## Running the Experiments
-
-Each script is run directly with Python. For example:
-
-```bash
-python exp_combined_lp_sobolev_convergence.py
-python exp_sobolev_1d_statistics_100runs.py   # edit LAYERS inside for deep vs. wide
-python exp_lp_1d_statistics_100runs.py
-python exp_lp_2d_disk_activation_regions.py
-python exp_sobolev_2d_disk_convergence.py
-python exp_sobolev_2d_disk_heatmaps.py
-python exp_pinn_2d_energy_norm.py
+```sh
+.venv/bin/python exp_verified_two_bumps.py --reuse results/two-bumps-deep-l2 --output results/figure1-replay --norm L2 --theta 0.35 --reference-slope --max-leaves 4096
+.venv/bin/python validate_records.py results/figure1-replay
+.venv/bin/python render_verified.py results/figure1-replay
 ```
 
-Output PDFs are written to the corresponding `fig_*/` directory.  Key hyperparameters (architecture, θ, number of iterations, weight decay) are set as module-level constants at the top of each script.
+The saved historical run is `results/two-bumps-deep-l2/`. Its target is unscaled,
+its architecture is `[2,32,32,32,1]`, and theta is 7/20. The left panel shows the
+full gap for the squared-L2 integral, not a rooted norm gap. Rooted endpoints
+are exported separately. The N^(-1/2) triangle is a theoretical reference.
+Output directories must be new. `--tolerance` sets an absolute full integral-gap
+tolerance; zero disables a positive tolerance target. Budget failure is not
+accuracy success. Preserve the saved checkpoint when reproducing the paper;
+training again is a different operation.
 
----
+## Reproducible replacement studies
 
-## Citation
-
-If you use this code, please cite:
-
-```bibtex
-@article{grundler2026certified,
-  title={Certified and accurate computation of function space norms of deep neural networks},
-  author={Gr{\"u}ndler, Johannes and Maibaum, Moritz and Petersen, Philipp},
-  journal={arXiv preprint arXiv:2603.06431},
-  year={2026}
-}
+```sh
+.venv/bin/python exp_verified_studies.py run --config experiments/paper.json --output results/validated-paper-suite-v1
+.venv/bin/python exp_verified_studies.py replay --input results/validated-paper-suite-v1 --output results/paper-suite-replay
+.venv/bin/python validate_records.py results/validated-paper-suite-v1
+.venv/bin/python render_verified.py results/validated-paper-suite-v1
 ```
+
+The first command trains and certifies; replay loads saved networks and certifies
+without training; render reads records only. A suite records config.json,
+experiments.json, models with checkpoints and exact coefficients, training data,
+per-policy histories/partitions, validation.json, summary.json, environment.json,
+a complete source snapshot, and figures. The PINN samples new points per epoch;
+its independent CPU generator seed, first batch and final generator state are
+saved. All sampled diagnostics are approximate, not uniform error certificates.
+
+`experiments/paper.json` specifies a compact campaign: three paired 1D
+untrained/trained tanh seeds, one disk checkpoint for both H1/H2 experiments,
+and one elliptic interior-residual checkpoint. Individual seed traces are shown;
+there are no confidence intervals or population/architecture claims. The 1D
+Gaussian is on [0,1] and is explicitly a new experiment, not a reconstruction of
+the old [0,2*pi] study. Disk epsilon is 0.5, with 5000 uniform saved points.
+All certified studies use p=2 and count each mixed derivative once.
+
+Configuration fields choose architecture, budgets, training and arithmetic
+settings. Targets/domains are the documented fixed study definitions; unsupported
+changes are rejected. This runner does not yet implement arbitrary PDEs,
+noninteger powers, or validated ReLU activation-region integration.
+
+## Numerical implementation
+
+- `verified_arithmetic.py`: explicitly directed MPFR scalar arithmetic, powers,
+  roots and stable tanh derivative ranges.
+- `verified_network.py`: interval forward AD of supported affine/tanh networks,
+  derivative order 0/1/2 and positive integer p.
+- `verified_integration.py`: exact rational dyadic geometry, ancestor range
+  intersections, volume-weighted integral bounds and uniform/Dörfler refinement.
+- `verified_residual.py`: validated forcing and squared interior residual for
+  Delta u = 2*tanh''(x+y-1).
+- `experiment_records.py`: source/environment snapshots and exact record checks.
+
+See `VERIFIED_ARITHMETIC.md` for the inclusion argument and limits. Record
+validation and numerical tests support correct use; no independent formal
+verification or new backend guarantee is claimed.
+
+## Legacy material
+
+The old `exp_sobolev_*`, `exp_lp_*`, `exp_pinn_2d_energy_norm.py`,
+`exp_combined_lp_sobolev_convergence.py` and `lib_*` bound routines remain for
+historical inspection. They are not the validated paper workflow. Some require
+Numba or auto_LiRPA, which are intentionally not dependencies of the verified
+workflow. They do not establish end-to-end finite-precision certificates.
+Legacy statistics plot empirical percentile ranges, not confidence intervals;
+legacy ReLU indicators are not full integral gaps. The former Figure 1 mapping
+and old algorithm numbering must not be used for the revised paper.
+
+Confirmed legacy disk defects have been corrected for future exploratory use:
+N requested uniform points are returned, heatmap/convergence defaults agree on
+epsilon=0.5 and weight decay=0.001, static x-coordinates use actual k*k cells,
+and reference labels no longer assert an N^-1 rate in 2D or universal rho=0.25.
+These changes do not establish the provenance of old graphics or certify them.
+
+## Artifact delivery
+
+`results/` is Git-ignored. A source clone alone does not contain the saved paper
+networks and numerical results. Supply the result archive and checksum manifest
+alongside the source. `REPRODUCIBILITY.md` maps the current experiments; older
+entries record the historical development and are not current certification
+claims for archived figures.

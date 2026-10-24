@@ -213,3 +213,186 @@ These bounds are much smaller in absolute value than for H2 but remain broad
 relative to the integral's scale. Restricting the quantity to L2 has not by
 itself established a practically tight first-figure result. The figure remains
 a candidate illustrating localization and gap reduction at the stated budget.
+
+## Shallow 100-neuron L2 experiment, 24 October 2026
+
+Trained a new `[2,100,1]` tanh network (401 parameters), float64,
+seed 20261020, using the exact saved deep-network training arrays. Training:
+3000 full-batch Adam steps at 0.001, then LBFGS with maximum 5000 iterations.
+This longer schedule differs from the original deep run and is not a controlled
+architecture comparison. Stored binary weights define exact real coefficients.
+
+Command (repository root):
+
+```sh
+.venv/bin/python -u exp_verified_two_bumps.py --output results/two-bumps-shallow100-l2 --hidden-widths 100 --training-data results/two-bumps-figure1/training_data.npz --epochs 3000 --lbfgs-iterations 5000 --norm L2 --reference-slope --max-leaves 4096
+```
+
+Numerical source: `157786b3d2b7966dbbd18e3a7cd43dd573939295`;
+manifest records source hashes, command, software and precision. Same natural
+interval L2 enclosure path as the deep L2 experiment; no mean-value or slope
+form was added. MPFR 128 bits, adaptive theta=7/20, all-coordinate halving,
+zero stopping tolerance. Both policies stopped at the leaf budget; adaptive
+could not fit its next complete marked batch into the budget.
+
+| Policy | Leaves | Evaluations | Seconds | Integral gap (approx.) |
+| --- | ---: | ---: | ---: | ---: |
+| adaptive | 3040 | 4053 | 4.952 | 10.6676731 |
+| uniform | 4096 | 5461 | 6.679 | 8.42767124 |
+
+161x161 grid fit MSE: 0.000458323861; maximum absolute error: 0.121467568. These are sampled diagnostics, not certified approximation errors.
+
+Bounds remain broad and the histories show no substantial adaptive advantage.
+Heatmaps display local volume-weighted integral-gap contributions on a shared
+logarithmic scale. Panel (a) is the squared-L2 integral gap, not the rooted
+norm gap. The slope triangle is a theoretical reference, not a fit.
+
+Validation: checkpoint and training-array hashes checked; every portable
+coefficient matches the loaded checkpoint; exact rational checks pass for
+partition coverage/nonoverlap, dyadic geometry, local multiplication, global
+endpoint aggregation, root inclusion, gaps and evaluation counts. Figure and
+fit diagnostic visually inspected. Existing 15 verification tests passed on
+this unchanged implementation after relocation. Results and provenance are
+saved in `results/two-bumps-shallow100-l2/`; a separate delivered archive retains
+all run artifacts. No existing manuscript figure was replaced.
+
+## Shallow 100-neuron target scaled by 10, 24 October 2026
+
+Fresh `[2,100,1]` tanh network trained against ten times the original two-bump
+target, on identical input points and seed, with 3000 Adam steps (lr 0.001)
+and maximum 5000 LBFGS iterations. Target amplitudes: 10 and 7; geometry and
+width parameters unchanged. No output-layer rescaling of the previous network.
+
+```sh
+.venv/bin/python -u exp_verified_two_bumps.py --output results/two-bumps-shallow100-scale10-l2 --hidden-widths 100 --training-data results/two-bumps-figure1/training_data.npz --target-scale 10 --epochs 3000 --lbfgs-iterations 5000 --norm L2 --reference-slope --max-leaves 4096
+```
+
+Added explicit target-scale handling to the experiment script; scale is recorded
+in training.json and manifest.json, including reuse semantics. Validated arithmetic,
+network and integration modules unchanged. Working source includes an uncommitted
+script change; manifest hashes and bundled sources identify the executed code.
+128-bit MPFR, natural interval enclosures, theta=7/20, exact dyadic geometry,
+stored binary coefficients as exact reals, zero tolerance and 4096-leaf budget.
+Both policies stopped with leaf_budget_exhausted.
+
+| Policy | Leaves | Evaluations | Seconds | Integral gap (approx.) | Gap divided by 100 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| adaptive | 4042 | 5389 | 6.653 | 127.262285 | 1.27262285 |
+| uniform | 4096 | 5461 | 6.660 | 132.396202 | 1.32396202 |
+
+Grid MSE 0.00126107509; maximum absolute grid error 0.298755402, or 0.0298755402 after dividing outputs by 10. These are sampled diagnostics, not certificates of approximation error.
+
+Squared-L2 gaps scale quadratically under exact output scaling. Here the network
+was retrained, so its computed gap need not equal 100 times the earlier gap.
+Curves show only a small adaptive advantage; enclosures remain broad.
+
+Validation: all 15 existing tests passed. Exact equality of training inputs and
+10-times source labels checked; saved checkpoint/portable coefficient agreement
+checked. Exact rational exported-record checks passed for dyadic partition
+coverage/nonoverlap, volumes, local/global bounds, roots, gaps and evaluation
+counts. Numerical source hashes checked against the executed source snapshot.
+Candidate figure and fit diagnostics visually inspected. Validation script and
+source snapshot are retained in the result archive. Existing manuscript untouched.
+
+## Scaled shallow100 L2, theta=0.05, 24 October 2026
+
+Reused exactly the saved scale10 `[2,100,1]` tanh network, without retraining.
+Added `--theta` to the experiment driver, parsed and passed as an exact rational.
+No arithmetic/network/integration implementation changed.
+
+```sh
+.venv/bin/python -u exp_verified_two_bumps.py --reuse results/two-bumps-shallow100-scale10-l2 --output results/two-bumps-shallow100-scale10-l2-theta005 --theta 0.05 --norm L2 --reference-slope --max-leaves 4096
+```
+
+128-bit MPFR; theta=1/20; exact saved coefficients and dyadic geometry;
+zero tolerance, 4096-leaf budget. Both policies stopped at the leaf budget.
+
+| Policy | Leaves | Evaluations | Seconds | Squared-L2 integral gap (approx.) |
+| --- | ---: | ---: | ---: | ---: |
+| adaptive | 4069 | 5425 | 7.309 | 126.477322255 |
+| uniform | 4096 | 5461 | 6.517 | 132.396201667 |
+
+The earlier theta=0.35 adaptive run had 4042 leaves and gap 127.262284777;
+the theta=0.05 result changes this only modestly, at a slightly larger leaf
+count. No equal-cost theta superiority claim follows. The uniform cell records
+and final certificate are exactly identical to the earlier run; network records
+are byte-identical. Existing 15 tests pass, exact exported-record validation
+passes, and the figure was visually inspected. Manifests include executed-source
+hashes; source snapshots and validation script are included in the archive.
+The manuscript was not modified.
+
+## Target scaled by 20, shallow100 L2, theta=0.05, 24 October 2026
+
+Fresh `[2,100,1]` tanh network trained against 20 times the original target.
+Identical training inputs, seed 20261020, 3000 full-batch Adam steps (lr 0.001),
+then maximum 5000 LBFGS iterations. Target amplitudes 20 and 14; widths and
+centres unchanged. Training labels equal exactly 20 times the saved source labels.
+
+```sh
+.venv/bin/python -u exp_verified_two_bumps.py --output results/two-bumps-shallow100-scale20-l2-theta005 --hidden-widths 100 --training-data results/two-bumps-figure1/training_data.npz --target-scale 20 --epochs 3000 --lbfgs-iterations 5000 --theta 0.05 --norm L2 --reference-slope --max-leaves 4096
+```
+
+128-bit MPFR, natural interval enclosures, theta=1/20, stored binary weights as
+exact coefficients, exact dyadic geometry, zero tolerance, 4096-leaf budget.
+Both policies stopped with leaf_budget_exhausted. Source unchanged from the
+previous theta=0.05 run; executed hashes and full source snapshots retained.
+
+| Policy | Leaves | Evaluations | Seconds | Integral gap (approx.) | Gap / 400 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| adaptive | 4060 | 5413 | 7.099 | 234.644257587 | 0.586610644 |
+| uniform | 4096 | 5461 | 6.585 | 251.557904808 | 0.628894762 |
+
+Grid MSE 0.00172096293; max absolute grid error 0.449361297; rescaled max error 0.0224680649. Sampled diagnostics, not certified approximation errors.
+
+Exact-record checks passed for input/label scaling, checkpoint/portable record,
+partition coverage/nonoverlap, local/global bounds, roots, widths and evaluation
+counts. Source hashes match. The existing 15-test suite passed on the same
+unchanged implementation for the preceding theta run. Both generated images
+visually inspected. The slope triangle is a reference, not a fitted rate;
+heatmaps share a scale and show volume-weighted local integral gaps. Network
+retraining changes the function, so normalized cross-run differences do not
+isolate enclosure scaling. No manuscript source or figure was replaced.
+
+## Current paper campaign: validated Section 5 (24 October 2026)
+
+This entry supersedes the historical figure-selection descriptions above.
+Figure 1 remains the saved unscaled deep L2 experiment at theta=7/20.
+The replacement suite is `results/validated-paper-suite-v1/`, configured by
+`experiments/paper.json` and explained in `EXPERIMENT_PROTOCOL.md`.
+
+- Three paired 1D tanh seeds, each untrained/trained and H1/H2: 24 policy runs.
+- One shared trained disk checkpoint, epsilon=.5, exactly 5000 uniform samples,
+  H1/H2: four policy runs.
+- One saved tanh PINN with validated forcing/residual adapter: two policy runs.
+- All use p=2, 128-bit MPFR, theta=7/20 and full integral gaps with outward roots.
+  Every new terminal status is leaf_budget_exhausted, not tolerance success.
+- Existing Figure 1 is unchanged. Historical ReLU and other archived figures
+  are preserved outside the active manuscript numerical evidence.
+
+All 30 policy records were regenerated from their saved checkpoints in
+`results/validated-paper-suite-replay/`. Exact cells, endpoint/root histories,
+evaluation counters and statuses match, excluding timings; `replay_validation.json`
+lists the matches. No retraining is involved in this replay. The pilot's 14
+policy records also replayed exactly. The current 23 tests pass, including
+forcing/high-precision checks, a zero-residual exact tanh solution, corrupted
+record rejection and terminal budget/tolerance checks. These checks support
+correct use; the operation-level inclusion argument and backend rounding
+contract remain the basis of certification.
+
+The initial numerical execution is identified by its bundled source snapshot
+and SHA-256 manifest. Later rendering has a separate render source and manifest.
+Current convenience tools add exact endpoint CSV/LaTeX tables, first recorded
+crossings of tolerances 1/.1/.01 (including failures), record validation,
+render-only commands and a comparison command that rejects unrequested changes.
+The primary records remain exact rationals; display/plot conversions do not
+re-enter the integration path.
+
+Single-run observations remain mixed: trained 1D adaptive runs improve terminal
+gaps at their smaller counts, while the disk/PINN uniform runs finish with
+smaller gaps at larger counts. Some enclosures remain broad; the disk fit has
+sampled maximum error about .353. These are not controlled architecture or
+population comparisons. No slope/mean-value enclosure or validated ReLU
+implementation is claimed. See the protocol for training details and limits.
+
+Results are Git-ignored and supplied separately with the code snapshot; a plain
+clone cannot reconstruct the paper certificates without the checkpoints.

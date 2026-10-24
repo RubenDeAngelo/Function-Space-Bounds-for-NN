@@ -61,13 +61,13 @@ def smooth_disk(x, y, epsilon=0.1):
     val = np.zeros_like(r)
     val[r <= r_inner] = 1.0
     mask = (r > r_inner) & (r < r_outer)
-    transition_vals = np.divide(term1, denom, where=denom != 0)
+    transition_vals = np.divide(term1, denom, out=np.zeros_like(term1), where=denom != 0)
     val[mask] = transition_vals[mask]
     return val
 
 def generate_balanced_2d_coin_data(N=3000, epsilon=0.1, transition_ratio=0.5):
-    N_transition = int(N * transition_ratio)
-    N_uniform = N - N_transition
+    # Legacy driver: use exactly N uniform samples; no transition oversampling.
+    N_uniform = N
     low, high = -1.5, 1.5
     X_uni = np.random.uniform(low, high, (N_uniform, 2)).astype(np.float32)
     X = X_uni
@@ -237,7 +237,7 @@ def plot_local_error_reduction(split_data, rho, norm_type):
     x_theory = np.logspace(np.log10(min_err/10), np.log10(max_err*10), 100)
     y_theory = rho * x_theory
 
-    theory_label = f'Theory $y = {rho:.2f} x$'
+    theory_label = f'Reference $y = {rho:.2f} x$'
     plt.plot(x_theory, y_theory, '--k', linewidth=2.5, label=theory_label)
 
     plt.plot(x_theory, x_theory, '-r', linewidth=2.0, label=r'$y = x$')

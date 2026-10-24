@@ -27,11 +27,11 @@ from lib_w1p_enclosures import compute_w1p_bounds
 from lib_w2p_enclosures import compute_w2p_bounds
 
 # Data Generation Settings
-EPSILON_TRANSITION = 0.2
+EPSILON_TRANSITION = 0.5
 
 # Model & Training
 LAYERS = [2, 32, 32, 32, 1]
-weight_decay = 1e-4
+weight_decay = 1e-3
 ACTIVATION = 'tanh'
 EPOCHS = 10000
 N_SAMPLES = 5000
@@ -60,7 +60,7 @@ def smooth_disk(x, y, epsilon=0.1):
     val = np.zeros_like(r)
     val[r <= r_inner] = 1.0
     mask = (r > r_inner) & (r < r_outer)
-    transition_vals = np.divide(term1, denom, where=denom != 0)
+    transition_vals = np.divide(term1, denom, out=np.zeros_like(term1), where=denom != 0)
     val[mask] = transition_vals[mask]
     return val
 
@@ -176,7 +176,7 @@ def compute_static_gap(model, domain_start, domain_end, num_cells, bound_fn, p=2
 
     gap = sum(0.5 * ((b['high'] ** p) - (b['low'] ** p)) for b in bounds)
     q_val = sum(0.5 * ((b['high'] ** p) + (b['low'] ** p)) for b in bounds)
-    return gap, q_val
+    return gap, q_val, k*k
 
 def run_doerfler_grid_for_norm(model, initial_centers, initial_delta, max_iter, theta=0.5, p=2.0, norm_type='w1p', jac_method='recurjac'):
     print(f"\n--- Running Dörfler Refinement (theta={theta}, p={p}, method={jac_method}) for {norm_type.upper()} ---")
@@ -311,14 +311,14 @@ def run_experiment():
 
     n0_w1 = w1_counts[0]
     e0_w1 = w1_dyn_gaps[0]
-    y_theory_w1 = e0_w1 * (np.array(w1_counts) / n0_w1) ** (-1)
+    y_theory_w1 = e0_w1 * (np.array(w1_counts) / n0_w1) ** (-0.5)
 
     n0_w2 = w2_counts[0]
     e0_w2 = w2_dyn_gaps[0]
-    y_theory_w2 = e0_w2 * (np.array(w2_counts) / n0_w2) ** (-1)
+    y_theory_w2 = e0_w2 * (np.array(w2_counts) / n0_w2) ** (-0.5)
 
     plt.plot(w1_counts, y_theory_w1 / mc_w1p, 'k--',
-             linewidth=1.5, label=r'Theory $O(N^{-1})$')
+             linewidth=1.5, label=r'Reference $N^{-1/2}$')
 
     plt.plot(w2_counts, y_theory_w2 / mc_w2p, 'k:',
              linewidth=1.5)
@@ -328,8 +328,8 @@ def run_experiment():
     plt.plot(w2_counts, w2_dyn_gaps/mc_w2p, '-o', color='#009E73', linewidth=2,
              label=r'Dörfler $W^{2,2}$ ($\theta=' + str(THETA) + r'$)')
 
-    plt.plot(w1_stat_counts_sub, w1_stat_gaps_sub/mc_w1p, '--s', color='#D55E00', alpha=0.4, label=r'Static $W^{1,2}$')
-    plt.plot(w2_stat_counts_sub, w2_stat_gaps_sub/mc_w2p, '--s', color='#009E73', alpha=0.4, label=r'Static $W^{2,2}$')
+    plt.plot([res[2] for res in w1_stat_results], w1_stat_gaps_sub/mc_w1p, '--s', color='#D55E00', alpha=0.4, label=r'Static $W^{1,2}$')
+    plt.plot([res[2] for res in w2_stat_results], w2_stat_gaps_sub/mc_w2p, '--s', color='#009E73', alpha=0.4, label=r'Static $W^{2,2}$')
 
     plt.xscale('log')
     plt.yscale('log')

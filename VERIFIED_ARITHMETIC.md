@@ -150,3 +150,22 @@ fit diagnostic grid, exact coefficient record, source hashes, dependency version
 Git state, configuration and both policy histories/partitions. Keep these with
 any paper figure. `results/` is ignored by Git; archive runs separately with
 checksums instead of committing changing generated outputs to the source tree.
+
+## Validated elliptic interior residual adapter
+
+`verified_residual.py` uses the existing derivative-range backend to enclose
+`f(x,y)=Delta tanh(x+y-1)=2*tanh''(x+y-1)`. The interval argument x+y-1 is built
+by outward addition/subtraction, and the existing `tanh_ranges` second-derivative
+range includes certified endpoint/critical values. Multiplication by 2 is
+outward. For a scalar 2D supported network, interval forward AD supplies packed
+xx, xy, yy Hessian components. Adding xx+yy and subtracting the forcing preserves
+inclusion; the direct squared interval encloses the nonnegative residual
+integrand. Existing volume, ancestor-intersection, global-sum and root operations
+then apply without modification. No boundary residual or PDE stability estimate
+is included; the output is an interior residual integral/norm enclosure.
+
+The replacement experiment tests include forcing point/high-precision checks,
+critical-range coverage, the exact tanh solution whose residual is zero, a
+non-solution sampled at higher precision, and rejection of corrupted geometry
+and roots. These numerical checks support the above inclusion argument; they do
+not replace MPFR's rounding guarantees or constitute formal verification.

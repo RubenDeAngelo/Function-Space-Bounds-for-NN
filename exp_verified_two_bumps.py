@@ -5,7 +5,9 @@ decisions go through verified_* modules. Plot floats are display-only.
 """
 import argparse
 import hashlib
+from fractions import Fraction
 import json
+import math
 import os
 import platform
 from pathlib import Path
@@ -47,7 +49,7 @@ def load_saved_network(directory, arithmetic):
 
 
 def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None,
-          lbfgs_iterations=250):
+          lbfgs_iterations=250, target_scale=1.0):
     import numpy as np
     import torch
     from lib_nn_model import FlexibleNet
@@ -67,9 +69,12 @@ def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None,
     x = np.concatenate(points)
     rng.shuffle(x)
 
-    def target(x):
+    def base_target(x):
         return (torch.exp(-((x[:, 0]+0.4)**2+(x[:, 1]+0.3)**2)/(2*0.18**2))
                 + 0.7*torch.exp(-((x[:, 0]-0.4)**2+(x[:, 1]-0.35)**2)/(2*0.09**2)))[:, None]
+
+    def target(x):
+        return target_scale * base_target(x)
 
     if training_data is not None:
         with np.load(training_data, allow_pickle=False) as saved:
@@ -82,8 +87,14 @@ def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None,
             raise ValueError("Invalid saved two-bump training data")
         inputs = torch.tensor(x, dtype=torch.float64)
         targets = torch.tensor(y, dtype=torch.float64)
-        if not torch.allclose(targets, target(inputs), rtol=1e-13, atol=1e-15):
-            raise ValueError("Saved labels do not match the two-bump target")
+        source_metadata = training_data.parent / "training.json"
+        source_scale = json.loads(source_metadata.read_text()).get("target_scale", 1.0)
+        if not math.isfinite(source_scale) or source_scale <= 0:
+            raise ValueError("Invalid source target scale")
+        if not torch.allclose(targets, source_scale * base_target(inputs), rtol=1e-13, atol=1e-15):
+            raise ValueError("Saved labels do not match their recorded two-bump target")
+        targets = target(inputs)
+        y = targets.numpy().copy()
     else:
         inputs = torch.tensor(x, dtype=torch.float64)
         targets = target(inputs)
@@ -124,7 +135,7 @@ def train(output, epochs, seed, hidden_widths=(32, 32, 32), training_data=None,
                         target=truth.numpy().reshape(xx.shape),
                         prediction=prediction.numpy().reshape(xx.shape))
     dump(output / "training.json", {"seed": seed, "architecture": architecture,
-         "activation": "tanh", "dtype": "float64", "training_points": len(x),
+         "activation": "tanh", "dtype": "float64", "target_scale": target_scale, "training_points": len(x),
          "parameter_count": sum(p.numel() for p in model.parameters()),
          "training_data_source": str(training_data) if training_data else "generated from seed",
          "training_data_source_sha256": sha(training_data) if training_data else None,
@@ -225,6 +236,9 @@ def main():
     parser.add_argument("--reuse", type=Path, help="Directory with saved exact network and training artifacts")
     parser.add_argument("--epochs", type=int, default=3000)
     parser.add_argument("--seed", type=int, default=20261020)
+    parser.add_argument("--theta", default="0.35",
+                        help="Exact rational Dörfler marking fraction, in (0,1)")
+    parser.add_argument("--tolerance", default="0", help="Absolute full integral-gap tolerance (exact rational)")
     parser.add_argument("--bits", type=int, default=128)
     parser.add_argument("--max-leaves", type=int, default=1024)
     parser.add_argument("--hidden-widths", type=int, nargs="+",
@@ -232,11 +246,29 @@ def main():
     parser.add_argument("--training-data", type=Path,
                         help="Reuse exact saved x/y arrays when training another architecture")
     parser.add_argument("--lbfgs-iterations", type=int, default=250)
+    parser.add_argument("--target-scale", type=float, default=None,
+                        help="Positive target amplitude multiplier; default 1 for training")
     parser.add_argument("--norm", choices=("L2", "H1", "H2"), default="H2",
                         help="Integrand for the square of this norm")
     parser.add_argument("--reference-slope", action="store_true",
                         help="Draw the theoretical N^(-1/2) integral-gap reference triangle")
     args = parser.parse_args()
+    try:
+        theta = Fraction(args.theta)
+    except (ValueError, ZeroDivisionError):
+        parser.error("Theta must be a rational number in (0,1)")
+    if not 0 < theta < 1:
+        parser.error("Theta must lie strictly between 0 and 1")
+    try:
+        tolerance = Fraction(args.tolerance)
+    except (ValueError, ZeroDivisionError):
+        parser.error("Tolerance must be a nonnegative rational")
+    if tolerance < 0:
+        parser.error("Tolerance must be nonnegative")
+    if args.target_scale is not None and (not math.isfinite(args.target_scale) or args.target_scale <= 0):
+        parser.error("Target scale must be positive and finite")
+    if args.reuse and args.target_scale is not None:
+        parser.error("--reuse retains the saved target scale; do not specify --target-scale")
     if args.epochs < 1 or args.max_leaves < 1 or args.lbfgs_iterations < 1:
         parser.error("Positive training and leaf budgets required")
     if args.hidden_widths is not None and any(w < 1 for w in args.hidden_widths):
@@ -256,26 +288,31 @@ def main():
             shutil.copy2(args.reuse / file, args.output / file)
     else:
         network = VerifiedNetwork.from_torch(train(args.output, args.epochs, args.seed,
-            args.hidden_widths or (32, 32, 32), args.training_data, args.lbfgs_iterations), a)
+            args.hidden_widths or (32, 32, 32), args.training_data, args.lbfgs_iterations,
+            args.target_scale if args.target_scale is not None else 1.0), a)
     dump(args.output / "network.json", network.serialise())
+    target_scale = json.loads((args.output / "training.json").read_text()).get("target_scale", 1.0)
     order = {"L2": 0, "H1": 1, "H2": 2}[args.norm]
-    source_files = [Path(__file__), Path("verified_arithmetic.py"),
-                    Path("verified_network.py"), Path("verified_integration.py")]
+    source_files = sorted(Path(__file__).resolve().parent.glob("*.py"))
+    from experiment_records import source_snapshot
+    snapshot = source_snapshot(args.output)
     manifest = {"command": sys.argv, "python": sys.version, "platform": platform.platform(),
                 "processor": platform.processor(), "gmpy2": g.version(),
                 "mpfr": g.mpfr_version(), "gmp": g.mp_version(),
-                "precision_bits": args.bits, "git_commit": subprocess.check_output(
-                    ["git", "rev-parse", "HEAD"], text=True).strip(),
-                "git_status": subprocess.check_output(["git", "status", "--short"], text=True),
+                "precision_bits": args.bits, "git_commit": snapshot["git_head"],
+                "git_status": snapshot["git_status"],
                 "source_sha256": {p.name: sha(p) for p in source_files},
                 "network_sha256": sha(args.output / "network.json"),
                 "quantity": f"integral sum_{{|alpha|<={order}}} |D^alpha Phi|^2; mixed derivative once",
                 "norm": args.norm, "derivative_order": order,
                 "reference_slope": "N^(-1/2), theoretical integral-gap reference" if args.reference_slope else None,
-                "domain": [["-1", "1"], ["-1", "1"]], "theta": "0.35",
-                "max_leaves": args.max_leaves, "tolerance": "0",
+                "domain": [["-1", "1"], ["-1", "1"]], "theta": str(theta),
+                "max_leaves": args.max_leaves, "tolerance": str(tolerance),
+                "target_scale": target_scale,
                 "target": "exp(-((x+.4)^2+(y+.3)^2)/(2*.18^2)) + .7*exp(-((x-.4)^2+(y-.35)^2)/(2*.09^2))",
                 "coefficient_semantics": "stored binary checkpoint numbers interpreted as exact real coefficients"}
+    if target_scale != 1.0:
+        manifest["target"] = f"{target_scale} * (" + manifest["target"] + ")"
     manifest["pip_freeze"] = subprocess.check_output([sys.executable, "-m", "pip", "freeze"], text=True)
     dump(args.output / "manifest.json", manifest)
     records = {}
@@ -285,7 +322,7 @@ def main():
                          Box(((-1, 1), (-1, 1))))
         # Run in individual steps to expose progress without changing the rule.
         while True:
-            run.run(policy=policy, max_leaves=args.max_leaves, max_steps=1)
+            run.run(policy=policy, theta=str(theta), tolerance=str(tolerance), max_leaves=args.max_leaves, max_steps=1)
             last = run.history[-1]
             print(f"{policy}: N={last['leaves']}, evaluations={last['evaluations']}, "
                   f"seconds={last['seconds']:.1f}, gap~{float(run.total().width):.6g}", flush=True)
