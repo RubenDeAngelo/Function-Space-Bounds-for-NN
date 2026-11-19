@@ -1,0 +1,14 @@
+{
+  "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/kernel": {
+    "sha256": "a20252f8ab93798bc27044158d01776ae22a713756598dbba046aba330caf5f3",
+    "reason": "Historical platform-specific executable omitted; distribute source and build against independently installed GMP/MPFR."
+  },
+  "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/residual_kernel": {
+    "sha256": "1079bd03bec031b38608a5d85f3d1b17f46571fb648956a967aeb6f9bd8d288f",
+    "reason": "Historical platform-specific executable omitted; distribute source and build against independently installed GMP/MPFR."
+  },
+  "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/verify_archived": {
+    "sha256": "33947b2e1cfd6f3a02897d6d99d6851b4ec67477e21ff5ee11aa1d59374cf0fd",
+    "reason": "Historical platform-specific executable omitted; distribute source and build against independently installed GMP/MPFR."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-12",
+  "scope": "Approved slope-guide presentation revision; numerical records and checkpoints unchanged",
+  "files_sha256": {
+    "README.md": "4e1e4b14c53559d0f499073f31262d5c980e83c3f704af67fcc2fda8dd995d27",
+    "baseline.json": "5de34abe16cc63a2430ba793c6da4da35cf5be0cd15172767c610bf6dd035247",
+    "rate_guides.py": "3a62a179e9f3dbbe5c65477a496de428d821e974b7550c444b4a6f43affbbf00",
+    "render.py": "3c71dd4955dbbce18914c29a62e3b39aa0fe80156f6293cd5f661d73dad65947",
+    "validate.py": "95fad0e2067e471760a44fec0b28557344a18617b37a5c177565a58602d8f44b",
+    "validation/controlled_certification.png": "c90bf25523e626ad076d80082b7f89930951dd84e9a75a123e589c0e12f2f8e9",
+    "validation/disk_extended_certification.png": "7675f0c03a80a0558169f0db475dab1193f401c0de52614b058feab79c623979",
+    "validation/disk_gap_revised.png": "e67b25a9f4e4c29b0560534d6d2872619b28e3443f7009b3248dd59005e11242",
+    "validation/geometry_controls_revised.png": "cd8be366a056fe7b4872e684e4c0e2db3b04d26bfeecc693d1dafdd3e033ea75",
+    "validation/pdf_qa.json": "feef2769067c81ec6f371871b58748653bc668a8f599be99793c22dcb4318e23",
+    "validation/plot_metadata.json": "1be5f0b955e0a775af5b50ad48ea3218fc05258b0276cae1da064f80dccba2bd",
+    "validation/result.json": "b55d0eab8c9b84cc5685d46e5c09be66028817b550723d437154da9b09e88dcd",
+    "validation/tanh_pde_gaps.png": "89cd1079a5e6a0b470aee531176272f44a1ab4b71cff8cef6d93436a99385ee5"
+  },
+  "active_manuscript_artifacts_sha256": {
+    "main.tex": "a690ca8f19083e6419c9ed073da553bd02f4a84cfaabd417c61eab56d11332ad",
+    "main.pdf": "26a602f08c7021a9a42821dee3ddfa4e6d2c6e76663c741e3b864cdadd86bf33",
+    "controlled_experiments.tex": "77270fa2054cd522d41910ac5b4111e6675cf89a8d0206324a273c8d499f06ec",
+    "geometry_experiments.tex": "57c200fca8634843a7e2015455472383905a3ca7b99189f1d1645b283a90d549",
+    "relative_width_experiments.tex": "829b74f073aa7346f1adac692a9e55ca02cc3eb72dd06abc22d418cd4157d023",
+    "corner_experiment.tex": "4de86b42d8ab889ec6f6b4e4996f04903f87c19830ed0bb591348cee9bfbbdd8",
+    "representation_appendix.tex": "9f20824d0df3f91566963e3e3fa002fd9d76e12c8bd47810e28ebd18db7679f5",
+    "tanh_pde_experiments.tex": "ddaff73bf568c0d132817d3b16ce1aa1c70be5edbc3c9f4f8ef5f37d4679d8c9",
+    "tables/representation_hybrid_summary.tex": "2f49d114ae73576acc0a45be29203656eea5e178ca5a0101cbdd84c0625262b6",
+    "images/disk_gap_revised.pdf": "d7ed1f06003eb4aa8707df40b1505c687e87f725d30befefba25d66a109e4b7a",
+    "images/disk_figure_revised.pdf": "5dd98de72b937079187bae33c7f9af2747c14ae4463ed462159b2d0f3f8b20bc",
+    "images/controlled_certification.pdf": "71cbb1896cb306c0e9fdf9c0f8621b7a2425e280c92ac44c176eaddb88a7d729",
+    "images/geometry_controls_revised.pdf": "868d0dabb6d7e74c1ed898e523bf94366e7ff42056f886e1213ca49bbc3bcc18",
+    "images/disk_extended_certification.pdf": "5e8d50b1f7b4ffdbfd2cee70dbe63cc8a9b4796bdeeeaa8e4aa42698a04e6933",
+    "images/tanh_pde_gaps.pdf": "2cbe074029e8ccadddf8fd5a6334fcb344f4b636e2e81100e4ae8d34c522934f"
+  },
+  "registry_sha256": {
+    "REVISION.md": "acac061edffd163e384fb43b77fa274f9f6c29dfdb6b8d10855ffa41e4bc76ab",
+    "REPRODUCIBILITY.md": "91b497fd9da46c9161f17fe73167831b6a17b031055303d637647cba4aabbc97"
+  },
+  "environment": {
+    "python": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
+    "platform": "macOS-15.5-arm64-arm-64bit-Mach-O",
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.4"
+  },
+  "panels": 13,
+  "triangles": 20,
+  "validation": "validation/result.json; validation/pdf_qa.json",
+  "source_records": "validation/plot_metadata.json",
+  "canonical_renderer": "render.py",
+  "limitations": [
+    "Theorem-reference guides are not fitted slopes or known theorem constants",
+    "Finite-precision figures use explicitly qualified ideal-arithmetic references",
+    "No rate is claimed for joint polar refinement or hybrid L2 hat trajectories"
+  ]
+}

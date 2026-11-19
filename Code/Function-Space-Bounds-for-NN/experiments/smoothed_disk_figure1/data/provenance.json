@@ -1,0 +1,32 @@
+{
+  "frozen_network_sha256": "40394b9bc346146f8d6bfa7a9ee3dd89f88d80b396bc5efffdfd70f51cdb29e9",
+  "source_checkpoint_sha256": "a2177f934ceb642eef29afda5d25fd99face24f521802cf2ec2a04c52d5060e3",
+  "source_study": "paper-maxgap-v2/relu/deep/disk",
+  "figure_source_sha256": {
+    "disk-gap-million.pdf": "c0bd3927c5385109997ecafb7bba1fbbd826279994ea8713a75efb30431fc821",
+    "disk-partitions.pdf": "d5fce4316f0bc355e3ae2ea836397524ce90cfb39e546b45d03c85c356a5dfd1"
+  },
+  "policies": {
+    "maxgap": {
+      "mesh_leaves": 16384,
+      "mesh_gap_approx": 0.02991280565495976,
+      "mesh_resolved_leaves": 6876,
+      "mesh_source_sha256": "b626d7f7cc6c784ce0ef4177d6c9248096019fe55359fcd27e708010a96db3c4",
+      "final_leaves": 1048576,
+      "final_gap_approx": 0.00021260793895042633,
+      "final_resolved_leaves": 529308,
+      "final_local_calls": 1398101
+    },
+    "uniform": {
+      "mesh_leaves": 16384,
+      "mesh_gap_approx": 0.17277599245340444,
+      "mesh_resolved_leaves": 8407,
+      "mesh_source_sha256": "fc9328db16d80f0bf16d0d98628208465b35271e86511cdb5485a62c8fa165a7",
+      "final_leaves": 1048576,
+      "final_gap_approx": 0.005075663283553297,
+      "final_resolved_leaves": 931523,
+      "final_local_calls": 1398101
+    }
+  },
+  "gap_reduction_percent_approx": 95.81122846270475
+}

@@ -1,0 +1,12 @@
+{
+  "adaptive": {
+    "cells": 3850,
+    "volume": "4",
+    "status": "leaf_budget_exhausted"
+  },
+  "uniform": {
+    "cells": 4096,
+    "volume": "4",
+    "status": "leaf_budget_exhausted"
+  }
+}

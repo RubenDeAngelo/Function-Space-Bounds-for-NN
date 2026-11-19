@@ -1,0 +1,10 @@
+{
+  "dyadic_partition_checks": 152,
+  "independent_2d_leaf_integrals": 56421,
+  "independent_2d_runs": 84,
+  "runs": 152,
+  "tolerance_reached": 18,
+  "leaves": 99429,
+  "leaf_budget_exhausted": 130,
+  "exact": 4
+}

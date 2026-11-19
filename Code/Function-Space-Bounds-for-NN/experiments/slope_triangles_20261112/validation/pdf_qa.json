@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "pages": 34,
+  "rendered_and_visually_reviewed_pages": 34,
+  "main_pdf_sha256": "26a602f08c7021a9a42821dee3ddfa4e6d2c6e76663c741e3b864cdadd86bf33",
+  "no_undefined_references_or_citations": true,
+  "no_overfull_boxes": true,
+  "unsupported_line_figures_excluded": true,
+  "unchanged_theorem_proof_and_smooth_sources": true,
+  "unchanged_supplement_and_bibliography": true,
+  "warnings": [
+    "Existing todonotes margin-width warning",
+    "Existing author-affiliation underfull line"
+  ],
+  "triangle_validation": {
+    "status": "passed",
+    "convergence_panels": 13,
+    "verified_triangles": 20,
+    "hashed_input_files": 18,
+    "unchanged_frozen_pde_files": 56,
+    "hat_table_records": 4,
+    "checks": [
+      "prescribed theorem rate per policy and quantity",
+      "independently recomputed triangle slopes",
+      "source data and complete frozen PDE package hashes",
+      "exact hat table work counts and integral inclusion"
+    ]
+  }
+}

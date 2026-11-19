@@ -1,0 +1,722 @@
+[
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 4,
+    "evaluations": 7
+  },
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 27,
+    "evaluations": 53
+  },
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": true,
+    "leaves": 235,
+    "evaluations": 469
+  },
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 4,
+    "evaluations": 7
+  },
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 32,
+    "evaluations": 63
+  },
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": true,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 6,
+    "evaluations": 11
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 31,
+    "evaluations": 61
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 8,
+    "evaluations": 15
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 32,
+    "evaluations": 63
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": true,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 234,
+    "evaluations": 467
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 6,
+    "evaluations": 11
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 43,
+    "evaluations": 85
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 8,
+    "evaluations": 15
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 64,
+    "evaluations": 127
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 6,
+    "evaluations": 11
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 40,
+    "evaluations": 79
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 8,
+    "evaluations": 15
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 64,
+    "evaluations": 127
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 6,
+    "evaluations": 11
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 26,
+    "evaluations": 51
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": true,
+    "leaves": 234,
+    "evaluations": 467
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 8,
+    "evaluations": 15
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 32,
+    "evaluations": 63
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": true,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 6,
+    "evaluations": 11
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 29,
+    "evaluations": 57
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 8,
+    "evaluations": 15
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 32,
+    "evaluations": 63
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": true,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H1",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H1",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H1",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H1",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H1",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H1",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H2",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H2",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H2",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H2",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H2",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "disk-H2",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "adaptive",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 46,
+    "evaluations": 61
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "adaptive",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 505,
+    "evaluations": 673
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "adaptive",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "uniform",
+    "tolerance": "1",
+    "reached": true,
+    "leaves": 64,
+    "evaluations": 85
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "uniform",
+    "tolerance": "0.1",
+    "reached": true,
+    "leaves": 1024,
+    "evaluations": 1365
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "uniform",
+    "tolerance": "0.01",
+    "reached": false,
+    "leaves": null,
+    "evaluations": null
+  }
+]

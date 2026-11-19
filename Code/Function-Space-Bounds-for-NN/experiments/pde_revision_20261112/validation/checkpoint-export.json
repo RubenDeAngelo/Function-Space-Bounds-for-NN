@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "parameters_matching_exactly": 2241,
+  "checkpoint_sha256": "ef6f86774250c824d73bec758fbfe1f57b3aa53b922a3350d16903ba0b46a54c",
+  "network_sha256": "fb00acc8ea1441e95e3480bfa8217be3fbcd898f2fe32a6a6195067c6d00ffe4"
+}

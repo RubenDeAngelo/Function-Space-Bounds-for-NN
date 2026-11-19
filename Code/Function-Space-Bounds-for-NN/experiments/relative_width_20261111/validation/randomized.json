@@ -1,0 +1,7 @@
+{
+  "seed": 20261111,
+  "networks": 20,
+  "comparisons": 80,
+  "independent_integrals": 40,
+  "all_passed": true
+}

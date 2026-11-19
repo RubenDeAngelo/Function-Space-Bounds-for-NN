@@ -1,0 +1,9 @@
+{
+  "terminal_records_checked": 72,
+  "main_printed_intervals_checked": 16,
+  "supplement_printed_intervals_checked": 144,
+  "summary_records_checked": 48,
+  "exact_endpoint_csv": "passed",
+  "outward_decimal_endpoints": "passed",
+  "reference_and_asset_checks": "passed"
+}

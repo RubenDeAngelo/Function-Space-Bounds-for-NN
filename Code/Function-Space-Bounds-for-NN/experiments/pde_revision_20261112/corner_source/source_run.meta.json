@@ -1,0 +1,146 @@
+{
+  "seed": 0,
+  "precision": "64",
+  "repetition": 0,
+  "mode": "independent",
+  "general": false,
+  "command": [
+    "/Users/moritz/Projekte/Certified Integration of Neural Networks via Low-Precision Surrogates/Code/build/verify",
+    "--model",
+    "/Users/moritz/Projekte/Certified Integration of Neural Networks via Low-Precision Surrogates/Code/models/seed0/weights.bin",
+    "--precision",
+    "64",
+    "--seconds",
+    "600",
+    "--leaves",
+    "1048576",
+    "--boundary",
+    "262144",
+    "--depth",
+    "40",
+    "--history-out",
+    "/Users/moritz/Projekte/Certified Integration of Neural Networks via Low-Precision Surrogates/Code/results/bench/seed0-history.txt"
+  ],
+  "returncode": 0,
+  "process_seconds": 50.15648595899984,
+  "model_sha256": "024928721d94fa6400f5f02c00df6eda9c203de1dc2c100f127c44b211556df9",
+  "verifier_sha256": "33947b2e1cfd6f3a02897d6d99d6851b4ec67477e21ff5ee11aa1d59374cf0fd",
+  "final": {
+    "status": "leaf_limit",
+    "seconds": 49.743847125,
+    "steps": 1049812,
+    "interior": 1048576,
+    "boundary": 1246,
+    "affine_interior": 579001,
+    "affine_boundary": 1118,
+    "affine_area_estimate": 2.284404000427526,
+    "max_dr": 15,
+    "max_dz": 18,
+    "error_upper": 0.5010865843433235,
+    "intervals": {
+      "J": {
+        "lo": -0.5097995539682459,
+        "hi": -0.5080660869239683,
+        "hex_lo": "-0x1.050472779e35bp-1",
+        "hex_hi": "-0x1.04213cf7171c3p-1"
+      },
+      "C": {
+        "lo": -0.0680102604960069,
+        "hi": -0.06800993361703118,
+        "hex_lo": "-0x1.1691ed49f6f31p-4",
+        "hex_hi": "-0x1.1691958b0331dp-4"
+      },
+      "Ba2": {
+        "lo": 0.0004588951531763002,
+        "hi": 0.0004589174978456518,
+        "hex_lo": "0x1.e12fbacd8ee99p-12",
+        "hex_hi": "0x1.e135ba51237a5p-12"
+      },
+      "B2": {
+        "lo": 0.0011037380342726153,
+        "hi": 0.0011037930523380127,
+        "hex_lo": "0x1.21569b0ace32dp-10",
+        "hex_hi": "0x1.215a4c3ed0e77p-10"
+      },
+      "T": {
+        "lo": 0.24588636089442814,
+        "hi": 0.2510877650088586,
+        "hex_lo": "0x1.f79344b49798fp-3",
+        "hex_hi": "0x1.011d26ac8e1c9p-2"
+      }
+    },
+    "metrics": {
+      "geometry_seconds": 22.535123439051066,
+      "network_seconds": 15.609827393511559,
+      "coefficient_seconds": 0.13016818900102817,
+      "aggregation_seconds": 1.382809592877987,
+      "priority_seconds": 3.854342870011589,
+      "evaluations": 2099634,
+      "accepted_cumulative": 580119,
+      "inconclusive_signs": 1650412,
+      "coefficient_cache_hits": 579499,
+      "coefficient_cache_misses": 620,
+      "peak_rss_bytes": 856211456
+    }
+  },
+  "targets": {
+    "target_0": {
+      "status": "target_0",
+      "seconds": 26.05831275,
+      "steps": 584477,
+      "interior": 583355,
+      "boundary": 1132,
+      "affine_interior": 312211,
+      "affine_boundary": 1003,
+      "affine_area_estimate": 2.240375171091822,
+      "max_dr": 14,
+      "max_dz": 17,
+      "error_upper": 0.5034696547041011,
+      "intervals": {
+        "J": {
+          "lo": -0.5106007132174969,
+          "hi": -0.5072685075849644,
+          "hex_lo": "-0x1.056d74e92ab69p-1",
+          "hex_hi": "-0x1.03b8b2a4bc7e3p-1"
+        },
+        "C": {
+          "lo": -0.06801065308382492,
+          "hi": -0.06800954139628411,
+          "hex_lo": "-0x1.169256ac64e2p-4",
+          "hex_hi": "-0x1.16912c41ced77p-4"
+        },
+        "Ba2": {
+          "lo": 0.0004588831302880813,
+          "hi": 0.0004589299163885799,
+          "hex_lo": "0x1.e12c8098ac028p-12",
+          "hex_hi": "0x1.e1390fb674c8p-12"
+        },
+        "B2": {
+          "lo": 0.0011037234845525234,
+          "hi": 0.0011038083717601367,
+          "hex_lo": "0x1.2155a11475b3dp-10",
+          "hex_hi": "0x1.215b536e58d8bp-10"
+        },
+        "T": {
+          "lo": 0.24348169446154586,
+          "hi": 0.2534816932078668,
+          "hex_lo": "0x1.f2a687d718957p-3",
+          "hex_hi": "0x1.0390b479d997dp-2"
+        }
+      },
+      "metrics": {
+        "geometry_seconds": 11.846359652005656,
+        "network_seconds": 8.483941689942602,
+        "coefficient_seconds": 0.05925492799949655,
+        "aggregation_seconds": 0.5912595799867006,
+        "priority_seconds": 1.8307000340035935,
+        "evaluations": 1168964,
+        "accepted_cumulative": 313214,
+        "inconclusive_signs": 966353,
+        "coefficient_cache_hits": 312640,
+        "coefficient_cache_misses": 574,
+        "peak_rss_bytes": 572784640
+      }
+    }
+  }
+}

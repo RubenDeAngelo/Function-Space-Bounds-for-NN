@@ -1,0 +1,19 @@
+{
+  "canonical_source": "/Users/moritz/Projekte/RICAM Presentation/Code",
+  "source_files_sha256": {
+    "weights.bin": "024928721d94fa6400f5f02c00df6eda9c203de1dc2c100f127c44b211556df9",
+    "model_manifest.json": "698ddebf2bba65b6f2d490a7d04d5ab7be859856eb4c05b01058f32615f2cd3c",
+    "source_run.jsonl": "12f0199f6f07b703c31c7748fcb6005f3c898451d996b69641f0b1af63f7fa65",
+    "source_run.meta.json": "f94720abaf05af1c081ce9cbbf84805654cd47a587cd83bb97e870e21d6ca41e",
+    "main.cpp": "552b53d3a6d99541d41fcd5a0c9cd31d2b7445ed4659e3a76524744f33fd5aea",
+    "interval.hpp": "57745ea8914e7da0e85f1828c24add848ddbe73eb8468ed6a8ff6bc0586cb040",
+    "VALIDITY.md": "3a024a8455026789fe5988eb90f511114b3b383321249deafcdf5178994f2ca7",
+    "experiment-proposal.md": "c4d8037a6b9a338919678f6211f2410c719679b81db960ee31d66b0732ff7740",
+    "train.py": "38814cf0dfca5784a0012d45bbe94a5e8a0c5a2edacd4a254745cf3b89478c5a",
+    "export_model.py": "30164b0a3ba143c982f65aa8dfb30454b77aba3ad86b9b35e770c1875f1fc0b8",
+    "verify_archived": "33947b2e1cfd6f3a02897d6d99d6851b4ec67477e21ff5ee11aa1d59374cf0fd"
+  },
+  "verifier_sha256": "33947b2e1cfd6f3a02897d6d99d6851b4ec67477e21ff5ee11aa1d59374cf0fd",
+  "import_scope": "Only J(v) and B2 (unweighted full-boundary squared residual) are presented. The raw archived program and records contain additional quantities, which are not part of this paper. Saved joint partition sequence, not J- or B2-maxgap.",
+  "model_sha256": "024928721d94fa6400f5f02c00df6eda9c203de1dc2c100f127c44b211556df9"
+}

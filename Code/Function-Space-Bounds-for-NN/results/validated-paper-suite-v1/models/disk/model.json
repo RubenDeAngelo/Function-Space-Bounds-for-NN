@@ -1,0 +1,46 @@
+{
+  "architecture": [
+    2,
+    32,
+    32,
+    32,
+    1
+  ],
+  "seed": 20261024,
+  "training": {
+    "architecture": [
+      2,
+      32,
+      32,
+      32,
+      1
+    ],
+    "seed": 20261024,
+    "points": 5000,
+    "epsilon": 0.5,
+    "epochs": 10000,
+    "lr": 0.001,
+    "weight_decay": 0.001,
+    "max_leaves": 1024,
+    "domain": [
+      [
+        -1.5,
+        1.5
+      ],
+      [
+        -1.5,
+        1.5
+      ]
+    ]
+  },
+  "grid_max_abs_error": 0.35286331949457617,
+  "checkpoint_sha256": "9926ab08806a40cb603a6ce96f4c260c2488d42f05143ab18049e59978cf641d",
+  "network_sha256": "3975e5ec81187bead473138966f199b2f636c8dd3f587e394f72d9cfbe7cac20",
+  "dtype": "float64",
+  "activation": "tanh",
+  "coefficient_semantics": "stored binary64 values as exact real coefficients",
+  "data_sha256": {
+    "fit_grid.npz": "81b341903e8fe47c10ce3b6d0a189583dab8b7b6ded771fdc2274cec089defa2",
+    "training_data.npz": "89e854d57c155dbdf14af7d5c7f9d6f8cfa66c3e6ac1896b92c410247e2e5274"
+  }
+}

@@ -1,0 +1,14 @@
+tanh disk passed
+tanh one-d-seed0-trained passed
+tanh one-d-seed0-untrained passed
+tanh one-d-seed1-trained passed
+tanh one-d-seed1-untrained passed
+tanh one-d-seed2-trained passed
+tanh one-d-seed2-untrained passed
+tanh pinn passed
+tanh two-bumps passed
+relu deep two-bumps passed
+relu deep disk passed
+relu shallow200 two-bumps passed
+relu shallow200 disk passed
+All 13 checkpoint/coefficient/data artifact sets passed.

@@ -1,0 +1,17 @@
+trained-deep-disk H1 maxgap matched; 0.783048 s
+trained-deep-disk H1 uniform matched; 0.7008 s
+trained-deep-disk L2 maxgap matched; 0.336588 s
+trained-deep-disk L2 uniform matched; 0.301673 s
+trained-deep-two-bumps H1 maxgap matched; 0.75463 s
+trained-deep-two-bumps H1 uniform matched; 0.6811 s
+trained-deep-two-bumps L2 maxgap matched; 0.330433 s
+trained-deep-two-bumps L2 uniform matched; 0.291773 s
+trained-shallow200-disk H1 maxgap matched; 0.352583 s
+trained-shallow200-disk H1 uniform matched; 0.330318 s
+trained-shallow200-disk L2 maxgap matched; 0.150382 s
+trained-shallow200-disk L2 uniform matched; 0.146126 s
+trained-shallow200-two-bumps H1 maxgap matched; 0.324163 s
+trained-shallow200-two-bumps H1 uniform matched; 0.324391 s
+trained-shallow200-two-bumps L2 maxgap matched; 0.162475 s
+trained-shallow200-two-bumps L2 uniform matched; 0.166506 s
+All 16 trained terminal certificates exactly match frozen rational backend.

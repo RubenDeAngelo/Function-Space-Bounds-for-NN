@@ -1,0 +1,27 @@
+{
+  "id": "disk-H1",
+  "model": "disk",
+  "kind": "sobolev",
+  "order": 1,
+  "domain": [
+    [
+      -1.5,
+      1.5
+    ],
+    [
+      -1.5,
+      1.5
+    ]
+  ],
+  "max_leaves": 1024,
+  "group": "disk",
+  "bits": 128,
+  "p": 2,
+  "theta": "7/20",
+  "tolerance": "0",
+  "network_sha256": "3975e5ec81187bead473138966f199b2f636c8dd3f587e394f72d9cfbe7cac20",
+  "source_model": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/disk",
+  "source_run": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/disk-H1",
+  "maxgap_rule": "exactly one maximum local integral-gap leaf; smallest creation id breaks ties; budget-only stopping",
+  "subdivision": "bisect every coordinate"
+}

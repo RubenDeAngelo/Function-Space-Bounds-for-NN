@@ -1,0 +1,25 @@
+one-d-seed0-untrained-H1 maxgap exact replay passed
+one-d-seed0-untrained-H1 uniform exact replay passed
+one-d-seed0-untrained-H2 maxgap exact replay passed
+one-d-seed0-untrained-H2 uniform exact replay passed
+one-d-seed0-trained-H1 maxgap exact replay passed
+one-d-seed0-trained-H1 uniform exact replay passed
+one-d-seed0-trained-H2 maxgap exact replay passed
+one-d-seed0-trained-H2 uniform exact replay passed
+one-d-seed1-untrained-H1 maxgap exact replay passed
+one-d-seed1-untrained-H1 uniform exact replay passed
+one-d-seed1-untrained-H2 maxgap exact replay passed
+one-d-seed1-untrained-H2 uniform exact replay passed
+one-d-seed1-trained-H1 maxgap exact replay passed
+one-d-seed1-trained-H1 uniform exact replay passed
+one-d-seed1-trained-H2 maxgap exact replay passed
+one-d-seed1-trained-H2 uniform exact replay passed
+one-d-seed2-untrained-H1 maxgap exact replay passed
+one-d-seed2-untrained-H1 uniform exact replay passed
+one-d-seed2-untrained-H2 maxgap exact replay passed
+one-d-seed2-untrained-H2 uniform exact replay passed
+one-d-seed2-trained-H1 maxgap exact replay passed
+one-d-seed2-trained-H1 uniform exact replay passed
+one-d-seed2-trained-H2 maxgap exact replay passed
+one-d-seed2-trained-H2 uniform exact replay passed
+Exact replay passed for 12 cases, excluding timing.

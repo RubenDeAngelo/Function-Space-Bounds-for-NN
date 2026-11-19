@@ -1,0 +1,15 @@
+{
+  "norm": "L2",
+  "plotted_quantity": "U-L for integral |Phi|^2",
+  "reference_slope": -0.5,
+  "triangle_horizontal_factor": 4,
+  "triangle_vertical_divisor": 2,
+  "meaning": "Theoretical exact-arithmetic integral-gap reference; not a fit or claim of fixed-precision asymptotics",
+  "render_source_sha256": "07c2e2fd63c772b69ef15d00918b8832ec7d136587c872ec562957fcfc49c1be",
+  "triangle_labels": {
+    "horizontal": "2",
+    "vertical": "1",
+    "diagonal": "N^(-1/2)"
+  },
+  "label_convention": "log-coordinate lengths normalized to 2:1; geometry unchanged"
+}

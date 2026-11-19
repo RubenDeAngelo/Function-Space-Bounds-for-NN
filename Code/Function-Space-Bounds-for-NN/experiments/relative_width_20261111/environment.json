@@ -1,0 +1,10 @@
+{
+  "platform": "macOS-15.5-arm64-arm-64bit-Mach-O",
+  "python": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "compiler": "Apple clang version 15.0.0 (clang-1500.3.9.4)",
+  "gmp_version": "6.3.0",
+  "gmp_version_header": "/opt/homebrew/include/gmp.h",
+  "concurrent_jobs": 4,
+  "timing_scope": "Integration only, excluding model parsing and process startup; single-threaded jobs, up to four concurrent; descriptive elapsed times, not isolated benchmarks.",
+  "base_code_commit": "ba433dceab5958fe842ef98569667b9d7cf5f53a"
+}

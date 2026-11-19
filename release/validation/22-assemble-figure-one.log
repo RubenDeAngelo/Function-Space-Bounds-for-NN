@@ -1,0 +1,59 @@
+Rc files read:
+  NONE
+Latexmk: This is Latexmk, John Collins, 31 Jan. 2024. Version 4.83.
+No existing .aux file, so I'll make a simple one, and require run of *latex.
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'pdflatex' forced or previously required:
+    Reason or flag: 'Initial setup'
+
+------------
+Run number 1 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder -output-directory="images"  "disk_figure_revised.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./disk_figure_revised.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2022/10/10 v1.3b Class to compile TeX sub-files stan
+dalone
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/shellesc.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifluatex.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/standalone/standalone.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size10.clo)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(images/disk_figure_revised.aux)
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ima
+ges/disk_gap_revised.pdf> <./images/disk_partitions_preserved.pdf>]
+(images/disk_figure_revised.aux) )</usr/local/texlive/2024/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmbx9.pfb>
+Output written on images/disk_figure_revised.pdf (1 page, 585693 bytes).
+Transcript written on images/disk_figure_revised.log.
+Latexmk: Getting log file 'images/disk_figure_revised.log'
+Latexmk: Examining 'images/disk_figure_revised.fls'
+Latexmk: Examining 'images/disk_figure_revised.log'
+Latexmk: Log file says output to 'images/disk_figure_revised.pdf'
+Latexmk: All targets (images/disk_figure_revised.pdf) are up-to-date
+

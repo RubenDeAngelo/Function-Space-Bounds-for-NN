@@ -1,0 +1,265 @@
+[
+  {
+    "id": "two-bumps-L2",
+    "model": "two-bumps",
+    "kind": "sobolev",
+    "order": 0,
+    "domain": [
+      [
+        -1,
+        1
+      ],
+      [
+        -1,
+        1
+      ]
+    ],
+    "max_leaves": 4096,
+    "group": "two_bumps"
+  },
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "model": "one-d-seed0-untrained",
+    "kind": "sobolev",
+    "order": 1,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "untrained",
+    "seed": 0
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "model": "one-d-seed0-untrained",
+    "kind": "sobolev",
+    "order": 2,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "untrained",
+    "seed": 0
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "model": "one-d-seed0-trained",
+    "kind": "sobolev",
+    "order": 1,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "trained",
+    "seed": 0
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "model": "one-d-seed0-trained",
+    "kind": "sobolev",
+    "order": 2,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "trained",
+    "seed": 0
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "model": "one-d-seed1-untrained",
+    "kind": "sobolev",
+    "order": 1,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "untrained",
+    "seed": 1
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "model": "one-d-seed1-untrained",
+    "kind": "sobolev",
+    "order": 2,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "untrained",
+    "seed": 1
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "model": "one-d-seed1-trained",
+    "kind": "sobolev",
+    "order": 1,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "trained",
+    "seed": 1
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "model": "one-d-seed1-trained",
+    "kind": "sobolev",
+    "order": 2,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "trained",
+    "seed": 1
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "model": "one-d-seed2-untrained",
+    "kind": "sobolev",
+    "order": 1,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "untrained",
+    "seed": 2
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "model": "one-d-seed2-untrained",
+    "kind": "sobolev",
+    "order": 2,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "untrained",
+    "seed": 2
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "model": "one-d-seed2-trained",
+    "kind": "sobolev",
+    "order": 1,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "trained",
+    "seed": 2
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "model": "one-d-seed2-trained",
+    "kind": "sobolev",
+    "order": 2,
+    "domain": [
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 256,
+    "group": "one_d",
+    "state": "trained",
+    "seed": 2
+  },
+  {
+    "id": "disk-H1",
+    "model": "disk",
+    "kind": "sobolev",
+    "order": 1,
+    "domain": [
+      [
+        -1.5,
+        1.5
+      ],
+      [
+        -1.5,
+        1.5
+      ]
+    ],
+    "max_leaves": 1024,
+    "group": "disk"
+  },
+  {
+    "id": "disk-H2",
+    "model": "disk",
+    "kind": "sobolev",
+    "order": 2,
+    "domain": [
+      [
+        -1.5,
+        1.5
+      ],
+      [
+        -1.5,
+        1.5
+      ]
+    ],
+    "max_leaves": 1024,
+    "group": "disk"
+  },
+  {
+    "id": "pinn-residual",
+    "model": "pinn",
+    "kind": "poisson_residual",
+    "domain": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "max_leaves": 1024,
+    "group": "pinn"
+  }
+]

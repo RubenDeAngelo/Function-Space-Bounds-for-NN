@@ -1,0 +1,10 @@
+{
+  "name": "validated-paper-suite-v1",
+  "bits": 128,
+  "theta": "7/20",
+  "tolerance": "0",
+  "orders": [1, 2],
+  "one_d": {"architecture": [1, 32, 32, 32, 1], "seeds": [0, 1, 2], "points": 150, "epochs": 3000, "lr": 0.001, "weight_decay": 0.0001, "max_leaves": 256, "domain": [[0, 1]], "target": "exp(-100*(x-0.5)^2)"},
+  "disk": {"architecture": [2, 32, 32, 32, 1], "seed": 20261024, "points": 5000, "epsilon": 0.5, "epochs": 10000, "lr": 0.001, "weight_decay": 0.001, "max_leaves": 1024, "domain": [[-1.5, 1.5], [-1.5, 1.5]]},
+  "pinn": {"architecture": [2, 32, 32, 32, 1], "seed": 42, "data_seed": 1042, "interior_points_per_epoch": 1000, "boundary_points_per_edge_per_epoch": 200, "epochs": 10000, "lr": 0.001, "weight_decay": 0.001, "max_leaves": 1024, "domain": [[0, 1], [0, 1]], "target": "tanh(x+y-1)", "quantity": "integral (Phi_xx+Phi_yy-2*tanh''(x+y-1))^2"}
+}

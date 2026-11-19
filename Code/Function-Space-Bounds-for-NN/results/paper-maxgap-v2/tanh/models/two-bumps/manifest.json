@@ -1,0 +1,50 @@
+{
+  "command": [
+    "exp_verified_two_bumps.py",
+    "--reuse",
+    "results/two-bumps-figure1",
+    "--output",
+    "results/two-bumps-deep-l2",
+    "--norm",
+    "L2",
+    "--reference-slope",
+    "--max-leaves",
+    "4096"
+  ],
+  "python": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "platform": "macOS-15.5-arm64-arm-64bit-Mach-O",
+  "processor": "arm",
+  "gmpy2": "2.3.2",
+  "mpfr": "MPFR 4.2.2",
+  "gmp": "GMP 6.3.0",
+  "precision_bits": 128,
+  "git_commit": "c1bc41f3b76ba511cb0b34bcdd8fc615b44be476",
+  "git_status": "",
+  "source_sha256": {
+    "exp_verified_two_bumps.py": "e70157d68cd9b84428a2111c0b8c714dc0b16373352e1ecb7759158a00e7a921",
+    "verified_arithmetic.py": "b14e2b1ad1993ee30cc2e8a44e2bfd82cdda8ba0f6ef8fb32b043b86aeb1d7cf",
+    "verified_network.py": "01205d344a206b0e1a39ac3d87f95ffc4439f61e7d77ce5292ed36996660ed70",
+    "verified_integration.py": "360cf1cfa241c628e66a6a60d9691e872c6879bc1fb55ef58f5c76a19bb59cd3"
+  },
+  "network_sha256": "f3576cc58e5981635c95d117941fb727ba741ca17bc694b4fb9e71c44b3497b0",
+  "quantity": "integral sum_{|alpha|<=0} |D^alpha Phi|^2; mixed derivative once",
+  "norm": "L2",
+  "derivative_order": 0,
+  "reference_slope": "N^(-1/2), theoretical integral-gap reference",
+  "domain": [
+    [
+      "-1",
+      "1"
+    ],
+    [
+      "-1",
+      "1"
+    ]
+  ],
+  "theta": "0.35",
+  "max_leaves": 4096,
+  "tolerance": "0",
+  "target": "exp(-((x+.4)^2+(y+.3)^2)/(2*.18^2)) + .7*exp(-((x-.4)^2+(y-.35)^2)/(2*.09^2))",
+  "coefficient_semantics": "stored binary checkpoint numbers interpreted as exact real coefficients",
+  "pip_freeze": "contourpy==1.4.0\ncycler==0.12.1\nfilelock==4.2.4\nfonttools==4.67.0\nfsspec==2026.9.0\ngmpy2==2.3.2\nJinja2==3.1.6\nkiwisolver==1.5.1\nMarkupSafe==3.0.4\nmatplotlib==3.11.2\nmpmath==1.3.0\nnetworkx==3.7\nnumpy==2.5.4\npackaging==26.3\npillow==13.0.0\npyparsing==3.3.3\npython-dateutil==2.9.0.post0\nsetuptools==84.2.0\nsix==1.17.0\nsympy==1.14.0\ntorch==2.14.1\ntyping_extensions==4.16.0\n"
+}

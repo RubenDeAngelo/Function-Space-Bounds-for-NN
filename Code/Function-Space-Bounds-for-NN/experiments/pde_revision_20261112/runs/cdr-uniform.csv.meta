@@ -1,0 +1,4 @@
+status leaf_budget_exhausted
+bits 128
+leaves 65536
+evaluations 87381

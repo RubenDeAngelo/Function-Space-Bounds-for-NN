@@ -1,0 +1,18 @@
+test_deep_hinge_embedding (test_study.Tests.test_deep_hinge_embedding) ... ok
+test_exact_constant_and_degenerate (test_study.Tests.test_exact_constant_and_degenerate) ... ok
+test_inclusion_isotonic_fallback (test_study.Tests.test_inclusion_isotonic_fallback) ... ok
+test_independent_affine_moments (test_study.Tests.test_independent_affine_moments) ... ok
+test_independent_regions_and_every_leaf (test_study.Tests.test_independent_regions_and_every_leaf) ... ok
+test_input_validation (test_study.Tests.test_input_validation) ... ok
+test_known_hinge_integrals_2d_3d (test_study.Tests.test_known_hinge_integrals_2d_3d) ... ok
+test_literal_lipschitz_enclosure_subclass (test_study.Tests.test_literal_lipschitz_enclosure_subclass) ... ok
+test_matching_hinge_lower_bounds (test_study.Tests.test_matching_hinge_lower_bounds) ... ok
+test_positive_tolerance_and_zero (test_study.Tests.test_positive_tolerance_and_zero) ... ok
+test_random_deep_regions (test_study.Tests.test_random_deep_regions) ... ok
+test_slope_includes_zero (test_study.Tests.test_slope_includes_zero) ... ok
+test_stable_parent_descendants (test_study.Tests.test_stable_parent_descendants) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.652s
+
+OK

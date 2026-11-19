@@ -1,0 +1,12 @@
+maxgap H1 N=1 relative=2 calls=1 seconds=0.000532291
+maxgap H1 N=4 relative=2 calls=5 seconds=0.002463
+maxgap H1 N=16 relative=2 calls=21 seconds=0.0101163
+maxgap H1 N=64 relative=2 calls=85 seconds=0.0418361
+maxgap H1 N=256 relative=2 calls=341 seconds=0.171682
+maxgap H1 N=1024 relative=1.98903 calls=1365 seconds=0.687633
+maxgap H1 N=4096 relative=1.57293 calls=5461 seconds=2.53436
+maxgap H1 N=16384 relative=0.746322 calls=21845 seconds=8.64699
+maxgap H1 N=65536 relative=0.238059 calls=87381 seconds=29.6835
+maxgap H1 N=262144 relative=0.0632477 calls=349525 seconds=111.953
+maxgap H1 N=1048576 relative=0.0162653 calls=1398101 seconds=465.975
+maxgap H1 N=1718341 relative=0.00999999 calls=2291121 seconds=772.815

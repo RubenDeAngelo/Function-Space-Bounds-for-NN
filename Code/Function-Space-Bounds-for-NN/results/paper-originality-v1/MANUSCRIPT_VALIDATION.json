@@ -1,0 +1,21 @@
+{
+  "pages": 31,
+  "build": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "undefined_references": 0,
+  "undefined_citations": 0,
+  "multiply_defined_labels": 0,
+  "overfull_boxes": 0,
+  "retained_warnings": [
+    "todonotes marginparwidth warning",
+    "author-affiliation underfull box"
+  ],
+  "unique_source_labels": 91,
+  "bibliography_records": 13,
+  "controlled_runs": 86,
+  "exact_relu_terminal_cells": 6012,
+  "targeted_tests_passed": 5,
+  "all_controlled_repeats_match_except_seconds": true,
+  "new_table_sources_reproduce_byte_for_byte": true,
+  "visual_review": "all 31 pages in montages; new theory, controlled tables, enlarged figure, title and conclusion checked in rendered pages",
+  "novelty_scope": "no new/first or exhaustive absence-of-prior-art claim"
+}

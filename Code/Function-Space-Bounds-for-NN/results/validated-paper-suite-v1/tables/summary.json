@@ -1,0 +1,212 @@
+[
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "adaptive",
+    "gap": 0.009671974814568057,
+    "leaves": 235,
+    "evaluations": 469
+  },
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "uniform",
+    "gap": 0.008448477467392539,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "adaptive",
+    "gap": 0.011019481281558927,
+    "leaves": 229,
+    "evaluations": 457
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "uniform",
+    "gap": 0.00923408666831804,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "adaptive",
+    "gap": 0.9611745251187883,
+    "leaves": 234,
+    "evaluations": 467
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "uniform",
+    "gap": 1.9381811923015881,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "adaptive",
+    "gap": 246.56518849174594,
+    "leaves": 255,
+    "evaluations": 509
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "uniform",
+    "gap": 621.7616917820749,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "adaptive",
+    "gap": 0.014598846898119171,
+    "leaves": 241,
+    "evaluations": 481
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "uniform",
+    "gap": 0.013309968794759115,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "adaptive",
+    "gap": 0.016224060309039237,
+    "leaves": 232,
+    "evaluations": 463
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "uniform",
+    "gap": 0.014039617846707859,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "adaptive",
+    "gap": 1.1536326762220368,
+    "leaves": 248,
+    "evaluations": 495
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "uniform",
+    "gap": 2.444924540806698,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "adaptive",
+    "gap": 351.9755468185689,
+    "leaves": 223,
+    "evaluations": 445
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "uniform",
+    "gap": 743.9995789564229,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "adaptive",
+    "gap": 0.009534646387640096,
+    "leaves": 234,
+    "evaluations": 467
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "uniform",
+    "gap": 0.008347018707870888,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "adaptive",
+    "gap": 0.010384979705022633,
+    "leaves": 241,
+    "evaluations": 481
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "uniform",
+    "gap": 0.009469385420594249,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "adaptive",
+    "gap": 1.1753264634188758,
+    "leaves": 229,
+    "evaluations": 457
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "uniform",
+    "gap": 2.2865230462940502,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "adaptive",
+    "gap": 341.28165603470313,
+    "leaves": 231,
+    "evaluations": 461
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "uniform",
+    "gap": 811.2432270309912,
+    "leaves": 256,
+    "evaluations": 511
+  },
+  {
+    "id": "disk-H1",
+    "policy": "adaptive",
+    "gap": 38.61535028245344,
+    "leaves": 865,
+    "evaluations": 1153
+  },
+  {
+    "id": "disk-H1",
+    "policy": "uniform",
+    "gap": 36.40763746407108,
+    "leaves": 1024,
+    "evaluations": 1365
+  },
+  {
+    "id": "disk-H2",
+    "policy": "adaptive",
+    "gap": 378.9889101852905,
+    "leaves": 709,
+    "evaluations": 945
+  },
+  {
+    "id": "disk-H2",
+    "policy": "uniform",
+    "gap": 315.56603341154516,
+    "leaves": 1024,
+    "evaluations": 1365
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "adaptive",
+    "gap": 0.042132715085766104,
+    "leaves": 757,
+    "evaluations": 1009
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "uniform",
+    "gap": 0.03454611212676468,
+    "leaves": 1024,
+    "evaluations": 1365
+  }
+]

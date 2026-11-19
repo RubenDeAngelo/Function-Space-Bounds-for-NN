@@ -1,0 +1,8 @@
+test_actual_maximum (test_maxgap.MaxGapTests.test_actual_maximum) ... ok
+test_one_box_and_stable_ties (test_maxgap.MaxGapTests.test_one_box_and_stable_ties) ... ok
+test_one_dimensional_budget (test_maxgap.MaxGapTests.test_one_dimensional_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.016s
+
+OK

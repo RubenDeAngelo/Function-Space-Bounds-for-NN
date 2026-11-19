@@ -1,0 +1,8 @@
+maxgap L2 N=1 relative=2 calls=1 seconds=0.000391833
+maxgap L2 N=4 relative=2 calls=5 seconds=0.00124446
+maxgap L2 N=16 relative=1.99405 calls=21 seconds=0.00444975
+maxgap L2 N=64 relative=1.06768 calls=85 seconds=0.0170628
+maxgap L2 N=256 relative=0.511895 calls=341 seconds=0.0748366
+maxgap L2 N=1024 relative=0.151579 calls=1365 seconds=0.286065
+maxgap L2 N=4096 relative=0.0353362 calls=5461 seconds=0.984452
+maxgap L2 N=11545 relative=0.00999828 calls=15393 seconds=2.59211

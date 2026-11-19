@@ -1,0 +1,9 @@
+two-bumps-L2 maxgap exact replay passed
+two-bumps-L2 uniform exact replay passed
+disk-H1 maxgap exact replay passed
+disk-H1 uniform exact replay passed
+disk-H2 maxgap exact replay passed
+disk-H2 uniform exact replay passed
+pinn-residual maxgap exact replay passed
+pinn-residual uniform exact replay passed
+Exact replay passed for 4 cases, excluding timing.

@@ -1,0 +1,6 @@
+{
+  "main_pdf_sha256": "61e1ee805005e91ca6be82c9d107950a3a8666b07a4f7eba5a5c12047f303e28",
+  "main_tex_sha256": "2670a1ae2154f9985b3a0932debbbae3b49ccd7fdf86377fd69fa9122b0d6fad",
+  "archive": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Past Versions/12_11_2026_before_slope_triangles",
+  "numerical_scope": "Presentation only; no training, integration or checkpoint changes"
+}

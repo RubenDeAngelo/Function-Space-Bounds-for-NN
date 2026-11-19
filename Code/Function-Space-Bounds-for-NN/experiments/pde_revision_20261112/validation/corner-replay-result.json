@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "matching_records": 18,
+  "quantities": [
+    "J",
+    "B2"
+  ],
+  "final_interior": 1048576,
+  "final_boundary": 1246,
+  "evaluations": 2099634,
+  "method": "full replay with the archived byte-identical executable; exact hexadecimal endpoint and count comparison"
+}

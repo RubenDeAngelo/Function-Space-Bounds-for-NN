@@ -1,0 +1,16 @@
+audited two-bumps-L2
+audited one-d-seed0-untrained-H1
+audited one-d-seed0-untrained-H2
+audited one-d-seed0-trained-H1
+audited one-d-seed0-trained-H2
+audited one-d-seed1-untrained-H1
+audited one-d-seed1-untrained-H2
+audited one-d-seed1-trained-H1
+audited one-d-seed1-trained-H2
+audited one-d-seed2-untrained-H1
+audited one-d-seed2-untrained-H2
+audited one-d-seed2-trained-H1
+audited one-d-seed2-trained-H2
+audited disk-H1
+audited disk-H2
+audited pinn-residual

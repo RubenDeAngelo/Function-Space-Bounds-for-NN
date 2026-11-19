@@ -1,0 +1,27 @@
+{
+  "seed": 20261020,
+  "architecture": [
+    2,
+    200,
+    1
+  ],
+  "activation": "relu",
+  "dtype": "float64",
+  "target_scale": 1.0,
+  "training_points": 4096,
+  "parameter_count": 801,
+  "training_data_source": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/two-bumps-deep-l2/training_data.npz",
+  "training_data_source_sha256": "d8ff4043f38ed285b3173bdeeda20d793ff0624a27decfe1f3615387989e4ac6",
+  "sampling": "2048 uniform; 1024 each N(centre,(2*width)^2 I), reject outside domain",
+  "adam_epochs": 3000,
+  "adam_lr": 0.001,
+  "lbfgs_max_iter": 250,
+  "metrics": {
+    "grid_MSE": 9.048198279919041e-05,
+    "grid_max_abs_error": 0.05963919669345697,
+    "training_MSE": 6.52026131680869e-05,
+    "seconds": 12.776279416997568
+  },
+  "checkpoint_sha256": "0e2ebf34ed2eca0ea80a8c2565ac6cbfee259c6821b876e98ecf1bb6aed291d1",
+  "training_data_sha256": "d8ff4043f38ed285b3173bdeeda20d793ff0624a27decfe1f3615387989e4ac6"
+}

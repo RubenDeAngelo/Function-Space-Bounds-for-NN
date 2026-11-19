@@ -1,0 +1,185 @@
+{
+  "architecture": [
+    2,
+    32,
+    32,
+    32,
+    1
+  ],
+  "seed": 42,
+  "sampling_seed": 1042,
+  "dtype": "float64",
+  "device": "cpu",
+  "threads": 1,
+  "torch": "2.14.1",
+  "numpy": "2.5.4",
+  "python": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "platform": "macOS-15.5-arm64-arm-64bit-Mach-O",
+  "steps": 10000,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "weight_decay": 0,
+  "interior_points": 3500,
+  "boundary_points_per_facet": 875,
+  "sampling": "one randomly shifted base-(2,3) Halton stream, fixed points; coordinate fixed for each facet",
+  "boundary_order": [
+    "x=0 Dirichlet",
+    "x=1 Dirichlet",
+    "y=0 outward Neumann",
+    "y=1 Dirichlet"
+  ],
+  "epsilon": 1,
+  "training_scope": "PDE and boundary residuals only; no exact-solution value labels",
+  "history": [
+    {
+      "step": 1,
+      "loss": 1.8829001363303373,
+      "interior_MSE": 1.8599354665187209,
+      "boundary_MSE_sum": 0.022964669811616396,
+      "seconds": 0.047673249999206746
+    },
+    {
+      "step": 501,
+      "loss": 0.01912451445975817,
+      "interior_MSE": 0.00458309020932572,
+      "boundary_MSE_sum": 0.014541424250432452,
+      "seconds": 9.518351417002123
+    },
+    {
+      "step": 1001,
+      "loss": 0.004742674111431997,
+      "interior_MSE": 0.0012117545016693783,
+      "boundary_MSE_sum": 0.0035309196097626184,
+      "seconds": 19.611136084000464
+    },
+    {
+      "step": 1501,
+      "loss": 0.003422958752830561,
+      "interior_MSE": 0.0010147684397634638,
+      "boundary_MSE_sum": 0.002408190313067097,
+      "seconds": 30.1420793340003
+    },
+    {
+      "step": 2001,
+      "loss": 0.0027560323622683658,
+      "interior_MSE": 0.0007851606347330749,
+      "boundary_MSE_sum": 0.001970871727535291,
+      "seconds": 40.54099533400222
+    },
+    {
+      "step": 2501,
+      "loss": 0.003187618911547096,
+      "interior_MSE": 0.0015314373693537668,
+      "boundary_MSE_sum": 0.0016561815421933296,
+      "seconds": 51.512283084000956
+    },
+    {
+      "step": 3001,
+      "loss": 0.0017877288781453283,
+      "interior_MSE": 0.0006018647355866065,
+      "boundary_MSE_sum": 0.0011858641425587218,
+      "seconds": 61.92764258399984
+    },
+    {
+      "step": 3501,
+      "loss": 0.008521458427170003,
+      "interior_MSE": 0.00729284966256594,
+      "boundary_MSE_sum": 0.001228608764604064,
+      "seconds": 72.46323470900097
+    },
+    {
+      "step": 4001,
+      "loss": 0.001152368138422647,
+      "interior_MSE": 0.0003806107886232515,
+      "boundary_MSE_sum": 0.0007717573497993955,
+      "seconds": 82.91279854200184
+    },
+    {
+      "step": 4501,
+      "loss": 0.0009342964189251895,
+      "interior_MSE": 0.000297007299359493,
+      "boundary_MSE_sum": 0.0006372891195656965,
+      "seconds": 93.52099891699982
+    },
+    {
+      "step": 5001,
+      "loss": 0.0007734986164766718,
+      "interior_MSE": 0.00024386440792314852,
+      "boundary_MSE_sum": 0.0005296342085535233,
+      "seconds": 104.13207316700209
+    },
+    {
+      "step": 5501,
+      "loss": 0.000680128612631764,
+      "interior_MSE": 0.0002245311570066626,
+      "boundary_MSE_sum": 0.0004555974556251014,
+      "seconds": 114.80605258400101
+    },
+    {
+      "step": 6001,
+      "loss": 0.000622569390561467,
+      "interior_MSE": 0.0002173285242516721,
+      "boundary_MSE_sum": 0.0004052408663097948,
+      "seconds": 125.36093325000184
+    },
+    {
+      "step": 6501,
+      "loss": 0.000581600097886315,
+      "interior_MSE": 0.00021082238896281982,
+      "boundary_MSE_sum": 0.0003707777089234952,
+      "seconds": 136.0208187089993
+    },
+    {
+      "step": 7001,
+      "loss": 0.0006045850086483668,
+      "interior_MSE": 0.00023864072006949015,
+      "boundary_MSE_sum": 0.0003659442885788766,
+      "seconds": 146.68413245900229
+    },
+    {
+      "step": 7501,
+      "loss": 0.000507069622647744,
+      "interior_MSE": 0.00019458693739966308,
+      "boundary_MSE_sum": 0.0003124826852480809,
+      "seconds": 157.21903487500094
+    },
+    {
+      "step": 8001,
+      "loss": 0.00047735978686623873,
+      "interior_MSE": 0.0001860816663832437,
+      "boundary_MSE_sum": 0.000291278120482995,
+      "seconds": 167.77191524999944
+    },
+    {
+      "step": 8501,
+      "loss": 0.0004474152077810471,
+      "interior_MSE": 0.00017557152375830467,
+      "boundary_MSE_sum": 0.0002718436840227424,
+      "seconds": 178.1972174170005
+    },
+    {
+      "step": 9001,
+      "loss": 0.00040932584924125614,
+      "interior_MSE": 0.00016536054952267596,
+      "boundary_MSE_sum": 0.00024396529971858018,
+      "seconds": 188.30757029199958
+    },
+    {
+      "step": 9501,
+      "loss": 0.0003798630846543194,
+      "interior_MSE": 0.0001551324171873028,
+      "boundary_MSE_sum": 0.00022473066746701658,
+      "seconds": 198.2353306670011
+    },
+    {
+      "step": 10000,
+      "loss": 0.0003507125712755978,
+      "interior_MSE": 0.00014456463037171118,
+      "boundary_MSE_sum": 0.00020614794090388663,
+      "seconds": 208.85182854199957
+    }
+  ],
+  "seconds": 208.89234933400076,
+  "source_sha256": "62927ca06a33628d9a6bb2f19583e2eb0b06e37f30a4cb91dca094427d49715a",
+  "network_sha256": "fb00acc8ea1441e95e3480bfa8217be3fbcd898f2fe32a6a6195067c6d00ffe4"
+}

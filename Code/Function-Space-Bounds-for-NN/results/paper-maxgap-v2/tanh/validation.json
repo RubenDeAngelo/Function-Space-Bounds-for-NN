@@ -1,0 +1,126 @@
+{
+  "independent_maxgap_linear_scan_audit": "passed",
+  "cases": [
+    {
+      "id": "two-bumps-L2",
+      "dimension": 2,
+      "marking_decisions_checked": 1365,
+      "leaves": 4096,
+      "evaluations": 5461
+    },
+    {
+      "id": "one-d-seed0-untrained-H1",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed0-untrained-H2",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed0-trained-H1",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed0-trained-H2",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed1-untrained-H1",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed1-untrained-H2",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed1-trained-H1",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed1-trained-H2",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed2-untrained-H1",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed2-untrained-H2",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed2-trained-H1",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "one-d-seed2-trained-H2",
+      "dimension": 1,
+      "marking_decisions_checked": 255,
+      "leaves": 256,
+      "evaluations": 511
+    },
+    {
+      "id": "disk-H1",
+      "dimension": 2,
+      "marking_decisions_checked": 341,
+      "leaves": 1024,
+      "evaluations": 1365
+    },
+    {
+      "id": "disk-H2",
+      "dimension": 2,
+      "marking_decisions_checked": 341,
+      "leaves": 1024,
+      "evaluations": 1365
+    },
+    {
+      "id": "pinn-residual",
+      "dimension": 2,
+      "marking_decisions_checked": 341,
+      "leaves": 1024,
+      "evaluations": 1365
+    }
+  ],
+  "total_marking_decisions_checked": 5448,
+  "uniform_exact_replays": 16,
+  "policy_records_checked": 32,
+  "source_snapshot_tests_passed": 20,
+  "new_maxgap_tests_passed": 3,
+  "paper_directory_files_unchanged": 1063,
+  "unchanged_model_artifact_sets": 9,
+  "matched_leaf_and_evaluation_counts": true,
+  "enclosure_modules_identical_to_paper_snapshot": true
+}

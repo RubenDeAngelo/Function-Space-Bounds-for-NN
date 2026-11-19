@@ -1,0 +1,10 @@
+test_affine_moments_and_boundary (test_study.StudyTests.test_affine_moments_and_boundary) ... ok
+test_hinge_decay_and_roundoff_limit (test_study.StudyTests.test_hinge_decay_and_roundoff_limit) ... ok
+test_independent_interval_oracle (test_study.StudyTests.test_independent_interval_oracle) ... ok
+test_midpoint_on_analytic_tanh_integral (test_study.StudyTests.test_midpoint_on_analytic_tanh_integral) ... ok
+test_normalized_peak (test_study.StudyTests.test_normalized_peak) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.039s
+
+OK

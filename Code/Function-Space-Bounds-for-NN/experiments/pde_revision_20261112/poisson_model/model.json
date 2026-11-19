@@ -1,0 +1,52 @@
+{
+  "architecture": [
+    2,
+    32,
+    32,
+    32,
+    1
+  ],
+  "seed": 42,
+  "training": {
+    "architecture": [
+      2,
+      32,
+      32,
+      32,
+      1
+    ],
+    "seed": 42,
+    "data_seed": 1042,
+    "interior_points_per_epoch": 1000,
+    "boundary_points_per_edge_per_epoch": 200,
+    "epochs": 10000,
+    "lr": 0.001,
+    "weight_decay": 0.001,
+    "max_leaves": 1024,
+    "domain": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "target": "tanh(x+y-1)",
+    "quantity": "integral (Phi_xx+Phi_yy-2*tanh''(x+y-1))^2"
+  },
+  "final_training_interior_MSE": 1.748707843231656e-05,
+  "final_training_boundary_MSE": 1.6636944272412524e-06,
+  "diagnostic_grid_max_abs_residual": 0.015131665324904064,
+  "sampling": "fresh interior and boundary points each epoch; independent saved CPU generator state",
+  "checkpoint_sha256": "a85791a653832e10d6cd1a39446b292d35e755a5ee8a3b34319b9447b545da41",
+  "network_sha256": "1f7a9f57cf00428df5571726f5e2d9fd3876c2ffca1e875e1a682050782f1f34",
+  "dtype": "float64",
+  "activation": "tanh",
+  "coefficient_semantics": "stored binary64 values as exact real coefficients",
+  "data_sha256": {
+    "fit_grid.npz": "28c4284b6bbab089534cf67dd061f80661a2c3f773fc303487ef226d9c589352",
+    "sampling.npz": "41e420f1edfe8756c7d602253094dea9089b9fadd169647536dcb9e349cbfe3d"
+  }
+}

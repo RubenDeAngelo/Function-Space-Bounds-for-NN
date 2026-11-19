@@ -1,0 +1,329 @@
+{
+  "started_utc": "20261119T122400882453Z",
+  "python": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "steps": [
+    {
+      "name": "compile-relative-width",
+      "command": [
+        "clang++",
+        "-O3",
+        "-std=c++17",
+        "-I$GMP_PREFIX/include",
+        "-I$MPFR_PREFIX/include",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/kernel.cpp",
+        "-L$GMP_PREFIX/lib",
+        "-L$MPFR_PREFIX/lib",
+        "-lgmpxx",
+        "-lgmp",
+        "-o",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/kernel"
+      ],
+      "exit_code": 0,
+      "seconds": 1.1181904999994003,
+      "log": "01-compile-relative-width.log"
+    },
+    {
+      "name": "compile-pde",
+      "command": [
+        "clang++",
+        "-O3",
+        "-std=c++17",
+        "-I$GMP_PREFIX/include",
+        "-I$MPFR_PREFIX/include",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/residual_kernel.cpp",
+        "-L$GMP_PREFIX/lib",
+        "-L$MPFR_PREFIX/lib",
+        "-lmpfr",
+        "-lgmpxx",
+        "-lgmp",
+        "-o",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/residual_kernel"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8374128750001546,
+      "log": "02-compile-pde.log"
+    },
+    {
+      "name": "compile-corner",
+      "command": [
+        "clang++",
+        "-O3",
+        "-std=c++17",
+        "-I$GMP_PREFIX/include",
+        "-I$MPFR_PREFIX/include",
+        "-ffp-model=strict",
+        "-ffp-contract=off",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/main.cpp",
+        "-L$GMP_PREFIX/lib",
+        "-L$MPFR_PREFIX/lib",
+        "-lmpfr",
+        "-lgmpxx",
+        "-lgmp",
+        "-o",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/verify_rebuilt"
+      ],
+      "exit_code": 0,
+      "seconds": 1.7925404999987222,
+      "log": "03-compile-corner.log"
+    },
+    {
+      "name": "corner-arithmetic-selftest",
+      "command": [
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/verify_rebuilt",
+        "--selftest"
+      ],
+      "exit_code": 0,
+      "seconds": 0.237768082999537,
+      "log": "04-corner-arithmetic-selftest.log"
+    },
+    {
+      "name": "guide-and-frozen-data-audit",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/validate.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.060197999999218155,
+      "log": "05-guide-and-frozen-data-audit.log"
+    },
+    {
+      "name": "paper-originality-v1-tests",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_study"
+      ],
+      "exit_code": 0,
+      "seconds": 0.14034737499969197,
+      "log": "06-paper-originality-v1-tests.log"
+    },
+    {
+      "name": "paper-originality-v1-independent-audit",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/validate.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.23699308400136943,
+      "log": "07-paper-originality-v1-independent-audit.log"
+    },
+    {
+      "name": "paper-geometry-v1-tests",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_study"
+      ],
+      "exit_code": 0,
+      "seconds": 1.7192372909994447,
+      "log": "08-paper-geometry-v1-tests.log"
+    },
+    {
+      "name": "paper-geometry-v1-independent-audit",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/validate.py"
+      ],
+      "exit_code": 0,
+      "seconds": 19.39306483299879,
+      "log": "09-paper-geometry-v1-independent-audit.log"
+    },
+    {
+      "name": "replay-40-hybrid-controls",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/hybrid_submission/replay.py",
+        "--suite",
+        "controls",
+        "--output",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/replay-controls"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3953996250002092,
+      "log": "10-replay-40-hybrid-controls.log"
+    },
+    {
+      "name": "disk-kernel-tests",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_fast"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9134184579997964,
+      "log": "11-disk-kernel-tests.log"
+    },
+    {
+      "name": "disk-partition-audit",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/validate.py"
+      ],
+      "exit_code": 0,
+      "seconds": 2.202426417001334,
+      "log": "12-disk-partition-audit.log"
+    },
+    {
+      "name": "replay-16-trained-certificates",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/prepare_validate.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.9662963330010825,
+      "log": "13-replay-16-trained-certificates.log"
+    },
+    {
+      "name": "randomized-independent-kernel-tests",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/test_kernel.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.6593897920010932,
+      "log": "14-randomized-independent-kernel-tests.log"
+    },
+    {
+      "name": "independent-pde-residual-tests",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validate_residual.py"
+      ],
+      "exit_code": 0,
+      "seconds": 2.1769226670003263,
+      "log": "15-independent-pde-residual-tests.log"
+    },
+    {
+      "name": "replay-four-pde-checkpoints",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/replay.py"
+      ],
+      "exit_code": 0,
+      "seconds": 10.692631457999596,
+      "log": "16-replay-four-pde-checkpoints.log"
+    },
+    {
+      "name": "audit-all-relative-width-histories",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/summarize.py"
+      ],
+      "exit_code": 0,
+      "seconds": 12.715318250000564,
+      "log": "17-audit-all-relative-width-histories.log"
+    },
+    {
+      "name": "render-base-assets",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/LaTeX/render_relu_submission_assets.py",
+        "--records-root",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/results",
+        "--disk-history",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/data/history.csv",
+        "--latex",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/LaTeX"
+      ],
+      "exit_code": 0,
+      "seconds": 4.161918292000337,
+      "log": "18-render-base-assets.log"
+    },
+    {
+      "name": "render-relative-width-tables",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/summarize.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.2911357920002047,
+      "log": "19-render-relative-width-tables.log"
+    },
+    {
+      "name": "render-pde-tables",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/render_assets.py"
+      ],
+      "exit_code": 0,
+      "seconds": 3.10668933299894,
+      "log": "20-render-pde-tables.log"
+    },
+    {
+      "name": "render-current-reference-guides",
+      "command": [
+        "/Users/moritz/Codex/2026-11-19/lis/work/acom-clean-env/bin/python",
+        "-B",
+        "$RELEASE_ROOT/.release-work/20261119T122400882453Z/Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/render.py"
+      ],
+      "exit_code": 0,
+      "seconds": 6.6245769999986805,
+      "log": "21-render-current-reference-guides.log"
+    },
+    {
+      "name": "assemble-figure-one",
+      "command": [
+        "latexmk",
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-outdir=images",
+        "disk_figure_revised.tex"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5418762919998699,
+      "log": "22-assemble-figure-one.log"
+    },
+    {
+      "name": "build-main",
+      "command": [
+        "latexmk",
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "main.tex"
+      ],
+      "exit_code": 0,
+      "seconds": 4.4633039999989705,
+      "log": "23-build-main.log"
+    },
+    {
+      "name": "build-maxgap_supplement",
+      "command": [
+        "latexmk",
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "maxgap_supplement.tex"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9351357499999722,
+      "log": "24-build-maxgap_supplement.log"
+    }
+  ],
+  "status": "passed",
+  "corner_saved_records_checked": 18,
+  "work_directory": "$RELEASE_ROOT/.release-work/20261119T122400882453Z"
+}

@@ -1,0 +1,33 @@
+test_disk_target_definition (test_experiment_records.RecordTests.test_disk_target_definition) ... ok
+test_record_validator_rejects_corruption (test_experiment_records.RecordTests.test_record_validator_rejects_corruption) ... ok
+test_exact_solution_residual_and_subdivision (test_experiment_records.ResidualTests.test_exact_solution_residual_and_subdivision) ... ok
+test_forcing_at_saturation_and_critical_points (test_experiment_records.ResidualTests.test_forcing_at_saturation_and_critical_points) ... ok
+test_point_samples_of_non_solution (test_experiment_records.ResidualTests.test_point_samples_of_non_solution) ... ok
+test_ambient_context_independence (test_verified.ArithmeticTests.test_ambient_context_independence) ... ok
+test_cancellation_and_global_sum (test_verified.ArithmeticTests.test_cancellation_and_global_sum) ... ok
+test_exact_rational_oracle (test_verified.ArithmeticTests.test_exact_rational_oracle) ... ok
+test_input_and_export_semantics (test_verified.ArithmeticTests.test_input_and_export_semantics) ... ok
+test_interval_extreme_products_and_fail_closed (test_verified.ArithmeticTests.test_interval_extreme_products_and_fail_closed) ... ok
+test_roots_and_near_zero (test_verified.ArithmeticTests.test_roots_and_near_zero) ... ok
+test_tanh_extrema_saturation (test_verified.ArithmeticTests.test_tanh_extrema_saturation) ... ok
+test_analytic_integral_and_norm (test_verified.IntegrationTests.test_analytic_integral_and_norm) ... ok
+test_exact_geometry_small_boxes (test_verified.IntegrationTests.test_exact_geometry_small_boxes) ... ok
+test_nonlinear_analytic_integral (test_verified.IntegrationTests.test_nonlinear_analytic_integral) ... ok
+test_zero_budgets_tolerance_and_stagnation (test_verified.IntegrationTests.test_zero_budgets_tolerance_and_stagnation) ... ok
+test_affine_derivatives_and_exact_coefficients (test_verified.NetworkTests.test_affine_derivatives_and_exact_coefficients) ... ok
+test_chain_rule_against_high_precision_differentiation (test_verified.NetworkTests.test_chain_rule_against_high_precision_differentiation) ... ok
+test_mixed_derivative_count_and_multiple_outputs (test_verified.NetworkTests.test_mixed_derivative_count_and_multiple_outputs) ... ok
+test_torch_adapter_and_unsupported_graphs (test_verified.NetworkTests.test_torch_adapter_and_unsupported_graphs) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.804s
+
+OK
+test_actual_maximum (test_maxgap.MaxGapTests.test_actual_maximum) ... ok
+test_one_box_and_stable_ties (test_maxgap.MaxGapTests.test_one_box_and_stable_ties) ... ok
+test_one_dimensional_budget (test_maxgap.MaxGapTests.test_one_dimensional_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.013s
+
+OK

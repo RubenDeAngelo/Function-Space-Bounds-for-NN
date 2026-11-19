@@ -1,0 +1,11 @@
+{
+  "python": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "platform": "macOS-15.5-arm64-arm-64bit-Mach-O",
+  "gmpy2": "2.3.2",
+  "mpfr": "MPFR 4.2.2",
+  "record_count": 86,
+  "aggregation": "exact rational sum of validated local integral endpoints",
+  "rounding": "directed MPFR except exact rational affine-cell tests and polynomial moments",
+  "command": "python experiment.py",
+  "no_training": true
+}

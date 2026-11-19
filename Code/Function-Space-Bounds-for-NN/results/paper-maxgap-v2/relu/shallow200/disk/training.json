@@ -1,0 +1,24 @@
+{
+  "activation": "relu",
+  "architecture": [
+    2,
+    200,
+    1
+  ],
+  "seed": 20261024,
+  "epochs": 10000,
+  "adam_lr": 0.001,
+  "weight_decay": 0.001,
+  "epsilon": 0.5,
+  "points": 5000,
+  "training_data_source": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/disk/training_data.npz",
+  "training_data_source_sha256": "89e854d57c155dbdf14af7d5c7f9d6f8cfa66c3e6ac1896b92c410247e2e5274",
+  "checkpoint_sha256": "88d646eb6c4c77146121e0db7c5a8e33e57d6be8013c1eaae9cfd12949b42f05",
+  "training_data_sha256": "89e854d57c155dbdf14af7d5c7f9d6f8cfa66c3e6ac1896b92c410247e2e5274",
+  "metrics": {
+    "grid_MSE": 0.024526876823757933,
+    "grid_max_abs_error": 0.3964327885543416,
+    "training_MSE": 0.024184428260531462,
+    "seconds": 48.020472832999076
+  }
+}

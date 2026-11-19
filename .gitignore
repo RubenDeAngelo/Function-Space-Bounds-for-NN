@@ -1,6 +1,10 @@
 .venv/
+.release-work/
 __pycache__/
 *.pyc
 .DS_Store
-results/
-.cache/
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz

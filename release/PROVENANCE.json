@@ -1,0 +1,3503 @@
+{
+  "date": "2026-11-19",
+  "paper_title": "Certified adaptive integration of ReLU network norms",
+  "paper_version_date": "2026-11-12",
+  "base_code_commit": "ba433dceab5958fe842ef98569667b9d7cf5f53a",
+  "backend_policy": "Preserved pre-Mothercode base and frozen experiment backends; no Mothercode dependency or code copied.",
+  "frozen_files": [
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/.gitignore",
+      "sha256": "79fe87d1baf3fa786102a725de4e3fe8efd606e6cec9825e86ece916705b424e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/EXPERIMENT_PROTOCOL.md",
+      "sha256": "bfef4f651b5b3084b65b0171ea52c71b5660d1728f7c916e942a7b7fd89717f6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/compare_verified_runs.py",
+      "sha256": "e75a8ca8c820ffbd9bb19b99e785665b8917ea0f2bf8b1ba941c8114f12326b4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/compare_verified_two_bumps.py",
+      "sha256": "4e1341d4bdafb05db40dd40301e8533c7f5685f3095bf93c212ecbf903122a09"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/exp_combined_lp_sobolev_convergence.py",
+      "sha256": "a2e06dfa59f08d2e7d00e152392a2bf17ac2724e9bd699ff6a557cfe6cb4a996"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/exp_lp_1d_statistics_100runs.py",
+      "sha256": "d24ff0ad66960652df6a61bc124ec2a6913d1359e2dc3f2ea7e404ecd02a100b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/exp_lp_2d_disk_activation_regions.py",
+      "sha256": "0c453c51a98912ae240db9087517e5e5f5be87e277a77e2127ac85c690148e55"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/exp_pinn_2d_energy_norm.py",
+      "sha256": "9a740ff051ce305c17eb23975d2493b41743cd5063298860dcbea9669c898be8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/exp_sobolev_1d_statistics_100runs.py",
+      "sha256": "c3584396ddf87de312d471356631d4012c35b1609db6fab0ac4392ab4ebad534"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/exp_sobolev_2d_disk_convergence.py",
+      "sha256": "a59b841cd58569d93c346168a666d2fe76194be9c652ee76bce199d3fe7eb571"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/exp_sobolev_2d_disk_heatmaps.py",
+      "sha256": "30ff246644a912e3e899bcdce469575da77760c5c70b6fa495c85d8833ae8f78"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/exp_verified_two_bumps.py",
+      "sha256": "c37787ff131599cec27edad33e3e286ae1fd07d2233c6bddbcc57431e7781d69"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/hybrid_submission/README.md",
+      "sha256": "8893fe8f8d8fbd596f1cb8ffcd847f8eb638b67be65c19738e0615329268ab67"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/hybrid_submission/replay.py",
+      "sha256": "7a79b42adb2411b71498e8e59c3f01552acacada08c4e9a0274e5e49767f55c1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/paper.json",
+      "sha256": "721daef8930aaf3861283d1d36ad5f5a936ee88fe6f59206984141495dffbd5b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/README.md",
+      "sha256": "1b0f34a0def3ae32547f26590adca75f01f10993e9cb7c7a306f08621f785f9c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/cdr_model/checkpoint.pt",
+      "sha256": "ef6f86774250c824d73bec758fbfe1f57b3aa53b922a3350d16903ba0b46a54c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/cdr_model/manifest.json",
+      "sha256": "4d144627ac79c5332dd139c2a49cdb7308015395b1ff09694a44563fe68abafe"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/cdr_model/network.json",
+      "sha256": "fb00acc8ea1441e95e3480bfa8217be3fbcd898f2fe32a6a6195067c6d00ffe4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/cdr_model/network.txt",
+      "sha256": "41a445357e24d10e65b228b00550e7cd227276d85a41e474bf1dad8df0e8b9c8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/cdr_model/training_points.npz",
+      "sha256": "a6f3a70ccf7f585b34cce4be9306f7d3909dc55a9541972f2b47e5e85bcea509"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/VALIDITY.md",
+      "sha256": "3a024a8455026789fe5988eb90f511114b3b383321249deafcdf5178994f2ca7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/experiment-proposal.md",
+      "sha256": "c4d8037a6b9a338919678f6211f2410c719679b81db960ee31d66b0732ff7740"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/export_model.py",
+      "sha256": "30164b0a3ba143c982f65aa8dfb30454b77aba3ad86b9b35e770c1875f1fc0b8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/interval.hpp",
+      "sha256": "57745ea8914e7da0e85f1828c24add848ddbe73eb8468ed6a8ff6bc0586cb040"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/main.cpp",
+      "sha256": "552b53d3a6d99541d41fcd5a0c9cd31d2b7445ed4659e3a76524744f33fd5aea"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/model_manifest.json",
+      "sha256": "698ddebf2bba65b6f2d490a7d04d5ab7be859856eb4c05b01058f32615f2cd3c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/provenance.json",
+      "sha256": "e0634e6982440ac915b385026d6090f2026aa47e51351f0cb5696cb8619006c7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/source_run.jsonl",
+      "sha256": "12f0199f6f07b703c31c7748fcb6005f3c898451d996b69641f0b1af63f7fa65"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/source_run.meta.json",
+      "sha256": "f94720abaf05af1c081ce9cbbf84805654cd47a587cd83bb97e870e21d6ca41e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/train.py",
+      "sha256": "38814cf0dfca5784a0012d45bbe94a5e8a0c5a2edacd4a254745cf3b89478c5a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/corner_source/weights.bin",
+      "sha256": "024928721d94fa6400f5f02c00df6eda9c203de1dc2c100f127c44b211556df9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/environment.json",
+      "sha256": "54002cb674c31aaa2593d827e594dc14792fd58183178aa3b6e14cbd28ccad96"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/manifest.json",
+      "sha256": "b81b8866be4a9874428d987993ebe35aa0ad15a7c3690322294e170e068029bd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/poisson_model/model.json",
+      "sha256": "88f81dc9218e6dbd85b8d0223bda84d1a4f25f4b0128fd31f3a19582d1147a7c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/poisson_model/network.json",
+      "sha256": "1f7a9f57cf00428df5571726f5e2d9fd3876c2ffca1e875e1a682050782f1f34"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/poisson_model/network.txt",
+      "sha256": "cf36e8cab4be35ca0ae6c3d1fc32a6afd6cda732fc2cf22ab992d037333ad9d8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/render_assets.py",
+      "sha256": "aa39d5259eff77cd877bbde8038613e403bbe46de23125de8dadd2918e4e32c9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/replay.py",
+      "sha256": "680210e51a28ad1f3a639f3ec7bee4f82aa46b83d3695d7caad731ecde672951"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/residual_kernel.cpp",
+      "sha256": "ada826d88a8b8cba06c6f8414541877c2cf7c5509511f10c376557a9b94ef19e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/cdr-maxgap.csv",
+      "sha256": "d3144aa4ebacf3a8597cae97ca249a190d38158f63aab4f10e727234d59b6b26"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/cdr-maxgap.csv.meta",
+      "sha256": "fe0c77f41a1a2c2eaa78e546466b57cb59bde176b3882714b240669d8c886a43"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/cdr-uniform.csv",
+      "sha256": "5ab57ab24eb8b1aca14c535c8a58000e07bf34425cf3d24d2653ddd02bb3afe5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/cdr-uniform.csv.meta",
+      "sha256": "fe0c77f41a1a2c2eaa78e546466b57cb59bde176b3882714b240669d8c886a43"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/corner-energy-boundary.csv",
+      "sha256": "ad9e94f88fe014fcf01a239abaf4ba511a11bf61889a7198cd4ef5b814099ab7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/poisson-maxgap.csv",
+      "sha256": "ca3815bc103ed8f136ede68b7b06dda36124d60ca2a83b4a4753eb23f54170e6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/poisson-maxgap.csv.meta",
+      "sha256": "fe0c77f41a1a2c2eaa78e546466b57cb59bde176b3882714b240669d8c886a43"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/poisson-uniform.csv",
+      "sha256": "1b64718d25e01717ebb77037cb2360b3933ee9ceee0c5e41199780f47d9c3a9a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/poisson-uniform.csv.meta",
+      "sha256": "fe0c77f41a1a2c2eaa78e546466b57cb59bde176b3882714b240669d8c886a43"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/runs/printed-residual-certificates.json",
+      "sha256": "4719d13ce27e8b76d5b74d1528b1fe43b670b61ca1b39af781b33f8330dfd8a2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/train_cdr.py",
+      "sha256": "62927ca06a33628d9a6bb2f19583e2eb0b06e37f30a4cb91dca094427d49715a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/training.log",
+      "sha256": "e56261eaf163d4c689630f58cc87272f178196bcb8d40512e40471e0f2f3720b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validate_residual.py",
+      "sha256": "22a073901b88673e2ca194d00859697f052af05457dd530a5432d335e80da0b6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/checkpoint-export.json",
+      "sha256": "f89807a1f68b0785ed7faab2f8e0d76cc31efe652ed432689364f40045b87828"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/corner-full-replay.jsonl",
+      "sha256": "03d64c1a0d41bdf7b9213a9aca4b20a881b72dd6e9c86195ec9258c37c8b11a3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/corner-replay-history.txt",
+      "sha256": "efbc1bc532ba1019345adba290e069b81b138ca11fcbec3696bea82f6fdf5253"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/corner-replay-result.json",
+      "sha256": "7cc134e486c5d9af9d21ef5fd20ed5f8881ac4efb811b5be4ab09ea0e58cac4f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/corner-selftest.log",
+      "sha256": "5aa2ddc0f9f6f589ae0d4aafb200d9a2be7060d83c9a597330a5a1ea9ad9485c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/exact-poisson.txt",
+      "sha256": "2d1fefa59e1073e20666bd5ed713189e7733b3e2fed9e332ced907bf5f7133e6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/final-pdf-qa.json",
+      "sha256": "aa636523d8a8e1daec81a8248cd3dfbb5b163bba8970f8ae33c23d83de3de543"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/full-replay/cdr-maxgap.csv",
+      "sha256": "20aa97cb3640a26d129690aeb653b31f2a0ca3498fd85fa98660f0a3d9fd4b81"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/full-replay/cdr-maxgap.csv.meta",
+      "sha256": "fe0c77f41a1a2c2eaa78e546466b57cb59bde176b3882714b240669d8c886a43"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/full-replay/cdr-uniform.csv",
+      "sha256": "0c9dac70706cf9a1a78fd2fef020726b721f120ccb8a683240d563becc41e4d7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/full-replay/cdr-uniform.csv.meta",
+      "sha256": "fe0c77f41a1a2c2eaa78e546466b57cb59bde176b3882714b240669d8c886a43"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/full-replay/poisson-maxgap.csv",
+      "sha256": "b830791ddca436fca00bef8c250d6c46e2b529af505204ce218e389cd32cf66c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/full-replay/poisson-maxgap.csv.meta",
+      "sha256": "fe0c77f41a1a2c2eaa78e546466b57cb59bde176b3882714b240669d8c886a43"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/full-replay/poisson-uniform.csv",
+      "sha256": "391251ce74b815efd34656ec696d5ad88465a40cfbb36c0532c3f5b72e694490"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/full-replay/poisson-uniform.csv.meta",
+      "sha256": "fe0c77f41a1a2c2eaa78e546466b57cb59bde176b3882714b240669d8c886a43"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/replay-1024.json",
+      "sha256": "9d977c28376c07513c0bf4fdf0b859881d38162a16b142d6b89ff7890908fbd2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/replay-full.json",
+      "sha256": "5970cef2245fe01d02030284ab2704d5b55dbf759f1c736014e54e223920d250"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/pde_revision_20261112/validation/result.json",
+      "sha256": "7acb9084decf612d932420a27feb31f8c904dc96c5387182e0a2090051ba24db"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/README.md",
+      "sha256": "9b0c026ae9165d3bbb4afd264fbe9ce61db75309edcd8fd9ecb848269b9f854c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/SHA256.json",
+      "sha256": "bb2bda8b2b60818ddcd47ea29e34637a33237697cef32853f654d2935f3fa603"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/artwork_hashes.json",
+      "sha256": "794d1b1e7e113704dd7b94b26dcbb9197b9fa69746841a77bd8e458f00b0b97a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/environment.json",
+      "sha256": "d944cf90d17148975a1f0b1b136eb78c02b23d160c7e5ff5afd0518430c0c3f7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/kernel.cpp",
+      "sha256": "1cfce76b55e777fa397141515e3aafb8610e3849545ccf06745de0a41679d0e9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/manuscript_assets/disk_figure_revised.tex",
+      "sha256": "c30868dfa5796b1d1953f2355358ceb52e33120b82fc80407464b98ce2d2e181"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/manuscript_assets/render_relu_submission_assets.py",
+      "sha256": "42a6fc5db6417d9da8968ac55db076c2b306e7e02a0d6a139465ccca89d300cc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/models/trained-deep-disk.txt",
+      "sha256": "e4463a2ad0fcd6c2d1aa384d26c3011f32978bcedbbc27be478abd0312c7cea7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/models/trained-deep-two-bumps.txt",
+      "sha256": "841f0f92afc13d6a2feb1e2ed4b83fd2b18c2cec3bd77ccccd673f0cdd27e36a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/models/trained-shallow200-disk.txt",
+      "sha256": "50673e70a2057cdfcddfcde30044e218c100eda240235407c3fa713e725b2efd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/models/trained-shallow200-two-bumps.txt",
+      "sha256": "b3c0226be1138d98418ba896eae0994db02ab39fecd244588108e2d241499bcf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/models.json",
+      "sha256": "e602c7c35274acb995eaa925f619811a0af5d4c7a914dc25297bdf12c8b67f6e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/prepare_validate.py",
+      "sha256": "4cce5d8bee779bd4a0d4bdc0e49c841cd79be8fece751be9d0a55f2606312834"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/run_suite.py",
+      "sha256": "1c8b7977894168eeeba193ab85cff2942d44448ab6f8fe224774a68a0598f58b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-H1-maxgap.csv",
+      "sha256": "e50028403934c44ac9c73bd34d954073b38b7e154a2a3bd9ec8b8e800a21c03a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-H1-maxgap.csv.meta",
+      "sha256": "544817b4331937bf6ee7092fce59911e2e1324532315fdcd36adf51438f222b5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-H1-maxgap.log",
+      "sha256": "517839dec044619e45339a3dae81ba95d00dfb9023350ef832f9390b55101972"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-H1-uniform.csv",
+      "sha256": "a4a5191ef03d60604327852d57aa6fee0b5cc7967353c91025a08663c58f49f5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-H1-uniform.csv.meta",
+      "sha256": "ca43636f5e295c1cbc78bd53d44c7dfc08eda6fd2ecd33d1f641a4a77e1c62c0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-H1-uniform.log",
+      "sha256": "79c77fdebe706d04f177a98c84703ef9e601c46c18b09da2c635e46a4e5cb7d3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-L2-maxgap.csv",
+      "sha256": "caaf4b3a8e23e6d474c0699f836c2df78b88221c42a07c2e5c9d7547168189e2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-L2-maxgap.csv.meta",
+      "sha256": "80b38c828a47ca6dd7fc4c9ccd331da3d10764bbc2f38999f001a94b77c04804"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-L2-maxgap.log",
+      "sha256": "a0635eac989447faaab91efa1ab00d53d92f4889aff9831586205239d808d714"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-L2-uniform.csv",
+      "sha256": "14246d0ac49fb37dbf08f4e1328c1bd98d77c59e75f399738ab6e930945431af"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-L2-uniform.csv.meta",
+      "sha256": "d71b9b14d87ac05c2acdd8feec90f6bcf435715af11705519a3ccb7f23d78049"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-disk-L2-uniform.log",
+      "sha256": "e1163a348f41148220ea9d7d3598f64317f573779223b962eee4a11c60f5e210"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-H1-maxgap.csv",
+      "sha256": "669bbe51cda676702b8f5e09ed37566a72a87a800324b94185bc98c5b3845a44"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-H1-maxgap.csv.meta",
+      "sha256": "0cde4234efcbab3e3e96da47756af0daea169144ff0ddba6c83c67f03a82afbb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-H1-maxgap.log",
+      "sha256": "d2299931eff221980378ef3b8c35984e3f787170a976b75b77485d2cc87bc43a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-H1-uniform.csv",
+      "sha256": "7bc215d14d6cd90911b84f14fea09f7e6101c353d6aa314afd3ab88615566312"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-H1-uniform.csv.meta",
+      "sha256": "1abfd6fbba16e714afc9693fb3fa39dc9a964dee54f1e4b960aecf8b7fd91c9a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-H1-uniform.log",
+      "sha256": "a5cd4866c902ac98ec30d2d96a0b47869626e1fe63349b39ea8121698919bc0a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-L2-maxgap.csv",
+      "sha256": "e947436bd43c20748d3e51da2015f44940d96107ce4ec524919613aea0a674bb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-L2-maxgap.csv.meta",
+      "sha256": "20ae34093b872c651763f4f4d03d31e8e46c10408171f8cc48adab80cc48e3f9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-L2-maxgap.log",
+      "sha256": "97d243f354a0f883e37442cbb286aa469755566cbc0e12bceb59da8472d2d341"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-L2-uniform.csv",
+      "sha256": "34efc1fa719b50866950e4bbcacff33e3b17be35bc44e8e4feeadbc1f30e0498"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-L2-uniform.csv.meta",
+      "sha256": "df202fb49d53b8e79f064673b61b399ce9707b31ac0102536a0a6d2e4bfcfe41"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-deep-two-bumps-L2-uniform.log",
+      "sha256": "939206038cffe72b517bb4ae293a906428c3ad991972095db81a84c4b98bb81f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-H1-maxgap.csv",
+      "sha256": "7b740910c5dae9f56c2e69a75a93c88908239f7107d527a7beb2d47ae4344bdf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-H1-maxgap.csv.meta",
+      "sha256": "e76d432dcbb9d1b6ef3929fa0c7a0a632b004a04c22e03f4699d0918f0c208c5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-H1-maxgap.log",
+      "sha256": "cf73b561de506b7c6ea2b8b7f8d0a64da82aa4ffe8c46e07ddde951874a4a2e8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-H1-uniform.csv",
+      "sha256": "1c126bb374814bdbb9091ddc3932d2c408cf270fe11733e3bc8ef67f7b23f991"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-H1-uniform.csv.meta",
+      "sha256": "49d478d8ddb59c2a035fe6834232df776753e942a9e85477ea8f61bcc5f845a4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-H1-uniform.log",
+      "sha256": "88742494c35ecb2d8d48069df26f4e4f0a3fa9ea507eefef1bf1a41abf244b90"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-L2-maxgap.csv",
+      "sha256": "2562b403b2d60235dc22e7eaa188a263fa4a4a859b43ae8012e12b3bb8c9c7e2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-L2-maxgap.csv.meta",
+      "sha256": "f00661c7b427ead6d1275a2a79464c576af9535ede573899d09206e11a874eaf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-L2-maxgap.log",
+      "sha256": "893bc650bdf799fc09fbed8e2bbd4e597f87ce6290b6e214b365297b080d5c97"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-L2-uniform.csv",
+      "sha256": "b18a5a8a31659f7ae863c20985ae0ff298ba1c504c5998a18a9ff9facddc582f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-L2-uniform.csv.meta",
+      "sha256": "c21873eb20bb1e9400d3b1682b30ed64367c4493ec90aa64962f63c835c4b322"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-disk-L2-uniform.log",
+      "sha256": "662184b0d87102e66e461beda5423b6305abb0d97d5c3c16a2dbc1e8a728bfa0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-H1-maxgap.csv",
+      "sha256": "ef17c34cf2a0725f60f05801ac259aadeb34ae64dc2ec84af36eb211d7f4192c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-H1-maxgap.csv.meta",
+      "sha256": "cf9b31f4b223c757bfbd712086ee5e2e462710a6c701b5c344a6e420124c85f2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-H1-maxgap.log",
+      "sha256": "dba0815fbf703019c00350749ec8e47d7624ee06f0b8f0f9790fd4b5b75394fe"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-H1-uniform.csv",
+      "sha256": "c6ae842378de265f11901305406338747ee9dc360f795549ae624fc68f314626"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-H1-uniform.csv.meta",
+      "sha256": "d20285027f6c5958eb9253edf485b4ce859dccae84fce2f8ce2f093d583c1bfa"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-H1-uniform.log",
+      "sha256": "0b36509db3a5164522defbf82a1cbdcb1983a17c0630bcc4d01e9fedd921a1e9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-L2-maxgap.csv",
+      "sha256": "f2c6ab79570ecf6a96bfcd467cced7d90eaf113651fa80d39705cebb96f424cb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-L2-maxgap.csv.meta",
+      "sha256": "ce64eabc867195a2ce09e17ad652b59aadca2d0b3c8f80b6db2a2bcf1f6c6776"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-L2-maxgap.log",
+      "sha256": "50761e6bce7dcd6d9c78b1ffe54152b19afe933d587d6a6bf798bf5fc9e81c41"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-L2-uniform.csv",
+      "sha256": "86d642b3af30b0683e123db50ca467d7d953560c6f1a6817942950aa91332fab"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-L2-uniform.csv.meta",
+      "sha256": "7447d2db3943cf17f823e1b51d8392b04aaed19744effd0b94652a9b7a99cf7b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/runs/trained-shallow200-two-bumps-L2-uniform.log",
+      "sha256": "e30b382d13616ee62671d9d4d6983a00baf51eca98b27464ce92179575111582"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/summarize.py",
+      "sha256": "7c985536deb33fd3bb8f554f6a2cc31f37db7e154e0f1e6033cc4703a8e7fd7c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/summary.json",
+      "sha256": "f1b8090b57aff78e96c24bb4af542691bed39702867b0940d48c0ac680cb16e0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/test_kernel.py",
+      "sha256": "a26df95524d6825ff56cf381004b47dbecc81fca999f67de31466adc0e8921cd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/random-model.txt",
+      "sha256": "f23e7c13213dcc2ebbd50d17cf208c43e79fd6340d17bb781e4d989924d8c832"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/random.csv",
+      "sha256": "9848198901e9b5fddca4ae7c11928bcf56d5a0255c43023c3d1ea9c559d85f73"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/random.csv.meta",
+      "sha256": "d0c1fc140f65ef46d4beb75a4992a118e6bbf0a709a62fc80e780a83b68bc680"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/randomized.json",
+      "sha256": "8595aeb1aa785a9a4df0bccdb173b92b3dba18708e09846169933961ee051f8d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-disk-H1-maxgap.csv",
+      "sha256": "dc18c80afeb7f4d34c78af4afa8a55564e483bd1a947fc68e6412910aae4d84f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-disk-H1-maxgap.csv.meta",
+      "sha256": "76d0321383112e8bca9245cfe284ca353ffaa38cf2da47a9d411d76ead71b9bf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-disk-H1-uniform.csv",
+      "sha256": "9c1fe7964b185e12f4c1b37dcfd92aab8b27e98be0bd60750cd9d80e216aaf0e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-disk-H1-uniform.csv.meta",
+      "sha256": "a644898a76d8078bfc704fec037d28762b8ba6e4ab0b0d18a59a942e97006351"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-disk-L2-maxgap.csv",
+      "sha256": "4b4cdb41ceb55f18ce159ac06fe34e8b87ce7a8a0a32e2469f3fe667b7169e8f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-disk-L2-maxgap.csv.meta",
+      "sha256": "6a8c035adaf2bb8be4c0731ecc947b20d9c91791018f1a8b889d286c70aa613e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-disk-L2-uniform.csv",
+      "sha256": "3807575fbf51d849b27d8c00709f1c54d44ccf25b149c4a0eda23e34678bb5f6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-disk-L2-uniform.csv.meta",
+      "sha256": "a90f29d2a5b9190c1283af71be33e0166fb8c26215303cd82b9d09dde3deb9c3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-two-bumps-H1-maxgap.csv",
+      "sha256": "3dcb45c9782bc36b24148d0bfb4f8c43d84cdf5c23e7a17428de1c8d010382ff"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-two-bumps-H1-maxgap.csv.meta",
+      "sha256": "26b2637339201d35e0191b56820e6677882a0f0cfc24f9ee2a3ad478e497fb4f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-two-bumps-H1-uniform.csv",
+      "sha256": "87b084ed1dbc5342b1e832a895feaae2dba4181b75e5c2de567c335f535677cf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-two-bumps-H1-uniform.csv.meta",
+      "sha256": "da04536b82295365924d1a1f195510d0ecbbfab8a1c128f4096e1025b26c7d83"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-two-bumps-L2-maxgap.csv",
+      "sha256": "8c9ab84cae2403b464e168cb5d750443e30d4a71364cf44afdd88472a7a01992"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-two-bumps-L2-maxgap.csv.meta",
+      "sha256": "4eec6beac64555400fb858aacc4db84e93b686da68d8c4174f0bbb36f2401195"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-two-bumps-L2-uniform.csv",
+      "sha256": "331e1c0f86625797f7eb9084f0677136e9b20ba3acdfa3f0521df77b98ce2c19"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-deep-two-bumps-L2-uniform.csv.meta",
+      "sha256": "23ac382ded9cc7ab0875c9e60c1e5969cbe0b825a71bd45dc27659c732f38923"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-disk-H1-maxgap.csv",
+      "sha256": "1528b50539dcde0e8770b941c65f9761480bcd6c1a1dd05144513c12a0d7623d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-disk-H1-maxgap.csv.meta",
+      "sha256": "2d46cab5ec4a0c4157478cc04f57ee281e2b4fa2393057118b816cb8bb77adc2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-disk-H1-uniform.csv",
+      "sha256": "116ad6b2bdf041607ff425b8a6fc4055f55cceee7ba8fbec297f5e092b7386ec"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-disk-H1-uniform.csv.meta",
+      "sha256": "48e3dce686864a6e8e9c0e3edb9d4195871cbf8b726baaa164100c5deaaa91a7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-disk-L2-maxgap.csv",
+      "sha256": "7d155118d4dae09c69ae31deecc53605bc030cca3e44246aeb7e74a5555eddf0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-disk-L2-maxgap.csv.meta",
+      "sha256": "62efe87353f87392435b204e79be93c78b4a4f64a43ea18b5660b5d9008605e1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-disk-L2-uniform.csv",
+      "sha256": "01235f0160c4b74665bc4f97311f1e9ea931c69316ff3e052376c4ff983ee158"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-disk-L2-uniform.csv.meta",
+      "sha256": "60e2bd51823643e5510923de4a164156141052c1948f6e41c17ecafb4ff09543"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-two-bumps-H1-maxgap.csv",
+      "sha256": "e8cbbdd6612286ef23546218afa5d03b0e1c585deff86cb4445c6c47100e21d0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-two-bumps-H1-maxgap.csv.meta",
+      "sha256": "711a7a3457d029e8ca45105b7c8474169852499b594dfe9cc101bfa1af03a1e9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-two-bumps-H1-uniform.csv",
+      "sha256": "7d4f96098fc5e5b1dc5bce6c84f6a55c450a947ffafe5109d6791a2e2dd0a830"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-two-bumps-H1-uniform.csv.meta",
+      "sha256": "c8f6fba726a8dede09bd35bbd6257bc5b4be590b8373b3f739bde00ac10e37c0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-two-bumps-L2-maxgap.csv",
+      "sha256": "7497f23057f80a0233b87aba9421d09262a3bc6150d56c71da08a8d80320cddb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-two-bumps-L2-maxgap.csv.meta",
+      "sha256": "d75e13ea6ed801f7794a0a6afd56d3d9547dd2295700704e3be88102008d11b6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-two-bumps-L2-uniform.csv",
+      "sha256": "0c8cf52269dafee3404d33c7af0966564111f38dffcdf6cef5d9a5c4be627362"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/relative_width_20261111/validation/trained-shallow200-two-bumps-L2-uniform.csv.meta",
+      "sha256": "8df9080c0c6d11ea7fdc4663a304fb31228f5f5a87f839717ddd91f9215e4add"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/README.md",
+      "sha256": "4e1e4b14c53559d0f499073f31262d5c980e83c3f704af67fcc2fda8dd995d27"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/baseline.json",
+      "sha256": "5de34abe16cc63a2430ba793c6da4da35cf5be0cd15172767c610bf6dd035247"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/manifest.json",
+      "sha256": "7fe1fc034b227843ef181cd518a4fcaa303777153d732336e49ad508147ba9fc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/rate_guides.py",
+      "sha256": "3a62a179e9f3dbbe5c65477a496de428d821e974b7550c444b4a6f43affbbf00"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/render.py",
+      "sha256": "3c71dd4955dbbce18914c29a62e3b39aa0fe80156f6293cd5f661d73dad65947"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/validation/controlled_certification.png",
+      "sha256": "c90bf25523e626ad076d80082b7f89930951dd84e9a75a123e589c0e12f2f8e9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/validation/disk_extended_certification.png",
+      "sha256": "7675f0c03a80a0558169f0db475dab1193f401c0de52614b058feab79c623979"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/validation/disk_gap_revised.png",
+      "sha256": "e67b25a9f4e4c29b0560534d6d2872619b28e3443f7009b3248dd59005e11242"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/validation/geometry_controls_revised.png",
+      "sha256": "cd8be366a056fe7b4872e684e4c0e2db3b04d26bfeecc693d1dafdd3e033ea75"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/validation/pdf_qa.json",
+      "sha256": "feef2769067c81ec6f371871b58748653bc668a8f599be99793c22dcb4318e23"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/validation/plot_metadata.json",
+      "sha256": "1be5f0b955e0a775af5b50ad48ea3218fc05258b0276cae1da064f80dccba2bd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/validation/result.json",
+      "sha256": "b55d0eab8c9b84cc5685d46e5c09be66028817b550723d437154da9b09e88dcd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/slope_triangles_20261112/validation/tanh_pde_gaps.png",
+      "sha256": "89cd1079a5e6a0b470aee531176272f44a1ab4b71cff8cef6d93436a99385ee5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/README.md",
+      "sha256": "4c839e0731d82ef9bc5717a1be053f60887d8b3eba25c5d3600a0f483238de96"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/backend.py",
+      "sha256": "0fb5798f7218f96309b0d4ac735f37cc5a9944ba2494287cb65c0c3492f78c76"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/data/history.csv",
+      "sha256": "2b986a341b5ab89bcb731a4aaf78731912fe17bc97a4bb549dbba4c9f176c3b2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/data/original-million-validation.json",
+      "sha256": "3c07999fb05f05bfffaf4d944a0fecf1aa1ba6180cfad756a056a6418cad1d13"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/data/partition-maxgap-16384.json.gz",
+      "sha256": "0d1b5ae73140b4338b7d53cec1baefb13bb2c38e107cf5c7aadeefdcde3d15e8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/data/partition-uniform-16384.json.gz",
+      "sha256": "9280b1d446fd2d5b8a41f23f0791ced13634c90fd7d4a2cd19a5206fbefb141b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/data/provenance.json",
+      "sha256": "a4d9a0d8c1db5a29c3cbe340075a3bcb3c7256c4d701248e4e8491defce5c92f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/fast_oracle.py",
+      "sha256": "f05c7bff34040cdd0829c3f933792303a30e62765dc6e310dd789219b2c0aa1b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/figure.tex",
+      "sha256": "9ffce17f352de758df9ead0bc62875cf3214eab90122db281ebd35d7a11c9f12"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/model/network.json",
+      "sha256": "40394b9bc346146f8d6bfa7a9ee3dd89f88d80b396bc5efffdfd70f51cdb29e9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/model/training.json",
+      "sha256": "08d1456fb65daa07bb98d1b9d69ed3296f74aa4c33536585092dcd831d370e44"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/panels/disk-gap-million.pdf",
+      "sha256": "c0bd3927c5385109997ecafb7bba1fbbd826279994ea8713a75efb30431fc821"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/panels/disk-partitions.pdf",
+      "sha256": "d5fce4316f0bc355e3ae2ea836397524ce90cfb39e546b45d03c85c356a5dfd1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/run_experiment.py",
+      "sha256": "a7d72a5fd85c237cc13f3e26b250edeb9a265208a236bb4067fbf30a732b83f7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/test_fast.py",
+      "sha256": "579f26e54faaab5d6e2cc8704a395361e5c99adb47b2d244d8f84ae2efacd0b3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/experiments/smoothed_disk_figure1/validate.py",
+      "sha256": "5bc6b7e1f64bfda5fd1b72a2a778c1a5f40c1f6b9bda1b6e131b1a058952f69e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/render_verified.py",
+      "sha256": "7dec4a3bf97d33675481ac409f5dbc23e5ae2cc4d54100433ba96deafa6ce303"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/requirements-verified-lock.txt",
+      "sha256": "d113cc015d8b5e02462a2ac578443480f3177f68ce9dcfdfad1a915095300673"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/requirements-verified.txt",
+      "sha256": "1f4fcb5dafeaadb6f7894d8709c07e9cbd5ebb774ba6de40f1d638b2fe84074d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/README.md",
+      "sha256": "c336cecfc546bd35640ca52d964cb0a3b30c568a758f1eda6a397d1c831052ec"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/SHA256.json",
+      "sha256": "3a599320867de269a804830571f0238ec276cb2c2cb17b940622d84f9a8dd32b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/SOURCES.json",
+      "sha256": "be2b1699d23f5c219c6e713a4bcbbb8aca7faa277971853a2cf40f95da2982c4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/assets.py",
+      "sha256": "c0c3ddf234d6f7bbf85d54ff796364dfba0f154d80f3b51589d0b0b3b038737d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/backend.py",
+      "sha256": "0fb5798f7218f96309b0d4ac735f37cc5a9944ba2494287cb65c0c3492f78c76"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/environment.json",
+      "sha256": "ba4379af120fefba69532d3e2821beff97f16ab51ab42ee670d882df1ec6d1b7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/experiment.py",
+      "sha256": "d0e92aaf8762f9fc8c184438f77ad5e07f10bd05615533c969084cc437c0b270"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/independent.py",
+      "sha256": "9e76056b73428ab08bd7d8b73c342e6f04190291f263e1654f30fdc334118001"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/logs/geometry-replay.log",
+      "sha256": "5b043d7723a31f453fff82c12d2f21133de19332bb413d38865a043d06dbdc9c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/logs/geometry-run.log",
+      "sha256": "3ce4a76652ea5afd72d6b994cce61af8e74dab663a3b077cc5f26e49a9b58f9b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/logs/geometry-tests.log",
+      "sha256": "e09704c30c114c5311068840e9495b67bf502e9caac6611d13fa8846d6b1cd5d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/logs/geometry-validation.log",
+      "sha256": "6ff8df12c8257be276aa855b798aa0b71ecabb7299f484cbae7f3bb64e1d08b6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/replay.py",
+      "sha256": "243743b6bf31e6e30a7a45d111c6cd4fc14ab95f4fc93c3b385d44ef4ad98adf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-aligned-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "14bc881d993e62d50749dfdee8844181003646e9cde4e1faaba0de8b1a860cdd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-aligned-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "3bf923a597b4cde798dd938bf55cf610fcd0ec1fd5cb67b825a7e607856c96a6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-aligned-H1-range-maxgap-1024-1_100.json",
+      "sha256": "3df6f34e56001a49f01c566bf916b0c2eecaa2c28a8d70411acd1a555540e10b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-aligned-H1-range-uniform-1024-1_100.json",
+      "sha256": "66d9508016c80f445e1a4a209ed7ac2db350f83e24e2af1ee0ee88fe8a5146c9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-aligned-L2-hybrid-maxgap-1024-1_1000.json",
+      "sha256": "007dae3e1817ae62eefe4e892a4fdc998950ff0b6c2c2ab2d22570330a6ebbe8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-aligned-L2-hybrid-uniform-1024-1_1000.json",
+      "sha256": "c23deeb8d996677d5b33b3b3c44803f6fdc21e1fab1c86ce80bfb6e2a46c783a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-aligned-L2-range-maxgap-1024-1_1000.json",
+      "sha256": "89b894533090a96a7ed07344e004fa65c8ad7f6fd8495c6737f8fcc26661933b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-aligned-L2-range-uniform-1024-1_1000.json",
+      "sha256": "c5708c5496f083c888a0e0ce2ea21fd6fad45915bec462e989e81616d247998e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-almost_parallel-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "27740257be8cc0ff9a2742a46eacccdfb13ff2d8bb072cff5a2ab8bbe7f746b4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-almost_parallel-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "c79fe2284cc170204e8e5fb4b0b57eb5e11ecefd5aeffdac7b668209b96ab55b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-almost_parallel-H1-range-maxgap-1024-1_100.json",
+      "sha256": "142ecfd385d3682748cc2743ed786b0fac0c76197bdfd55b24ab275d1b196241"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-almost_parallel-H1-range-uniform-1024-1_100.json",
+      "sha256": "2e3e8c5fe55a1a308e8269cc92d52b0fada513f3c07e07cdb484a980b0358af4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-almost_parallel-L2-hybrid-maxgap-1024-1_1000.json",
+      "sha256": "863f3adc4d04e4660edb96b73e2ef51a1149cd0172305b419993a378a4ae22a5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-almost_parallel-L2-hybrid-uniform-1024-1_1000.json",
+      "sha256": "fb608f4c3e8bc37d046d7f7ec10141e055217cfd3d2c90d9a4e855b60eb126f7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-almost_parallel-L2-range-maxgap-1024-1_1000.json",
+      "sha256": "812d1930c11c40e4aeccb289b24fdfa1698865bb207ce9c92950c0537334b1fa"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-almost_parallel-L2-range-uniform-1024-1_1000.json",
+      "sha256": "3037c9171aafa80e88d54ceb6706b812078685dfece10371db9f0eac47755a60"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-axis-3d-H1-hybrid-maxgap-512-0.json",
+      "sha256": "20084139c2529ae3861d2a09c7cd46d3b752b251ce2cd0c13fd74cf3cb1f1064"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-axis-3d-H1-hybrid-uniform-512-0.json",
+      "sha256": "144b49808865621575a3a2285d3dff963b736a497d03e551cfb7992007588e85"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-axis-3d-L2-hybrid-maxgap-512-0.json",
+      "sha256": "65256e3cf6ce2986c9b171569abb05e990994957336127206946efda863ba521"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-axis-3d-L2-hybrid-uniform-512-0.json",
+      "sha256": "95704081317d0a5eb72349d491f5ed1d9400d14831e0400bf16bfa131425795e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-cancellation-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "fe0d15368a033dcde232ea7c804917fbccccbc4d64b5e961559ed4911494957b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-cancellation-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "6841f26ec1e1364ef0e2709eb1283be04c639eff8e11f80b869d57298780aeda"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-cancellation-H1-range-maxgap-1024-1_100.json",
+      "sha256": "c1e207642dd3597e910ee1c55c6164d03d7ffa1db8b89f836e26fadab4d9f3b3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-cancellation-H1-range-uniform-1024-1_100.json",
+      "sha256": "307518925d0f06354dde613b24edf0bf5b3d345dbeb1c4485e8a9426b4a5cba1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-cancellation-L2-hybrid-maxgap-1024-1_1000.json",
+      "sha256": "0eb0b00e4e0ab3a828ae8ed0b2902c0c6b807ed54ae681e6cdf7b8c35404fffb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-cancellation-L2-hybrid-uniform-1024-1_1000.json",
+      "sha256": "8bd7f4ada5b6488f29e64b6d77aa8fc320ec0149933051f8da9bba70fe3dbf3b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-cancellation-L2-range-maxgap-1024-1_1000.json",
+      "sha256": "5df72a647f3462758a34dcb0c71bbb49b05c766d53a8b570132cbb2d1e42bf0a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-cancellation-L2-range-uniform-1024-1_1000.json",
+      "sha256": "0b67f341ccefa662e66b23cdc903e4eb0aebe2f553f0d500758b5e176359a211"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-close_planes-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "a32f83e189d03f70a70a8c8957496b9cec0bf069b7419fde6a5fcd64a468a562"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-close_planes-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "310475e63e3e64680a887f64f31bf4045d088f38cf18397cda3e243e69811e07"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-close_planes-H1-range-maxgap-1024-1_100.json",
+      "sha256": "05ea3c9cff7e32865af65f488774c778d393ea661c168499294d5b2668fb5978"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-close_planes-H1-range-uniform-1024-1_100.json",
+      "sha256": "8692a2e60bcec35bdf022e3b9d3d702884a400d99b2d96104b171f1f63c3f5eb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-close_planes-L2-hybrid-maxgap-1024-1_1000.json",
+      "sha256": "f09946fdfeae87cc1c8a02369efb0ba99a5af9124cc18d83ee7d8b547dcb0751"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-close_planes-L2-hybrid-uniform-1024-1_1000.json",
+      "sha256": "ba3e4002076a48bb7ff0c1b49977147419b9ed741919b4ddd1d7d4b09b033668"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-close_planes-L2-range-maxgap-1024-1_1000.json",
+      "sha256": "2b30e28a48bf487840758143f470101133e3eabd39c4501b62d54def11a02cf6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-close_planes-L2-range-uniform-1024-1_1000.json",
+      "sha256": "f572cd2d2952877bf051f7177c34d7895790a1a6997615759021676b8fa27281"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-deep_bent-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "51b610861fc957773c5ab69caf439f50da5466111859a19f5fa6ac4a48aeac33"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-deep_bent-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "9b707dc7be37f7ee321ab6bd5d77a6ebd77f1ff6f0ecfc79f94075a56446b467"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-deep_bent-H1-range-maxgap-1024-1_100.json",
+      "sha256": "3bcc821696677e81fdf9f9ff58ea8d8141bf998fe230f4317486ca8a7aa949e4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-deep_bent-H1-range-uniform-1024-1_100.json",
+      "sha256": "158f3a7b29a42865194cb6283abdeb80b98c9a850f33c39d318cd0431d2f8a70"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-deep_bent-L2-hybrid-maxgap-1024-1_1000.json",
+      "sha256": "ab8edf281da1caf7c92e380949448b034a2b479809dbd26468614ddbc11c9004"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-deep_bent-L2-hybrid-uniform-1024-1_1000.json",
+      "sha256": "c902468e4081d54ee31da0cce0866bd498d5e55e509e8b3964148996dd8fdf13"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-deep_bent-L2-range-maxgap-1024-1_1000.json",
+      "sha256": "de40aea7a151624c1c237a782f17dee9464a38b215498bf06a14534490ad08e2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-deep_bent-L2-range-uniform-1024-1_1000.json",
+      "sha256": "3bab66637b03db7a1cf9f99f622f87311ecf5f381329754ebb229c752067f470"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-hinge-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "1e9919a1856a76e5e9411a7e60fedef42f30de3ae66027ee28e8ce64cfe75e72"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-hinge-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "53b6ac3ce803ff0aeca429e601aff648bf39b0fb5a80d956c2aee9ee24dbf0da"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-hinge-H1-range-maxgap-1024-1_100.json",
+      "sha256": "c5f3e806326c3c7a5f268b19d5a28462e19b22132d6ca5187c70d697723875bb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-hinge-H1-range-uniform-1024-1_100.json",
+      "sha256": "3fb2e00b7f07e2d822672f99cef4e8d1d8fd0ddf96d62d2d1b540ebe35368c38"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-hinge-L2-hybrid-maxgap-1024-1_1000.json",
+      "sha256": "6ea76730f67ae3f3b46751b81e700fcfe9b2ad02d454a25a223e59a06b96afde"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-hinge-L2-hybrid-uniform-1024-1_1000.json",
+      "sha256": "aa847d46094ce0d106231ce47b2bc7e58c7937d05641cb3c49c288948bcada49"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-hinge-L2-range-maxgap-1024-1_1000.json",
+      "sha256": "5a6b49a9ddae095b0d1250806a8cb9bf5fdb45fe5d53dd60863e7bce5a276583"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-hinge-L2-range-uniform-1024-1_1000.json",
+      "sha256": "515d74b417037dd4cfb4892580c6511a0b35c806ff1e915fd36b397f8de48781"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-oblique-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "954732cf578a6802cb33ff298460b20ffde6d43b40ef201f86413fff7481c843"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-oblique-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "107b08461c1b823eecf05fcdec593c45b205e9046cb0635fab947362e83a7209"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-oblique-H1-range-maxgap-1024-1_100.json",
+      "sha256": "d5ea43c509c0956e067b16400d38f4a033dc5f18a456b9fa4f98ad6a95a2fc98"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-oblique-H1-range-uniform-1024-1_100.json",
+      "sha256": "06e46a9036a0c5a0143ff93bac7e06650270b6122a0bad137164880fbfc82588"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-oblique-L2-hybrid-maxgap-1024-1_1000.json",
+      "sha256": "835c167bc61359c374b735ae7d6e49fb0d630c74ed333eec0dc1dbb0cc428986"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-oblique-L2-hybrid-uniform-1024-1_1000.json",
+      "sha256": "c750a4b6193a3637ddfbfc61d4f72b53f804048fae3af273f5d905b9c8a7926c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-oblique-L2-range-maxgap-1024-1_1000.json",
+      "sha256": "d59d56eae0d0ce1dc353867ea951824128d81cb3264f122f7858be1d856ed619"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-oblique-L2-range-uniform-1024-1_1000.json",
+      "sha256": "2153370d47ead7ab53561eb3e26bb378b3388adfc5b6c867c1d5001aa3abf639"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_2-H1-hybrid-maxgap-256-0.json",
+      "sha256": "0f6c3afdebab20de99918c40723da5fea4e02ec01c2d07c8e84e250e289e0f01"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_2-H1-hybrid-uniform-256-0.json",
+      "sha256": "c50e1eb8387f6ad2727e0f6ef0b28854395e84be4994141fbc83c109d95f744d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_2-L2-hybrid-maxgap-256-0.json",
+      "sha256": "ca50f1d9474f1558ab412247d4b6a1484aa8474444ea2408fb6cac8487062ac1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_2-L2-hybrid-uniform-256-0.json",
+      "sha256": "65ee411e12f4b2faf9d3005a922ac4da0c80fe5326d133e46096f783cc7805cd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_3-H1-hybrid-maxgap-256-0.json",
+      "sha256": "422a010fdaf035703914bfab72d6e681a938a5e062e8f4f8f44e0545b91afdad"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_3-H1-hybrid-uniform-256-0.json",
+      "sha256": "1473ce4f73e7b748e93c28d6b92a4c8a266f8f0ce608a3745f7af6d3470a4a45"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_3-L2-hybrid-maxgap-256-0.json",
+      "sha256": "87f420d92f5c44d75684780b379c7503a42f7fa48266a19852e66b137542e2f7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_3-L2-hybrid-uniform-256-0.json",
+      "sha256": "4f833ecfccf9bb158c1e20c9fe5b731b07f2570caeffc60eae148eb235d0a784"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_7-H1-hybrid-maxgap-256-0.json",
+      "sha256": "dffbc638bb1b4679a0b09df44c62dc355159a35df7ee23a6b1647c9a80a4e0ba"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_7-H1-hybrid-uniform-256-0.json",
+      "sha256": "17e847d7a209bb924350be1fc54af1b6f555c6334fcec5c1603ea8adc380a26a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_7-L2-hybrid-maxgap-256-0.json",
+      "sha256": "e0ca2d8be5ca42dd71b0ecc248ea28c316d7f16aeec9fbccac2f2738467953cc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-1_7-L2-hybrid-uniform-256-0.json",
+      "sha256": "ef82c2e739fce7031c48c6a3097014735a7082184b06f3fb2a51f6a38ce09755"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-511_1024-H1-hybrid-maxgap-256-0.json",
+      "sha256": "ef53649dacc766504102ed1ac20f7690659bdb715ca5f1bd44059798efda824c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-511_1024-H1-hybrid-uniform-256-0.json",
+      "sha256": "16c7a104bb45669a822e2ff7b8b9421e4ce11cf1da40a2240f962bf79cec5195"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-511_1024-L2-hybrid-maxgap-256-0.json",
+      "sha256": "3697f57dda1cc4947dfbaab103f19cff7c6c24ec1871f09b4e1346a6a9ed8abf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-511_1024-L2-hybrid-uniform-256-0.json",
+      "sha256": "c51ffac78daf4b762b4c9612799317ec45ffd50b17505efb391bcdb3e0f9a897"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-513_1024-H1-hybrid-maxgap-256-0.json",
+      "sha256": "e49fe7d647bf8674803973ef24147cba6c6e7660897cba2b4382573303d4de29"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-513_1024-H1-hybrid-uniform-256-0.json",
+      "sha256": "90b3daa055e3938e9cb6a255ea8179c9bfd9f9a5b9a27c68e44298853e5b2084"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-513_1024-L2-hybrid-maxgap-256-0.json",
+      "sha256": "18f6dfba282cb7a219bb48cc727bccaf2224c4203861fdbe4598e7bb0afffef7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-offset-513_1024-L2-hybrid-uniform-256-0.json",
+      "sha256": "70277e172e93b957834bd43419d4fef77ad8e2cf98f52043efca183249664d15"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-zero_neuron-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "163fce4f4d3eab97705bbedde51810b0375606133eca77e368a2d4751961c8d6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-zero_neuron-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "a9e7a25b4dc3543b32ad228be2db2dacaa1ec006aaefabcbeaa4fc65791bbe46"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-zero_neuron-H1-range-maxgap-1024-1_100.json",
+      "sha256": "38d8aa24f8bc5b87664ad43faf98068c925d893fff9bb7677f77e440acd1b78b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-zero_neuron-H1-range-uniform-1024-1_100.json",
+      "sha256": "dc36934a17167d346de05aca01bd7b42533f56846c8640bd2007b729dddd01a9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-zero_neuron-L2-hybrid-maxgap-1024-1_1000.json",
+      "sha256": "ed550fd63e20df4765e71008a609db4f3f5e1544d8aa811e9eee636a238ee59c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-zero_neuron-L2-hybrid-uniform-1024-1_1000.json",
+      "sha256": "60b82cc839b961dc81faa4d393e0135f01ce800d0f5cd44278f7ab1cb3f90b04"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-zero_neuron-L2-range-maxgap-1024-1_1000.json",
+      "sha256": "b82c826aaad324c4541647392c5f5999be5fbfd424409dd80dcbb36afbc8cd87"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/control-zero_neuron-L2-range-uniform-1024-1_1000.json",
+      "sha256": "fb7a8130318c0a17539bf7683ba7d3c7809dd1162e3e55751f6418fbd2bb9b1a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "0a56267876462d32cf42a49112db6bc32a14643cf7813048fa9b6ca5f4816f17"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-H1-hybrid-maxgap-256-1_100.json",
+      "sha256": "351a7dd33b843af82121989dadfc990bc4b800c90a9df2a03455942f1dbfd166"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "66e1e60f5e5eb7b8bb2ddd833fa7e435e85c082ab8cbb21ca2747da7b92e3728"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-H1-hybrid-uniform-256-1_100.json",
+      "sha256": "893acab0c08c4aac4fbd5470c415fd882f5236d0608d1ce016c0a5ee300d7116"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-H1-range-maxgap-1024-1_100.json",
+      "sha256": "dc49cac517d8bc5196144dc1ea7c64d9e2dc68dce17e9bccfb93914a509ea9f0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-H1-range-maxgap-256-1_100.json",
+      "sha256": "c369ff2eec6b120a01177b8eaee2690f46b03dfe665ef7f32089aece1724fa08"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-H1-range-uniform-1024-1_100.json",
+      "sha256": "1083b2444170866c5610edc22ff018245c8cf88ecdee61ec69935c19d933dc61"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-H1-range-uniform-256-1_100.json",
+      "sha256": "1ce778b236c95375eee410335181c305a73f8fd433930b51d194aed3d21e40a2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-L2-hybrid-maxgap-1024-1_100.json",
+      "sha256": "efba700a5e0fb83496b6923c15121645f0239a8303bc92e8d17cd4d0a3e509de"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-L2-hybrid-maxgap-256-1_100.json",
+      "sha256": "2c61fcf94ff0d76104dfd3e9bd34df9bb1b71cd092ea3cc95d135cca0dc649a2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-L2-hybrid-uniform-1024-1_100.json",
+      "sha256": "86e4cf352086cc9d64d0b50988d1ba97efafe39b3aa4aabc39ab8c7b50caee76"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-L2-hybrid-uniform-256-1_100.json",
+      "sha256": "05abe903becc434884c93952abc2b44ddbe3bf4b115f94dc153064382989da4e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-L2-range-maxgap-1024-1_100.json",
+      "sha256": "86e3bd065e4fc32eee24d5ad7bb6fb57296983d8709f252d8edbedaf220fc8fd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-L2-range-maxgap-256-1_100.json",
+      "sha256": "677ecf20fa62698e22ea645058e5917390fa27f58a0fff4d67bec70d27871c6d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-L2-range-uniform-1024-1_100.json",
+      "sha256": "7e9eb15591120e1b97504b4f2c24aca39b3b995dee327e3687f939a3d4ae1dfb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-disk-L2-range-uniform-256-1_100.json",
+      "sha256": "14453d2f3228e293eff9db476d7de153850740f1d5bf7227e6891fbd7ad40d30"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "40d1c697fb0e33bda20f389347a07f20a0a8c28f39cb1f696152a5d4852939a4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-H1-hybrid-maxgap-256-1_100.json",
+      "sha256": "bb7a37d1652c7d157336bd05e625bba3492bbdf0df38b21cd2e497f3ca7ca3ed"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "c4395fc3626df7cf11db04f64c511f83ce2a57b8437eebf94ecce5821c632aeb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-H1-hybrid-uniform-256-1_100.json",
+      "sha256": "a1593ba1bb73119044ce5518ce68ca568b861877aa4aa21f8c18db5db27c53e1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-H1-range-maxgap-1024-1_100.json",
+      "sha256": "dfcde48b3ffd7bfc492ea902562fbf2a0bf21e1a10513d59fec9312c023e08a6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-H1-range-maxgap-256-1_100.json",
+      "sha256": "599f3278cd4934a52da6998f4339c384f3f5b8eb7362018fd7b847e985a068a4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-H1-range-uniform-1024-1_100.json",
+      "sha256": "81b9fc4df33b6b8fa21318e37cb7a21358afe8b94f8dde289a7156eba0448e00"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-H1-range-uniform-256-1_100.json",
+      "sha256": "b77a151e4a42444ff6418a6477016b73035bcb465a4ae78f0b01096269348ff3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-L2-hybrid-maxgap-1024-1_100.json",
+      "sha256": "7c3e92db3814705525f7cb77a23b0591382d6f5c9a7bf5ebf89fd768a0770da9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-L2-hybrid-maxgap-256-1_100.json",
+      "sha256": "6eb7bb200ba0452985f1d56b0547cf1e60ec6e74db52912e333e43ab4d909391"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-L2-hybrid-uniform-1024-1_100.json",
+      "sha256": "1905c347e49051361da6584515bbc6065eb32ca95353e390bd4a2e8c53bacf80"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-L2-hybrid-uniform-256-1_100.json",
+      "sha256": "67300dedcdd5221b04511909ada13fe7d354bb33736ce4c904fc91dbf1d338f4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-L2-range-maxgap-1024-1_100.json",
+      "sha256": "03a9ada41d56cbe9b45021ced506e647ce8bddc0d4ca0f141dd1b61d09dc47e5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-L2-range-maxgap-256-1_100.json",
+      "sha256": "0ee5957b7f09c87b41b4553dc53f28a2b5ffaac2ffe5249f405469fb91f184a2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-L2-range-uniform-1024-1_100.json",
+      "sha256": "1ec2885f7811aa175f8fac237407e73ec4f4836fc4fb7ba028934a586c60e338"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-deep-two-bumps-L2-range-uniform-256-1_100.json",
+      "sha256": "e5dc8d7369bd07a1d6d0e939cf741615ebf5d7678ae8e680cc46dfd16f603b9c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "cb2048ddc6a764d0c131459576a34ae016a861e712a52df30a2587f1033679f2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-H1-hybrid-maxgap-256-1_100.json",
+      "sha256": "2819a8cd66c7aea0b4f0d9cc827cfb246bcee8f71ffdb0953377fe04c008eaa4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "bd98b12af8b3e25df69ac35eef053e70209ba22d46b1cb16a41dbf31cd228169"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-H1-hybrid-uniform-256-1_100.json",
+      "sha256": "f6e9e744199abbdf8e9c3b8931540ade5031d4b42d854940c0234f5128d05ac3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-H1-range-maxgap-1024-1_100.json",
+      "sha256": "072939ec4688b234276c6a02ffaf8d6f500436168134e8be710ccea532d25abf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-H1-range-maxgap-256-1_100.json",
+      "sha256": "4e6e6e9a6a41b19a2b63bed521f6b7367dde1a5a0ce4b56f1c9afb71c01b460e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-H1-range-uniform-1024-1_100.json",
+      "sha256": "2158b7de184353428c445664f00986d65d400cdea2a75e3b1f7a5f7c4e5f8ea7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-H1-range-uniform-256-1_100.json",
+      "sha256": "78a52f556f984793bfd1446afef95d1ef0843a92499a440111c8fcf1636bf83e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-L2-hybrid-maxgap-1024-1_100.json",
+      "sha256": "963648f403520db3b2d804db0bd0353eb39afa17291060022a86ffdfcad807f3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-L2-hybrid-maxgap-256-1_100.json",
+      "sha256": "a7ed403172d5301f77e1bd4f3ea931829dd7b5691424078fb5fadfd148aa5107"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-L2-hybrid-uniform-1024-1_100.json",
+      "sha256": "47d74fdb5b735bc88a21015b689020fa47d0e170d7c60c4d5f389f60c85900d2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-L2-hybrid-uniform-256-1_100.json",
+      "sha256": "d76a9dd26557db339f769a597e2f4ecfe7d7f0aa0ee9baa5d36b518652ea6a56"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-L2-range-maxgap-1024-1_100.json",
+      "sha256": "3fb7fac89f84eae02cab165659ab096adce9fe005924425316989cd124f23fe8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-L2-range-maxgap-256-1_100.json",
+      "sha256": "135b3f8318d1262ba1a36a12dbc8a16398a3265a2728bcdf0a31f5d1527051b7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-L2-range-uniform-1024-1_100.json",
+      "sha256": "305db1e9544f614044c04028f01a1c3e5e61887cf0ef20d9d2a494f20f2dda1a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-disk-L2-range-uniform-256-1_100.json",
+      "sha256": "53709e73470eae21b991c0eb46225ed97d954fae66432e62972fb5cc453cc710"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-H1-hybrid-maxgap-1024-1_100.json",
+      "sha256": "c625668651b133ae96cb0df5b829dbb9f34665d0d85d294c8a93e3e41ed316cf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-H1-hybrid-maxgap-256-1_100.json",
+      "sha256": "e8037340606705e9b8104a6164917f05463050d614eca39ba994ffed5a4717dc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-H1-hybrid-uniform-1024-1_100.json",
+      "sha256": "9a2a9158f9b09a9b7d032a1ba6ee8392365c641d6f378c1b5b02243ec026bbe8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-H1-hybrid-uniform-256-1_100.json",
+      "sha256": "6d4f3e8fe8b2bc628b6db9f973be57fc50fba671fd0fe34e83b17387e0cd090e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-H1-range-maxgap-1024-1_100.json",
+      "sha256": "f440083424b7621656c84443327fc69e78f135c3e28e04084d47da458bf15a9d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-H1-range-maxgap-256-1_100.json",
+      "sha256": "bafae3803f905f2836fae0495048eaac7d65f62a59a5bb42db4beed1c9048369"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-H1-range-uniform-1024-1_100.json",
+      "sha256": "76135bcc00b0d5f1afad47e7a96e9882637cca3e57de2e5888edadf6d2897a37"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-H1-range-uniform-256-1_100.json",
+      "sha256": "2e49f76d080d3f4f5ea88eed5095178b90f688a38987af25cef551249f156b55"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-L2-hybrid-maxgap-1024-1_100.json",
+      "sha256": "504934c694761235e2bdebefc4be264eb526dbe80e0a47d09ecaaf4d5239d2de"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-L2-hybrid-maxgap-256-1_100.json",
+      "sha256": "691754025244aeea1e9fa457720d480e509a700e8c75c59920a5640bffac9bc3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-L2-hybrid-uniform-1024-1_100.json",
+      "sha256": "69e899368013b12dc1b29aa0f28462325ad987fe21e820662bab9618d539ef66"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-L2-hybrid-uniform-256-1_100.json",
+      "sha256": "a7dd5114c2991e6d3bf93be91127c383fdd73c8e417fdd4fe67f32e2abeece66"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-L2-range-maxgap-1024-1_100.json",
+      "sha256": "85141123a7914243b247da3bf89657543e6ec18f19bef773ea0fdf29208745aa"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-L2-range-maxgap-256-1_100.json",
+      "sha256": "67d82bbc8deb3f6a46ea643cf9c81747c255d8f2ed1da39b902b58ad5cae4fb8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-L2-range-uniform-1024-1_100.json",
+      "sha256": "542ab6992c6fe116c8fcb3e2dc076ec66d2e5bda32b92e2860191f0a12ee032f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/results/trained-shallow200-two-bumps-L2-range-uniform-256-1_100.json",
+      "sha256": "bea98868acc223173c9edef03165e42c8b61721a713f20ff2e6e763f34e3e77d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/summary.json",
+      "sha256": "efad3a89c45db1767c278dac3469280f38bea312b534b5cf0326c431b7bd7cd9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/test_study.py",
+      "sha256": "8d19b740f001390040e1a59c126efef9b1ab6f53e7b4b991625a61174ae1a47b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/validate.py",
+      "sha256": "2cac44cf5d38b802f50fb51a234fce656e5a2cf1488235fb4520e1f6ecee3ffa"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-geometry-v1/validation.json",
+      "sha256": "6ff8df12c8257be276aa855b798aa0b71ecabb7299f484cbae7f3bb64e1d08b6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/README.md",
+      "sha256": "c710b17091acb7045a26da5ebfcb51808beddb96330908abe358aabfba585720"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/REVISION_VALIDATION.md",
+      "sha256": "05bfb3870a81f4f2ffdf614c3843ca2a42f2b9e23822e4fd3fe2dafd38fcdfd8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/SHA256.json",
+      "sha256": "e24a03359f33bb88dcdd45327fb9172347e5a6d346b57ec9a8ff8864b1b1bc4a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/all_endpoints.csv",
+      "sha256": "5fd3b8d148f2ddfac5f33afa96db6d5a725125fa07e6fd814de3c01eb5b7bc03"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/fresh_replay_checks.json",
+      "sha256": "54c9f7e11f4c7c34b706c000aac5a1c5773710fe4e58702ee000dda167fedc13"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/manuscript_checks.json",
+      "sha256": "ad48b1d27f8b787a8f49d07578e29dbd26a2f89fe5c07c79254af535b183144c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/maxgap_revision_build.log",
+      "sha256": "7c7fbd8987f83185ff5d12ac97ff82c618706cbc54eeda4a7cb66048c0b97ead"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/maxgap_supplement_build.log",
+      "sha256": "c4ac73e4a6cb1ce49675bad1ceff4c074d1336f3a3f1efccc9af43f9ddd6275c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/model_checks.log",
+      "sha256": "d5a3aaa2fa495c2ab7681af01b589798e30e243d0500d59d176715af32a8af55"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/one-d_replay.log",
+      "sha256": "4e34ec19e706b7394b595fd661b19b1ba6b10f904909c1eaf47fc37b52f89f46"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/REPORT.md",
+      "sha256": "700bdb17a9c54429eb805fef3ad8e10aa788a31c05bedfb1661f12be12be6c11"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/SHA256.json",
+      "sha256": "1445b21a07ca81b55e8ca39d85cc0be94018a262896dd34acea9dd25a8ddff47"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/audit.log",
+      "sha256": "9e9acda396f5ac18bda53a9ed2156d40997681df6f42ed2a0cfb77ca4a1eacf7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/H1/dorfler.json",
+      "sha256": "b2a6f8e584d10a1fa90be1c87af362a351d302e50b1db50091305c8e9d708786"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/H1/manifest.json",
+      "sha256": "ff9dccdaab0f14c8679d638c254328722cead9b2e4543b749dd048c025b32305"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/H1/maxgap.json",
+      "sha256": "fc038e9776c44839ef5edd8f5a04cdfd930d6d28e0a890c7c7eb6be368e83fff"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/H1/maxgap_audit.json",
+      "sha256": "0cd37c519cb77cc7f2c5a66724187c91ed29af72cb34dcada1e046837b74965c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/H1/uniform.json",
+      "sha256": "7189cae3273d19575382ab026811f22d1f40a666accfaece214163462c3ae139"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/L2/dorfler.json",
+      "sha256": "e9b039641cf86b924fa5467d82c82197dcbd7adce2b92452bcd7a6fe6bca3630"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/L2/manifest.json",
+      "sha256": "5bf8d1bd2c0d0b9c3dedf9a66ff1afec08e17f6485f5f0d50ab51e69dba6ecc8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/L2/maxgap.json",
+      "sha256": "d4fd5c73d8a9a956e1ddea8595d81a096a26fc3d3cf389e792235868ea505e8f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/L2/maxgap_audit.json",
+      "sha256": "a0379e15f5a72a7b5416de468b860a393060504c05e6bacba68c6cd625f43026"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/L2/uniform.json",
+      "sha256": "14e7e980e3abc08c71b9e606385f8ab7703735229ce197245f2cf00d34584afe"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/checkpoint.pt",
+      "sha256": "a2177f934ceb642eef29afda5d25fd99face24f521802cf2ec2a04c52d5060e3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/fit_grid.npz",
+      "sha256": "60ab273b17d000bee27701ffaaa63ec90b577406df30cafd505ec2af6f671c85"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/network.json",
+      "sha256": "40394b9bc346146f8d6bfa7a9ee3dd89f88d80b396bc5efffdfd70f51cdb29e9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/training.json",
+      "sha256": "08d1456fb65daa07bb98d1b9d69ed3296f74aa4c33536585092dcd831d370e44"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/disk/training_data.npz",
+      "sha256": "89e854d57c155dbdf14af7d5c7f9d6f8cfa66c3e6ac1896b92c410247e2e5274"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/H1/dorfler.json",
+      "sha256": "dcd82211f9812275a8226964989b5f88ec230fa8d2bb24c2e4337613bfc09c86"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/H1/manifest.json",
+      "sha256": "2b229b10fa38a846a7532f16360aa7426cad70ce5553ba59bfb1162bc16ec9d0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/H1/maxgap.json",
+      "sha256": "c4216bdc8c6dc722bfbb6181c15ee9ab236953aa122ff5311db25e67bd8b03d0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/H1/maxgap_audit.json",
+      "sha256": "6a620946b2af12373b9b04576cf5746abe00eda2f1f31d513954d48686e5f6be"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/H1/uniform.json",
+      "sha256": "d995f977c3242ac443c45be86f34bc274d1f63c150d2cb8d079c11127c2dc31c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/L2/dorfler.json",
+      "sha256": "f33e78cdb548277cbf02dbf4078e3577269dd1e5ffa84f09ccde4e35a43e686e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/L2/manifest.json",
+      "sha256": "b9af92b050f3cbf1fd23168e18fc134b57f35d766d1ed91bca7a5137707e59c7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/L2/maxgap.json",
+      "sha256": "b33bf1578590218addbce0280736d12bdf6deeb3bf2ba1a799a3ddff32cbf3de"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/L2/maxgap_audit.json",
+      "sha256": "60b71ce842fbd3423cdb92016b311bed80564dfbc23c3dc3dbfd95eb4d4d1e4f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/L2/uniform.json",
+      "sha256": "9cbb897b06f5324b531365303e30c6fae967415321dd618386b52b608d1a3230"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/checkpoint.pt",
+      "sha256": "90f7819ee058c98443d7dea0fa9319ca3392d28bd3d3fac654f00f4f554dbd54"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/fit_grid.npz",
+      "sha256": "08c5b833f810d0293c8979cceff21a14f1b17dd7c46006933f98705d7a205286"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/network.json",
+      "sha256": "accaf7a1e88ac5c653bde2440f6de5cf16913f1abb6fb373fdbe332176f38d77"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/training.json",
+      "sha256": "fe6ac503767fc25c06297d63657f4acaa088f0efaaa4500b46544d5319f25bfc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep/two-bumps/training_data.npz",
+      "sha256": "d8ff4043f38ed285b3173bdeeda20d793ff0624a27decfe1f3615387989e4ac6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/deep_convergence.png",
+      "sha256": "03e8edc6d39ba9db256f0e59d1e5b7e1d58760651f5ddc4a211ebc1b6c69c83a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/environment.json",
+      "sha256": "96cb0ef695951b4d25e366a5987a2b3664171adf23567d68b543d0c04b6d0626"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/execution.log",
+      "sha256": "9c2a46e5d187ddc09d70f411ad4b534639a6adbe0c864c4152f0dc6ad0fb71b5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/fresh_audit.log",
+      "sha256": "9e9acda396f5ac18bda53a9ed2156d40997681df6f42ed2a0cfb77ca4a1eacf7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/fresh_tests.log",
+      "sha256": "31332d11bd855ad3f0b8c4b7d2f638af8dc576deba243cef027551998f913973"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/fresh_validation.json",
+      "sha256": "62897df0651aee1223a22f2e25dc6906125e659b614899a351e0d6699a6b946a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/requirements-environment.txt",
+      "sha256": "d113cc015d8b5e02462a2ac578443480f3177f68ce9dcfdfad1a915095300673"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/H1/dorfler.json",
+      "sha256": "a80548080441f7d9a3274e6efe9b4adf68cb08ea5c8c009a4fa9688bf47da1cd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/H1/manifest.json",
+      "sha256": "ce5e3cc2148aeb1926c9d231d45b6dc1f2b15b34fcfeb021f6359418a5f48e62"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/H1/maxgap.json",
+      "sha256": "af0e252639e2503a327412f62cb04912d9c15914a75355d7de932688448aa2d0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/H1/maxgap_audit.json",
+      "sha256": "e18d27406d2bdc949cf78f5a62914282a485c589c46ebc07ebc33dcae134ba51"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/H1/uniform.json",
+      "sha256": "f9c47e75c172c991888372493e2695a21413eef6e582d3050cdee15201f2e73c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/L2/dorfler.json",
+      "sha256": "7a533c3830ce1de4ea0c31e1682285aee142543497445b83029b666a2962c32c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/L2/manifest.json",
+      "sha256": "63c7935c15621badc5ff3be89cb94337b0c7c3c035b1567f5aaaded14b69e103"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/L2/maxgap.json",
+      "sha256": "e9961e63902dc001a9740b6059d79a8c6de771211c67a6255b96e6a39660bd95"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/L2/maxgap_audit.json",
+      "sha256": "d05b6db20aa69cbbd3288c40cbee93071c87b8a74116381be4efa34766201060"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/L2/uniform.json",
+      "sha256": "1168ad42d42d204dc0c16aca2de94a3950d38ffb98648b0621c0bd5001a067c7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/checkpoint.pt",
+      "sha256": "88d646eb6c4c77146121e0db7c5a8e33e57d6be8013c1eaae9cfd12949b42f05"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/fit_grid.npz",
+      "sha256": "8abc92da8e8f09da1ee0c29c67fb094536962bb8832f6c8df4533b48da345a7a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/network.json",
+      "sha256": "a5ffef04353b32bb09167ea10861aefd48c2b96a44bb8c551e123eccdf92e899"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/training.json",
+      "sha256": "6640c7596c46fba95777305c6b37953fad40e89ab0cfd94729cdbb23a71ebbb9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/disk/training_data.npz",
+      "sha256": "89e854d57c155dbdf14af7d5c7f9d6f8cfa66c3e6ac1896b92c410247e2e5274"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/H1/dorfler.json",
+      "sha256": "6d80bcecc32efff8861a22e7f665873ec5c1fcb5a2f4be3345e0456669661fda"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/H1/manifest.json",
+      "sha256": "1a8277c341cf3420b171b3d28f776ea1083ef6471cdea348b103d041f1393e1e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/H1/maxgap.json",
+      "sha256": "1a936e43f0dcb9a5b79c15184b115be171db7cedb361513beddbe27b58c68441"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/H1/maxgap_audit.json",
+      "sha256": "9718ba73c512ca4cc76424e1300ab545aadbbd79f49062193daacf0ccc007ef1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/H1/uniform.json",
+      "sha256": "448e33242de9bed2aec0b2fe3759d995b8a320998bae69c7f592dbbfca1443d3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/L2/dorfler.json",
+      "sha256": "e8fe0c82b25540eba6f427d9a598022a6a5f4e253567b23395916f6a8989f617"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/L2/manifest.json",
+      "sha256": "63e5020e022a42c6b4665ddcd0ddbd4d1a41675f921ea85462e146be29b84a6d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/L2/maxgap.json",
+      "sha256": "f06bb21485f1b22e981bc74c61c40c31f2230076cecbc25f99fc301c7102e68e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/L2/maxgap_audit.json",
+      "sha256": "e1af667651d5d01c744eb79788e23de2fc8fc20f96e60afa1e571872ea072944"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/L2/uniform.json",
+      "sha256": "40094d6280c448df4794663973ef900d0000f19fa315c6d2bd403002955fbb94"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/checkpoint.pt",
+      "sha256": "0e2ebf34ed2eca0ea80a8c2565ac6cbfee259c6821b876e98ecf1bb6aed291d1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/fit_grid.npz",
+      "sha256": "1a72845dca6d27edc0115f6d406b63d0e63b9f9f7c0fb74d2f9d7514e1c9e3cf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/network.json",
+      "sha256": "930079f1d139c2d2257d9f41c76b4a0886c334de1e7ea6ae789e71ca6f510f76"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/training.json",
+      "sha256": "365120b8b1eab9eb9ddb56265d538c5550ef6de6680d8fa3122bfefe4948bc39"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200/two-bumps/training_data.npz",
+      "sha256": "d8ff4043f38ed285b3173bdeeda20d793ff0624a27decfe1f3615387989e4ac6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/shallow200_convergence.png",
+      "sha256": "9ba13fcf5d1bc44a5bcf9a9d4a4a395f404ddee31a505d09f75f2f8f1a3789dd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/audit_maxgap.py",
+      "sha256": "e98829c4f47083c8ab248e0f9171a9d6303ab9b494ee693f3246b035a8682bc1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/compare_reverse_suite.py",
+      "sha256": "92444fd8cdae7466f80ece19b7224ae7573ad9f21cab6220fab147a5544cdff3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/compare_verified_runs.py",
+      "sha256": "e75a8ca8c820ffbd9bb19b99e785665b8917ea0f2bf8b1ba941c8114f12326b4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/compare_verified_two_bumps.py",
+      "sha256": "4e1341d4bdafb05db40dd40301e8533c7f5685f3095bf93c212ecbf903122a09"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/diagnostics.py",
+      "sha256": "87eae6a433030295d5bd59c0f665ce95588205764b79f92294c6b2f98792d024"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_combined_lp_sobolev_convergence.py",
+      "sha256": "a2e06dfa59f08d2e7d00e152392a2bf17ac2724e9bd699ff6a557cfe6cb4a996"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_lp_1d_statistics_100runs.py",
+      "sha256": "d24ff0ad66960652df6a61bc124ec2a6913d1359e2dc3f2ea7e404ecd02a100b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_lp_2d_disk_activation_regions.py",
+      "sha256": "0c453c51a98912ae240db9087517e5e5f5be87e277a77e2127ac85c690148e55"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_pinn_2d_energy_norm.py",
+      "sha256": "9a740ff051ce305c17eb23975d2493b41743cd5063298860dcbea9669c898be8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_reverse_replay.py",
+      "sha256": "f84ebdf60b6629f1c9a69940cae69aefc7b6cf56ac4214500d42714a5d4eef85"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_sobolev_1d_statistics_100runs.py",
+      "sha256": "c3584396ddf87de312d471356631d4012c35b1609db6fab0ac4392ab4ebad534"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_sobolev_2d_disk_convergence.py",
+      "sha256": "a59b841cd58569d93c346168a666d2fe76194be9c652ee76bce199d3fe7eb571"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_sobolev_2d_disk_heatmaps.py",
+      "sha256": "30ff246644a912e3e899bcdce469575da77760c5c70b6fa495c85d8833ae8f78"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_verified_studies.py",
+      "sha256": "f08c2aeac63b5b4cf89e2d9fc8f1ef22c520d100aba8f2a4f7ac166fd497b159"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/exp_verified_two_bumps.py",
+      "sha256": "f1242cbf7de85c170c070c450e291fe5cb572a1b2659f602c486e5d611e4d6ed"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/experiment_records.py",
+      "sha256": "05096facc8e23a99272c45a7339f13d13452e489232d933f6ab2c5326f30e70f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_activation_enclosures.py",
+      "sha256": "b20d7e994ff838c7d9ce02d16538fc02d33d413cea32219e453bb40f38af95ac"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_adaquad_lp.py",
+      "sha256": "78ea0228b273a311104d525b7d9419ad03c0c000065fc243fa9719850d9a50e4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_eta_bounds.py",
+      "sha256": "cd0b20dac17937a5b2b62254252c35fde82d211a2c7b05ef6521524dd97fed7c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_hessian_enclosures.py",
+      "sha256": "8c4a3241e98f2a44891b1c897c69a223ade2b9f056357bfb3b37a0fe7d448a3b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_jacobian_enclosures.py",
+      "sha256": "229eb7bd15b9f0f3791a91b3c8e61d6c81d312ab7d50487ddd97c4ea4909944a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_lp_enclosures.py",
+      "sha256": "791172892672e692d3609590d5e6604434ee2c0257718e2de7058bb9c5eca7c4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_nn_interval_ops.py",
+      "sha256": "5f13d531ccbb2128a6ad1ab911cf361f8e8f8b31d81010cab6f63c99aba8e974"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_nn_model.py",
+      "sha256": "470a1ff1b8e7609031b47b7512f5e87e0b6c213a26f7682c4c376b2124f09d71"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_training.py",
+      "sha256": "a3e9f1872dc393623e99e74b16d9ca3a9e3c73ad3ae6f4045d04622878bc3841"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_utils.py",
+      "sha256": "e2e40f996a7eae1c0d1015da43e6d58af8c9d52bbb1c77692268dd4c2612eb6a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_w1p_enclosures.py",
+      "sha256": "df941ac2eaa30391f658e3f2f2e1564af8a7b156f971960c22d2797826fd2e6f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/lib_w2p_enclosures.py",
+      "sha256": "2955aeea58ff839e9ef648614a1284544de903f44ea37f6c336dcb2ee861e4a1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/make_report.py",
+      "sha256": "5d00108d983ee2f42b67485417151c4960a81b846436db80e8a04472c92a7965"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/maxgap.py",
+      "sha256": "791b7097817d04f3874a682c38e2010782bbceaa5230c4a95500d45df03ef3ce"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/plot_results.py",
+      "sha256": "e45df3006378ddb9808ffa97e42607dfa63945fdbfa0c29391c76bbe5e8a33bf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/render_verified.py",
+      "sha256": "7dec4a3bf97d33675481ac409f5dbc23e5ae2cc4d54100433ba96deafa6ce303"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/report_maxgap.py",
+      "sha256": "d9ed01c23270ccd0ce105085b4073657adf73b59d9e53dc6a4d9bab558d97a76"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/requirements-verified-lock.txt",
+      "sha256": "d113cc015d8b5e02462a2ac578443480f3177f68ce9dcfdfad1a915095300673"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/requirements-verified.txt",
+      "sha256": "1f4fcb5dafeaadb6f7894d8709c07e9cbd5ebb774ba6de40f1d638b2fe84074d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/run_maxgap.py",
+      "sha256": "b33641f3bcd4cb185f224d58b4d7afeb6c29e76a1050cb17b835619039070b3e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/run_relu.py",
+      "sha256": "09d8b9c186e625cb1a05c90172a89058418c0ca264b8a8bd51329168602176a2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/summarise_verified_suite.py",
+      "sha256": "82d2e6bb20080b957515e55136a4baf1613e0c267937ca1a6ffadef52d103624"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/test_maxgap.py",
+      "sha256": "5fecb3f7862503e2264ffaa02e6cf9d7e53bbce433c8530318fa05ef033992a3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/test_relu.py",
+      "sha256": "781896d420a6bf6f98fc4d1c324cb04ec247acbc20964aa83f6c136e214ab831"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/tests/test_experiment_records.py",
+      "sha256": "9688a6a7684eb9f397698f34a82534dda353902dba627ad7fc0f48d05d87a43e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/tests/test_reverse.py",
+      "sha256": "8fcdb717ac9df78ff983bf29fbc55c7aa23e95197ba6d6ac16496513d05bac13"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/tests/test_verified.py",
+      "sha256": "cad84decdc86f74cf057cf3d989fd7125ab2de61e268b237ade7c27560c62b23"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/validate_records.py",
+      "sha256": "a5ebf7ce222209364b1598a6b58764a642750a3e7d79e64374039d42dc4077a1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/verified_arithmetic.py",
+      "sha256": "b14e2b1ad1993ee30cc2e8a44e2bfd82cdda8ba0f6ef8fb32b043b86aeb1d7cf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/verified_integration.py",
+      "sha256": "360cf1cfa241c628e66a6a60d9691e872c6879bc1fb55ef58f5c76a19bb59cd3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/verified_network.py",
+      "sha256": "0dbd73aee5e74edaff2616319d775dccab1b1af267b16f761951fc4f519166c7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/verified_network_reverse.py",
+      "sha256": "5c85756b3050791780e002465f5741277e2b191fdfd0a131b384afced66c491c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/verified_residual.py",
+      "sha256": "f5b002290c45564b3da8fe55174acb68cfcffd21674f3904f0646327e8d98f94"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/summary.json",
+      "sha256": "fdf6ddd30c13a861ebb5ae3fc39c9869d072a1299da0efe4100f05d98f7a46f2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/tests.log",
+      "sha256": "7608eabd305c42d4c4c21d58dc456e4920f0cb49690612ff2a0957468e083217"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/validation.json",
+      "sha256": "0bfd92fe2bd1c2ecb59dc9fc925f5cfd2d437da99af121d9134885029c5f02b4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu_replay.log",
+      "sha256": "c9f7ab4949d670051479fd5889bd567706d4018ccbacb18f2b9458555d5721f2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/replay.py",
+      "sha256": "078ea933f85438a6cd08e8dcf57d97323a1c282886a09d876623a9d04b02af83"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/supplement_checks.json",
+      "sha256": "24d9a1fe801563145bc758ca67cf5c329c33afca3494c3425498e4317d886399"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/REPORT.md",
+      "sha256": "0dce223074f5d821b2651c84b692b359b056c69b4acf4a8cf857dbcde8c3a1ad"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/SHA256.json",
+      "sha256": "1fe3ec71b4761b7bf1108547ff5b8106a47e10d397e08dd16101dce444d80ba7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/audit.log",
+      "sha256": "da4af9019fcf0fe616fea3e0d9d1bfcf000fbf2c16382cc4b8e2f6f1813c9341"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/comparisons.json",
+      "sha256": "839a8900992993a07d593f55128971823373b8e3b721401d541c76f222b52c00"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/endpoints.csv",
+      "sha256": "ff569fb1e6d817140389af12ad14a82317b81240b65b832e23814d58d58b6f92"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/environment.json",
+      "sha256": "41c97464d8967b5b89f4c20bb679ea57b0ce0fd351d6d58d77424aa9861cca60"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/execution.log",
+      "sha256": "9f3b82dd94e48a9ca9baceada496243eea2284472f9ea4fd2e0d5308c46459ec"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/experiments.json",
+      "sha256": "67990e31a6ba732690912c0f1e6e00b746a556169605941cb58acbdde87833d6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/fresh_audit.log",
+      "sha256": "da4af9019fcf0fe616fea3e0d9d1bfcf000fbf2c16382cc4b8e2f6f1813c9341"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/fresh_backend_tests.log",
+      "sha256": "add90f1fbaee0ca0d3d266411ddea12f26f75e4cf45feee1de9fa4910577bc69"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/fresh_tests.log",
+      "sha256": "2df2b1a24dc872ce7f8f9fccb9f58bc0462cd138571f0b9ef7c48d9ce5cde3da"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/fresh_validation.json",
+      "sha256": "44fe6d749fed56757a39f65b9eee77328cd37dcb03e3e87535d0174abe5029ca"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/disk/checkpoint.pt",
+      "sha256": "9926ab08806a40cb603a6ce96f4c260c2488d42f05143ab18049e59978cf641d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/disk/fit_grid.npz",
+      "sha256": "81b341903e8fe47c10ce3b6d0a189583dab8b7b6ded771fdc2274cec089defa2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/disk/model.json",
+      "sha256": "72d6e205da1dc7a735e829b3f9a0e4cb861936f943a0ae3141ba746771fb4803"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/disk/network.json",
+      "sha256": "3975e5ec81187bead473138966f199b2f636c8dd3f587e394f72d9cfbe7cac20"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/disk/training_data.npz",
+      "sha256": "89e854d57c155dbdf14af7d5c7f9d6f8cfa66c3e6ac1896b92c410247e2e5274"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-trained/checkpoint.pt",
+      "sha256": "96a2ece081272c4034bfd685cb6e4b5b65e7127dc606e089fd6fe2d7727a88af"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-trained/model.json",
+      "sha256": "f6599b6ce2c32a90c90d492ed3c3cd58992d4352d1a85fe4d6aa9cf596a3e403"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-trained/network.json",
+      "sha256": "b50a96ac820752bf44a8ad604ccf7a6adb698cfe35ad869d947170f1ae951166"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-trained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-untrained/checkpoint.pt",
+      "sha256": "5be92a89f470c4dec7ddabbe72d90ecba1e9639fb3e043e313363f6079c9456d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-untrained/model.json",
+      "sha256": "0386cce75499b8a1d0ff312e77af1a44478e73b5085a2664c64ab0cfdde7dd7b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-untrained/network.json",
+      "sha256": "8f2363c37cf0f1c3d9ff1a0dc61f993ab5810440e7017f17f4ae87c60ddb0624"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-untrained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed1-trained/checkpoint.pt",
+      "sha256": "1bbadf71ef9c8b020bc7121b22814437d79b4f95e2c6144ec8ca1f528b7f871e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed1-trained/model.json",
+      "sha256": "f7a80a3f6ccb0d3f0b499bc0965fe692fadee64d7fbb50017f5c095fe5ad84cb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed1-trained/network.json",
+      "sha256": "401623fe47c23fd5d5876209db463135d1c94407d1ac2d1e37ac513f45976100"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed1-trained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed1-untrained/checkpoint.pt",
+      "sha256": "3be3ba6db4eba65d5063d53c95f89d431a3a6876fdaf87b031705923251725f1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed1-untrained/model.json",
+      "sha256": "640bca28094fce8b25c39f90217155635ff2a124f7003e3a3478a3b90dfcc731"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed1-untrained/network.json",
+      "sha256": "6f0214fcd5ad234faf6f8e10b3c84acbc9019b1b3f24a879f9cf12a8b5f8562b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed1-untrained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed2-trained/checkpoint.pt",
+      "sha256": "c130daea29bec807eff38b8661eb511cfdd950555ee12124880a66e7a2053670"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed2-trained/model.json",
+      "sha256": "21c3cd4525a11813b0dae0a387dbd61175625feffc383d16b687118e7e649b2b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed2-trained/network.json",
+      "sha256": "97c44bbc67e142724b328e3f5343debfcfbec3876d36680b0bfef9416f4cbf52"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed2-trained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed2-untrained/checkpoint.pt",
+      "sha256": "bd7756c2f80c6dd896b880557077ae8600b9199af7f33c69966a7b1cf39ac1d7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed2-untrained/model.json",
+      "sha256": "efa8d9c81023509285f694045c75a9dee5ab7c27915a1d10365c9973ea51addd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed2-untrained/network.json",
+      "sha256": "f92af0b1c28155c2de9ddda142bca1bb5b251d0f61e6fecb85ef4b1e28792468"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed2-untrained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/pinn/checkpoint.pt",
+      "sha256": "a85791a653832e10d6cd1a39446b292d35e755a5ee8a3b34319b9447b545da41"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/pinn/fit_grid.npz",
+      "sha256": "28c4284b6bbab089534cf67dd061f80661a2c3f773fc303487ef226d9c589352"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/pinn/model.json",
+      "sha256": "88f81dc9218e6dbd85b8d0223bda84d1a4f25f4b0128fd31f3a19582d1147a7c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/pinn/network.json",
+      "sha256": "1f7a9f57cf00428df5571726f5e2d9fd3876c2ffca1e875e1a682050782f1f34"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/pinn/sampling.npz",
+      "sha256": "41e420f1edfe8756c7d602253094dea9089b9fadd169647536dcb9e349cbfe3d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/adaptive.json",
+      "sha256": "bbbf8f4a0c9a22b5422ed2e47c8210a1771ee25c06a1753177afedc5a870143a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/checkpoint.pt",
+      "sha256": "36cb3805d12ce604d026a0c0bd81d26fa0b0023868a8ff65ebb13324d9d87cc0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/figure_metadata.json",
+      "sha256": "4005cf407f6eab4111493ee6b69c59cc833aff5e580156dbf745373b5fe1dc9a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/fit_grid.npz",
+      "sha256": "e762d02ad85ce9bb4066f5a79d26c3968a8a90ab2d111cbdea05758712ac4ad3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/manifest.json",
+      "sha256": "0a6ed043f46a8cc06dbfff3ce04899bda0ce2585af761cc1f565480dd1f15cba"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/network.json",
+      "sha256": "f3576cc58e5981635c95d117941fb727ba741ca17bc694b4fb9e71c44b3497b0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/training.json",
+      "sha256": "78e42ebf96a52b479c9f6bcb7655807335e9a53abb41995e2680453b2aa718ac"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/training_data.npz",
+      "sha256": "d8ff4043f38ed285b3173bdeeda20d793ff0624a27decfe1f3615387989e4ac6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/uniform.json",
+      "sha256": "a2ee015349d457c43290cd2ef17a8f2cb2ab49bace09cc078aee9c5976b02288"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/two-bumps/validation.json",
+      "sha256": "7d42a06fac008466775620f94b6355390e189ff368a8c26eb5ff19169df6dd19"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/one_d_H1.png",
+      "sha256": "f731cdd87e6220f7faa7d8a2e02efcbbd65c4d00b4e72871c66759b54d46a33b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/one_d_H2.png",
+      "sha256": "ca5f80d32b0518f5be2c249dbdfa6ab64bd4dd0a2620b8813a260f79e08b62a2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/paper_config.json",
+      "sha256": "11ce002e6a1ad026ae7adad59866cee24c90dae0a1316f8800c8e1fcfed8e886"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/paper_suite_original_environment.json",
+      "sha256": "f9b3024f8c87f24060f672fe9c946ba9f6892bb094296535a6ebc58eecd5f6c1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/partitions.png",
+      "sha256": "cbee4f8de706ec551cd51ae774f3fd23e2da20add7261c47190eca69ee96b546"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/requirements-environment.txt",
+      "sha256": "d113cc015d8b5e02462a2ac578443480f3177f68ce9dcfdfad1a915095300673"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H1/dorfler.json",
+      "sha256": "6167a7cddaaf1b4d5e07d6c50699a2cdac5c829bf0c88ea2c980938cee1340d2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H1/manifest.json",
+      "sha256": "64787769aa98a808093ddfb2c59f228ecfaff0be8f2ffcd83a9ed59143a536f2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H1/maxgap.json",
+      "sha256": "89c18db60244ebe4f98fbc90db109af1b3f270dc4a18a43e824f97a683760a8c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H1/maxgap_audit.json",
+      "sha256": "2fa4e5d0f40c23a0b28f1040ef83b860ec7487a7006b53279bbbe8c2699d97b2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H1/uniform.json",
+      "sha256": "12909c4b08d32f047ab0e1a7c8b9cf4fddebaf77b1e472f88dd82405d74ee3b7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H2/dorfler.json",
+      "sha256": "0f278deed5d47f5c7a753a45f9d3c7eb9c18352ad969e229a04535888facb2e7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H2/manifest.json",
+      "sha256": "1b78caa25b98e48509cf977a66945080df094632ed57d36f66d0927e6e5672df"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H2/maxgap.json",
+      "sha256": "63adfe97708498dbb46a9631beadb5b4e5735333c3a3c8dab67bbdcf886d298e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H2/maxgap_audit.json",
+      "sha256": "38ae4067f6ff33db5f3adb0c9777987a64550bb178faba9b5237c2a21be087be"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/disk-H2/uniform.json",
+      "sha256": "0c78d70551291983927567471f6eef2fd33ae550867eedce244f81b99857c9aa"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H1/dorfler.json",
+      "sha256": "14952f29f2aea4ab8a28bbd7fa165f759b761cf3f4f4411c78987dae5a0c4d36"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H1/manifest.json",
+      "sha256": "4ee260a717113c52676bfa1c62f71546558520fe90789071ca5391e34365c9bc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H1/maxgap.json",
+      "sha256": "3a372bf5c2feac491cb3dc9297cb9a9def1b18906da053103b43b25c966d2daa"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H1/maxgap_audit.json",
+      "sha256": "55b805b6fc26696be6c158d28a981dfddbff8b559aa0f81ecf22f4ca81adf765"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H1/uniform.json",
+      "sha256": "10f0ffadb8f765d138a260e3dcfd86d6812c64599c922183029b2bf967813150"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H2/dorfler.json",
+      "sha256": "0a6bbc77d4cb9135e27d75788e4fbbeca03be567875e0a33fa35f869087f2973"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H2/manifest.json",
+      "sha256": "cf7e886097c4c29738d9b0083720ee6b7effd75975a685e7851fce5dca53eb75"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H2/maxgap.json",
+      "sha256": "0dd259d51b95d4ec1612f96864d1178b9402998362cd0379f0d42400c25e3afe"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H2/maxgap_audit.json",
+      "sha256": "dddbe0588590fd59f16270dbae4224fb9eca0388f7c7102e1013ca083683f016"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-trained-H2/uniform.json",
+      "sha256": "51636eea415690a434a8a0a4c1e17b8998889dea71955efc06fbacef6e17503a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H1/dorfler.json",
+      "sha256": "ca9575eaecbd0ac9fe27911ea8cf71640c8b8e75741b59f3e15df61b6db41cf7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H1/manifest.json",
+      "sha256": "5074dbb5af47bd94316280ac39c1e4d065e44692dbcb77a3fa64719aba9a66ed"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H1/maxgap.json",
+      "sha256": "1a4cc1064c9aec72607fd4c43926fab4c207fe786df7a43357eaa4fece758b21"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H1/maxgap_audit.json",
+      "sha256": "1b5c34fbe4dc5a871c5b911a3ded2bf358b35f800ab9b851f60dadc1460b1598"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H1/uniform.json",
+      "sha256": "76a607628bb8b5aadc218c38e7d9eacec8378753af46db8a1bac29d093275293"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H2/dorfler.json",
+      "sha256": "0a5bfac663c792ba44be8224d8caad70110c3a836ae9aae32c329c916eafa090"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H2/manifest.json",
+      "sha256": "8bb07eb186b5b69c196b34916a4ac2ace32a8cce647db25a1bdec468b91be850"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H2/maxgap.json",
+      "sha256": "d204d3fabe59b293c55f49f0094a314f769137b659c9a8d19a782f6d71d2e185"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H2/maxgap_audit.json",
+      "sha256": "c10c080db3847652f47beb240edf96bf79d4b323529daae0eb5d44d7ed19c17b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed0-untrained-H2/uniform.json",
+      "sha256": "7c2e949486790d1a0a9e01d01676fddec6e1c6c61ff2c2e4280f1f9bef818a52"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H1/dorfler.json",
+      "sha256": "e31901d5c442dde1fb106b9880ee798c90d2ff7a9b709f73bc1f68934b9894e2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H1/manifest.json",
+      "sha256": "6839843f89f92593cb4dea3851fc2c9afa1fc23650a2a4ec22bf967fe11e2980"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H1/maxgap.json",
+      "sha256": "7c0da99b1aee1769a35641b1766f68166fda3fa618f5f79526f51a630c152847"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H1/maxgap_audit.json",
+      "sha256": "7af4ca06304d6a46eaaecf78597e1987958b31ce63a46e4778c19ecc2fe06bda"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H1/uniform.json",
+      "sha256": "8a470d24b661bc857ba8aa7c11530b2f56ba045cf28c26ce7cc5be31824b7a0d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H2/dorfler.json",
+      "sha256": "1297627849e85e7cacaa7774236924d8f7028cef6b2e381ae419c745a6779e5a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H2/manifest.json",
+      "sha256": "c5044ab3ca2b6a055521acdf3a7aa42de77072708ed7ffcea354ddc7022dbd5d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H2/maxgap.json",
+      "sha256": "674aba07b5fcb69652fbd7c75ab3044861657b7c7ef86794f637fee1f41ee95b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H2/maxgap_audit.json",
+      "sha256": "b0b5e95a5b4886c9760772ea7449b5552905fc62c55ba2a75e1127213422d5b0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-trained-H2/uniform.json",
+      "sha256": "fbe1f0abfb140da189457c426e48287ef90cc14046535ff125dced5754d23ea0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H1/dorfler.json",
+      "sha256": "f6ed67c7d10b2141503aa8c995ff41d821c37945195f189b40c8551c41dea3bc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H1/manifest.json",
+      "sha256": "73b174f7841f709df31ed563f21fb878c044ef2d8ec53a66bc33ea9a420bc7e9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H1/maxgap.json",
+      "sha256": "be9eb17be971e28ad29bb1b72ad8e2ccbb8f2125466246e6cf91c89aa3ef31ef"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H1/maxgap_audit.json",
+      "sha256": "9070ffac66e64c08fcb076298842929fdaec6c8fadfb8b2d52ef6f75e22d6690"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H1/uniform.json",
+      "sha256": "a6a2cbcd84ecad034c39ce3932c73580cca6b7b171ace9ee732c1d0945b51b66"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H2/dorfler.json",
+      "sha256": "099a01956dca5a1b6047e4eb73b35b5fe62cb8569f9793d1a667929eea20809c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H2/manifest.json",
+      "sha256": "1d19fc791c95203369c2c21b38071563ce1c03878995082577185ff2ed293756"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H2/maxgap.json",
+      "sha256": "385cce5dbf29234aed5791416411dba94c9912928dd079913b8549d5d1937691"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H2/maxgap_audit.json",
+      "sha256": "cd912a0a4990b043f619f58e463d8a16028e80d167bc8e53f3bf1a02c16cf211"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed1-untrained-H2/uniform.json",
+      "sha256": "fd8f5b81da5b78c3897f3759c244a544d356f85f946bbbcc5649d2637d286e13"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H1/dorfler.json",
+      "sha256": "ca7f111fd7d74e1580d881409b13bb10a493c90f3ac6b8d388c511a8a988a4ac"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H1/manifest.json",
+      "sha256": "43c8ed377f1bc9161887ae43d900cab90abbd462309f604c8c7d6174dd1d3679"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H1/maxgap.json",
+      "sha256": "604dbbbcc27c971ffa27dedbdee1682c221dd130d5531c62f551c92167f828c7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H1/maxgap_audit.json",
+      "sha256": "7ef59824f93821f590089d7bb51d37aa8f216fa6d256a19d28eccda5fb784906"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H1/uniform.json",
+      "sha256": "fd3f7ad81eec9bebf08552bf69e4332ced9062130c3608f5fbe783dc33320202"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H2/dorfler.json",
+      "sha256": "e3fa8b5aa69b95c9325b83adb8d7ec06562a7c05079d4175bb70f8726a7118ac"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H2/manifest.json",
+      "sha256": "15feb70f552f2647bdd2c715068a1f4639ecf1a04661883b263514d02e8f72b9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H2/maxgap.json",
+      "sha256": "32b1e281fbb6eca2daa52b15260c1b5fdae7f7d2d3cf96b1f0fb811e62986b8d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H2/maxgap_audit.json",
+      "sha256": "bd60ecd202275ae33a8cc8055431418a69404deb4f9b4a22627b3fab7f094241"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-trained-H2/uniform.json",
+      "sha256": "ad76f5ea92f7073ee08a31e59c5e346554a1cb189c1dcad35afa93e7734ab1b0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H1/dorfler.json",
+      "sha256": "14d8d2e870bf3a6348e1d41f9b0fc44598443760cf8f278ea6ae7c7c04205b4b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H1/manifest.json",
+      "sha256": "fde2bc022e6107c54c4a68a56b03806c8369f5ebbc2df5737f9f83f889f1402f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H1/maxgap.json",
+      "sha256": "72eb97b4754548523faa28e9f91412b3163f49e213ce7a599d0931bf756b2e51"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H1/maxgap_audit.json",
+      "sha256": "24f833d6c59b907feb80e751b41b663602143c527f8275e15981b8eb2bc6c226"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H1/uniform.json",
+      "sha256": "2ae962e9851fc28fc1d8876ef97c901370793c0328e54f29e0f768ab9d6817f0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H2/dorfler.json",
+      "sha256": "ca9c97555007b2e7fafb4d0f98b8cdc0bdfc40296aa07d4815b7b36f89610a04"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H2/manifest.json",
+      "sha256": "8cd541ce4c1629280abf921101baf9e76f2259daf2aa239d72d32df49ca79a46"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H2/maxgap.json",
+      "sha256": "812209524343e42d4f5f6853037c8e8a84affd8daefc507fb4a629fb00262c80"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H2/maxgap_audit.json",
+      "sha256": "6bf0d412d5144d9175b72339d7f6610f7eccdfa6edf95a831c5edbe6bf1e9179"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/one-d-seed2-untrained-H2/uniform.json",
+      "sha256": "171578fc16aa2f73ca1cdf435f75c3a977bdc4ed5ffc0ef32fc0ab316a773cea"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/pinn-residual/dorfler.json",
+      "sha256": "6823569858652be869f765edece11119ca90886376f0b6dc42f5ed32dadc2623"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/pinn-residual/manifest.json",
+      "sha256": "ec216c13b12314cfb184386b5d7836576030b34e7b562b5a33863c3022ea9c20"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/pinn-residual/maxgap.json",
+      "sha256": "abca9ac138a0554aecf9feaf69617dc635170b26a73d6ebcf4b63d86bd9096b5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/pinn-residual/maxgap_audit.json",
+      "sha256": "272599b09695e1e34e01b73cdbee68fb158a4537e600419ead4b954841a92171"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/pinn-residual/uniform.json",
+      "sha256": "7c0d77e81cfb94b7f48045fb428ddbe7d5eb46ce6f184be9e613c84226ef4978"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/two-bumps-L2/dorfler.json",
+      "sha256": "bbbf8f4a0c9a22b5422ed2e47c8210a1771ee25c06a1753177afedc5a870143a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/two-bumps-L2/manifest.json",
+      "sha256": "c6a3040a42093c5c2b41217403a6b5bc5010ef5d1c987bbbf860b1270bce566d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/two-bumps-L2/maxgap.json",
+      "sha256": "889987a3605b1caa01f77788b0fb5a80100aac855e2ecf670811fcee8bef94f4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/two-bumps-L2/maxgap_audit.json",
+      "sha256": "af83ad889c53cfe64f2429ef8f8799a2a790780684aa9f2819f54512425d3a84"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/runs/two-bumps-L2/uniform.json",
+      "sha256": "17534806975acc2b3130b058c959fd159646baa71f5226e49f82b478607719a0"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/audit_paper_maxgap.py",
+      "sha256": "07de7bb806f304cdc75ba106ef4ea5f52eb957e0c4f318d71626f9852ea71a3c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/compare_verified_two_bumps.py",
+      "sha256": "4e1341d4bdafb05db40dd40301e8533c7f5685f3095bf93c212ecbf903122a09"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/exp_combined_lp_sobolev_convergence.py",
+      "sha256": "063401242f94fffe5c96f15dd5b702f30f9082002cc47cf8bf907a278061f101"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/exp_lp_1d_statistics_100runs.py",
+      "sha256": "d24ff0ad66960652df6a61bc124ec2a6913d1359e2dc3f2ea7e404ecd02a100b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/exp_lp_2d_disk_activation_regions.py",
+      "sha256": "0c453c51a98912ae240db9087517e5e5f5be87e277a77e2127ac85c690148e55"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/exp_pinn_2d_energy_norm.py",
+      "sha256": "9a740ff051ce305c17eb23975d2493b41743cd5063298860dcbea9669c898be8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/exp_sobolev_1d_statistics_100runs.py",
+      "sha256": "c3584396ddf87de312d471356631d4012c35b1609db6fab0ac4392ab4ebad534"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/exp_sobolev_2d_disk_convergence.py",
+      "sha256": "6de0dfa6bcf7e90568eb872157f0710f0d7dfde1b79b97b3fc68b5f60d162365"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/exp_sobolev_2d_disk_heatmaps.py",
+      "sha256": "af102c1666247c9c2bc81367add21643bb28b634f8220ea5cb9c92e7999b0be3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/exp_verified_studies.py",
+      "sha256": "e9cd3251c2b27ddd20af5987e3bd5c810fa859c2e29628f3d28c8f2bdc9fa94b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/exp_verified_two_bumps.py",
+      "sha256": "dc264fbfa6480372050a5ebbd0182e2b7fb54ff03a869391b8c2942be57649ea"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/experiment_records.py",
+      "sha256": "05096facc8e23a99272c45a7339f13d13452e489232d933f6ab2c5326f30e70f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/experiments/paper.json",
+      "sha256": "721daef8930aaf3861283d1d36ad5f5a936ee88fe6f59206984141495dffbd5b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_activation_enclosures.py",
+      "sha256": "b20d7e994ff838c7d9ce02d16538fc02d33d413cea32219e453bb40f38af95ac"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_adaquad_lp.py",
+      "sha256": "78ea0228b273a311104d525b7d9419ad03c0c000065fc243fa9719850d9a50e4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_eta_bounds.py",
+      "sha256": "cd0b20dac17937a5b2b62254252c35fde82d211a2c7b05ef6521524dd97fed7c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_hessian_enclosures.py",
+      "sha256": "8c4a3241e98f2a44891b1c897c69a223ade2b9f056357bfb3b37a0fe7d448a3b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_jacobian_enclosures.py",
+      "sha256": "229eb7bd15b9f0f3791a91b3c8e61d6c81d312ab7d50487ddd97c4ea4909944a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_lp_enclosures.py",
+      "sha256": "791172892672e692d3609590d5e6604434ee2c0257718e2de7058bb9c5eca7c4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_nn_interval_ops.py",
+      "sha256": "5f13d531ccbb2128a6ad1ab911cf361f8e8f8b31d81010cab6f63c99aba8e974"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_nn_model.py",
+      "sha256": "470a1ff1b8e7609031b47b7512f5e87e0b6c213a26f7682c4c376b2124f09d71"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_training.py",
+      "sha256": "a3e9f1872dc393623e99e74b16d9ca3a9e3c73ad3ae6f4045d04622878bc3841"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_utils.py",
+      "sha256": "e2e40f996a7eae1c0d1015da43e6d58af8c9d52bbb1c77692268dd4c2612eb6a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_w1p_enclosures.py",
+      "sha256": "df941ac2eaa30391f658e3f2f2e1564af8a7b156f971960c22d2797826fd2e6f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/lib_w2p_enclosures.py",
+      "sha256": "2955aeea58ff839e9ef648614a1284544de903f44ea37f6c336dcb2ee861e4a1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/maxgap.py",
+      "sha256": "a128a940fe098ac832718047fe980ad0db5320bb68a06fbc88bff3407a0a143c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/render_verified.py",
+      "sha256": "7dec4a3bf97d33675481ac409f5dbc23e5ae2cc4d54100433ba96deafa6ce303"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/report_paper_maxgap.py",
+      "sha256": "688b02a9357def4e239b93d159751a97864eb79cd06faea004b7eb583af2cf05"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/requirements-verified-lock.txt",
+      "sha256": "d113cc015d8b5e02462a2ac578443480f3177f68ce9dcfdfad1a915095300673"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/requirements-verified.txt",
+      "sha256": "1f4fcb5dafeaadb6f7894d8709c07e9cbd5ebb774ba6de40f1d638b2fe84074d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/run_paper_maxgap.py",
+      "sha256": "6e935c87112de59808e761a0dd97fb379f14276a5c2b492b2774bfa7fd9e5dfe"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/test_maxgap.py",
+      "sha256": "b000fcdc21906e64faf186685404960e0bc1b360ea1b724285ce76902c3508ed"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/tests/test_experiment_records.py",
+      "sha256": "6e0dce5a56f6150d62f9c14afcf9f65a7020840386b1364121a6fa0fd7858eee"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/tests/test_verified.py",
+      "sha256": "cad84decdc86f74cf057cf3d989fd7125ab2de61e268b237ade7c27560c62b23"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/validate_records.py",
+      "sha256": "0f4d37eec08ee5cc4c8c066ff790f69d193a5091df1b7225f549bbc8d2f6641a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/verified_arithmetic.py",
+      "sha256": "b14e2b1ad1993ee30cc2e8a44e2bfd82cdda8ba0f6ef8fb32b043b86aeb1d7cf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/verified_integration.py",
+      "sha256": "360cf1cfa241c628e66a6a60d9691e872c6879bc1fb55ef58f5c76a19bb59cd3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/verified_network.py",
+      "sha256": "01205d344a206b0e1a39ac3d87f95ffc4439f61e7d77ce5292ed36996660ed70"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/sources/verified_residual.py",
+      "sha256": "f5b002290c45564b3da8fe55174acb68cfcffd21674f3904f0646327e8d98f94"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/summary.json",
+      "sha256": "f5c883aee5d6fbc0843d039f64479a45483471e1d7cee2fd508f86d5a304bd7e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/tests.log",
+      "sha256": "a293a99abe36d58d2349167977e8476bbd11d8fa498b153ca3bcc82dac5a232e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/two_bumps_original_manifest.json",
+      "sha256": "0a6ed043f46a8cc06dbfff3ce04899bda0ce2585af761cc1f565480dd1f15cba"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/two_d_convergence.png",
+      "sha256": "892bd325557b9b0280b49e4474dffb35e7ac5dc743f2a31273a7c8c6fc39006c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/validation.json",
+      "sha256": "b190dabf85318c78b4c2a1a59b79da1646c2bd2da6a37981c853e1010403cfaf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tools/render_revision.py",
+      "sha256": "37ce5d44c917ad825209e4e534487549d193f0912cfef079907879d7cd91e0fc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tools/validate_revision.py",
+      "sha256": "2e2f53bb9b55835d90d7a715edbac80252b1cb27172957a0e289b21e0edf23b9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tools/verify_models.py",
+      "sha256": "fd1389fa84db02b464321078df5464e359762f65f5e4cc1263c020105d1b55c1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/two-d_replay.log",
+      "sha256": "7dd34175726615d48cb9b8d3cebb2ebd9d5d0c9372b4379575f4f9436374f02a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/MANUSCRIPT_INTEGRATION.md",
+      "sha256": "e72e9132d2e479173381c7c5a3c284d1042da4cdb4bf2625825b21ae079fa8ca"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/MANUSCRIPT_VALIDATION.json",
+      "sha256": "6b73678395936cbbcdcda4e67ebcf579dfedb4de1da01b494b020b3b1e11d948"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/PROVENANCE.json",
+      "sha256": "1e35a68c0b65b14f3387b7f071df512de827728530c7ba45e0dd508d30d20b3b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/README.md",
+      "sha256": "cb7084c8ebb3a2f7d2f3b67eadbf6235b4d9f2bf01a0c21db2ccc14cc8f37f4f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/RESEARCH_STAGE_SHA256.json",
+      "sha256": "f8fdd6d0303d75f8b1ec45972a571ce74909dd61257f9c193c886a203403444d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/SHA256.json",
+      "sha256": "c3936cfac71b43ada0da884a1b1938d6d205532722e0802b95110431103cd5c9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/backend/trained-tanh.json",
+      "sha256": "b50a96ac820752bf44a8ad604ccf7a6adb698cfe35ad869d947170f1ae951166"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/backend/untrained-tanh.json",
+      "sha256": "8f2363c37cf0f1c3d9ff1a0dc61f993ab5810440e7017f17f4ae87c60ddb0624"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/backend/verified_arithmetic.py",
+      "sha256": "b14e2b1ad1993ee30cc2e8a44e2bfd82cdda8ba0f6ef8fb32b043b86aeb1d7cf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/backend/verified_network.py",
+      "sha256": "0dbd73aee5e74edaff2616319d775dccab1b1af267b16f761951fc4f519166c7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/experiment.py",
+      "sha256": "24c96692ff7a5b5264610ad09d2a986ad5ddaea3142bdca582f39cd50507f727"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/manuscript_assets.py",
+      "sha256": "10ac0efe76ffc516ad6514d1e36303233366d47038c991af98658995aa30dd03"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/plot.py",
+      "sha256": "6c6ac8ee6c3ec0bf76ba9d2190ca0deba062d8ba65b61f4fb83c0208bb1c5826"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/controlled-comparison.png",
+      "sha256": "781a81336f514e079d1c069487288862fcdb56133a705c870f90d9e334d52d8b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/environment.json",
+      "sha256": "1948ab467260dcbcca305d9fb9eca5140dfa538d9cdead5861977b5dad8aad26"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/manuscript-unchanged.json",
+      "sha256": "cc07d7d7e4725e325cd5e3affe90b3f139128f1cc37686cde020e6342a26f68f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/plot.log",
+      "sha256": "27a1c2109c5b37f5e31d67634cb399b435e480dc990956a615a2fd8391b95ed8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/records.json",
+      "sha256": "1be07bc692bbfbceef9865f9387d8a3a700f7c3562ea9191fcb6104d2723573c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/replay-validation.json",
+      "sha256": "154e0fcb4c7f625b47ff366f0d730465426a29b868038096c72905ea9f069aa9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/run.log",
+      "sha256": "d9ebc8b1f519e46378a504cbf50ddbd82add7b5fb9fcd980581e54b95db37aa3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/summary.csv",
+      "sha256": "5580fcb362a906bc0364c6371d3a93dbcca2804c1948bd40fc9eab4d0eb3013b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/tests.log",
+      "sha256": "6254d2d71685054e353749500b42b8d1d6f11e5743b7b3aa8ff05987a3238337"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/results/validation.json",
+      "sha256": "64dfab3ba815ae1e379a308d4b6c101e8538656b6040602f9cf31543f5df0169"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/test_study.py",
+      "sha256": "e22d04e28ba9dcaecd9d833d65682f9c61037c04e6f2351824ad86e8a45fd184"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/paper-originality-v1/validate.py",
+      "sha256": "0bafacdc077c7bde790c5d609c77c5f4ba7a23b77a4b49a72795f08e4313528a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/config.json",
+      "sha256": "11ce002e6a1ad026ae7adad59866cee24c90dae0a1316f8800c8e1fcfed8e886"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/environment.json",
+      "sha256": "f9b3024f8c87f24060f672fe9c946ba9f6892bb094296535a6ebc58eecd5f6c1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/experiments.json",
+      "sha256": "20e841f41d24bb56c0428132c416dd1bf1752335fbe2f65e118aff1ab69be5f3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/disk.pdf",
+      "sha256": "66298be6bee470f4254f5555db8464abcf0fdd989da9a0234f632d2b14602885"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/disk.png",
+      "sha256": "6742e9d7f93cff096ee36e3fd8576cdcf26dec36b4e6d91843d8bf9b44bebb78"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/disk_diagnostic.png",
+      "sha256": "6108deafbc093263719f3a31c816f5675e43b2d0a07a4e7c89cd32e20ee0cfff"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/one_d.pdf",
+      "sha256": "f6bd4f89daf0bd428d3a1bf10e490a4af38ed05035349c2eb29b42cb1ed26d25"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/one_d.png",
+      "sha256": "8eab1fcda264419929bc9152e4b8db1e3b8290cca550e9813746051d0377a47e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/pinn.pdf",
+      "sha256": "9a1c920eb5d78005913659d39bf4bde5e031719feeb6be18f4a80e334d3009bc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/pinn.png",
+      "sha256": "61ba7fec3a3f2cd649ae1b5e2ab5021062bb9d2e7f5e4821493803868a95170b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/pinn_diagnostic.png",
+      "sha256": "dfa4e35cd1a25184d3bcac9d2d2aa24bdfceeff75632293de3cc56dabd67c4eb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/render_manifest.json",
+      "sha256": "2ce1550e2b903886a3fb8e4795d68df710f972ec9fe5723fcf1a4425eb32fd79"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/figures/render_source.py",
+      "sha256": "5d5975e780eb40aceca347fa81ff9cfc9485448867599014d3609d108285e16d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/disk/checkpoint.pt",
+      "sha256": "9926ab08806a40cb603a6ce96f4c260c2488d42f05143ab18049e59978cf641d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/disk/fit_grid.npz",
+      "sha256": "81b341903e8fe47c10ce3b6d0a189583dab8b7b6ded771fdc2274cec089defa2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/disk/model.json",
+      "sha256": "72d6e205da1dc7a735e829b3f9a0e4cb861936f943a0ae3141ba746771fb4803"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/disk/network.json",
+      "sha256": "3975e5ec81187bead473138966f199b2f636c8dd3f587e394f72d9cfbe7cac20"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/disk/training_data.npz",
+      "sha256": "89e854d57c155dbdf14af7d5c7f9d6f8cfa66c3e6ac1896b92c410247e2e5274"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed0-trained/checkpoint.pt",
+      "sha256": "96a2ece081272c4034bfd685cb6e4b5b65e7127dc606e089fd6fe2d7727a88af"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed0-trained/model.json",
+      "sha256": "f6599b6ce2c32a90c90d492ed3c3cd58992d4352d1a85fe4d6aa9cf596a3e403"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed0-trained/network.json",
+      "sha256": "b50a96ac820752bf44a8ad604ccf7a6adb698cfe35ad869d947170f1ae951166"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed0-trained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed0-untrained/checkpoint.pt",
+      "sha256": "5be92a89f470c4dec7ddabbe72d90ecba1e9639fb3e043e313363f6079c9456d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed0-untrained/model.json",
+      "sha256": "0386cce75499b8a1d0ff312e77af1a44478e73b5085a2664c64ab0cfdde7dd7b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed0-untrained/network.json",
+      "sha256": "8f2363c37cf0f1c3d9ff1a0dc61f993ab5810440e7017f17f4ae87c60ddb0624"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed0-untrained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed1-trained/checkpoint.pt",
+      "sha256": "1bbadf71ef9c8b020bc7121b22814437d79b4f95e2c6144ec8ca1f528b7f871e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed1-trained/model.json",
+      "sha256": "f7a80a3f6ccb0d3f0b499bc0965fe692fadee64d7fbb50017f5c095fe5ad84cb"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed1-trained/network.json",
+      "sha256": "401623fe47c23fd5d5876209db463135d1c94407d1ac2d1e37ac513f45976100"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed1-trained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed1-untrained/checkpoint.pt",
+      "sha256": "3be3ba6db4eba65d5063d53c95f89d431a3a6876fdaf87b031705923251725f1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed1-untrained/model.json",
+      "sha256": "640bca28094fce8b25c39f90217155635ff2a124f7003e3a3478a3b90dfcc731"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed1-untrained/network.json",
+      "sha256": "6f0214fcd5ad234faf6f8e10b3c84acbc9019b1b3f24a879f9cf12a8b5f8562b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed1-untrained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed2-trained/checkpoint.pt",
+      "sha256": "c130daea29bec807eff38b8661eb511cfdd950555ee12124880a66e7a2053670"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed2-trained/model.json",
+      "sha256": "21c3cd4525a11813b0dae0a387dbd61175625feffc383d16b687118e7e649b2b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed2-trained/network.json",
+      "sha256": "97c44bbc67e142724b328e3f5343debfcfbec3876d36680b0bfef9416f4cbf52"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed2-trained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed2-untrained/checkpoint.pt",
+      "sha256": "bd7756c2f80c6dd896b880557077ae8600b9199af7f33c69966a7b1cf39ac1d7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed2-untrained/model.json",
+      "sha256": "efa8d9c81023509285f694045c75a9dee5ab7c27915a1d10365c9973ea51addd"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed2-untrained/network.json",
+      "sha256": "f92af0b1c28155c2de9ddda142bca1bb5b251d0f61e6fecb85ef4b1e28792468"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed2-untrained/training_data.npz",
+      "sha256": "57b26b4c085ed8576d5f621a6d0591e8dd03693e2bd17ca4dbe1ee494a6cf31e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/pinn/checkpoint.pt",
+      "sha256": "a85791a653832e10d6cd1a39446b292d35e755a5ee8a3b34319b9447b545da41"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/pinn/fit_grid.npz",
+      "sha256": "28c4284b6bbab089534cf67dd061f80661a2c3f773fc303487ef226d9c589352"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/pinn/model.json",
+      "sha256": "88f81dc9218e6dbd85b8d0223bda84d1a4f25f4b0128fd31f3a19582d1147a7c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/pinn/network.json",
+      "sha256": "1f7a9f57cf00428df5571726f5e2d9fd3876c2ffca1e875e1a682050782f1f34"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/pinn/sampling.npz",
+      "sha256": "41e420f1edfe8756c7d602253094dea9089b9fadd169647536dcb9e349cbfe3d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/replay_validation.json",
+      "sha256": "3db898d49166637d72125702be8dd2ec66781a5a63433b85c7468c94b69f89a9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/disk-H1/adaptive.json",
+      "sha256": "6167a7cddaaf1b4d5e07d6c50699a2cdac5c829bf0c88ea2c980938cee1340d2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/disk-H1/manifest.json",
+      "sha256": "e1209a3a97c6c865c72a951b701c509f8d751f8c1eabcefbf1fa9a5562395de9"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/disk-H1/uniform.json",
+      "sha256": "14907577aa08b6eba7fefe6fb0937444f678f5e1e42e7b2eb26fd460e6672c67"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/disk-H2/adaptive.json",
+      "sha256": "0f278deed5d47f5c7a753a45f9d3c7eb9c18352ad969e229a04535888facb2e7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/disk-H2/manifest.json",
+      "sha256": "31b9d9ba6d2a0532b5c0feba9e4e9a816aceb83d979535f6c2875e64a950d9ae"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/disk-H2/uniform.json",
+      "sha256": "21f471c747c481772f997497c9b15f07c7cec85282ffdb2cfae5d017cdb77004"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-trained-H1/adaptive.json",
+      "sha256": "14952f29f2aea4ab8a28bbd7fa165f759b761cf3f4f4411c78987dae5a0c4d36"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-trained-H1/manifest.json",
+      "sha256": "108f4f15044a72507ea2b6b1ab203eb4c66692b3ff560902b8c95d1a27cb909a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-trained-H1/uniform.json",
+      "sha256": "029346e154d29b75f3e201020f6ff1312833e1e37a6c05aca64fa7689d872176"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-trained-H2/adaptive.json",
+      "sha256": "0a6bbc77d4cb9135e27d75788e4fbbeca03be567875e0a33fa35f869087f2973"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-trained-H2/manifest.json",
+      "sha256": "757eb4c4b50aff33591d8d1b0624cf361af791709ee346d6d91cc0717f604c1e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-trained-H2/uniform.json",
+      "sha256": "93b3c6bd69402f173959b82ee23b0c42be357a754a17e61f5090219daf42f989"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-untrained-H1/adaptive.json",
+      "sha256": "ca9575eaecbd0ac9fe27911ea8cf71640c8b8e75741b59f3e15df61b6db41cf7"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-untrained-H1/manifest.json",
+      "sha256": "47ee831566307683a9862c228c59167b3c5674d283b8753b33ca0a1a84a934ac"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-untrained-H1/uniform.json",
+      "sha256": "76307a785f97712455bbac897428fc0ea7c0c800abe85708ef3c364e87cdb8b1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-untrained-H2/adaptive.json",
+      "sha256": "0a5bfac663c792ba44be8224d8caad70110c3a836ae9aae32c329c916eafa090"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-untrained-H2/manifest.json",
+      "sha256": "202bd563704168f550d061f2c5c0fda6ba82904a7266528b73add4f3a1011543"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed0-untrained-H2/uniform.json",
+      "sha256": "980fbbd8a0af31ab91c4fcd398b9106424de64fa8f02291f1c4984a9bef2767c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-trained-H1/adaptive.json",
+      "sha256": "e31901d5c442dde1fb106b9880ee798c90d2ff7a9b709f73bc1f68934b9894e2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-trained-H1/manifest.json",
+      "sha256": "fb8ac0982474066fffe08253e8e7f71ab2f63aef5b555b97400ff3ac9fcf4337"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-trained-H1/uniform.json",
+      "sha256": "fb54ef47c51987c6f4bfaa9ac1099258c8aa7a11ff688254887319fcb34cb4c4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-trained-H2/adaptive.json",
+      "sha256": "1297627849e85e7cacaa7774236924d8f7028cef6b2e381ae419c745a6779e5a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-trained-H2/manifest.json",
+      "sha256": "541308b3fb1921ad17514e4721528629b4e8abb081cbb7c7b8b2d8d430c2ca68"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-trained-H2/uniform.json",
+      "sha256": "e7fc6bb2b15159d3c84c7b44f146b52a36ec1b8a70ca42d8c04ac074e14e31d6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-untrained-H1/adaptive.json",
+      "sha256": "f6ed67c7d10b2141503aa8c995ff41d821c37945195f189b40c8551c41dea3bc"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-untrained-H1/manifest.json",
+      "sha256": "17dce426873afe011bfb802c2183b488050a10be1de65ba15cce011c5fe673db"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-untrained-H1/uniform.json",
+      "sha256": "277766c1a91ef7f6cf4d8811b80243d6138fc84c597e5f5ffb813beef4f7c6b2"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-untrained-H2/adaptive.json",
+      "sha256": "099a01956dca5a1b6047e4eb73b35b5fe62cb8569f9793d1a667929eea20809c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-untrained-H2/manifest.json",
+      "sha256": "ef44a88e471e4f466e52b58a8bab68a632e5002a427417dc0cd168aa807ae56f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-untrained-H2/uniform.json",
+      "sha256": "72357a2c26e6a11da6c99b847b5d4dabbc28382b795f552059b14d83325fa60c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-trained-H1/adaptive.json",
+      "sha256": "ca7f111fd7d74e1580d881409b13bb10a493c90f3ac6b8d388c511a8a988a4ac"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-trained-H1/manifest.json",
+      "sha256": "54d91a7866e2401f1227844c370430648b86bc351bc1659b2b84da30d00aac44"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-trained-H1/uniform.json",
+      "sha256": "050e021ddb04f29d3c80d4afb6fafa607e10a1819763f50e8ae89d1f6825574e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-trained-H2/adaptive.json",
+      "sha256": "e3fa8b5aa69b95c9325b83adb8d7ec06562a7c05079d4175bb70f8726a7118ac"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-trained-H2/manifest.json",
+      "sha256": "0fd931e7974d63126cfe4c9be3577738b097e4ea0750dec2effff9b60cc18cd6"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-trained-H2/uniform.json",
+      "sha256": "b97ff1150fc34c9dbbe7ed1a59c43be4ae735b67a85ee3ebfd1effd217046504"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-untrained-H1/adaptive.json",
+      "sha256": "14d8d2e870bf3a6348e1d41f9b0fc44598443760cf8f278ea6ae7c7c04205b4b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-untrained-H1/manifest.json",
+      "sha256": "60de808158c4f12cbc86ec9b19f973428684ba7308f55fc6301c65d102ca85a1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-untrained-H1/uniform.json",
+      "sha256": "359cb2257fdb8dff2f0e93bf5e0ec89420feb4d0fdcea87f21e48b4f9b3079c4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-untrained-H2/adaptive.json",
+      "sha256": "ca9c97555007b2e7fafb4d0f98b8cdc0bdfc40296aa07d4815b7b36f89610a04"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-untrained-H2/manifest.json",
+      "sha256": "5a6cef93f6f557f206cf4018d77a208592e34fbc2aa5c249f7872648ea9e470d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed2-untrained-H2/uniform.json",
+      "sha256": "0dbadf9c701f993cebfebf50814f577152d50dd9734082ead72fbd91a00b2030"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/pinn-residual/adaptive.json",
+      "sha256": "6823569858652be869f765edece11119ca90886376f0b6dc42f5ed32dadc2623"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/pinn-residual/manifest.json",
+      "sha256": "03da296215c95631cf3506f60306faff368ce654ed21b795c3d1e338fd16599d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/pinn-residual/uniform.json",
+      "sha256": "27f52ef80d69f8dbb93ebfcc7df89510a8c8641d9248b472fa74d3b6b844f0f1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/compare_verified_two_bumps.py",
+      "sha256": "4e1341d4bdafb05db40dd40301e8533c7f5685f3095bf93c212ecbf903122a09"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/exp_combined_lp_sobolev_convergence.py",
+      "sha256": "063401242f94fffe5c96f15dd5b702f30f9082002cc47cf8bf907a278061f101"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/exp_lp_1d_statistics_100runs.py",
+      "sha256": "d24ff0ad66960652df6a61bc124ec2a6913d1359e2dc3f2ea7e404ecd02a100b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/exp_lp_2d_disk_activation_regions.py",
+      "sha256": "0c453c51a98912ae240db9087517e5e5f5be87e277a77e2127ac85c690148e55"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/exp_pinn_2d_energy_norm.py",
+      "sha256": "9a740ff051ce305c17eb23975d2493b41743cd5063298860dcbea9669c898be8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/exp_sobolev_1d_statistics_100runs.py",
+      "sha256": "c3584396ddf87de312d471356631d4012c35b1609db6fab0ac4392ab4ebad534"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/exp_sobolev_2d_disk_convergence.py",
+      "sha256": "6de0dfa6bcf7e90568eb872157f0710f0d7dfde1b79b97b3fc68b5f60d162365"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/exp_sobolev_2d_disk_heatmaps.py",
+      "sha256": "af102c1666247c9c2bc81367add21643bb28b634f8220ea5cb9c92e7999b0be3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/exp_verified_studies.py",
+      "sha256": "e9cd3251c2b27ddd20af5987e3bd5c810fa859c2e29628f3d28c8f2bdc9fa94b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/exp_verified_two_bumps.py",
+      "sha256": "dc264fbfa6480372050a5ebbd0182e2b7fb54ff03a869391b8c2942be57649ea"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/experiment_records.py",
+      "sha256": "7dd71cca5203f8589ca63e6aa8a2f32b200ce6f74dadddcf9626cfa0389d7968"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/experiments/paper.json",
+      "sha256": "721daef8930aaf3861283d1d36ad5f5a936ee88fe6f59206984141495dffbd5b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_activation_enclosures.py",
+      "sha256": "b20d7e994ff838c7d9ce02d16538fc02d33d413cea32219e453bb40f38af95ac"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_adaquad_lp.py",
+      "sha256": "78ea0228b273a311104d525b7d9419ad03c0c000065fc243fa9719850d9a50e4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_eta_bounds.py",
+      "sha256": "cd0b20dac17937a5b2b62254252c35fde82d211a2c7b05ef6521524dd97fed7c"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_hessian_enclosures.py",
+      "sha256": "8c4a3241e98f2a44891b1c897c69a223ade2b9f056357bfb3b37a0fe7d448a3b"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_jacobian_enclosures.py",
+      "sha256": "229eb7bd15b9f0f3791a91b3c8e61d6c81d312ab7d50487ddd97c4ea4909944a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_lp_enclosures.py",
+      "sha256": "791172892672e692d3609590d5e6604434ee2c0257718e2de7058bb9c5eca7c4"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_nn_interval_ops.py",
+      "sha256": "5f13d531ccbb2128a6ad1ab911cf361f8e8f8b31d81010cab6f63c99aba8e974"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_nn_model.py",
+      "sha256": "470a1ff1b8e7609031b47b7512f5e87e0b6c213a26f7682c4c376b2124f09d71"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_training.py",
+      "sha256": "a3e9f1872dc393623e99e74b16d9ca3a9e3c73ad3ae6f4045d04622878bc3841"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_utils.py",
+      "sha256": "e2e40f996a7eae1c0d1015da43e6d58af8c9d52bbb1c77692268dd4c2612eb6a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_w1p_enclosures.py",
+      "sha256": "df941ac2eaa30391f658e3f2f2e1564af8a7b156f971960c22d2797826fd2e6f"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/lib_w2p_enclosures.py",
+      "sha256": "2955aeea58ff839e9ef648614a1284544de903f44ea37f6c336dcb2ee861e4a1"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/render_verified.py",
+      "sha256": "7dec4a3bf97d33675481ac409f5dbc23e5ae2cc4d54100433ba96deafa6ce303"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/requirements-verified-lock.txt",
+      "sha256": "d113cc015d8b5e02462a2ac578443480f3177f68ce9dcfdfad1a915095300673"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/requirements-verified.txt",
+      "sha256": "1f4fcb5dafeaadb6f7894d8709c07e9cbd5ebb774ba6de40f1d638b2fe84074d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/tests/test_experiment_records.py",
+      "sha256": "6e0dce5a56f6150d62f9c14afcf9f65a7020840386b1364121a6fa0fd7858eee"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/tests/test_verified.py",
+      "sha256": "cad84decdc86f74cf057cf3d989fd7125ab2de61e268b237ade7c27560c62b23"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/validate_records.py",
+      "sha256": "0f4d37eec08ee5cc4c8c066ff790f69d193a5091df1b7225f549bbc8d2f6641a"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/verified_arithmetic.py",
+      "sha256": "b14e2b1ad1993ee30cc2e8a44e2bfd82cdda8ba0f6ef8fb32b043b86aeb1d7cf"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/verified_integration.py",
+      "sha256": "360cf1cfa241c628e66a6a60d9691e872c6879bc1fb55ef58f5c76a19bb59cd3"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/verified_network.py",
+      "sha256": "01205d344a206b0e1a39ac3d87f95ffc4439f61e7d77ce5292ed36996660ed70"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/sources/verified_residual.py",
+      "sha256": "f5b002290c45564b3da8fe55174acb68cfcffd21674f3904f0646327e8d98f94"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/summary.json",
+      "sha256": "c4c8f970d428f70a729fac2af147b0230655b322c8e31dfec16c64725442fac5"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/tables/exact_endpoints.csv",
+      "sha256": "5707fc02e3e8e1a9aa22407d293e3d5892c386165e7bd6586be57e81ea49c0c8"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/tables/summary.json",
+      "sha256": "0a8af74195d5cec059f734afda85087177b1933924548daae8f9167b83e9c6ff"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/tables/terminal_bounds.tex",
+      "sha256": "94b37153f6f092f6235998105737eb7004a8fbb07a1d6f0c9a11b2bcab21e239"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/tables/tolerance_crossings.json",
+      "sha256": "b9cd271d9409287dd4b2c9d9ed4a8e42e6b2359b45a0ef0634af816d1d99d86d"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/training_summary.json",
+      "sha256": "fb033b39e86191419fe4f185f2c043f4041a54fb7e692a4817237a5468af9272"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/validation.json",
+      "sha256": "105a3210ba944e3972819aba37798c78c8a79daedb92ba364645fd463c4d1f62"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/summarise_verified_suite.py",
+      "sha256": "82d2e6bb20080b957515e55136a4baf1613e0c267937ca1a6ffadef52d103624"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/tests/test_experiment_records.py",
+      "sha256": "9688a6a7684eb9f397698f34a82534dda353902dba627ad7fc0f48d05d87a43e"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/tests/test_verified.py",
+      "sha256": "cad84decdc86f74cf057cf3d989fd7125ab2de61e268b237ade7c27560c62b23"
+    },
+    {
+      "path": "Code/Function-Space-Bounds-for-NN/validate_records.py",
+      "sha256": "a5ebf7ce222209364b1598a6b58764a642750a3e7d79e64374039d42dc4077a1"
+    }
+  ],
+  "packaging_changes": [
+    "Platform-specific executables omitted; original hashes retained in EXCLUDED_BINARIES.json.",
+    "Slope validator skips only explicitly excluded binary digests; all scientific inputs remain hash-checked. Original validator retained in release/original-slope-validator.py.",
+    "Draft manuscript bodies and historical drafting notes omitted; figure-generation assets and numerical tables retained. Original file hashes recorded in EXCLUDED_MANUSCRIPT_MATERIAL.json."
+  ],
+  "private_manuscript_build_inputs": [
+    "common/bib.bib",
+    "common/biblio.tex",
+    "common/defines.tex",
+    "common/packages.tex",
+    "controlled_experiments.tex",
+    "corner_experiment.tex",
+    "disk_figure_revised.tex",
+    "geometry_experiments.tex",
+    "geometry_results.tex",
+    "images/controlled_certification.pdf",
+    "images/corner_network_surface.pdf",
+    "images/disk_extended_certification.pdf",
+    "images/disk_figure_revised.pdf",
+    "images/disk_gap_revised.pdf",
+    "images/disk_partitions_preserved.pdf",
+    "images/geometry_controls_revised.pdf",
+    "images/tanh_pde_gaps.pdf",
+    "main.bbl",
+    "main.pdf",
+    "main.tex",
+    "maxgap_supplement.pdf",
+    "maxgap_supplement.tex",
+    "originality_results.tex",
+    "relative_width_experiments.tex",
+    "render_relu_submission_assets.py",
+    "representation_appendix.tex",
+    "smooth_appendix.tex",
+    "tables/controlled_success.tex",
+    "tables/corner_certificates.tex",
+    "tables/geometry_gaps.tex",
+    "tables/hybrid_disk_endpoints.tex",
+    "tables/hybrid_trained_endpoints.tex",
+    "tables/relative_width_endpoints.tex",
+    "tables/relative_width_success.tex",
+    "tables/relative_width_work.tex",
+    "tables/representation_hybrid_summary.tex",
+    "tables/tanh_pde_certificates.tex",
+    "tanh_pde_experiments.tex"
+  ],
+  "packaging_changed_or_omitted_files": []
+}

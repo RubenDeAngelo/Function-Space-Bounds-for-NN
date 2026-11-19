@@ -1,0 +1,12 @@
+{
+  "runs": 86,
+  "relu_leaves_checked": 6012,
+  "relu_runs_checked": 78,
+  "partition_checks": 86,
+  "selection": "each decision independently scanned during execution",
+  "known_integrals": "exact piecewise-affine expansion, independently locating all zero crossings",
+  "smooth_policy_interval_intersection_checks": 2,
+  "representation_lower_bound_checks": 10,
+  "rounding_subadditivity_violations": 0,
+  "formal_verification": false
+}

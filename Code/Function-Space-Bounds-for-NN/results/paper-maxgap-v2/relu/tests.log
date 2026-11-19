@@ -1,0 +1,10 @@
+test_actual_maximum (test_maxgap.MaxGapTests.test_actual_maximum) ... ok
+test_one_box_and_stable_ties (test_maxgap.MaxGapTests.test_one_box_and_stable_ties) ... ok
+test_h2_rejected (test_relu.ReLUTests.test_h2_rejected) ... ok
+test_known_weak_norms (test_relu.ReLUTests.test_known_weak_norms) ... ok
+test_multilayer_and_zero (test_relu.ReLUTests.test_multilayer_and_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.025s
+
+OK

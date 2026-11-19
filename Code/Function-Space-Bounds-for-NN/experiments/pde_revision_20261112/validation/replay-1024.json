@@ -1,0 +1,26 @@
+[
+  {
+    "case": "poisson",
+    "policy": "maxgap",
+    "leaf_cap": 1024,
+    "matching_records": 6
+  },
+  {
+    "case": "poisson",
+    "policy": "uniform",
+    "leaf_cap": 1024,
+    "matching_records": 6
+  },
+  {
+    "case": "cdr",
+    "policy": "maxgap",
+    "leaf_cap": 1024,
+    "matching_records": 6
+  },
+  {
+    "case": "cdr",
+    "policy": "uniform",
+    "leaf_cap": 1024,
+    "matching_records": 6
+  }
+]

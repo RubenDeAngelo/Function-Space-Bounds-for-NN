@@ -1,0 +1,17 @@
+relu-deep-two-bumps-L2 maxgap exact replay passed
+relu-deep-two-bumps-L2 uniform exact replay passed
+relu-deep-two-bumps-H1 maxgap exact replay passed
+relu-deep-two-bumps-H1 uniform exact replay passed
+relu-deep-disk-L2 maxgap exact replay passed
+relu-deep-disk-L2 uniform exact replay passed
+relu-deep-disk-H1 maxgap exact replay passed
+relu-deep-disk-H1 uniform exact replay passed
+relu-shallow200-two-bumps-L2 maxgap exact replay passed
+relu-shallow200-two-bumps-L2 uniform exact replay passed
+relu-shallow200-two-bumps-H1 maxgap exact replay passed
+relu-shallow200-two-bumps-H1 uniform exact replay passed
+relu-shallow200-disk-L2 maxgap exact replay passed
+relu-shallow200-disk-L2 uniform exact replay passed
+relu-shallow200-disk-H1 maxgap exact replay passed
+relu-shallow200-disk-H1 uniform exact replay passed
+Exact replay passed for 8 cases, excluding timing.

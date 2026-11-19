@@ -1,0 +1,24 @@
+{
+  "id": "pinn-residual",
+  "model": "pinn",
+  "kind": "poisson_residual",
+  "domain": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "max_leaves": 1024,
+  "group": "pinn",
+  "theta": "7/20",
+  "bits": 128,
+  "tolerance": "0",
+  "p": 2,
+  "enclosure_method": "natural interval AD with ancestor intersections",
+  "mixed_derivatives": "one per multi-index",
+  "network_sha256": "1f7a9f57cf00428df5571726f5e2d9fd3876c2ffca1e875e1a682050782f1f34"
+}

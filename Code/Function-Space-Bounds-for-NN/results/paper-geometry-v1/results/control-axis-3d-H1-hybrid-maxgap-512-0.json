@@ -1,0 +1,11057 @@
+{
+  "quantity": "H1",
+  "rule": "hybrid",
+  "policy": "maxgap",
+  "cap": 512,
+  "tolerance": "0",
+  "status": "leaf_budget_exhausted",
+  "seconds": 0.016490666996105574,
+  "history": [
+    {
+      "leaves": 1,
+      "lower": "1",
+      "upper": "34/9",
+      "gap": "25/9",
+      "resolved_leaves": 0,
+      "counts": {
+        "cell_calls": 1,
+        "affine_cell_tests": 1,
+        "affine_weight_terms": 12,
+        "neuron_sign_tests": 1,
+        "range_network_calls": 1,
+        "range_weight_terms": 16,
+        "max_endpoint_bits": 6
+      }
+    },
+    {
+      "leaves": 8,
+      "lower": "145/72",
+      "upper": "97/36",
+      "gap": "49/72",
+      "resolved_leaves": 4,
+      "counts": {
+        "cell_calls": 9,
+        "affine_cell_tests": 9,
+        "affine_weight_terms": 124,
+        "neuron_sign_tests": 9,
+        "range_network_calls": 5,
+        "range_weight_terms": 80,
+        "max_endpoint_bits": 9,
+        "moment_calls": 4
+      }
+    },
+    {
+      "leaves": 15,
+      "lower": "145/72",
+      "upper": "167/64",
+      "gap": "343/576",
+      "resolved_leaves": 8,
+      "counts": {
+        "cell_calls": 17,
+        "affine_cell_tests": 17,
+        "affine_weight_terms": 236,
+        "neuron_sign_tests": 17,
+        "range_network_calls": 9,
+        "range_weight_terms": 144,
+        "max_endpoint_bits": 12,
+        "moment_calls": 8
+      }
+    },
+    {
+      "leaves": 22,
+      "lower": "145/72",
+      "upper": "727/288",
+      "gap": "49/96",
+      "resolved_leaves": 12,
+      "counts": {
+        "cell_calls": 25,
+        "affine_cell_tests": 25,
+        "affine_weight_terms": 348,
+        "neuron_sign_tests": 25,
+        "range_network_calls": 13,
+        "range_weight_terms": 208,
+        "max_endpoint_bits": 12,
+        "moment_calls": 12
+      }
+    },
+    {
+      "leaves": 29,
+      "lower": "145/72",
+      "upper": "1405/576",
+      "gap": "245/576",
+      "resolved_leaves": 16,
+      "counts": {
+        "cell_calls": 33,
+        "affine_cell_tests": 33,
+        "affine_weight_terms": 460,
+        "neuron_sign_tests": 33,
+        "range_network_calls": 17,
+        "range_weight_terms": 272,
+        "max_endpoint_bits": 12,
+        "moment_calls": 16
+      }
+    },
+    {
+      "leaves": 36,
+      "lower": "145/72",
+      "upper": "113/48",
+      "gap": "49/144",
+      "resolved_leaves": 20,
+      "counts": {
+        "cell_calls": 41,
+        "affine_cell_tests": 41,
+        "affine_weight_terms": 572,
+        "neuron_sign_tests": 41,
+        "range_network_calls": 21,
+        "range_weight_terms": 336,
+        "max_endpoint_bits": 12,
+        "moment_calls": 20
+      }
+    },
+    {
+      "leaves": 43,
+      "lower": "149183/73728",
+      "upper": "3611/1536",
+      "gap": "24145/73728",
+      "resolved_leaves": 24,
+      "counts": {
+        "cell_calls": 49,
+        "affine_cell_tests": 49,
+        "affine_weight_terms": 684,
+        "neuron_sign_tests": 49,
+        "range_network_calls": 25,
+        "range_weight_terms": 400,
+        "max_endpoint_bits": 19,
+        "moment_calls": 24
+      }
+    },
+    {
+      "leaves": 50,
+      "lower": "8327/4096",
+      "upper": "601/256",
+      "gap": "1289/4096",
+      "resolved_leaves": 28,
+      "counts": {
+        "cell_calls": 57,
+        "affine_cell_tests": 57,
+        "affine_weight_terms": 796,
+        "neuron_sign_tests": 57,
+        "range_network_calls": 29,
+        "range_weight_terms": 464,
+        "max_endpoint_bits": 19,
+        "moment_calls": 28
+      }
+    },
+    {
+      "leaves": 57,
+      "lower": "150589/73728",
+      "upper": "3601/1536",
+      "gap": "22259/73728",
+      "resolved_leaves": 32,
+      "counts": {
+        "cell_calls": 65,
+        "affine_cell_tests": 65,
+        "affine_weight_terms": 908,
+        "neuron_sign_tests": 65,
+        "range_network_calls": 33,
+        "range_weight_terms": 528,
+        "max_endpoint_bits": 19,
+        "moment_calls": 32
+      }
+    },
+    {
+      "leaves": 64,
+      "lower": "37823/18432",
+      "upper": "899/384",
+      "gap": "5329/18432",
+      "resolved_leaves": 36,
+      "counts": {
+        "cell_calls": 73,
+        "affine_cell_tests": 73,
+        "affine_weight_terms": 1020,
+        "neuron_sign_tests": 73,
+        "range_network_calls": 37,
+        "range_weight_terms": 592,
+        "max_endpoint_bits": 19,
+        "moment_calls": 36
+      }
+    },
+    {
+      "leaves": 71,
+      "lower": "50665/24576",
+      "upper": "1197/512",
+      "gap": "6791/24576",
+      "resolved_leaves": 40,
+      "counts": {
+        "cell_calls": 81,
+        "affine_cell_tests": 81,
+        "affine_weight_terms": 1132,
+        "neuron_sign_tests": 81,
+        "range_network_calls": 41,
+        "range_weight_terms": 656,
+        "max_endpoint_bits": 19,
+        "moment_calls": 40
+      }
+    },
+    {
+      "leaves": 78,
+      "lower": "76349/36864",
+      "upper": "1793/768",
+      "gap": "9715/36864",
+      "resolved_leaves": 44,
+      "counts": {
+        "cell_calls": 89,
+        "affine_cell_tests": 89,
+        "affine_weight_terms": 1244,
+        "neuron_sign_tests": 89,
+        "range_network_calls": 45,
+        "range_weight_terms": 720,
+        "max_endpoint_bits": 19,
+        "moment_calls": 44
+      }
+    },
+    {
+      "leaves": 85,
+      "lower": "153401/73728",
+      "upper": "3581/1536",
+      "gap": "18487/73728",
+      "resolved_leaves": 48,
+      "counts": {
+        "cell_calls": 97,
+        "affine_cell_tests": 97,
+        "affine_weight_terms": 1356,
+        "neuron_sign_tests": 97,
+        "range_network_calls": 49,
+        "range_weight_terms": 784,
+        "max_endpoint_bits": 19,
+        "moment_calls": 48
+      }
+    },
+    {
+      "leaves": 92,
+      "lower": "6421/3072",
+      "upper": "149/64",
+      "gap": "731/3072",
+      "resolved_leaves": 52,
+      "counts": {
+        "cell_calls": 105,
+        "affine_cell_tests": 105,
+        "affine_weight_terms": 1468,
+        "neuron_sign_tests": 105,
+        "range_network_calls": 53,
+        "range_weight_terms": 848,
+        "max_endpoint_bits": 19,
+        "moment_calls": 52
+      }
+    },
+    {
+      "leaves": 99,
+      "lower": "154807/73728",
+      "upper": "3571/1536",
+      "gap": "16601/73728",
+      "resolved_leaves": 56,
+      "counts": {
+        "cell_calls": 113,
+        "affine_cell_tests": 113,
+        "affine_weight_terms": 1580,
+        "neuron_sign_tests": 113,
+        "range_network_calls": 57,
+        "range_weight_terms": 912,
+        "max_endpoint_bits": 19,
+        "moment_calls": 56
+      }
+    },
+    {
+      "leaves": 106,
+      "lower": "77755/36864",
+      "upper": "1783/768",
+      "gap": "7829/36864",
+      "resolved_leaves": 60,
+      "counts": {
+        "cell_calls": 121,
+        "affine_cell_tests": 121,
+        "affine_weight_terms": 1692,
+        "neuron_sign_tests": 121,
+        "range_network_calls": 61,
+        "range_weight_terms": 976,
+        "max_endpoint_bits": 19,
+        "moment_calls": 60
+      }
+    },
+    {
+      "leaves": 113,
+      "lower": "17357/8192",
+      "upper": "1187/512",
+      "gap": "1635/8192",
+      "resolved_leaves": 64,
+      "counts": {
+        "cell_calls": 129,
+        "affine_cell_tests": 129,
+        "affine_weight_terms": 1804,
+        "neuron_sign_tests": 129,
+        "range_network_calls": 65,
+        "range_weight_terms": 1040,
+        "max_endpoint_bits": 19,
+        "moment_calls": 64
+      }
+    },
+    {
+      "leaves": 120,
+      "lower": "39229/18432",
+      "upper": "889/384",
+      "gap": "3443/18432",
+      "resolved_leaves": 68,
+      "counts": {
+        "cell_calls": 137,
+        "affine_cell_tests": 137,
+        "affine_weight_terms": 1916,
+        "neuron_sign_tests": 137,
+        "range_network_calls": 69,
+        "range_weight_terms": 1104,
+        "max_endpoint_bits": 19,
+        "moment_calls": 68
+      }
+    },
+    {
+      "leaves": 127,
+      "lower": "157619/73728",
+      "upper": "3551/1536",
+      "gap": "12829/73728",
+      "resolved_leaves": 72,
+      "counts": {
+        "cell_calls": 145,
+        "affine_cell_tests": 145,
+        "affine_weight_terms": 2028,
+        "neuron_sign_tests": 145,
+        "range_network_calls": 73,
+        "range_weight_terms": 1168,
+        "max_endpoint_bits": 19,
+        "moment_calls": 72
+      }
+    },
+    {
+      "leaves": 134,
+      "lower": "26387/12288",
+      "upper": "591/256",
+      "gap": "1981/12288",
+      "resolved_leaves": 76,
+      "counts": {
+        "cell_calls": 153,
+        "affine_cell_tests": 153,
+        "affine_weight_terms": 2140,
+        "neuron_sign_tests": 153,
+        "range_network_calls": 77,
+        "range_weight_terms": 1232,
+        "max_endpoint_bits": 19,
+        "moment_calls": 76
+      }
+    },
+    {
+      "leaves": 141,
+      "lower": "159025/73728",
+      "upper": "3541/1536",
+      "gap": "10943/73728",
+      "resolved_leaves": 80,
+      "counts": {
+        "cell_calls": 161,
+        "affine_cell_tests": 161,
+        "affine_weight_terms": 2252,
+        "neuron_sign_tests": 161,
+        "range_network_calls": 81,
+        "range_weight_terms": 1296,
+        "max_endpoint_bits": 19,
+        "moment_calls": 80
+      }
+    },
+    {
+      "leaves": 148,
+      "lower": "9983/4608",
+      "upper": "221/96",
+      "gap": "625/4608",
+      "resolved_leaves": 84,
+      "counts": {
+        "cell_calls": 169,
+        "affine_cell_tests": 169,
+        "affine_weight_terms": 2364,
+        "neuron_sign_tests": 169,
+        "range_network_calls": 85,
+        "range_weight_terms": 1360,
+        "max_endpoint_bits": 19,
+        "moment_calls": 84
+      }
+    },
+    {
+      "leaves": 155,
+      "lower": "9983/4608",
+      "upper": "1357199/589824",
+      "gap": "79375/589824",
+      "resolved_leaves": 88,
+      "counts": {
+        "cell_calls": 177,
+        "affine_cell_tests": 177,
+        "affine_weight_terms": 2476,
+        "neuron_sign_tests": 177,
+        "range_network_calls": 89,
+        "range_weight_terms": 1424,
+        "max_endpoint_bits": 22,
+        "moment_calls": 88
+      }
+    },
+    {
+      "leaves": 162,
+      "lower": "9983/4608",
+      "upper": "678287/294912",
+      "gap": "4375/32768",
+      "resolved_leaves": 92,
+      "counts": {
+        "cell_calls": 185,
+        "affine_cell_tests": 185,
+        "affine_weight_terms": 2588,
+        "neuron_sign_tests": 185,
+        "range_network_calls": 93,
+        "range_weight_terms": 1488,
+        "max_endpoint_bits": 22,
+        "moment_calls": 92
+      }
+    },
+    {
+      "leaves": 169,
+      "lower": "9983/4608",
+      "upper": "150661/65536",
+      "gap": "78125/589824",
+      "resolved_leaves": 96,
+      "counts": {
+        "cell_calls": 193,
+        "affine_cell_tests": 193,
+        "affine_weight_terms": 2700,
+        "neuron_sign_tests": 193,
+        "range_network_calls": 97,
+        "range_weight_terms": 1552,
+        "max_endpoint_bits": 22,
+        "moment_calls": 96
+      }
+    },
+    {
+      "leaves": 176,
+      "lower": "9983/4608",
+      "upper": "338831/147456",
+      "gap": "19375/147456",
+      "resolved_leaves": 100,
+      "counts": {
+        "cell_calls": 201,
+        "affine_cell_tests": 201,
+        "affine_weight_terms": 2812,
+        "neuron_sign_tests": 201,
+        "range_network_calls": 101,
+        "range_weight_terms": 1616,
+        "max_endpoint_bits": 22,
+        "moment_calls": 100
+      }
+    },
+    {
+      "leaves": 183,
+      "lower": "9983/4608",
+      "upper": "1354699/589824",
+      "gap": "25625/196608",
+      "resolved_leaves": 104,
+      "counts": {
+        "cell_calls": 209,
+        "affine_cell_tests": 209,
+        "affine_weight_terms": 2924,
+        "neuron_sign_tests": 209,
+        "range_network_calls": 105,
+        "range_weight_terms": 1680,
+        "max_endpoint_bits": 22,
+        "moment_calls": 104
+      }
+    },
+    {
+      "leaves": 190,
+      "lower": "9983/4608",
+      "upper": "225679/98304",
+      "gap": "38125/294912",
+      "resolved_leaves": 108,
+      "counts": {
+        "cell_calls": 217,
+        "affine_cell_tests": 217,
+        "affine_weight_terms": 3036,
+        "neuron_sign_tests": 217,
+        "range_network_calls": 109,
+        "range_weight_terms": 1744,
+        "max_endpoint_bits": 22,
+        "moment_calls": 108
+      }
+    },
+    {
+      "leaves": 197,
+      "lower": "9983/4608",
+      "upper": "1353449/589824",
+      "gap": "75625/589824",
+      "resolved_leaves": 112,
+      "counts": {
+        "cell_calls": 225,
+        "affine_cell_tests": 225,
+        "affine_weight_terms": 3148,
+        "neuron_sign_tests": 225,
+        "range_network_calls": 113,
+        "range_weight_terms": 1808,
+        "max_endpoint_bits": 22,
+        "moment_calls": 112
+      }
+    },
+    {
+      "leaves": 204,
+      "lower": "9983/4608",
+      "upper": "169103/73728",
+      "gap": "3125/24576",
+      "resolved_leaves": 116,
+      "counts": {
+        "cell_calls": 233,
+        "affine_cell_tests": 233,
+        "affine_weight_terms": 3260,
+        "neuron_sign_tests": 233,
+        "range_network_calls": 117,
+        "range_weight_terms": 1872,
+        "max_endpoint_bits": 22,
+        "moment_calls": 116
+      }
+    },
+    {
+      "leaves": 211,
+      "lower": "9983/4608",
+      "upper": "450733/196608",
+      "gap": "74375/589824",
+      "resolved_leaves": 120,
+      "counts": {
+        "cell_calls": 241,
+        "affine_cell_tests": 241,
+        "affine_weight_terms": 3372,
+        "neuron_sign_tests": 241,
+        "range_network_calls": 121,
+        "range_weight_terms": 1936,
+        "max_endpoint_bits": 22,
+        "moment_calls": 120
+      }
+    },
+    {
+      "leaves": 218,
+      "lower": "9983/4608",
+      "upper": "675787/294912",
+      "gap": "36875/294912",
+      "resolved_leaves": 124,
+      "counts": {
+        "cell_calls": 249,
+        "affine_cell_tests": 249,
+        "affine_weight_terms": 3484,
+        "neuron_sign_tests": 249,
+        "range_network_calls": 125,
+        "range_weight_terms": 2000,
+        "max_endpoint_bits": 22,
+        "moment_calls": 124
+      }
+    },
+    {
+      "leaves": 225,
+      "lower": "9983/4608",
+      "upper": "1350949/589824",
+      "gap": "8125/65536",
+      "resolved_leaves": 128,
+      "counts": {
+        "cell_calls": 257,
+        "affine_cell_tests": 257,
+        "affine_weight_terms": 3596,
+        "neuron_sign_tests": 257,
+        "range_network_calls": 129,
+        "range_weight_terms": 2064,
+        "max_endpoint_bits": 22,
+        "moment_calls": 128
+      }
+    },
+    {
+      "leaves": 232,
+      "lower": "9983/4608",
+      "upper": "37509/16384",
+      "gap": "18125/147456",
+      "resolved_leaves": 132,
+      "counts": {
+        "cell_calls": 265,
+        "affine_cell_tests": 265,
+        "affine_weight_terms": 3708,
+        "neuron_sign_tests": 265,
+        "range_network_calls": 133,
+        "range_weight_terms": 2128,
+        "max_endpoint_bits": 22,
+        "moment_calls": 132
+      }
+    },
+    {
+      "leaves": 239,
+      "lower": "9983/4608",
+      "upper": "1349699/589824",
+      "gap": "71875/589824",
+      "resolved_leaves": 136,
+      "counts": {
+        "cell_calls": 273,
+        "affine_cell_tests": 273,
+        "affine_weight_terms": 3820,
+        "neuron_sign_tests": 273,
+        "range_network_calls": 137,
+        "range_weight_terms": 2192,
+        "max_endpoint_bits": 22,
+        "moment_calls": 136
+      }
+    },
+    {
+      "leaves": 246,
+      "lower": "9983/4608",
+      "upper": "674537/294912",
+      "gap": "11875/98304",
+      "resolved_leaves": 140,
+      "counts": {
+        "cell_calls": 281,
+        "affine_cell_tests": 281,
+        "affine_weight_terms": 3932,
+        "neuron_sign_tests": 281,
+        "range_network_calls": 141,
+        "range_weight_terms": 2256,
+        "max_endpoint_bits": 22,
+        "moment_calls": 140
+      }
+    },
+    {
+      "leaves": 253,
+      "lower": "9983/4608",
+      "upper": "449483/196608",
+      "gap": "70625/589824",
+      "resolved_leaves": 144,
+      "counts": {
+        "cell_calls": 289,
+        "affine_cell_tests": 289,
+        "affine_weight_terms": 4044,
+        "neuron_sign_tests": 289,
+        "range_network_calls": 145,
+        "range_weight_terms": 2320,
+        "max_endpoint_bits": 22,
+        "moment_calls": 144
+      }
+    },
+    {
+      "leaves": 260,
+      "lower": "9983/4608",
+      "upper": "84239/36864",
+      "gap": "4375/36864",
+      "resolved_leaves": 148,
+      "counts": {
+        "cell_calls": 297,
+        "affine_cell_tests": 297,
+        "affine_weight_terms": 4156,
+        "neuron_sign_tests": 297,
+        "range_network_calls": 149,
+        "range_weight_terms": 2384,
+        "max_endpoint_bits": 22,
+        "moment_calls": 148
+      }
+    },
+    {
+      "leaves": 267,
+      "lower": "9983/4608",
+      "upper": "1347199/589824",
+      "gap": "23125/196608",
+      "resolved_leaves": 152,
+      "counts": {
+        "cell_calls": 305,
+        "affine_cell_tests": 305,
+        "affine_weight_terms": 4268,
+        "neuron_sign_tests": 305,
+        "range_network_calls": 153,
+        "range_weight_terms": 2448,
+        "max_endpoint_bits": 22,
+        "moment_calls": 152
+      }
+    },
+    {
+      "leaves": 274,
+      "lower": "9983/4608",
+      "upper": "224429/98304",
+      "gap": "34375/294912",
+      "resolved_leaves": 156,
+      "counts": {
+        "cell_calls": 313,
+        "affine_cell_tests": 313,
+        "affine_weight_terms": 4380,
+        "neuron_sign_tests": 313,
+        "range_network_calls": 157,
+        "range_weight_terms": 2512,
+        "max_endpoint_bits": 22,
+        "moment_calls": 156
+      }
+    },
+    {
+      "leaves": 281,
+      "lower": "9983/4608",
+      "upper": "1345949/589824",
+      "gap": "68125/589824",
+      "resolved_leaves": 160,
+      "counts": {
+        "cell_calls": 321,
+        "affine_cell_tests": 321,
+        "affine_weight_terms": 4492,
+        "neuron_sign_tests": 321,
+        "range_network_calls": 161,
+        "range_weight_terms": 2576,
+        "max_endpoint_bits": 22,
+        "moment_calls": 160
+      }
+    },
+    {
+      "leaves": 288,
+      "lower": "9983/4608",
+      "upper": "336331/147456",
+      "gap": "1875/16384",
+      "resolved_leaves": 164,
+      "counts": {
+        "cell_calls": 329,
+        "affine_cell_tests": 329,
+        "affine_weight_terms": 4604,
+        "neuron_sign_tests": 329,
+        "range_network_calls": 165,
+        "range_weight_terms": 2640,
+        "max_endpoint_bits": 22,
+        "moment_calls": 164
+      }
+    },
+    {
+      "leaves": 295,
+      "lower": "9983/4608",
+      "upper": "149411/65536",
+      "gap": "66875/589824",
+      "resolved_leaves": 168,
+      "counts": {
+        "cell_calls": 337,
+        "affine_cell_tests": 337,
+        "affine_weight_terms": 4716,
+        "neuron_sign_tests": 337,
+        "range_network_calls": 169,
+        "range_weight_terms": 2704,
+        "max_endpoint_bits": 22,
+        "moment_calls": 168
+      }
+    },
+    {
+      "leaves": 302,
+      "lower": "9983/4608",
+      "upper": "672037/294912",
+      "gap": "33125/294912",
+      "resolved_leaves": 172,
+      "counts": {
+        "cell_calls": 345,
+        "affine_cell_tests": 345,
+        "affine_weight_terms": 4828,
+        "neuron_sign_tests": 345,
+        "range_network_calls": 173,
+        "range_weight_terms": 2768,
+        "max_endpoint_bits": 22,
+        "moment_calls": 172
+      }
+    },
+    {
+      "leaves": 309,
+      "lower": "9983/4608",
+      "upper": "1343449/589824",
+      "gap": "21875/196608",
+      "resolved_leaves": 176,
+      "counts": {
+        "cell_calls": 353,
+        "affine_cell_tests": 353,
+        "affine_weight_terms": 4940,
+        "neuron_sign_tests": 353,
+        "range_network_calls": 177,
+        "range_weight_terms": 2832,
+        "max_endpoint_bits": 22,
+        "moment_calls": 176
+      }
+    },
+    {
+      "leaves": 316,
+      "lower": "9983/4608",
+      "upper": "55951/24576",
+      "gap": "8125/73728",
+      "resolved_leaves": 180,
+      "counts": {
+        "cell_calls": 361,
+        "affine_cell_tests": 361,
+        "affine_weight_terms": 5052,
+        "neuron_sign_tests": 361,
+        "range_network_calls": 181,
+        "range_weight_terms": 2896,
+        "max_endpoint_bits": 22,
+        "moment_calls": 180
+      }
+    },
+    {
+      "leaves": 323,
+      "lower": "9983/4608",
+      "upper": "1342199/589824",
+      "gap": "64375/589824",
+      "resolved_leaves": 184,
+      "counts": {
+        "cell_calls": 369,
+        "affine_cell_tests": 369,
+        "affine_weight_terms": 5164,
+        "neuron_sign_tests": 369,
+        "range_network_calls": 185,
+        "range_weight_terms": 2960,
+        "max_endpoint_bits": 22,
+        "moment_calls": 184
+      }
+    },
+    {
+      "leaves": 330,
+      "lower": "9983/4608",
+      "upper": "670787/294912",
+      "gap": "10625/98304",
+      "resolved_leaves": 188,
+      "counts": {
+        "cell_calls": 377,
+        "affine_cell_tests": 377,
+        "affine_weight_terms": 5276,
+        "neuron_sign_tests": 377,
+        "range_network_calls": 189,
+        "range_weight_terms": 3024,
+        "max_endpoint_bits": 22,
+        "moment_calls": 188
+      }
+    },
+    {
+      "leaves": 337,
+      "lower": "9983/4608",
+      "upper": "446983/196608",
+      "gap": "63125/589824",
+      "resolved_leaves": 192,
+      "counts": {
+        "cell_calls": 385,
+        "affine_cell_tests": 385,
+        "affine_weight_terms": 5388,
+        "neuron_sign_tests": 385,
+        "range_network_calls": 193,
+        "range_weight_terms": 3088,
+        "max_endpoint_bits": 22,
+        "moment_calls": 192
+      }
+    },
+    {
+      "leaves": 344,
+      "lower": "9983/4608",
+      "upper": "335081/147456",
+      "gap": "15625/147456",
+      "resolved_leaves": 196,
+      "counts": {
+        "cell_calls": 393,
+        "affine_cell_tests": 393,
+        "affine_weight_terms": 5500,
+        "neuron_sign_tests": 393,
+        "range_network_calls": 197,
+        "range_weight_terms": 3152,
+        "max_endpoint_bits": 22,
+        "moment_calls": 196
+      }
+    },
+    {
+      "leaves": 351,
+      "lower": "9983/4608",
+      "upper": "1339699/589824",
+      "gap": "6875/65536",
+      "resolved_leaves": 200,
+      "counts": {
+        "cell_calls": 401,
+        "affine_cell_tests": 401,
+        "affine_weight_terms": 5612,
+        "neuron_sign_tests": 401,
+        "range_network_calls": 201,
+        "range_weight_terms": 3216,
+        "max_endpoint_bits": 22,
+        "moment_calls": 200
+      }
+    },
+    {
+      "leaves": 358,
+      "lower": "9983/4608",
+      "upper": "74393/32768",
+      "gap": "30625/294912",
+      "resolved_leaves": 204,
+      "counts": {
+        "cell_calls": 409,
+        "affine_cell_tests": 409,
+        "affine_weight_terms": 5724,
+        "neuron_sign_tests": 409,
+        "range_network_calls": 205,
+        "range_weight_terms": 3280,
+        "max_endpoint_bits": 22,
+        "moment_calls": 204
+      }
+    },
+    {
+      "leaves": 365,
+      "lower": "9983/4608",
+      "upper": "1338449/589824",
+      "gap": "60625/589824",
+      "resolved_leaves": 208,
+      "counts": {
+        "cell_calls": 417,
+        "affine_cell_tests": 417,
+        "affine_weight_terms": 5836,
+        "neuron_sign_tests": 417,
+        "range_network_calls": 209,
+        "range_weight_terms": 3344,
+        "max_endpoint_bits": 22,
+        "moment_calls": 208
+      }
+    },
+    {
+      "leaves": 372,
+      "lower": "9983/4608",
+      "upper": "41807/18432",
+      "gap": "625/6144",
+      "resolved_leaves": 212,
+      "counts": {
+        "cell_calls": 425,
+        "affine_cell_tests": 425,
+        "affine_weight_terms": 5948,
+        "neuron_sign_tests": 425,
+        "range_network_calls": 213,
+        "range_weight_terms": 3408,
+        "max_endpoint_bits": 22,
+        "moment_calls": 212
+      }
+    },
+    {
+      "leaves": 379,
+      "lower": "9983/4608",
+      "upper": "445733/196608",
+      "gap": "59375/589824",
+      "resolved_leaves": 216,
+      "counts": {
+        "cell_calls": 433,
+        "affine_cell_tests": 433,
+        "affine_weight_terms": 6060,
+        "neuron_sign_tests": 433,
+        "range_network_calls": 217,
+        "range_weight_terms": 3472,
+        "max_endpoint_bits": 22,
+        "moment_calls": 216
+      }
+    },
+    {
+      "leaves": 386,
+      "lower": "9983/4608",
+      "upper": "668287/294912",
+      "gap": "29375/294912",
+      "resolved_leaves": 220,
+      "counts": {
+        "cell_calls": 441,
+        "affine_cell_tests": 441,
+        "affine_weight_terms": 6172,
+        "neuron_sign_tests": 441,
+        "range_network_calls": 221,
+        "range_weight_terms": 3536,
+        "max_endpoint_bits": 22,
+        "moment_calls": 220
+      }
+    },
+    {
+      "leaves": 393,
+      "lower": "9983/4608",
+      "upper": "1335949/589824",
+      "gap": "19375/196608",
+      "resolved_leaves": 224,
+      "counts": {
+        "cell_calls": 449,
+        "affine_cell_tests": 449,
+        "affine_weight_terms": 6284,
+        "neuron_sign_tests": 449,
+        "range_network_calls": 225,
+        "range_weight_terms": 3600,
+        "max_endpoint_bits": 22,
+        "moment_calls": 224
+      }
+    },
+    {
+      "leaves": 400,
+      "lower": "9983/4608",
+      "upper": "111277/49152",
+      "gap": "14375/147456",
+      "resolved_leaves": 228,
+      "counts": {
+        "cell_calls": 457,
+        "affine_cell_tests": 457,
+        "affine_weight_terms": 6396,
+        "neuron_sign_tests": 457,
+        "range_network_calls": 229,
+        "range_weight_terms": 3664,
+        "max_endpoint_bits": 22,
+        "moment_calls": 228
+      }
+    },
+    {
+      "leaves": 407,
+      "lower": "9983/4608",
+      "upper": "1334699/589824",
+      "gap": "56875/589824",
+      "resolved_leaves": 232,
+      "counts": {
+        "cell_calls": 465,
+        "affine_cell_tests": 465,
+        "affine_weight_terms": 6508,
+        "neuron_sign_tests": 465,
+        "range_network_calls": 233,
+        "range_weight_terms": 3728,
+        "max_endpoint_bits": 22,
+        "moment_calls": 232
+      }
+    },
+    {
+      "leaves": 414,
+      "lower": "9983/4608",
+      "upper": "667037/294912",
+      "gap": "3125/32768",
+      "resolved_leaves": 236,
+      "counts": {
+        "cell_calls": 473,
+        "affine_cell_tests": 473,
+        "affine_weight_terms": 6620,
+        "neuron_sign_tests": 473,
+        "range_network_calls": 237,
+        "range_weight_terms": 3792,
+        "max_endpoint_bits": 22,
+        "moment_calls": 236
+      }
+    },
+    {
+      "leaves": 421,
+      "lower": "9983/4608",
+      "upper": "148161/65536",
+      "gap": "55625/589824",
+      "resolved_leaves": 240,
+      "counts": {
+        "cell_calls": 481,
+        "affine_cell_tests": 481,
+        "affine_weight_terms": 6732,
+        "neuron_sign_tests": 481,
+        "range_network_calls": 241,
+        "range_weight_terms": 3856,
+        "max_endpoint_bits": 22,
+        "moment_calls": 240
+      }
+    },
+    {
+      "leaves": 428,
+      "lower": "9983/4608",
+      "upper": "166603/73728",
+      "gap": "6875/73728",
+      "resolved_leaves": 244,
+      "counts": {
+        "cell_calls": 489,
+        "affine_cell_tests": 489,
+        "affine_weight_terms": 6844,
+        "neuron_sign_tests": 489,
+        "range_network_calls": 245,
+        "range_weight_terms": 3920,
+        "max_endpoint_bits": 22,
+        "moment_calls": 244
+      }
+    },
+    {
+      "leaves": 435,
+      "lower": "9983/4608",
+      "upper": "1332199/589824",
+      "gap": "18125/196608",
+      "resolved_leaves": 248,
+      "counts": {
+        "cell_calls": 497,
+        "affine_cell_tests": 497,
+        "affine_weight_terms": 6956,
+        "neuron_sign_tests": 497,
+        "range_network_calls": 249,
+        "range_weight_terms": 3984,
+        "max_endpoint_bits": 22,
+        "moment_calls": 248
+      }
+    },
+    {
+      "leaves": 442,
+      "lower": "9983/4608",
+      "upper": "221929/98304",
+      "gap": "26875/294912",
+      "resolved_leaves": 252,
+      "counts": {
+        "cell_calls": 505,
+        "affine_cell_tests": 505,
+        "affine_weight_terms": 7068,
+        "neuron_sign_tests": 505,
+        "range_network_calls": 253,
+        "range_weight_terms": 4048,
+        "max_endpoint_bits": 22,
+        "moment_calls": 252
+      }
+    },
+    {
+      "leaves": 449,
+      "lower": "9983/4608",
+      "upper": "1330949/589824",
+      "gap": "53125/589824",
+      "resolved_leaves": 256,
+      "counts": {
+        "cell_calls": 513,
+        "affine_cell_tests": 513,
+        "affine_weight_terms": 7180,
+        "neuron_sign_tests": 513,
+        "range_network_calls": 257,
+        "range_weight_terms": 4112,
+        "max_endpoint_bits": 22,
+        "moment_calls": 256
+      }
+    },
+    {
+      "leaves": 456,
+      "lower": "9983/4608",
+      "upper": "332581/147456",
+      "gap": "4375/49152",
+      "resolved_leaves": 260,
+      "counts": {
+        "cell_calls": 521,
+        "affine_cell_tests": 521,
+        "affine_weight_terms": 7292,
+        "neuron_sign_tests": 521,
+        "range_network_calls": 261,
+        "range_weight_terms": 4176,
+        "max_endpoint_bits": 22,
+        "moment_calls": 260
+      }
+    },
+    {
+      "leaves": 463,
+      "lower": "9983/4608",
+      "upper": "443233/196608",
+      "gap": "51875/589824",
+      "resolved_leaves": 264,
+      "counts": {
+        "cell_calls": 529,
+        "affine_cell_tests": 529,
+        "affine_weight_terms": 7404,
+        "neuron_sign_tests": 529,
+        "range_network_calls": 265,
+        "range_weight_terms": 4240,
+        "max_endpoint_bits": 22,
+        "moment_calls": 264
+      }
+    },
+    {
+      "leaves": 470,
+      "lower": "9983/4608",
+      "upper": "664537/294912",
+      "gap": "25625/294912",
+      "resolved_leaves": 268,
+      "counts": {
+        "cell_calls": 537,
+        "affine_cell_tests": 537,
+        "affine_weight_terms": 7516,
+        "neuron_sign_tests": 537,
+        "range_network_calls": 269,
+        "range_weight_terms": 4304,
+        "max_endpoint_bits": 22,
+        "moment_calls": 268
+      }
+    },
+    {
+      "leaves": 477,
+      "lower": "9983/4608",
+      "upper": "1328449/589824",
+      "gap": "5625/65536",
+      "resolved_leaves": 272,
+      "counts": {
+        "cell_calls": 545,
+        "affine_cell_tests": 545,
+        "affine_weight_terms": 7628,
+        "neuron_sign_tests": 545,
+        "range_network_calls": 273,
+        "range_weight_terms": 4368,
+        "max_endpoint_bits": 22,
+        "moment_calls": 272
+      }
+    },
+    {
+      "leaves": 484,
+      "lower": "9983/4608",
+      "upper": "9221/4096",
+      "gap": "3125/36864",
+      "resolved_leaves": 276,
+      "counts": {
+        "cell_calls": 553,
+        "affine_cell_tests": 553,
+        "affine_weight_terms": 7740,
+        "neuron_sign_tests": 553,
+        "range_network_calls": 277,
+        "range_weight_terms": 4432,
+        "max_endpoint_bits": 22,
+        "moment_calls": 276
+      }
+    },
+    {
+      "leaves": 491,
+      "lower": "9983/4608",
+      "upper": "1327199/589824",
+      "gap": "49375/589824",
+      "resolved_leaves": 280,
+      "counts": {
+        "cell_calls": 561,
+        "affine_cell_tests": 561,
+        "affine_weight_terms": 7852,
+        "neuron_sign_tests": 561,
+        "range_network_calls": 281,
+        "range_weight_terms": 4496,
+        "max_endpoint_bits": 22,
+        "moment_calls": 280
+      }
+    },
+    {
+      "leaves": 498,
+      "lower": "9983/4608",
+      "upper": "663287/294912",
+      "gap": "8125/98304",
+      "resolved_leaves": 284,
+      "counts": {
+        "cell_calls": 569,
+        "affine_cell_tests": 569,
+        "affine_weight_terms": 7964,
+        "neuron_sign_tests": 569,
+        "range_network_calls": 285,
+        "range_weight_terms": 4560,
+        "max_endpoint_bits": 22,
+        "moment_calls": 284
+      }
+    },
+    {
+      "leaves": 505,
+      "lower": "9983/4608",
+      "upper": "441983/196608",
+      "gap": "48125/589824",
+      "resolved_leaves": 288,
+      "counts": {
+        "cell_calls": 577,
+        "affine_cell_tests": 577,
+        "affine_weight_terms": 8076,
+        "neuron_sign_tests": 577,
+        "range_network_calls": 289,
+        "range_weight_terms": 4624,
+        "max_endpoint_bits": 22,
+        "moment_calls": 288
+      }
+    },
+    {
+      "leaves": 512,
+      "lower": "9983/4608",
+      "upper": "331331/147456",
+      "gap": "11875/147456",
+      "resolved_leaves": 292,
+      "counts": {
+        "cell_calls": 585,
+        "affine_cell_tests": 585,
+        "affine_weight_terms": 8188,
+        "neuron_sign_tests": 585,
+        "range_network_calls": 293,
+        "range_weight_terms": 4688,
+        "max_endpoint_bits": 22,
+        "moment_calls": 292
+      }
+    }
+  ],
+  "final": {
+    "leaves": 512,
+    "lower": "9983/4608",
+    "upper": "331331/147456",
+    "gap": "11875/147456",
+    "resolved_leaves": 292,
+    "counts": {
+      "cell_calls": 585,
+      "affine_cell_tests": 585,
+      "affine_weight_terms": 8188,
+      "neuron_sign_tests": 585,
+      "range_network_calls": 293,
+      "range_weight_terms": 4688,
+      "max_endpoint_bits": 22,
+      "moment_calls": 292
+    }
+  },
+  "subadditivity_checks": 73,
+  "cells": [
+    {
+      "box": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "0",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/2"
+        ]
+      ],
+      "lower": "109/288",
+      "upper": "109/288",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "0",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1"
+        ]
+      ],
+      "lower": "109/288",
+      "upper": "109/288",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "0",
+          "1/2"
+        ]
+      ],
+      "lower": "109/288",
+      "upper": "109/288",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "1/2",
+          "1"
+        ]
+      ],
+      "lower": "109/288",
+      "upper": "109/288",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "0",
+          "1/4"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "1/2"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/4"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "1/2"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "3/4",
+          "1"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "1"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ],
+        [
+          "0",
+          "1/4"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ],
+        [
+          "1/4",
+          "1/2"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "3/4",
+          "1"
+        ],
+        [
+          "0",
+          "1/4"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "3/4",
+          "1"
+        ],
+        [
+          "1/4",
+          "1/2"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ],
+        [
+          "3/4",
+          "1"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "3/4",
+          "1"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "3/4",
+          "1"
+        ],
+        [
+          "3/4",
+          "1"
+        ]
+      ],
+      "lower": "1/64",
+      "upper": "1/64",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ],
+        [
+          "0",
+          "1/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ],
+        [
+          "0",
+          "1/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "0",
+          "1/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "0",
+          "1/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "0",
+          "1/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "0",
+          "1/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1/512",
+      "upper": "1201/294912",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1279/294912",
+      "upper": "1279/294912",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "1"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1201/2359296",
+      "resolved": false
+    }
+  ],
+  "case": "control-axis-3d",
+  "domain": [
+    [
+      "0",
+      "1"
+    ],
+    [
+      "0",
+      "1"
+    ],
+    [
+      "0",
+      "1"
+    ]
+  ],
+  "network": {
+    "activation": "relu",
+    "weights": [
+      [
+        [
+          "1",
+          "0",
+          "0"
+        ]
+      ],
+      [
+        [
+          "1"
+        ]
+      ]
+    ],
+    "biases": [
+      [
+        "-1/3"
+      ],
+      [
+        "1"
+      ]
+    ]
+  },
+  "network_sha256": "df99e5092a3d91e746260f4b8e39e902dfaf0a1bbf5a715dfcee33ac19a59f12"
+}

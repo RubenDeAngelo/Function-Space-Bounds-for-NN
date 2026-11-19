@@ -1,0 +1,24 @@
+{
+  "domain": [
+    [
+      -1,
+      1
+    ],
+    [
+      -1,
+      1
+    ]
+  ],
+  "bits": 128,
+  "p": 2,
+  "order": 1,
+  "norm": "H1",
+  "max_leaves": 4096,
+  "tolerance": "0",
+  "theta": "7/20",
+  "maxgap_rule": "exactly one leaf maximizing integral.upper-integral.lower; smallest creation id breaks ties",
+  "subdivision": "four dyadic children; all coordinates bisected",
+  "network_sha256": "accaf7a1e88ac5c653bde2440f6de5cf16913f1abb6fb373fdbe332176f38d77",
+  "source_model": "/Users/moritz/Documents/Codex/2026-10-27/run-the-two-bumps-and-x20-2/outputs/relu-experiments/two-bumps",
+  "stagnation": "maxgap runs to leaf budget; no heuristic stagnation stop"
+}

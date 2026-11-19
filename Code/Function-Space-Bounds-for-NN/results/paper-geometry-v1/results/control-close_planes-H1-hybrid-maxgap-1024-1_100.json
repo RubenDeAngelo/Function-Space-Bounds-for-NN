@@ -1,0 +1,6986 @@
+{
+  "quantity": "H1",
+  "rule": "hybrid",
+  "policy": "maxgap",
+  "cap": 1024,
+  "tolerance": "1/100",
+  "status": "tolerance_reached",
+  "seconds": 0.013620040997921024,
+  "history": [
+    {
+      "leaves": 1,
+      "lower": "1054729/9437184",
+      "upper": "34/9",
+      "gap": "3844095/1048576",
+      "resolved_leaves": 0,
+      "counts": {
+        "cell_calls": 1,
+        "affine_cell_tests": 1,
+        "affine_weight_terms": 6,
+        "neuron_sign_tests": 1,
+        "range_network_calls": 1,
+        "range_weight_terms": 18,
+        "max_endpoint_bits": 24
+      }
+    },
+    {
+      "leaves": 4,
+      "lower": "8012297/9437184",
+      "upper": "31737865/18874368",
+      "gap": "1745919/2097152",
+      "resolved_leaves": 2,
+      "counts": {
+        "cell_calls": 5,
+        "affine_cell_tests": 5,
+        "affine_weight_terms": 54,
+        "neuron_sign_tests": 7,
+        "range_network_calls": 3,
+        "range_weight_terms": 54,
+        "max_endpoint_bits": 26,
+        "moment_calls": 2
+      }
+    },
+    {
+      "leaves": 7,
+      "lower": "22322197/25165824",
+      "upper": "9508867/6291456",
+      "gap": "5237757/8388608",
+      "resolved_leaves": 4,
+      "counts": {
+        "cell_calls": 9,
+        "affine_cell_tests": 9,
+        "affine_weight_terms": 102,
+        "neuron_sign_tests": 13,
+        "range_network_calls": 5,
+        "range_weight_terms": 90,
+        "max_endpoint_bits": 28,
+        "moment_calls": 4
+      }
+    },
+    {
+      "leaves": 10,
+      "lower": "34917403/37748736",
+      "upper": "25315337/18874368",
+      "gap": "1745919/4194304",
+      "resolved_leaves": 6,
+      "counts": {
+        "cell_calls": 13,
+        "affine_cell_tests": 13,
+        "affine_weight_terms": 150,
+        "neuron_sign_tests": 19,
+        "range_network_calls": 7,
+        "range_weight_terms": 126,
+        "max_endpoint_bits": 28,
+        "moment_calls": 6
+      }
+    },
+    {
+      "leaves": 13,
+      "lower": "35542715/37748736",
+      "upper": "389613721/301989888",
+      "gap": "11696889/33554432",
+      "resolved_leaves": 8,
+      "counts": {
+        "cell_calls": 17,
+        "affine_cell_tests": 17,
+        "affine_weight_terms": 198,
+        "neuron_sign_tests": 25,
+        "range_network_calls": 9,
+        "range_weight_terms": 162,
+        "max_endpoint_bits": 30,
+        "moment_calls": 8
+      }
+    },
+    {
+      "leaves": 16,
+      "lower": "12056009/12582912",
+      "upper": "62363675/50331648",
+      "gap": "4713213/16777216",
+      "resolved_leaves": 10,
+      "counts": {
+        "cell_calls": 21,
+        "affine_cell_tests": 21,
+        "affine_weight_terms": 246,
+        "neuron_sign_tests": 31,
+        "range_network_calls": 11,
+        "range_weight_terms": 198,
+        "max_endpoint_bits": 30,
+        "moment_calls": 10
+      }
+    },
+    {
+      "leaves": 19,
+      "lower": "36793339/37748736",
+      "upper": "358750379/301989888",
+      "gap": "7155963/33554432",
+      "resolved_leaves": 12,
+      "counts": {
+        "cell_calls": 25,
+        "affine_cell_tests": 25,
+        "affine_weight_terms": 294,
+        "neuron_sign_tests": 37,
+        "range_network_calls": 13,
+        "range_weight_terms": 234,
+        "max_endpoint_bits": 30,
+        "moment_calls": 12
+      }
+    },
+    {
+      "leaves": 22,
+      "lower": "37418651/37748736",
+      "upper": "85829677/75497472",
+      "gap": "1221375/8388608",
+      "resolved_leaves": 14,
+      "counts": {
+        "cell_calls": 29,
+        "affine_cell_tests": 29,
+        "affine_weight_terms": 342,
+        "neuron_sign_tests": 43,
+        "range_network_calls": 15,
+        "range_weight_terms": 270,
+        "max_endpoint_bits": 30,
+        "moment_calls": 14
+      }
+    },
+    {
+      "leaves": 25,
+      "lower": "399383069/402653184",
+      "upper": "28396559/25165824",
+      "gap": "18320625/134217728",
+      "resolved_leaves": 16,
+      "counts": {
+        "cell_calls": 33,
+        "affine_cell_tests": 33,
+        "affine_weight_terms": 390,
+        "neuron_sign_tests": 49,
+        "range_network_calls": 17,
+        "range_weight_terms": 306,
+        "max_endpoint_bits": 32,
+        "moment_calls": 16
+      }
+    },
+    {
+      "leaves": 28,
+      "lower": "599450791/603979776",
+      "upper": "84549677/75497472",
+      "gap": "8549625/67108864",
+      "resolved_leaves": 18,
+      "counts": {
+        "cell_calls": 37,
+        "affine_cell_tests": 37,
+        "affine_weight_terms": 438,
+        "neuron_sign_tests": 55,
+        "range_network_calls": 19,
+        "range_weight_terms": 342,
+        "max_endpoint_bits": 32,
+        "moment_calls": 18
+      }
+    },
+    {
+      "leaves": 31,
+      "lower": "1199653957/1207959552",
+      "upper": "83909677/75497472",
+      "gap": "15877875/134217728",
+      "resolved_leaves": 20,
+      "counts": {
+        "cell_calls": 41,
+        "affine_cell_tests": 41,
+        "affine_weight_terms": 486,
+        "neuron_sign_tests": 61,
+        "range_network_calls": 21,
+        "range_weight_terms": 378,
+        "max_endpoint_bits": 32,
+        "moment_calls": 20
+      }
+    },
+    {
+      "leaves": 34,
+      "lower": "100033861/100663296",
+      "upper": "27756559/25165824",
+      "gap": "3664125/33554432",
+      "resolved_leaves": 22,
+      "counts": {
+        "cell_calls": 45,
+        "affine_cell_tests": 45,
+        "affine_weight_terms": 534,
+        "neuron_sign_tests": 67,
+        "range_network_calls": 23,
+        "range_weight_terms": 414,
+        "max_endpoint_bits": 32,
+        "moment_calls": 22
+      }
+    },
+    {
+      "leaves": 37,
+      "lower": "1201158707/1207959552",
+      "upper": "82629677/75497472",
+      "gap": "13435125/134217728",
+      "resolved_leaves": 24,
+      "counts": {
+        "cell_calls": 49,
+        "affine_cell_tests": 49,
+        "affine_weight_terms": 582,
+        "neuron_sign_tests": 73,
+        "range_network_calls": 25,
+        "range_weight_terms": 450,
+        "max_endpoint_bits": 32,
+        "moment_calls": 24
+      }
+    },
+    {
+      "leaves": 40,
+      "lower": "600955541/603979776",
+      "upper": "81989677/75497472",
+      "gap": "6106875/67108864",
+      "resolved_leaves": 26,
+      "counts": {
+        "cell_calls": 53,
+        "affine_cell_tests": 53,
+        "affine_weight_terms": 630,
+        "neuron_sign_tests": 79,
+        "range_network_calls": 27,
+        "range_weight_terms": 486,
+        "max_endpoint_bits": 32,
+        "moment_calls": 26
+      }
+    },
+    {
+      "leaves": 43,
+      "lower": "133629273/134217728",
+      "upper": "9038853/8388608",
+      "gap": "10992375/134217728",
+      "resolved_leaves": 28,
+      "counts": {
+        "cell_calls": 57,
+        "affine_cell_tests": 57,
+        "affine_weight_terms": 678,
+        "neuron_sign_tests": 85,
+        "range_network_calls": 29,
+        "range_weight_terms": 522,
+        "max_endpoint_bits": 32,
+        "moment_calls": 28
+      }
+    },
+    {
+      "leaves": 46,
+      "lower": "150426979/150994944",
+      "upper": "80709677/75497472",
+      "gap": "1221375/16777216",
+      "resolved_leaves": 30,
+      "counts": {
+        "cell_calls": 61,
+        "affine_cell_tests": 61,
+        "affine_weight_terms": 726,
+        "neuron_sign_tests": 91,
+        "range_network_calls": 31,
+        "range_weight_terms": 558,
+        "max_endpoint_bits": 32,
+        "moment_calls": 30
+      }
+    },
+    {
+      "leaves": 49,
+      "lower": "150469037/150994944",
+      "upper": "5154592585/4831838208",
+      "gap": "37731489/536870912",
+      "resolved_leaves": 32,
+      "counts": {
+        "cell_calls": 65,
+        "affine_cell_tests": 65,
+        "affine_weight_terms": 774,
+        "neuron_sign_tests": 97,
+        "range_network_calls": 33,
+        "range_weight_terms": 594,
+        "max_endpoint_bits": 34,
+        "moment_calls": 32
+      }
+    },
+    {
+      "leaves": 52,
+      "lower": "16723455/16777216",
+      "upper": "285764769/268435456",
+      "gap": "18189489/268435456",
+      "resolved_leaves": 34,
+      "counts": {
+        "cell_calls": 69,
+        "affine_cell_tests": 69,
+        "affine_weight_terms": 822,
+        "neuron_sign_tests": 103,
+        "range_network_calls": 35,
+        "range_weight_terms": 630,
+        "max_endpoint_bits": 34,
+        "moment_calls": 34
+      }
+    },
+    {
+      "leaves": 55,
+      "lower": "150553153/150994944",
+      "upper": "5132939099/4831838208",
+      "gap": "35026467/536870912",
+      "resolved_leaves": 36,
+      "counts": {
+        "cell_calls": 73,
+        "affine_cell_tests": 73,
+        "affine_weight_terms": 870,
+        "neuron_sign_tests": 109,
+        "range_network_calls": 37,
+        "range_weight_terms": 666,
+        "max_endpoint_bits": 34,
+        "moment_calls": 36
+      }
+    },
+    {
+      "leaves": 58,
+      "lower": "150595211/150994944",
+      "upper": "1280528089/1207959552",
+      "gap": "8418489/134217728",
+      "resolved_leaves": 38,
+      "counts": {
+        "cell_calls": 77,
+        "affine_cell_tests": 77,
+        "affine_weight_terms": 918,
+        "neuron_sign_tests": 115,
+        "range_network_calls": 39,
+        "range_weight_terms": 702,
+        "max_endpoint_bits": 34,
+        "moment_calls": 38
+      }
+    },
+    {
+      "leaves": 61,
+      "lower": "50212423/50331648",
+      "upper": "1703761871/1610612736",
+      "gap": "32321445/536870912",
+      "resolved_leaves": 40,
+      "counts": {
+        "cell_calls": 81,
+        "affine_cell_tests": 81,
+        "affine_weight_terms": 966,
+        "neuron_sign_tests": 121,
+        "range_network_calls": 41,
+        "range_weight_terms": 738,
+        "max_endpoint_bits": 34,
+        "moment_calls": 40
+      }
+    },
+    {
+      "leaves": 64,
+      "lower": "150679327/150994944",
+      "upper": "2550229435/2415919104",
+      "gap": "15484467/268435456",
+      "resolved_leaves": 42,
+      "counts": {
+        "cell_calls": 85,
+        "affine_cell_tests": 85,
+        "affine_weight_terms": 1014,
+        "neuron_sign_tests": 127,
+        "range_network_calls": 43,
+        "range_weight_terms": 774,
+        "max_endpoint_bits": 34,
+        "moment_calls": 42
+      }
+    },
+    {
+      "leaves": 67,
+      "lower": "150721385/150994944",
+      "upper": "5089632127/4831838208",
+      "gap": "29616423/536870912",
+      "resolved_leaves": 44,
+      "counts": {
+        "cell_calls": 89,
+        "affine_cell_tests": 89,
+        "affine_weight_terms": 1062,
+        "neuron_sign_tests": 133,
+        "range_network_calls": 45,
+        "range_weight_terms": 810,
+        "max_endpoint_bits": 34,
+        "moment_calls": 44
+      }
+    },
+    {
+      "leaves": 70,
+      "lower": "50254481/50331648",
+      "upper": "211616891/201326592",
+      "gap": "3532989/67108864",
+      "resolved_leaves": 46,
+      "counts": {
+        "cell_calls": 93,
+        "affine_cell_tests": 93,
+        "affine_weight_terms": 1110,
+        "neuron_sign_tests": 139,
+        "range_network_calls": 47,
+        "range_weight_terms": 846,
+        "max_endpoint_bits": 34,
+        "moment_calls": 46
+      }
+    },
+    {
+      "leaves": 73,
+      "lower": "150805501/150994944",
+      "upper": "5067978641/4831838208",
+      "gap": "26911401/536870912",
+      "resolved_leaves": 48,
+      "counts": {
+        "cell_calls": 97,
+        "affine_cell_tests": 97,
+        "affine_weight_terms": 1158,
+        "neuron_sign_tests": 145,
+        "range_network_calls": 49,
+        "range_weight_terms": 882,
+        "max_endpoint_bits": 34,
+        "moment_calls": 48
+      }
+    },
+    {
+      "leaves": 76,
+      "lower": "150847559/150994944",
+      "upper": "2528575949/2415919104",
+      "gap": "12779445/268435456",
+      "resolved_leaves": 50,
+      "counts": {
+        "cell_calls": 101,
+        "affine_cell_tests": 101,
+        "affine_weight_terms": 1206,
+        "neuron_sign_tests": 151,
+        "range_network_calls": 51,
+        "range_weight_terms": 918,
+        "max_endpoint_bits": 34,
+        "moment_calls": 50
+      }
+    },
+    {
+      "leaves": 79,
+      "lower": "16765513/16777216",
+      "upper": "560702795/536870912",
+      "gap": "24206379/536870912",
+      "resolved_leaves": 52,
+      "counts": {
+        "cell_calls": 105,
+        "affine_cell_tests": 105,
+        "affine_weight_terms": 1254,
+        "neuron_sign_tests": 157,
+        "range_network_calls": 53,
+        "range_weight_terms": 954,
+        "max_endpoint_bits": 34,
+        "moment_calls": 52
+      }
+    },
+    {
+      "leaves": 82,
+      "lower": "150931675/150994944",
+      "upper": "1258874603/1207959552",
+      "gap": "5713467/134217728",
+      "resolved_leaves": 54,
+      "counts": {
+        "cell_calls": 109,
+        "affine_cell_tests": 109,
+        "affine_weight_terms": 1302,
+        "neuron_sign_tests": 163,
+        "range_network_calls": 55,
+        "range_weight_terms": 990,
+        "max_endpoint_bits": 34,
+        "moment_calls": 54
+      }
+    },
+    {
+      "leaves": 85,
+      "lower": "150973733/150994944",
+      "upper": "5024671669/4831838208",
+      "gap": "21501357/536870912",
+      "resolved_leaves": 56,
+      "counts": {
+        "cell_calls": 113,
+        "affine_cell_tests": 113,
+        "affine_weight_terms": 1350,
+        "neuron_sign_tests": 169,
+        "range_network_calls": 57,
+        "range_weight_terms": 1026,
+        "max_endpoint_bits": 34,
+        "moment_calls": 56
+      }
+    },
+    {
+      "leaves": 88,
+      "lower": "50338597/50331648",
+      "upper": "835640821/805306368",
+      "gap": "10074423/268435456",
+      "resolved_leaves": 58,
+      "counts": {
+        "cell_calls": 117,
+        "affine_cell_tests": 117,
+        "affine_weight_terms": 1398,
+        "neuron_sign_tests": 175,
+        "range_network_calls": 59,
+        "range_weight_terms": 1062,
+        "max_endpoint_bits": 34,
+        "moment_calls": 58
+      }
+    },
+    {
+      "leaves": 91,
+      "lower": "151057849/150994944",
+      "upper": "5003018183/4831838208",
+      "gap": "18796335/536870912",
+      "resolved_leaves": 60,
+      "counts": {
+        "cell_calls": 121,
+        "affine_cell_tests": 121,
+        "affine_weight_terms": 1446,
+        "neuron_sign_tests": 181,
+        "range_network_calls": 61,
+        "range_weight_terms": 1098,
+        "max_endpoint_bits": 34,
+        "moment_calls": 60
+      }
+    },
+    {
+      "leaves": 94,
+      "lower": "151099907/150994944",
+      "upper": "312011965/301989888",
+      "gap": "1090239/33554432",
+      "resolved_leaves": 62,
+      "counts": {
+        "cell_calls": 125,
+        "affine_cell_tests": 125,
+        "affine_weight_terms": 1494,
+        "neuron_sign_tests": 187,
+        "range_network_calls": 63,
+        "range_weight_terms": 1134,
+        "max_endpoint_bits": 34,
+        "moment_calls": 62
+      }
+    },
+    {
+      "leaves": 97,
+      "lower": "2148996159/2147483648",
+      "upper": "34651269/33554432",
+      "gap": "68685057/2147483648",
+      "resolved_leaves": 64,
+      "counts": {
+        "cell_calls": 129,
+        "affine_cell_tests": 129,
+        "affine_weight_terms": 1542,
+        "neuron_sign_tests": 193,
+        "range_network_calls": 65,
+        "range_weight_terms": 1170,
+        "max_endpoint_bits": 36,
+        "moment_calls": 64
+      }
+    },
+    {
+      "leaves": 100,
+      "lower": "9670571383/9663676416",
+      "upper": "311710877/301989888",
+      "gap": "33797409/1073741824",
+      "resolved_leaves": 66,
+      "counts": {
+        "cell_calls": 133,
+        "affine_cell_tests": 133,
+        "affine_weight_terms": 1590,
+        "neuron_sign_tests": 199,
+        "range_network_calls": 67,
+        "range_weight_terms": 1206,
+        "max_endpoint_bits": 36,
+        "moment_calls": 66
+      }
+    },
+    {
+      "leaves": 103,
+      "lower": "19341320101/19327352832",
+      "upper": "311560333/301989888",
+      "gap": "66504579/2147483648",
+      "resolved_leaves": 68,
+      "counts": {
+        "cell_calls": 137,
+        "affine_cell_tests": 137,
+        "affine_weight_terms": 1638,
+        "neuron_sign_tests": 205,
+        "range_network_calls": 69,
+        "range_weight_terms": 1242,
+        "max_endpoint_bits": 36,
+        "moment_calls": 68
+      }
+    },
+    {
+      "leaves": 106,
+      "lower": "1611791453/1610612736",
+      "upper": "103803263/100663296",
+      "gap": "16353585/536870912",
+      "resolved_leaves": 70,
+      "counts": {
+        "cell_calls": 141,
+        "affine_cell_tests": 141,
+        "affine_weight_terms": 1686,
+        "neuron_sign_tests": 211,
+        "range_network_calls": 71,
+        "range_weight_terms": 1278,
+        "max_endpoint_bits": 36,
+        "moment_calls": 70
+      }
+    },
+    {
+      "leaves": 109,
+      "lower": "19341674771/19327352832",
+      "upper": "311259245/301989888",
+      "gap": "64324101/2147483648",
+      "resolved_leaves": 72,
+      "counts": {
+        "cell_calls": 145,
+        "affine_cell_tests": 145,
+        "affine_weight_terms": 1734,
+        "neuron_sign_tests": 217,
+        "range_network_calls": 73,
+        "range_weight_terms": 1314,
+        "max_endpoint_bits": 36,
+        "moment_calls": 72
+      }
+    },
+    {
+      "leaves": 112,
+      "lower": "9670926053/9663676416",
+      "upper": "311108701/301989888",
+      "gap": "31616931/1073741824",
+      "resolved_leaves": 74,
+      "counts": {
+        "cell_calls": 149,
+        "affine_cell_tests": 149,
+        "affine_weight_terms": 1782,
+        "neuron_sign_tests": 223,
+        "range_network_calls": 75,
+        "range_weight_terms": 1350,
+        "max_endpoint_bits": 36,
+        "moment_calls": 74
+      }
+    },
+    {
+      "leaves": 115,
+      "lower": "6447343147/6442450944",
+      "upper": "103652719/100663296",
+      "gap": "62143623/2147483648",
+      "resolved_leaves": 76,
+      "counts": {
+        "cell_calls": 153,
+        "affine_cell_tests": 153,
+        "affine_weight_terms": 1830,
+        "neuron_sign_tests": 229,
+        "range_network_calls": 77,
+        "range_weight_terms": 1386,
+        "max_endpoint_bits": 36,
+        "moment_calls": 76
+      }
+    },
+    {
+      "leaves": 118,
+      "lower": "2417775847/2415919104",
+      "upper": "310807613/301989888",
+      "gap": "7631673/268435456",
+      "resolved_leaves": 78,
+      "counts": {
+        "cell_calls": 157,
+        "affine_cell_tests": 157,
+        "affine_weight_terms": 1878,
+        "neuron_sign_tests": 235,
+        "range_network_calls": 79,
+        "range_weight_terms": 1422,
+        "max_endpoint_bits": 36,
+        "moment_calls": 78
+      }
+    },
+    {
+      "leaves": 121,
+      "lower": "19342384111/19327352832",
+      "upper": "310657069/301989888",
+      "gap": "59963145/2147483648",
+      "resolved_leaves": 80,
+      "counts": {
+        "cell_calls": 161,
+        "affine_cell_tests": 161,
+        "affine_weight_terms": 1926,
+        "neuron_sign_tests": 241,
+        "range_network_calls": 81,
+        "range_weight_terms": 1458,
+        "max_endpoint_bits": 36,
+        "moment_calls": 80
+      }
+    },
+    {
+      "leaves": 124,
+      "lower": "1074586747/1073741824",
+      "upper": "34500725/33554432",
+      "gap": "29436453/1073741824",
+      "resolved_leaves": 82,
+      "counts": {
+        "cell_calls": 165,
+        "affine_cell_tests": 165,
+        "affine_weight_terms": 1974,
+        "neuron_sign_tests": 247,
+        "range_network_calls": 83,
+        "range_weight_terms": 1494,
+        "max_endpoint_bits": 36,
+        "moment_calls": 82
+      }
+    },
+    {
+      "leaves": 127,
+      "lower": "19342738781/19327352832",
+      "upper": "310355981/301989888",
+      "gap": "57782667/2147483648",
+      "resolved_leaves": 84,
+      "counts": {
+        "cell_calls": 169,
+        "affine_cell_tests": 169,
+        "affine_weight_terms": 2022,
+        "neuron_sign_tests": 253,
+        "range_network_calls": 85,
+        "range_weight_terms": 1530,
+        "max_endpoint_bits": 36,
+        "moment_calls": 84
+      }
+    },
+    {
+      "leaves": 130,
+      "lower": "4835729029/4831838208",
+      "upper": "310205437/301989888",
+      "gap": "14173107/536870912",
+      "resolved_leaves": 86,
+      "counts": {
+        "cell_calls": 173,
+        "affine_cell_tests": 173,
+        "affine_weight_terms": 2070,
+        "neuron_sign_tests": 259,
+        "range_network_calls": 87,
+        "range_weight_terms": 1566,
+        "max_endpoint_bits": 36,
+        "moment_calls": 86
+      }
+    },
+    {
+      "leaves": 133,
+      "lower": "6447697817/6442450944",
+      "upper": "103351631/100663296",
+      "gap": "55602189/2147483648",
+      "resolved_leaves": 88,
+      "counts": {
+        "cell_calls": 177,
+        "affine_cell_tests": 177,
+        "affine_weight_terms": 2118,
+        "neuron_sign_tests": 265,
+        "range_network_calls": 89,
+        "range_weight_terms": 1602,
+        "max_endpoint_bits": 36,
+        "moment_calls": 88
+      }
+    },
+    {
+      "leaves": 136,
+      "lower": "9671635393/9663676416",
+      "upper": "309904349/301989888",
+      "gap": "27255975/1073741824",
+      "resolved_leaves": 90,
+      "counts": {
+        "cell_calls": 181,
+        "affine_cell_tests": 181,
+        "affine_weight_terms": 2166,
+        "neuron_sign_tests": 271,
+        "range_network_calls": 91,
+        "range_weight_terms": 1638,
+        "max_endpoint_bits": 36,
+        "moment_calls": 90
+      }
+    },
+    {
+      "leaves": 139,
+      "lower": "19343448121/19327352832",
+      "upper": "309753805/301989888",
+      "gap": "53421711/2147483648",
+      "resolved_leaves": 92,
+      "counts": {
+        "cell_calls": 185,
+        "affine_cell_tests": 185,
+        "affine_weight_terms": 2214,
+        "neuron_sign_tests": 277,
+        "range_network_calls": 93,
+        "range_weight_terms": 1674,
+        "max_endpoint_bits": 36,
+        "moment_calls": 92
+      }
+    },
+    {
+      "leaves": 142,
+      "lower": "402992197/402653184",
+      "upper": "103201087/100663296",
+      "gap": "3270717/134217728",
+      "resolved_leaves": 94,
+      "counts": {
+        "cell_calls": 189,
+        "affine_cell_tests": 189,
+        "affine_weight_terms": 2262,
+        "neuron_sign_tests": 283,
+        "range_network_calls": 95,
+        "range_weight_terms": 1710,
+        "max_endpoint_bits": 36,
+        "moment_calls": 94
+      }
+    },
+    {
+      "leaves": 145,
+      "lower": "19343802791/19327352832",
+      "upper": "309452717/301989888",
+      "gap": "51241233/2147483648",
+      "resolved_leaves": 96,
+      "counts": {
+        "cell_calls": 193,
+        "affine_cell_tests": 193,
+        "affine_weight_terms": 2310,
+        "neuron_sign_tests": 289,
+        "range_network_calls": 97,
+        "range_weight_terms": 1746,
+        "max_endpoint_bits": 36,
+        "moment_calls": 96
+      }
+    },
+    {
+      "leaves": 148,
+      "lower": "9671990063/9663676416",
+      "upper": "309302173/301989888",
+      "gap": "25075497/1073741824",
+      "resolved_leaves": 98,
+      "counts": {
+        "cell_calls": 197,
+        "affine_cell_tests": 197,
+        "affine_weight_terms": 2358,
+        "neuron_sign_tests": 295,
+        "range_network_calls": 99,
+        "range_weight_terms": 1782,
+        "max_endpoint_bits": 36,
+        "moment_calls": 98
+      }
+    },
+    {
+      "leaves": 151,
+      "lower": "2149350829/2147483648",
+      "upper": "34350181/33554432",
+      "gap": "49060755/2147483648",
+      "resolved_leaves": 100,
+      "counts": {
+        "cell_calls": 201,
+        "affine_cell_tests": 201,
+        "affine_weight_terms": 2406,
+        "neuron_sign_tests": 301,
+        "range_network_calls": 101,
+        "range_weight_terms": 1818,
+        "max_endpoint_bits": 36,
+        "moment_calls": 100
+      }
+    },
+    {
+      "leaves": 154,
+      "lower": "4836083699/4831838208",
+      "upper": "309001085/301989888",
+      "gap": "11992629/536870912",
+      "resolved_leaves": 102,
+      "counts": {
+        "cell_calls": 205,
+        "affine_cell_tests": 205,
+        "affine_weight_terms": 2454,
+        "neuron_sign_tests": 307,
+        "range_network_calls": 103,
+        "range_weight_terms": 1854,
+        "max_endpoint_bits": 36,
+        "moment_calls": 102
+      }
+    },
+    {
+      "leaves": 157,
+      "lower": "19344512131/19327352832",
+      "upper": "308850541/301989888",
+      "gap": "46880277/2147483648",
+      "resolved_leaves": 104,
+      "counts": {
+        "cell_calls": 209,
+        "affine_cell_tests": 209,
+        "affine_weight_terms": 2502,
+        "neuron_sign_tests": 313,
+        "range_network_calls": 105,
+        "range_weight_terms": 1890,
+        "max_endpoint_bits": 36,
+        "moment_calls": 104
+      }
+    },
+    {
+      "leaves": 160,
+      "lower": "3224114911/3221225472",
+      "upper": "102899999/100663296",
+      "gap": "22895019/1073741824",
+      "resolved_leaves": 106,
+      "counts": {
+        "cell_calls": 213,
+        "affine_cell_tests": 213,
+        "affine_weight_terms": 2550,
+        "neuron_sign_tests": 319,
+        "range_network_calls": 107,
+        "range_weight_terms": 1926,
+        "max_endpoint_bits": 36,
+        "moment_calls": 106
+      }
+    },
+    {
+      "leaves": 163,
+      "lower": "19344866801/19327352832",
+      "upper": "308549453/301989888",
+      "gap": "44699799/2147483648",
+      "resolved_leaves": 108,
+      "counts": {
+        "cell_calls": 217,
+        "affine_cell_tests": 217,
+        "affine_weight_terms": 2598,
+        "neuron_sign_tests": 325,
+        "range_network_calls": 109,
+        "range_weight_terms": 1962,
+        "max_endpoint_bits": 36,
+        "moment_calls": 108
+      }
+    },
+    {
+      "leaves": 166,
+      "lower": "2418130517/2415919104",
+      "upper": "308398909/301989888",
+      "gap": "5451195/268435456",
+      "resolved_leaves": 110,
+      "counts": {
+        "cell_calls": 221,
+        "affine_cell_tests": 221,
+        "affine_weight_terms": 2646,
+        "neuron_sign_tests": 331,
+        "range_network_calls": 111,
+        "range_weight_terms": 1998,
+        "max_endpoint_bits": 36,
+        "moment_calls": 110
+      }
+    },
+    {
+      "leaves": 169,
+      "lower": "6448407157/6442450944",
+      "upper": "102749455/100663296",
+      "gap": "42519321/2147483648",
+      "resolved_leaves": 112,
+      "counts": {
+        "cell_calls": 225,
+        "affine_cell_tests": 225,
+        "affine_weight_terms": 2694,
+        "neuron_sign_tests": 337,
+        "range_network_calls": 113,
+        "range_weight_terms": 2034,
+        "max_endpoint_bits": 36,
+        "moment_calls": 112
+      }
+    },
+    {
+      "leaves": 172,
+      "lower": "9672699403/9663676416",
+      "upper": "308097821/301989888",
+      "gap": "20714541/1073741824",
+      "resolved_leaves": 114,
+      "counts": {
+        "cell_calls": 229,
+        "affine_cell_tests": 229,
+        "affine_weight_terms": 2742,
+        "neuron_sign_tests": 343,
+        "range_network_calls": 115,
+        "range_weight_terms": 2070,
+        "max_endpoint_bits": 36,
+        "moment_calls": 114
+      }
+    },
+    {
+      "leaves": 175,
+      "lower": "19345576141/19327352832",
+      "upper": "307947277/301989888",
+      "gap": "40338843/2147483648",
+      "resolved_leaves": 116,
+      "counts": {
+        "cell_calls": 233,
+        "affine_cell_tests": 233,
+        "affine_weight_terms": 2790,
+        "neuron_sign_tests": 349,
+        "range_network_calls": 117,
+        "range_weight_terms": 2106,
+        "max_endpoint_bits": 36,
+        "moment_calls": 116
+      }
+    },
+    {
+      "leaves": 178,
+      "lower": "537382041/536870912",
+      "upper": "34199637/33554432",
+      "gap": "9812151/536870912",
+      "resolved_leaves": 118,
+      "counts": {
+        "cell_calls": 237,
+        "affine_cell_tests": 237,
+        "affine_weight_terms": 2838,
+        "neuron_sign_tests": 355,
+        "range_network_calls": 119,
+        "range_weight_terms": 2142,
+        "max_endpoint_bits": 36,
+        "moment_calls": 118
+      }
+    },
+    {
+      "leaves": 181,
+      "lower": "19345930811/19327352832",
+      "upper": "307646189/301989888",
+      "gap": "38158365/2147483648",
+      "resolved_leaves": 120,
+      "counts": {
+        "cell_calls": 241,
+        "affine_cell_tests": 241,
+        "affine_weight_terms": 2886,
+        "neuron_sign_tests": 361,
+        "range_network_calls": 121,
+        "range_weight_terms": 2178,
+        "max_endpoint_bits": 36,
+        "moment_calls": 120
+      }
+    },
+    {
+      "leaves": 184,
+      "lower": "9673054073/9663676416",
+      "upper": "307495645/301989888",
+      "gap": "18534063/1073741824",
+      "resolved_leaves": 122,
+      "counts": {
+        "cell_calls": 245,
+        "affine_cell_tests": 245,
+        "affine_weight_terms": 2934,
+        "neuron_sign_tests": 367,
+        "range_network_calls": 123,
+        "range_weight_terms": 2214,
+        "max_endpoint_bits": 36,
+        "moment_calls": 122
+      }
+    },
+    {
+      "leaves": 187,
+      "lower": "6448761827/6442450944",
+      "upper": "102448367/100663296",
+      "gap": "35977887/2147483648",
+      "resolved_leaves": 124,
+      "counts": {
+        "cell_calls": 249,
+        "affine_cell_tests": 249,
+        "affine_weight_terms": 2982,
+        "neuron_sign_tests": 373,
+        "range_network_calls": 125,
+        "range_weight_terms": 2250,
+        "max_endpoint_bits": 36,
+        "moment_calls": 124
+      }
+    },
+    {
+      "leaves": 190,
+      "lower": "604576963/603979776",
+      "upper": "307194557/301989888",
+      "gap": "1090239/67108864",
+      "resolved_leaves": 126,
+      "counts": {
+        "cell_calls": 253,
+        "affine_cell_tests": 253,
+        "affine_weight_terms": 3030,
+        "neuron_sign_tests": 379,
+        "range_network_calls": 127,
+        "range_weight_terms": 2286,
+        "max_endpoint_bits": 36,
+        "moment_calls": 126
+      }
+    },
+    {
+      "leaves": 193,
+      "lower": "4836637105/4831838208",
+      "upper": "78632041801/77309411328",
+      "gap": "138427569/8589934592",
+      "resolved_leaves": 128,
+      "counts": {
+        "cell_calls": 257,
+        "affine_cell_tests": 257,
+        "affine_weight_terms": 3078,
+        "neuron_sign_tests": 385,
+        "range_network_calls": 129,
+        "range_weight_terms": 2322,
+        "max_endpoint_bits": 38,
+        "moment_calls": 128
+      }
+    },
+    {
+      "leaves": 196,
+      "lower": "806109751/805306368",
+      "upper": "13103712835/12884901888",
+      "gap": "68652273/4294967296",
+      "resolved_leaves": 130,
+      "counts": {
+        "cell_calls": 261,
+        "affine_cell_tests": 261,
+        "affine_weight_terms": 3126,
+        "neuron_sign_tests": 391,
+        "range_network_calls": 131,
+        "range_weight_terms": 2358,
+        "max_endpoint_bits": 38,
+        "moment_calls": 130
+      }
+    },
+    {
+      "leaves": 199,
+      "lower": "4836679907/4831838208",
+      "upper": "78612512219/77309411328",
+      "gap": "136181523/8589934592",
+      "resolved_leaves": 132,
+      "counts": {
+        "cell_calls": 265,
+        "affine_cell_tests": 265,
+        "affine_weight_terms": 3174,
+        "neuron_sign_tests": 397,
+        "range_network_calls": 133,
+        "range_weight_terms": 2394,
+        "max_endpoint_bits": 38,
+        "moment_calls": 132
+      }
+    },
+    {
+      "leaves": 202,
+      "lower": "1209175327/1207959552",
+      "upper": "19650686857/19327352832",
+      "gap": "33764625/2147483648",
+      "resolved_leaves": 134,
+      "counts": {
+        "cell_calls": 269,
+        "affine_cell_tests": 269,
+        "affine_weight_terms": 3222,
+        "neuron_sign_tests": 403,
+        "range_network_calls": 135,
+        "range_weight_terms": 2430,
+        "max_endpoint_bits": 38,
+        "moment_calls": 134
+      }
+    },
+    {
+      "leaves": 205,
+      "lower": "1612240903/1610612736",
+      "upper": "26197660879/25769803776",
+      "gap": "133935477/8589934592",
+      "resolved_leaves": 136,
+      "counts": {
+        "cell_calls": 273,
+        "affine_cell_tests": 273,
+        "affine_weight_terms": 3270,
+        "neuron_sign_tests": 409,
+        "range_network_calls": 137,
+        "range_weight_terms": 2466,
+        "max_endpoint_bits": 38,
+        "moment_calls": 136
+      }
+    },
+    {
+      "leaves": 208,
+      "lower": "2418372055/2415919104",
+      "upper": "39291608923/38654705664",
+      "gap": "66406227/4294967296",
+      "resolved_leaves": 138,
+      "counts": {
+        "cell_calls": 277,
+        "affine_cell_tests": 277,
+        "affine_weight_terms": 3318,
+        "neuron_sign_tests": 415,
+        "range_network_calls": 139,
+        "range_weight_terms": 2502,
+        "max_endpoint_bits": 38,
+        "moment_calls": 138
+      }
+    },
+    {
+      "leaves": 211,
+      "lower": "4836765511/4831838208",
+      "upper": "78573453055/77309411328",
+      "gap": "131689431/8589934592",
+      "resolved_leaves": 140,
+      "counts": {
+        "cell_calls": 281,
+        "affine_cell_tests": 281,
+        "affine_weight_terms": 3366,
+        "neuron_sign_tests": 421,
+        "range_network_calls": 141,
+        "range_weight_terms": 2538,
+        "max_endpoint_bits": 38,
+        "moment_calls": 140
+      }
+    },
+    {
+      "leaves": 214,
+      "lower": "16794399/16777216",
+      "upper": "1091162337/1073741824",
+      "gap": "16320801/1073741824",
+      "resolved_leaves": 142,
+      "counts": {
+        "cell_calls": 285,
+        "affine_cell_tests": 285,
+        "affine_weight_terms": 3414,
+        "neuron_sign_tests": 427,
+        "range_network_calls": 143,
+        "range_weight_terms": 2574,
+        "max_endpoint_bits": 38,
+        "moment_calls": 142
+      }
+    },
+    {
+      "leaves": 217,
+      "lower": "4836808313/4831838208",
+      "upper": "78553923473/77309411328",
+      "gap": "129443385/8589934592",
+      "resolved_leaves": 144,
+      "counts": {
+        "cell_calls": 289,
+        "affine_cell_tests": 289,
+        "affine_weight_terms": 3462,
+        "neuron_sign_tests": 433,
+        "range_network_calls": 145,
+        "range_weight_terms": 2610,
+        "max_endpoint_bits": 38,
+        "moment_calls": 144
+      }
+    },
+    {
+      "leaves": 220,
+      "lower": "2418414857/2415919104",
+      "upper": "39272079341/38654705664",
+      "gap": "64160181/4294967296",
+      "resolved_leaves": 146,
+      "counts": {
+        "cell_calls": 293,
+        "affine_cell_tests": 293,
+        "affine_weight_terms": 3510,
+        "neuron_sign_tests": 439,
+        "range_network_calls": 147,
+        "range_weight_terms": 2646,
+        "max_endpoint_bits": 38,
+        "moment_calls": 146
+      }
+    },
+    {
+      "leaves": 223,
+      "lower": "1612283705/1610612736",
+      "upper": "26178131297/25769803776",
+      "gap": "127197339/8589934592",
+      "resolved_leaves": 148,
+      "counts": {
+        "cell_calls": 297,
+        "affine_cell_tests": 297,
+        "affine_weight_terms": 3558,
+        "neuron_sign_tests": 445,
+        "range_network_calls": 149,
+        "range_weight_terms": 2682,
+        "max_endpoint_bits": 38,
+        "moment_calls": 148
+      }
+    },
+    {
+      "leaves": 226,
+      "lower": "1209218129/1207959552",
+      "upper": "19631157275/19327352832",
+      "gap": "31518579/2147483648",
+      "resolved_leaves": 150,
+      "counts": {
+        "cell_calls": 301,
+        "affine_cell_tests": 301,
+        "affine_weight_terms": 3606,
+        "neuron_sign_tests": 451,
+        "range_network_calls": 151,
+        "range_weight_terms": 2718,
+        "max_endpoint_bits": 38,
+        "moment_calls": 150
+      }
+    },
+    {
+      "leaves": 229,
+      "lower": "4836893917/4831838208",
+      "upper": "78514864309/77309411328",
+      "gap": "124951293/8589934592",
+      "resolved_leaves": 152,
+      "counts": {
+        "cell_calls": 305,
+        "affine_cell_tests": 305,
+        "affine_weight_terms": 3654,
+        "neuron_sign_tests": 457,
+        "range_network_calls": 153,
+        "range_weight_terms": 2754,
+        "max_endpoint_bits": 38,
+        "moment_calls": 152
+      }
+    },
+    {
+      "leaves": 232,
+      "lower": "806152553/805306368",
+      "upper": "13084183253/12884901888",
+      "gap": "61914135/4294967296",
+      "resolved_leaves": 154,
+      "counts": {
+        "cell_calls": 309,
+        "affine_cell_tests": 309,
+        "affine_weight_terms": 3702,
+        "neuron_sign_tests": 463,
+        "range_network_calls": 155,
+        "range_weight_terms": 2790,
+        "max_endpoint_bits": 38,
+        "moment_calls": 154
+      }
+    },
+    {
+      "leaves": 235,
+      "lower": "4836936719/4831838208",
+      "upper": "78495334727/77309411328",
+      "gap": "122705247/8589934592",
+      "resolved_leaves": 156,
+      "counts": {
+        "cell_calls": 313,
+        "affine_cell_tests": 313,
+        "affine_weight_terms": 3750,
+        "neuron_sign_tests": 469,
+        "range_network_calls": 157,
+        "range_weight_terms": 2826,
+        "max_endpoint_bits": 38,
+        "moment_calls": 156
+      }
+    },
+    {
+      "leaves": 238,
+      "lower": "604619765/603979776",
+      "upper": "4905348121/4831838208",
+      "gap": "7598889/536870912",
+      "resolved_leaves": 158,
+      "counts": {
+        "cell_calls": 317,
+        "affine_cell_tests": 317,
+        "affine_weight_terms": 3798,
+        "neuron_sign_tests": 475,
+        "range_network_calls": 159,
+        "range_weight_terms": 2862,
+        "max_endpoint_bits": 38,
+        "moment_calls": 158
+      }
+    },
+    {
+      "leaves": 241,
+      "lower": "537442169/536870912",
+      "upper": "8719533905/8589934592",
+      "gap": "120459201/8589934592",
+      "resolved_leaves": 160,
+      "counts": {
+        "cell_calls": 321,
+        "affine_cell_tests": 321,
+        "affine_weight_terms": 3846,
+        "neuron_sign_tests": 481,
+        "range_network_calls": 161,
+        "range_weight_terms": 2898,
+        "max_endpoint_bits": 38,
+        "moment_calls": 160
+      }
+    },
+    {
+      "leaves": 244,
+      "lower": "2418500461/2415919104",
+      "upper": "39233020177/38654705664",
+      "gap": "59668089/4294967296",
+      "resolved_leaves": 162,
+      "counts": {
+        "cell_calls": 325,
+        "affine_cell_tests": 325,
+        "affine_weight_terms": 3894,
+        "neuron_sign_tests": 487,
+        "range_network_calls": 163,
+        "range_weight_terms": 2934,
+        "max_endpoint_bits": 38,
+        "moment_calls": 162
+      }
+    },
+    {
+      "leaves": 247,
+      "lower": "4837022323/4831838208",
+      "upper": "78456275563/77309411328",
+      "gap": "118213155/8589934592",
+      "resolved_leaves": 164,
+      "counts": {
+        "cell_calls": 329,
+        "affine_cell_tests": 329,
+        "affine_weight_terms": 3942,
+        "neuron_sign_tests": 493,
+        "range_network_calls": 165,
+        "range_weight_terms": 2970,
+        "max_endpoint_bits": 38,
+        "moment_calls": 164
+      }
+    },
+    {
+      "leaves": 250,
+      "lower": "403086977/402653184",
+      "upper": "6537209231/6442450944",
+      "gap": "29272533/2147483648",
+      "resolved_leaves": 166,
+      "counts": {
+        "cell_calls": 333,
+        "affine_cell_tests": 333,
+        "affine_weight_terms": 3990,
+        "neuron_sign_tests": 499,
+        "range_network_calls": 167,
+        "range_weight_terms": 3006,
+        "max_endpoint_bits": 38,
+        "moment_calls": 166
+      }
+    },
+    {
+      "leaves": 253,
+      "lower": "4837065125/4831838208",
+      "upper": "78436745981/77309411328",
+      "gap": "115967109/8589934592",
+      "resolved_leaves": 168,
+      "counts": {
+        "cell_calls": 337,
+        "affine_cell_tests": 337,
+        "affine_weight_terms": 4038,
+        "neuron_sign_tests": 505,
+        "range_network_calls": 169,
+        "range_weight_terms": 3042,
+        "max_endpoint_bits": 38,
+        "moment_calls": 168
+      }
+    },
+    {
+      "leaves": 256,
+      "lower": "2418543263/2415919104",
+      "upper": "39213490595/38654705664",
+      "gap": "57422043/4294967296",
+      "resolved_leaves": 170,
+      "counts": {
+        "cell_calls": 341,
+        "affine_cell_tests": 341,
+        "affine_weight_terms": 4086,
+        "neuron_sign_tests": 511,
+        "range_network_calls": 171,
+        "range_weight_terms": 3078,
+        "max_endpoint_bits": 38,
+        "moment_calls": 170
+      }
+    },
+    {
+      "leaves": 259,
+      "lower": "1612369309/1610612736",
+      "upper": "26139072133/25769803776",
+      "gap": "113721063/8589934592",
+      "resolved_leaves": 172,
+      "counts": {
+        "cell_calls": 345,
+        "affine_cell_tests": 345,
+        "affine_weight_terms": 4134,
+        "neuron_sign_tests": 517,
+        "range_network_calls": 173,
+        "range_weight_terms": 3114,
+        "max_endpoint_bits": 38,
+        "moment_calls": 172
+      }
+    },
+    {
+      "leaves": 262,
+      "lower": "302320583/301989888",
+      "upper": "9800931451/9663676416",
+      "gap": "14074755/1073741824",
+      "resolved_leaves": 174,
+      "counts": {
+        "cell_calls": 349,
+        "affine_cell_tests": 349,
+        "affine_weight_terms": 4182,
+        "neuron_sign_tests": 523,
+        "range_network_calls": 175,
+        "range_weight_terms": 3150,
+        "max_endpoint_bits": 38,
+        "moment_calls": 174
+      }
+    },
+    {
+      "leaves": 265,
+      "lower": "4837150729/4831838208",
+      "upper": "78397686817/77309411328",
+      "gap": "111475017/8589934592",
+      "resolved_leaves": 176,
+      "counts": {
+        "cell_calls": 353,
+        "affine_cell_tests": 353,
+        "affine_weight_terms": 4230,
+        "neuron_sign_tests": 529,
+        "range_network_calls": 177,
+        "range_weight_terms": 3186,
+        "max_endpoint_bits": 38,
+        "moment_calls": 176
+      }
+    },
+    {
+      "leaves": 268,
+      "lower": "268731785/268435456",
+      "upper": "4354884557/4294967296",
+      "gap": "55175997/4294967296",
+      "resolved_leaves": 178,
+      "counts": {
+        "cell_calls": 357,
+        "affine_cell_tests": 357,
+        "affine_weight_terms": 4278,
+        "neuron_sign_tests": 535,
+        "range_network_calls": 179,
+        "range_weight_terms": 3222,
+        "max_endpoint_bits": 38,
+        "moment_calls": 178
+      }
+    },
+    {
+      "leaves": 271,
+      "lower": "4837193531/4831838208",
+      "upper": "78378157235/77309411328",
+      "gap": "109228971/8589934592",
+      "resolved_leaves": 180,
+      "counts": {
+        "cell_calls": 361,
+        "affine_cell_tests": 361,
+        "affine_weight_terms": 4326,
+        "neuron_sign_tests": 541,
+        "range_network_calls": 181,
+        "range_weight_terms": 3258,
+        "max_endpoint_bits": 38,
+        "moment_calls": 180
+      }
+    },
+    {
+      "leaves": 274,
+      "lower": "1209303733/1207959552",
+      "upper": "19592098111/19327352832",
+      "gap": "27026487/2147483648",
+      "resolved_leaves": 182,
+      "counts": {
+        "cell_calls": 365,
+        "affine_cell_tests": 365,
+        "affine_weight_terms": 4374,
+        "neuron_sign_tests": 547,
+        "range_network_calls": 183,
+        "range_weight_terms": 3294,
+        "max_endpoint_bits": 38,
+        "moment_calls": 182
+      }
+    },
+    {
+      "leaves": 277,
+      "lower": "1612412111/1610612736",
+      "upper": "26119542551/25769803776",
+      "gap": "106982925/8589934592",
+      "resolved_leaves": 184,
+      "counts": {
+        "cell_calls": 369,
+        "affine_cell_tests": 369,
+        "affine_weight_terms": 4422,
+        "neuron_sign_tests": 553,
+        "range_network_calls": 185,
+        "range_weight_terms": 3330,
+        "max_endpoint_bits": 38,
+        "moment_calls": 184
+      }
+    },
+    {
+      "leaves": 280,
+      "lower": "2418628867/2415919104",
+      "upper": "39174431431/38654705664",
+      "gap": "52929951/4294967296",
+      "resolved_leaves": 186,
+      "counts": {
+        "cell_calls": 373,
+        "affine_cell_tests": 373,
+        "affine_weight_terms": 4470,
+        "neuron_sign_tests": 559,
+        "range_network_calls": 187,
+        "range_weight_terms": 3366,
+        "max_endpoint_bits": 38,
+        "moment_calls": 186
+      }
+    },
+    {
+      "leaves": 283,
+      "lower": "4837279135/4831838208",
+      "upper": "78339098071/77309411328",
+      "gap": "104736879/8589934592",
+      "resolved_leaves": 188,
+      "counts": {
+        "cell_calls": 377,
+        "affine_cell_tests": 377,
+        "affine_weight_terms": 4518,
+        "neuron_sign_tests": 565,
+        "range_network_calls": 189,
+        "range_weight_terms": 3402,
+        "max_endpoint_bits": 38,
+        "moment_calls": 188
+      }
+    },
+    {
+      "leaves": 286,
+      "lower": "201554189/201326592",
+      "upper": "815930555/805306368",
+      "gap": "3237933/268435456",
+      "resolved_leaves": 190,
+      "counts": {
+        "cell_calls": 381,
+        "affine_cell_tests": 381,
+        "affine_weight_terms": 4566,
+        "neuron_sign_tests": 571,
+        "range_network_calls": 191,
+        "range_weight_terms": 3438,
+        "max_endpoint_bits": 38,
+        "moment_calls": 190
+      }
+    },
+    {
+      "leaves": 289,
+      "lower": "4837321937/4831838208",
+      "upper": "78319568489/77309411328",
+      "gap": "102490833/8589934592",
+      "resolved_leaves": 192,
+      "counts": {
+        "cell_calls": 385,
+        "affine_cell_tests": 385,
+        "affine_weight_terms": 4614,
+        "neuron_sign_tests": 577,
+        "range_network_calls": 193,
+        "range_weight_terms": 3474,
+        "max_endpoint_bits": 38,
+        "moment_calls": 192
+      }
+    },
+    {
+      "leaves": 292,
+      "lower": "2418671669/2415919104",
+      "upper": "39154901849/38654705664",
+      "gap": "50683905/4294967296",
+      "resolved_leaves": 194,
+      "counts": {
+        "cell_calls": 389,
+        "affine_cell_tests": 389,
+        "affine_weight_terms": 4662,
+        "neuron_sign_tests": 583,
+        "range_network_calls": 195,
+        "range_weight_terms": 3510,
+        "max_endpoint_bits": 38,
+        "moment_calls": 194
+      }
+    },
+    {
+      "leaves": 295,
+      "lower": "537484971/536870912",
+      "upper": "8700004323/8589934592",
+      "gap": "100244787/8589934592",
+      "resolved_leaves": 196,
+      "counts": {
+        "cell_calls": 393,
+        "affine_cell_tests": 393,
+        "affine_weight_terms": 4710,
+        "neuron_sign_tests": 589,
+        "range_network_calls": 197,
+        "range_weight_terms": 3546,
+        "max_endpoint_bits": 38,
+        "moment_calls": 196
+      }
+    },
+    {
+      "leaves": 298,
+      "lower": "1209346535/1207959552",
+      "upper": "19572568529/19327352832",
+      "gap": "24780441/2147483648",
+      "resolved_leaves": 198,
+      "counts": {
+        "cell_calls": 397,
+        "affine_cell_tests": 397,
+        "affine_weight_terms": 4758,
+        "neuron_sign_tests": 595,
+        "range_network_calls": 199,
+        "range_weight_terms": 3582,
+        "max_endpoint_bits": 38,
+        "moment_calls": 198
+      }
+    },
+    {
+      "leaves": 301,
+      "lower": "4837407541/4831838208",
+      "upper": "78280509325/77309411328",
+      "gap": "97998741/8589934592",
+      "resolved_leaves": 200,
+      "counts": {
+        "cell_calls": 401,
+        "affine_cell_tests": 401,
+        "affine_weight_terms": 4806,
+        "neuron_sign_tests": 601,
+        "range_network_calls": 201,
+        "range_weight_terms": 3618,
+        "max_endpoint_bits": 38,
+        "moment_calls": 200
+      }
+    },
+    {
+      "leaves": 304,
+      "lower": "806238157/805306368",
+      "upper": "13045124089/12884901888",
+      "gap": "48437859/4294967296",
+      "resolved_leaves": 202,
+      "counts": {
+        "cell_calls": 405,
+        "affine_cell_tests": 405,
+        "affine_weight_terms": 4854,
+        "neuron_sign_tests": 607,
+        "range_network_calls": 203,
+        "range_weight_terms": 3654,
+        "max_endpoint_bits": 38,
+        "moment_calls": 202
+      }
+    },
+    {
+      "leaves": 307,
+      "lower": "4837450343/4831838208",
+      "upper": "78260979743/77309411328",
+      "gap": "95752695/8589934592",
+      "resolved_leaves": 204,
+      "counts": {
+        "cell_calls": 409,
+        "affine_cell_tests": 409,
+        "affine_weight_terms": 4902,
+        "neuron_sign_tests": 613,
+        "range_network_calls": 205,
+        "range_weight_terms": 3690,
+        "max_endpoint_bits": 38,
+        "moment_calls": 204
+      }
+    },
+    {
+      "leaves": 310,
+      "lower": "9448187/9437184",
+      "upper": "9781401869/9663676416",
+      "gap": "11828709/1073741824",
+      "resolved_leaves": 206,
+      "counts": {
+        "cell_calls": 413,
+        "affine_cell_tests": 413,
+        "affine_weight_terms": 4950,
+        "neuron_sign_tests": 619,
+        "range_network_calls": 207,
+        "range_weight_terms": 3726,
+        "max_endpoint_bits": 38,
+        "moment_calls": 206
+      }
+    },
+    {
+      "leaves": 313,
+      "lower": "1612497715/1610612736",
+      "upper": "26080483387/25769803776",
+      "gap": "93506649/8589934592",
+      "resolved_leaves": 208,
+      "counts": {
+        "cell_calls": 417,
+        "affine_cell_tests": 417,
+        "affine_weight_terms": 4998,
+        "neuron_sign_tests": 625,
+        "range_network_calls": 209,
+        "range_weight_terms": 3762,
+        "max_endpoint_bits": 38,
+        "moment_calls": 208
+      }
+    },
+    {
+      "leaves": 316,
+      "lower": "2418757273/2415919104",
+      "upper": "39115842685/38654705664",
+      "gap": "46191813/4294967296",
+      "resolved_leaves": 210,
+      "counts": {
+        "cell_calls": 421,
+        "affine_cell_tests": 421,
+        "affine_weight_terms": 5046,
+        "neuron_sign_tests": 631,
+        "range_network_calls": 211,
+        "range_weight_terms": 3798,
+        "max_endpoint_bits": 38,
+        "moment_calls": 210
+      }
+    },
+    {
+      "leaves": 319,
+      "lower": "4837535947/4831838208",
+      "upper": "78221920579/77309411328",
+      "gap": "91260603/8589934592",
+      "resolved_leaves": 212,
+      "counts": {
+        "cell_calls": 425,
+        "affine_cell_tests": 425,
+        "affine_weight_terms": 5094,
+        "neuron_sign_tests": 637,
+        "range_network_calls": 213,
+        "range_weight_terms": 3834,
+        "max_endpoint_bits": 38,
+        "moment_calls": 212
+      }
+    },
+    {
+      "leaves": 322,
+      "lower": "134376593/134217728",
+      "upper": "2172559883/2147483648",
+      "gap": "22534395/2147483648",
+      "resolved_leaves": 214,
+      "counts": {
+        "cell_calls": 429,
+        "affine_cell_tests": 429,
+        "affine_weight_terms": 5142,
+        "neuron_sign_tests": 643,
+        "range_network_calls": 215,
+        "range_weight_terms": 3870,
+        "max_endpoint_bits": 38,
+        "moment_calls": 214
+      }
+    },
+    {
+      "leaves": 325,
+      "lower": "4837578749/4831838208",
+      "upper": "78202390997/77309411328",
+      "gap": "89014557/8589934592",
+      "resolved_leaves": 216,
+      "counts": {
+        "cell_calls": 433,
+        "affine_cell_tests": 433,
+        "affine_weight_terms": 5190,
+        "neuron_sign_tests": 649,
+        "range_network_calls": 217,
+        "range_weight_terms": 3906,
+        "max_endpoint_bits": 38,
+        "moment_calls": 216
+      }
+    },
+    {
+      "leaves": 328,
+      "lower": "2418800075/2415919104",
+      "upper": "39096313103/38654705664",
+      "gap": "43945767/4294967296",
+      "resolved_leaves": 218,
+      "counts": {
+        "cell_calls": 437,
+        "affine_cell_tests": 437,
+        "affine_weight_terms": 5238,
+        "neuron_sign_tests": 655,
+        "range_network_calls": 219,
+        "range_weight_terms": 3942,
+        "max_endpoint_bits": 38,
+        "moment_calls": 218
+      }
+    },
+    {
+      "leaves": 331,
+      "lower": "1612540517/1610612736",
+      "upper": "26060953805/25769803776",
+      "gap": "86768511/8589934592",
+      "resolved_leaves": 220,
+      "counts": {
+        "cell_calls": 441,
+        "affine_cell_tests": 441,
+        "affine_weight_terms": 5286,
+        "neuron_sign_tests": 661,
+        "range_network_calls": 221,
+        "range_weight_terms": 3978,
+        "max_endpoint_bits": 38,
+        "moment_calls": 220
+      }
+    },
+    {
+      "leaves": 334,
+      "lower": "604705369/603979776",
+      "upper": "4885818539/4831838208",
+      "gap": "5352843/536870912",
+      "resolved_leaves": 222,
+      "counts": {
+        "cell_calls": 445,
+        "affine_cell_tests": 445,
+        "affine_weight_terms": 5334,
+        "neuron_sign_tests": 667,
+        "range_network_calls": 223,
+        "range_weight_terms": 4014,
+        "max_endpoint_bits": 38,
+        "moment_calls": 222
+      }
+    }
+  ],
+  "final": {
+    "leaves": 334,
+    "lower": "604705369/603979776",
+    "upper": "4885818539/4831838208",
+    "gap": "5352843/536870912",
+    "resolved_leaves": 222,
+    "counts": {
+      "cell_calls": 445,
+      "affine_cell_tests": 445,
+      "affine_weight_terms": 5334,
+      "neuron_sign_tests": 667,
+      "range_network_calls": 223,
+      "range_weight_terms": 4014,
+      "max_endpoint_bits": 38,
+      "moment_calls": 222
+    }
+  },
+  "subadditivity_checks": 111,
+  "cells": [
+    {
+      "box": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "0",
+          "1/2"
+        ]
+      ],
+      "lower": "1050625/4194304",
+      "upper": "1050625/4194304",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "1/2",
+          "1"
+        ]
+      ],
+      "lower": "1050625/4194304",
+      "upper": "1050625/4194304",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "0",
+          "1/4"
+        ]
+      ],
+      "lower": "1/16",
+      "upper": "1/16",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "1/2"
+        ]
+      ],
+      "lower": "1/16",
+      "upper": "1/16",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ]
+      ],
+      "lower": "1/16",
+      "upper": "1/16",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/4"
+        ],
+        [
+          "3/4",
+          "1"
+        ]
+      ],
+      "lower": "1/16",
+      "upper": "1/16",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/8"
+        ]
+      ],
+      "lower": "1050625/67108864",
+      "upper": "1050625/67108864",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/8",
+          "1/4"
+        ]
+      ],
+      "lower": "1050625/67108864",
+      "upper": "1050625/67108864",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/4",
+          "3/8"
+        ]
+      ],
+      "lower": "1050625/67108864",
+      "upper": "1050625/67108864",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/8",
+          "1/2"
+        ]
+      ],
+      "lower": "1050625/67108864",
+      "upper": "1050625/67108864",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "5/8"
+        ]
+      ],
+      "lower": "1050625/67108864",
+      "upper": "1050625/67108864",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "5/8",
+          "3/4"
+        ]
+      ],
+      "lower": "1050625/67108864",
+      "upper": "1050625/67108864",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "3/4",
+          "7/8"
+        ]
+      ],
+      "lower": "1050625/67108864",
+      "upper": "1050625/67108864",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "3/8",
+          "1/2"
+        ],
+        [
+          "7/8",
+          "1"
+        ]
+      ],
+      "lower": "1050625/67108864",
+      "upper": "1050625/67108864",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "0",
+          "1/16"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/16",
+          "1/8"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/8",
+          "3/16"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/16",
+          "1/4"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/4",
+          "5/16"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/16",
+          "3/8"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/8",
+          "7/16"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/16",
+          "1/2"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "1/2",
+          "9/16"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "9/16",
+          "5/8"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "5/8",
+          "11/16"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "11/16",
+          "3/4"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "3/4",
+          "13/16"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "13/16",
+          "7/8"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "7/8",
+          "15/16"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/4",
+          "5/16"
+        ],
+        [
+          "15/16",
+          "1"
+        ]
+      ],
+      "lower": "1/256",
+      "upper": "1/256",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "0",
+          "1/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "1/32",
+          "1/16"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "1/16",
+          "3/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "3/32",
+          "1/8"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "1/8",
+          "5/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "5/32",
+          "3/16"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "3/16",
+          "7/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "7/32",
+          "1/4"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "1/4",
+          "9/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "9/32",
+          "5/16"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "5/16",
+          "11/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "11/32",
+          "3/8"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "3/8",
+          "13/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "13/32",
+          "7/16"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "7/16",
+          "15/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "15/32",
+          "1/2"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "1/2",
+          "17/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "17/32",
+          "9/16"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "9/16",
+          "19/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "19/32",
+          "5/8"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "5/8",
+          "21/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "21/32",
+          "11/16"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "11/16",
+          "23/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "23/32",
+          "3/4"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "3/4",
+          "25/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "25/32",
+          "13/16"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "13/16",
+          "27/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "27/32",
+          "7/8"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "7/8",
+          "29/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "29/32",
+          "15/16"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "15/16",
+          "31/32"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "11/32",
+          "3/8"
+        ],
+        [
+          "31/32",
+          "1"
+        ]
+      ],
+      "lower": "1050625/1073741824",
+      "upper": "1050625/1073741824",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "0",
+          "1/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "1/64",
+          "1/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "1/32",
+          "3/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "3/64",
+          "1/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "1/16",
+          "5/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "5/64",
+          "3/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "3/32",
+          "7/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "7/64",
+          "1/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "1/8",
+          "9/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "9/64",
+          "5/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "5/32",
+          "11/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "11/64",
+          "3/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "3/16",
+          "13/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "13/64",
+          "7/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "7/32",
+          "15/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "15/64",
+          "1/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "1/4",
+          "17/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "17/64",
+          "9/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "9/32",
+          "19/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "19/64",
+          "5/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "5/16",
+          "21/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "21/64",
+          "11/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "11/32",
+          "23/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "23/64",
+          "3/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "3/8",
+          "25/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "25/64",
+          "13/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "13/32",
+          "27/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "27/64",
+          "7/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "7/16",
+          "29/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "29/64",
+          "15/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "15/32",
+          "31/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "31/64",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "1/2",
+          "33/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "33/64",
+          "17/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "17/32",
+          "35/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "35/64",
+          "9/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "9/16",
+          "37/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "37/64",
+          "19/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "19/32",
+          "39/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "39/64",
+          "5/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "5/8",
+          "41/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "41/64",
+          "21/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "21/32",
+          "43/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "43/64",
+          "11/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "11/16",
+          "45/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "45/64",
+          "23/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "23/32",
+          "47/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "47/64",
+          "3/4"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "3/4",
+          "49/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "49/64",
+          "25/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "3/4",
+          "49/64"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "49/64",
+          "25/32"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "25/32",
+          "51/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "51/64",
+          "13/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "25/32",
+          "51/64"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "51/64",
+          "13/16"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "13/16",
+          "53/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "53/64",
+          "27/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "13/16",
+          "53/64"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "53/64",
+          "27/32"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "27/32",
+          "55/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "55/64",
+          "7/8"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "27/32",
+          "55/64"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "55/64",
+          "7/8"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "7/8",
+          "57/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "57/64",
+          "29/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "7/8",
+          "57/64"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "57/64",
+          "29/32"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "29/32",
+          "59/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "59/64",
+          "15/16"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "29/32",
+          "59/64"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "59/64",
+          "15/16"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "15/16",
+          "61/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "61/64",
+          "31/32"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "15/16",
+          "61/64"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "61/64",
+          "31/32"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "31/32",
+          "63/64"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "5/16",
+          "21/64"
+        ],
+        [
+          "63/64",
+          "1"
+        ]
+      ],
+      "lower": "1/4096",
+      "upper": "1/4096",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "31/32",
+          "63/64"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "11/32"
+        ],
+        [
+          "63/64",
+          "1"
+        ]
+      ],
+      "lower": "9259849/38654705664",
+      "upper": "18625/37748736",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "0",
+          "1/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "1/128",
+          "1/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "0",
+          "1/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "1/128",
+          "1/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "1/64",
+          "3/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "3/128",
+          "1/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "1/64",
+          "3/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "3/128",
+          "1/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "1/32",
+          "5/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "5/128",
+          "3/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "1/32",
+          "5/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "5/128",
+          "3/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "3/64",
+          "7/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "7/128",
+          "1/16"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "3/64",
+          "7/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "7/128",
+          "1/16"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "1/16",
+          "9/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "9/128",
+          "5/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "1/16",
+          "9/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "9/128",
+          "5/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "5/64",
+          "11/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "11/128",
+          "3/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "5/64",
+          "11/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "11/128",
+          "3/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "3/32",
+          "13/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "13/128",
+          "7/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "3/32",
+          "13/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "13/128",
+          "7/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "7/64",
+          "15/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "15/128",
+          "1/8"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "7/64",
+          "15/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "15/128",
+          "1/8"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "1/8",
+          "17/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "17/128",
+          "9/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "1/8",
+          "17/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "17/128",
+          "9/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "9/64",
+          "19/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "19/128",
+          "5/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "9/64",
+          "19/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "19/128",
+          "5/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "5/32",
+          "21/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "21/128",
+          "11/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "5/32",
+          "21/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "21/128",
+          "11/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "11/64",
+          "23/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "23/128",
+          "3/16"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "11/64",
+          "23/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "23/128",
+          "3/16"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "3/16",
+          "25/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "25/128",
+          "13/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "3/16",
+          "25/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "25/128",
+          "13/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "13/64",
+          "27/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "27/128",
+          "7/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "13/64",
+          "27/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "27/128",
+          "7/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "7/32",
+          "29/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "29/128",
+          "15/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "7/32",
+          "29/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "29/128",
+          "15/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "15/64",
+          "31/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "31/128",
+          "1/4"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "15/64",
+          "31/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "31/128",
+          "1/4"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "1/4",
+          "33/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "33/128",
+          "17/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "1/4",
+          "33/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "33/128",
+          "17/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "17/64",
+          "35/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "35/128",
+          "9/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "17/64",
+          "35/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "35/128",
+          "9/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "9/32",
+          "37/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "37/128",
+          "19/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "9/32",
+          "37/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "37/128",
+          "19/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "19/64",
+          "39/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "39/128",
+          "5/16"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "19/64",
+          "39/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "39/128",
+          "5/16"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "5/16",
+          "41/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "41/128",
+          "21/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "5/16",
+          "41/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "41/128",
+          "21/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "21/64",
+          "43/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "43/128",
+          "11/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "21/64",
+          "43/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "43/128",
+          "11/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "11/32",
+          "45/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "45/128",
+          "23/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "11/32",
+          "45/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "45/128",
+          "23/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "23/64",
+          "47/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "47/128",
+          "3/8"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "23/64",
+          "47/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "47/128",
+          "3/8"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "3/8",
+          "49/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "49/128",
+          "25/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "3/8",
+          "49/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "49/128",
+          "25/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "25/64",
+          "51/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "51/128",
+          "13/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "25/64",
+          "51/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "51/128",
+          "13/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "13/32",
+          "53/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "53/128",
+          "27/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "13/32",
+          "53/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "53/128",
+          "27/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "27/64",
+          "55/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "55/128",
+          "7/16"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "27/64",
+          "55/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "55/128",
+          "7/16"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "7/16",
+          "57/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "57/128",
+          "29/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "7/16",
+          "57/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "57/128",
+          "29/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "29/64",
+          "59/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "59/128",
+          "15/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "29/64",
+          "59/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "59/128",
+          "15/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "15/32",
+          "61/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "61/128",
+          "31/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "15/32",
+          "61/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "61/128",
+          "31/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "31/64",
+          "63/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "63/128",
+          "1/2"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "31/64",
+          "63/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "63/128",
+          "1/2"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "1/2",
+          "65/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "65/128",
+          "33/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "1/2",
+          "65/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "65/128",
+          "33/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "33/64",
+          "67/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "67/128",
+          "17/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "33/64",
+          "67/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "67/128",
+          "17/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "17/32",
+          "69/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "69/128",
+          "35/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "17/32",
+          "69/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "69/128",
+          "35/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "35/64",
+          "71/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "71/128",
+          "9/16"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "35/64",
+          "71/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "71/128",
+          "9/16"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "9/16",
+          "73/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "73/128",
+          "37/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "9/16",
+          "73/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "73/128",
+          "37/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "37/64",
+          "75/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "75/128",
+          "19/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "37/64",
+          "75/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "75/128",
+          "19/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "19/32",
+          "77/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "77/128",
+          "39/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "19/32",
+          "77/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "77/128",
+          "39/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "39/64",
+          "79/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "79/128",
+          "5/8"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "39/64",
+          "79/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "79/128",
+          "5/8"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "5/8",
+          "81/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "81/128",
+          "41/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "5/8",
+          "81/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "81/128",
+          "41/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "41/64",
+          "83/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "83/128",
+          "21/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "41/64",
+          "83/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "83/128",
+          "21/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "21/32",
+          "85/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "85/128",
+          "43/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "21/32",
+          "85/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "85/128",
+          "43/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "43/64",
+          "87/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "87/128",
+          "11/16"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "43/64",
+          "87/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "87/128",
+          "11/16"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "11/16",
+          "89/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "89/128",
+          "45/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "11/16",
+          "89/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "89/128",
+          "45/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "45/64",
+          "91/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "91/128",
+          "23/32"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "45/64",
+          "91/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "91/128",
+          "23/32"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "23/32",
+          "93/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "93/128",
+          "47/64"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "23/32",
+          "93/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "93/128",
+          "47/64"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "47/64",
+          "95/128"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "21/64",
+          "43/128"
+        ],
+        [
+          "95/128",
+          "3/4"
+        ]
+      ],
+      "lower": "9406489/154618822656",
+      "upper": "295681/2415919104",
+      "resolved": false
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "47/64",
+          "95/128"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "43/128",
+          "11/32"
+        ],
+        [
+          "95/128",
+          "3/4"
+        ]
+      ],
+      "lower": "1050625/17179869184",
+      "upper": "1050625/17179869184",
+      "resolved": true
+    }
+  ],
+  "case": "control-close_planes",
+  "domain": [
+    [
+      "0",
+      "1"
+    ],
+    [
+      "0",
+      "1"
+    ]
+  ],
+  "network": {
+    "activation": "relu",
+    "weights": [
+      [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      [
+        [
+          "1",
+          "-1"
+        ]
+      ]
+    ],
+    "biases": [
+      [
+        "-1/3",
+        "-1027/3072"
+      ],
+      [
+        "1"
+      ]
+    ]
+  },
+  "network_sha256": "2d229cd92474649467f52e36bb25cd7034f2cab0ba45d959d77c7d6ff95c0e0f"
+}

@@ -1,0 +1,15 @@
+uniform H1 N=1 relative=2 calls=1 seconds=0.000546875
+uniform H1 N=4 relative=2 calls=5 seconds=0.00248625
+uniform H1 N=16 relative=2 calls=21 seconds=0.0100856
+uniform H1 N=64 relative=2 calls=85 seconds=0.042152
+uniform H1 N=256 relative=2 calls=341 seconds=0.166751
+uniform H1 N=1024 relative=1.99774 calls=1341 seconds=0.623613
+uniform H1 N=4096 relative=1.86212 calls=4969 seconds=2.11053
+uniform H1 N=16384 relative=1.26093 calls=16793 seconds=6.4615
+uniform H1 N=65536 relative=0.612033 calls=50197 seconds=17.1655
+uniform H1 N=262144 relative=0.266036 calls=132329 seconds=42.3424
+uniform H1 N=1048576 relative=0.117056 calls=316705 seconds=98.9149
+uniform H1 N=4194304 relative=0.0534588 calls=708609 seconds=222.554
+uniform H1 N=16777216 relative=0.0254023 calls=1516493 seconds=486.288
+uniform H1 N=67108864 relative=0.0123483 calls=3157693 seconds=1034.76
+uniform H1 N=268435456 relative=0.00608493 calls=6465965 seconds=2059.51

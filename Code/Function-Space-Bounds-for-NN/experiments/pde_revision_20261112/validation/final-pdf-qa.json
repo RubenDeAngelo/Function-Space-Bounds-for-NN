@@ -1,0 +1,67 @@
+{
+  "main.pdf": {
+    "pages": 34,
+    "sha256": "61e1ee805005e91ca6be82c9d107950a3a8666b07a4f7eba5a5c12047f303e28",
+    "rendered_and_visually_reviewed": true
+  },
+  "maxgap_supplement.pdf": {
+    "pages": 2,
+    "sha256": "8259357854093a1be932ce013526672c42f7431a2c6b90d1209b9ceb381ff547",
+    "rendered_and_visually_reviewed": true
+  },
+  "archive_preserved": true,
+  "residual_full_replay": [
+    {
+      "case": "poisson",
+      "policy": "maxgap",
+      "leaf_cap": 65536,
+      "matching_records": 9,
+      "status": "passed"
+    },
+    {
+      "case": "poisson",
+      "policy": "uniform",
+      "leaf_cap": 65536,
+      "matching_records": 9,
+      "status": "passed"
+    },
+    {
+      "case": "cdr",
+      "policy": "maxgap",
+      "leaf_cap": 65536,
+      "matching_records": 9,
+      "status": "passed"
+    },
+    {
+      "case": "cdr",
+      "policy": "uniform",
+      "leaf_cap": 65536,
+      "matching_records": 9,
+      "status": "passed"
+    }
+  ],
+  "corner_full_replay": {
+    "status": "passed",
+    "matching_records": 18,
+    "quantities": [
+      "J",
+      "B2"
+    ],
+    "final_interior": 1048576,
+    "final_boundary": 1246,
+    "evaluations": 2099634,
+    "method": "full replay with the archived byte-identical executable; exact hexadecimal endpoint and count comparison"
+  },
+  "implementation_checks": {
+    "status": "passed",
+    "independent_100_decimal_digit_residual_values": 20,
+    "exact_solution_zero_residual_boxes": 20,
+    "method": "mpmath numerical differentiation of the value-only network and manufactured solution; rational history checks",
+    "not_a_formal_software_verification": true
+  },
+  "warnings": [
+    "Existing todonotes margin width",
+    "Existing underfull affiliation line",
+    "Intentional table/figure-only page 22"
+  ]
+}

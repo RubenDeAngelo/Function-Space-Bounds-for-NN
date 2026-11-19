@@ -1,0 +1,23 @@
+{
+  "id": "one-d-seed2-untrained-H1",
+  "model": "one-d-seed2-untrained",
+  "kind": "sobolev",
+  "order": 1,
+  "domain": [
+    [
+      0,
+      1
+    ]
+  ],
+  "max_leaves": 256,
+  "group": "one_d",
+  "state": "untrained",
+  "seed": 2,
+  "theta": "7/20",
+  "bits": 128,
+  "tolerance": "0",
+  "p": 2,
+  "enclosure_method": "natural interval AD with ancestor intersections",
+  "mixed_derivatives": "one per multi-index",
+  "network_sha256": "f92af0b1c28155c2de9ddda142bca1bb5b251d0f61e6fecb85ef4b1e28792468"
+}

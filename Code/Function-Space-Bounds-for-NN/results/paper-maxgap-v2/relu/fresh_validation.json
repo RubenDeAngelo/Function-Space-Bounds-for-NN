@@ -1,0 +1,72 @@
+{
+  "independent_linear_scan_marking_audit": "passed",
+  "checks": [
+    {
+      "architecture": "deep",
+      "experiment": "two-bumps",
+      "norm": "L2",
+      "refinements_checked": 1365,
+      "leaves": 4096,
+      "evaluations": 5461
+    },
+    {
+      "architecture": "deep",
+      "experiment": "two-bumps",
+      "norm": "H1",
+      "refinements_checked": 1365,
+      "leaves": 4096,
+      "evaluations": 5461
+    },
+    {
+      "architecture": "deep",
+      "experiment": "disk",
+      "norm": "L2",
+      "refinements_checked": 341,
+      "leaves": 1024,
+      "evaluations": 1365
+    },
+    {
+      "architecture": "deep",
+      "experiment": "disk",
+      "norm": "H1",
+      "refinements_checked": 341,
+      "leaves": 1024,
+      "evaluations": 1365
+    },
+    {
+      "architecture": "shallow200",
+      "experiment": "two-bumps",
+      "norm": "L2",
+      "refinements_checked": 1365,
+      "leaves": 4096,
+      "evaluations": 5461
+    },
+    {
+      "architecture": "shallow200",
+      "experiment": "two-bumps",
+      "norm": "H1",
+      "refinements_checked": 1365,
+      "leaves": 4096,
+      "evaluations": 5461
+    },
+    {
+      "architecture": "shallow200",
+      "experiment": "disk",
+      "norm": "L2",
+      "refinements_checked": 341,
+      "leaves": 1024,
+      "evaluations": 1365
+    },
+    {
+      "architecture": "shallow200",
+      "experiment": "disk",
+      "norm": "H1",
+      "refinements_checked": 341,
+      "leaves": 1024,
+      "evaluations": 1365
+    }
+  ],
+  "uniform_exact_replay": "passed in runner for all 8 cases",
+  "new_maxgap_tests": 2,
+  "relu_tests": 3
+}

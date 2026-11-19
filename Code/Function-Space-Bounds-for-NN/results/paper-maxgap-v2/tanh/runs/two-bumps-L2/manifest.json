@@ -1,0 +1,27 @@
+{
+  "id": "two-bumps-L2",
+  "model": "two-bumps",
+  "kind": "sobolev",
+  "order": 0,
+  "domain": [
+    [
+      -1,
+      1
+    ],
+    [
+      -1,
+      1
+    ]
+  ],
+  "max_leaves": 4096,
+  "group": "two_bumps",
+  "bits": 128,
+  "p": 2,
+  "theta": "7/20",
+  "tolerance": "0",
+  "network_sha256": "f3576cc58e5981635c95d117941fb727ba741ca17bc694b4fb9e71c44b3497b0",
+  "source_model": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/two-bumps-deep-l2",
+  "source_run": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/two-bumps-deep-l2",
+  "maxgap_rule": "exactly one maximum local integral-gap leaf; smallest creation id breaks ties; budget-only stopping",
+  "subdivision": "bisect every coordinate"
+}

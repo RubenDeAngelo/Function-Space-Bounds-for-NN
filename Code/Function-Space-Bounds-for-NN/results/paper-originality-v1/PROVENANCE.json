@@ -1,0 +1,37 @@
+{
+  "frozen_sources": [
+    {
+      "copy": "backend/verified_arithmetic.py",
+      "source": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/verified_arithmetic.py",
+      "sha256": "b14e2b1ad1993ee30cc2e8a44e2bfd82cdda8ba0f6ef8fb32b043b86aeb1d7cf",
+      "byte_identical": true
+    },
+    {
+      "copy": "backend/verified_network.py",
+      "source": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/relu/sources/verified_network.py",
+      "sha256": "0dbd73aee5e74edaff2616319d775dccab1b1af267b16f761951fc4f519166c7",
+      "byte_identical": true
+    },
+    {
+      "copy": "backend/trained-tanh.json",
+      "source": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-trained/network.json",
+      "sha256": "b50a96ac820752bf44a8ad604ccf7a6adb698cfe35ad869d947170f1ae951166",
+      "byte_identical": true
+    },
+    {
+      "copy": "backend/untrained-tanh.json",
+      "source": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/paper-maxgap-v2/tanh/models/one-d-seed0-untrained/network.json",
+      "sha256": "8f2363c37cf0f1c3d9ff1a0dc61f993ab5810440e7017f17f4ae87c60ddb0624",
+      "byte_identical": true
+    }
+  ],
+  "new_work": [
+    "experiment.py",
+    "test_study.py",
+    "validate.py",
+    "plot.py",
+    "THEORY.md",
+    "README.md"
+  ],
+  "production_files_modified": false
+}

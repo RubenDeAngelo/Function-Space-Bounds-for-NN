@@ -1,0 +1,25 @@
+{
+  "seed": 20261020,
+  "architecture": [
+    2,
+    32,
+    32,
+    32,
+    1
+  ],
+  "activation": "tanh",
+  "dtype": "float64",
+  "training_points": 4096,
+  "sampling": "2048 uniform; 1024 each N(centre,(2*width)^2 I), reject outside domain",
+  "adam_epochs": 3000,
+  "adam_lr": 0.001,
+  "lbfgs_max_iter": 250,
+  "metrics": {
+    "grid_MSE": 4.469782401675932e-06,
+    "grid_max_abs_error": 0.010810502038425943,
+    "training_MSE": 5.706985076906724e-06,
+    "seconds": 13.411690290999104
+  },
+  "checkpoint_sha256": "36cb3805d12ce604d026a0c0bd81d26fa0b0023868a8ff65ebb13324d9d87cc0",
+  "training_data_sha256": "d8ff4043f38ed285b3173bdeeda20d793ff0624a27decfe1f3615387989e4ac6"
+}

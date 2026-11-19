@@ -1,0 +1,160 @@
+{
+  "quantity": "L2",
+  "rule": "hybrid",
+  "policy": "maxgap",
+  "cap": 256,
+  "tolerance": "0",
+  "status": "exact",
+  "seconds": 7.379100134130567e-05,
+  "history": [
+    {
+      "leaves": 1,
+      "lower": "1",
+      "upper": "9/4",
+      "gap": "5/4",
+      "resolved_leaves": 0,
+      "counts": {
+        "cell_calls": 1,
+        "affine_cell_tests": 1,
+        "affine_weight_terms": 6,
+        "neuron_sign_tests": 1,
+        "range_network_calls": 1,
+        "range_weight_terms": 3,
+        "max_endpoint_bits": 4
+      }
+    },
+    {
+      "leaves": 4,
+      "lower": "31/24",
+      "upper": "31/24",
+      "gap": "0",
+      "resolved_leaves": 4,
+      "counts": {
+        "cell_calls": 5,
+        "affine_cell_tests": 5,
+        "affine_weight_terms": 42,
+        "neuron_sign_tests": 5,
+        "range_network_calls": 1,
+        "range_weight_terms": 3,
+        "max_endpoint_bits": 6,
+        "moment_calls": 4
+      }
+    }
+  ],
+  "final": {
+    "leaves": 4,
+    "lower": "31/24",
+    "upper": "31/24",
+    "gap": "0",
+    "resolved_leaves": 4,
+    "counts": {
+      "cell_calls": 5,
+      "affine_cell_tests": 5,
+      "affine_weight_terms": 42,
+      "neuron_sign_tests": 5,
+      "range_network_calls": 1,
+      "range_weight_terms": 3,
+      "max_endpoint_bits": 6,
+      "moment_calls": 4
+    }
+  },
+  "subadditivity_checks": 1,
+  "cells": [
+    {
+      "box": [
+        [
+          "0",
+          "1/2"
+        ],
+        [
+          "0",
+          "1/2"
+        ]
+      ],
+      "lower": "1/4",
+      "upper": "1/4",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "0",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1"
+        ]
+      ],
+      "lower": "1/4",
+      "upper": "1/4",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "0",
+          "1/2"
+        ]
+      ],
+      "lower": "19/48",
+      "upper": "19/48",
+      "resolved": true
+    },
+    {
+      "box": [
+        [
+          "1/2",
+          "1"
+        ],
+        [
+          "1/2",
+          "1"
+        ]
+      ],
+      "lower": "19/48",
+      "upper": "19/48",
+      "resolved": true
+    }
+  ],
+  "case": "control-offset-1_2",
+  "domain": [
+    [
+      "0",
+      "1"
+    ],
+    [
+      "0",
+      "1"
+    ]
+  ],
+  "network": {
+    "activation": "relu",
+    "weights": [
+      [
+        [
+          "1",
+          "0"
+        ]
+      ],
+      [
+        [
+          "1"
+        ]
+      ]
+    ],
+    "biases": [
+      [
+        "-1/2"
+      ],
+      [
+        "1"
+      ]
+    ]
+  },
+  "network_sha256": "bd9468dd6efa2c6cd372cc682aba913051b622bbd2c358cc6c4fe6a9e8a2e30b"
+}

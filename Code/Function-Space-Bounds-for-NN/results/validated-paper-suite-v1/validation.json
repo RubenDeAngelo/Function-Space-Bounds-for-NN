@@ -1,0 +1,212 @@
+[
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "adaptive",
+    "cells": 235,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed0-untrained-H1",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "adaptive",
+    "cells": 229,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed0-untrained-H2",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "adaptive",
+    "cells": 234,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed0-trained-H1",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "adaptive",
+    "cells": 255,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed0-trained-H2",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "adaptive",
+    "cells": 241,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed1-untrained-H1",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "adaptive",
+    "cells": 232,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed1-untrained-H2",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "adaptive",
+    "cells": 248,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed1-trained-H1",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "adaptive",
+    "cells": 223,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed1-trained-H2",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "adaptive",
+    "cells": 234,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed2-untrained-H1",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "adaptive",
+    "cells": 241,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed2-untrained-H2",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "adaptive",
+    "cells": 229,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed2-trained-H1",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "adaptive",
+    "cells": 231,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "one-d-seed2-trained-H2",
+    "policy": "uniform",
+    "cells": 256,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "disk-H1",
+    "policy": "adaptive",
+    "cells": 865,
+    "volume": "9",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "disk-H1",
+    "policy": "uniform",
+    "cells": 1024,
+    "volume": "9",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "disk-H2",
+    "policy": "adaptive",
+    "cells": 709,
+    "volume": "9",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "disk-H2",
+    "policy": "uniform",
+    "cells": 1024,
+    "volume": "9",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "adaptive",
+    "cells": 757,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  },
+  {
+    "id": "pinn-residual",
+    "policy": "uniform",
+    "cells": 1024,
+    "volume": "1",
+    "status": "leaf_budget_exhausted"
+  }
+]

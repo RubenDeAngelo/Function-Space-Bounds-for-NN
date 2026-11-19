@@ -1,0 +1,25 @@
+{
+  "id": "disk-H1",
+  "model": "disk",
+  "kind": "sobolev",
+  "order": 1,
+  "domain": [
+    [
+      -1.5,
+      1.5
+    ],
+    [
+      -1.5,
+      1.5
+    ]
+  ],
+  "max_leaves": 1024,
+  "group": "disk",
+  "theta": "7/20",
+  "bits": 128,
+  "tolerance": "0",
+  "p": 2,
+  "enclosure_method": "natural interval AD with ancestor intersections",
+  "mixed_derivatives": "one per multi-index",
+  "network_sha256": "3975e5ec81187bead473138966f199b2f636c8dd3f587e394f72d9cfbe7cac20"
+}

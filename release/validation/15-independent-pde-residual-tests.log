@@ -1,0 +1,1 @@
+{'status': 'passed', 'independent_100_decimal_digit_residual_values': 20, 'exact_solution_zero_residual_boxes': 20, 'method': 'mpmath numerical differentiation of the value-only network and manufactured solution; rational history checks', 'not_a_formal_software_verification': True}

@@ -1,0 +1,25 @@
+{
+  "id": "one-d-seed1-trained-H1",
+  "model": "one-d-seed1-trained",
+  "kind": "sobolev",
+  "order": 1,
+  "domain": [
+    [
+      0,
+      1
+    ]
+  ],
+  "max_leaves": 256,
+  "group": "one_d",
+  "state": "trained",
+  "seed": 1,
+  "bits": 128,
+  "p": 2,
+  "theta": "7/20",
+  "tolerance": "0",
+  "network_sha256": "401623fe47c23fd5d5876209db463135d1c94407d1ac2d1e37ac513f45976100",
+  "source_model": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/models/one-d-seed1-trained",
+  "source_run": "/Users/moritz/Projekte/FunctionSpaceNormsOfNeuralNetworks_Research_Paper/Code/Function-Space-Bounds-for-NN/results/validated-paper-suite-v1/runs/one-d-seed1-trained-H1",
+  "maxgap_rule": "exactly one maximum local integral-gap leaf; smallest creation id breaks ties; budget-only stopping",
+  "subdivision": "bisect every coordinate"
+}

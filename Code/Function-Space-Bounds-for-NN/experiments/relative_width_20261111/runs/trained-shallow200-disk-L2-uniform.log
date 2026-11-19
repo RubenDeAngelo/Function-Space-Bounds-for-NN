@@ -1,0 +1,11 @@
+uniform L2 N=1 relative=2 calls=1 seconds=0.000282833
+uniform L2 N=4 relative=2 calls=5 seconds=0.000843375
+uniform L2 N=16 relative=2 calls=21 seconds=0.00304833
+uniform L2 N=64 relative=1.98947 calls=85 seconds=0.014175
+uniform L2 N=256 relative=1.61657 calls=341 seconds=0.056755
+uniform L2 N=1024 relative=0.912125 calls=1333 seconds=0.211783
+uniform L2 N=4096 relative=0.38497 calls=4801 seconds=0.721944
+uniform L2 N=16384 relative=0.138144 calls=15461 seconds=2.17401
+uniform L2 N=65536 relative=0.04408 calls=44917 seconds=6.26217
+uniform L2 N=262144 relative=0.0131237 calls=119017 seconds=16.3806
+uniform L2 N=1048576 relative=0.00379883 calls=294673 seconds=39.2356

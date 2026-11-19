@@ -1,0 +1,10 @@
+test_affine_moments (test_fast.Tests.test_affine_moments) ... ok
+test_frozen_checkpoint_paths (test_fast.Tests.test_frozen_checkpoint_paths) ... ok
+test_nondyadic_coefficients_rejected (test_fast.Tests.test_nondyadic_coefficients_rejected) ... ok
+test_random_binary_deep_graphs (test_fast.Tests.test_random_binary_deep_graphs) ... ok
+test_zero_cancellation_and_nondyadic_breakpoint (test_fast.Tests.test_zero_cancellation_and_nondyadic_breakpoint) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.718s
+
+OK
