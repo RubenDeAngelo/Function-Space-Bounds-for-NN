@@ -1,16 +1,16 @@
 # Function-space bounds for neural networks
 
-The current paper is **Certified adaptive integration of ReLU network norms**,
+The current paper is **Adaptive interval integration of ReLU network norms**,
 by Johannes Gründler, Moritz Maibaum and Philipp Petersen.
 
 The standalone, versioned code and numerical evidence for the planned ACOM
-submission are in the [19 November 2026 reproducibility snapshot](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/tree/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a).
-Its immutable commit is `4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a`.
+submission are in the [19 November 2026 reproducibility snapshot](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/tree/4ee9f65c17fd54b3f0398bd99e7cd93f70c5904a).
+Its immutable commit is `4ee9f65c17fd54b3f0398bd99e7cd93f70c5904a`.
 
-- [Reproduction instructions and experiment map](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/blob/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a/README.md)
-- [Validation scope and results](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/blob/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a/release/VALIDATION.md)
-- [Integrity manifest](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/blob/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a/release/SHA256.json)
-- [Download the complete source and frozen records](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/archive/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a.zip)
+- [Reproduction instructions and experiment map](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/blob/4ee9f65c17fd54b3f0398bd99e7cd93f70c5904a/README.md)
+- [Validation scope and results](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/blob/4ee9f65c17fd54b3f0398bd99e7cd93f70c5904a/release/VALIDATION.md)
+- [Integrity manifest](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/blob/4ee9f65c17fd54b3f0398bd99e7cd93f70c5904a/release/SHA256.json)
+- [Download the complete source and frozen records](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/archive/4ee9f65c17fd54b3f0398bd99e7cd93f70c5904a.zip)
 
 The snapshot contains standalone paper backends, frozen network coefficients,
 configurations, exact endpoint histories, validation evidence, figure/table
