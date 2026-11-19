@@ -7,9 +7,9 @@ The standalone, versioned code and numerical evidence for the planned ACOM
 submission are in the [19 November 2026 reproducibility snapshot](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/tree/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a).
 Its immutable commit is `4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a`.
 
-- [Reproduction instructions and experiment map](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/tree/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a/README.md)
-- [Validation scope and results](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/tree/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a/release/VALIDATION.md)
-- [Integrity manifest](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/tree/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a/release/SHA256.json)
+- [Reproduction instructions and experiment map](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/blob/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a/README.md)
+- [Validation scope and results](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/blob/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a/release/VALIDATION.md)
+- [Integrity manifest](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/blob/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a/release/SHA256.json)
 - [Download the complete source and frozen records](https://github.com/RubenDeAngelo/Function-Space-Bounds-for-NN/archive/4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a.zip)
 
 The snapshot contains standalone paper backends, frozen network coefficients,
