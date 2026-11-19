@@ -98,7 +98,7 @@ if args.render:
     run('render-base-assets',[sys.executable,'-B',L/'render_relu_submission_assets.py','--records-root',C/'results','--disk-history',C/'experiments/smoothed_disk_figure1/data/history.csv','--latex',L])
     py('render-relative-width-tables',C/'experiments/relative_width_20261111/summarize.py')
     py('render-pde-tables',C/'experiments/pde_revision_20261112/render_assets.py')
-    py('render-current-reference-guides',C/'experiments/slope_triangles_20261112/render.py')
+    py('render-current-reference-guides',L/'revision_20261119/render.py')
     # PDE generation refreshes scratch files, so its original frozen-manifest check
     # is performed before rendering, not incorrectly asserted afterward.
     run('assemble-figure-one',['latexmk','-pdf','-interaction=nonstopmode','-halt-on-error','-outdir=images','disk_figure_revised.tex'],L)

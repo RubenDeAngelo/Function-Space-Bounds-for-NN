@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Please cite this exact software snapshot and the associated research paper."
 type: software
-title: "Reproducibility software for Certified adaptive integration of ReLU network norms"
+title: "Reproducibility software for Adaptive interval integration of ReLU network norms"
 version: acom-2026-11-19
 date-released: 2026-11-19
 authors:

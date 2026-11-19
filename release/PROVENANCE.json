@@ -3499,5 +3499,11 @@
     "tables/tanh_pde_certificates.tex",
     "tanh_pde_experiments.tex"
   ],
-  "packaging_changed_or_omitted_files": []
+  "packaging_changed_or_omitted_files": [],
+  "annotation_revision_20261119": {
+    "scope": "Visible labels and generators only; numerical inputs, endpoints, comparisons and reference triangle coordinates unchanged.",
+    "renderer": "LaTeX/revision_20261119/render.py",
+    "previous_commit": "4c2b9ce6df9ac5ed0b19e6168998b259a7ce049a",
+    "validation": "5 original one-dimensional tests and 13 original multidimensional tests pass; 10 table numeric-string sequences unchanged; 13 panel data arrays and 20 triangle coordinates unchanged."
+  }
 }

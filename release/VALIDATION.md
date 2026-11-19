@@ -79,3 +79,17 @@ evidence and supported reproduction commands are supplied. The checks above
 establish the stated release tests and record consistency; they are not formal
 software verification, a fresh proof audit or a guarantee of certification on
 an untested platform. No new numerical result or PDE solution-error claim is made.
+
+
+## Annotation terminology update, 19 November 2026
+
+The current display renderer was executed from this standalone snapshot. Its
+13 panel data arrays, 20 reference triangle coordinate arrays and input hash
+map match the manuscript staging render exactly. The two partition snapshots
+retain 16,384 boxes each. Every numerical string in ten tables is unchanged.
+The original one-dimensional tests (5) and rational multidimensional tests
+(13) pass. The integrity check verifies 947 file hashes and the original
+186 Python sources without a Mothercode dependency. No network parameters,
+numerical histories, interval algorithms or native kernels were changed.
+The release wrapper now invokes the current renderer after the original table
+generators. The manuscript and private source books remain excluded.

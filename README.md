@@ -1,8 +1,8 @@
-# Certified adaptive integration of ReLU network norms
+# Adaptive interval integration of ReLU network norms
 
 Submission reproducibility snapshot for Johannes Gründler, Moritz Maibaum and
-Philipp Petersen. Prepared 19 November 2026 from the manuscript dated 12 November
-2026. This is supporting material for a planned ACOM submission, not an accepted
+Philipp Petersen. Prepared 19 November 2026; the annotation revision updates visible terminology
+and figure/table generation without changing any numerical records. This is supporting material for a planned ACOM submission, not an accepted
 article or a claim that peer review has been completed.
 
 **Version:** use the immutable commit linked in the manuscript's availability
@@ -63,13 +63,13 @@ text and manuscript PDFs remain in the separate paper project.
 
 | Paper material | Frozen input | Reproduction |
 |---|---|---|
-| Figure 1; matched large-disk table | `C/experiments/smoothed_disk_figure1/` | Its `validate.py`, `run_experiment.py`, `test_fast.py`; current line panel via slope renderer |
+| Figure 1; matched large-disk table | `C/experiments/smoothed_disk_figure1/` | Its `validate.py`, `run_experiment.py`, `test_fast.py`; current line and partition panels via LaTeX/revision_20261119/render.py |
 | Figure 2; 1D controls; Appendix A hat table | `C/results/paper-originality-v1/` | `C/experiments/hybrid_submission/replay.py --suite controls`; independent `validate.py` and `test_study.py` in the frozen package |
 | Figure 3; 2D/3D and trained controls | `C/results/paper-geometry-v1/` | Hybrid geometry replay; independent polygon validator and tests in the frozen package |
 | Figure 4; relative-width/work/endpoint tables | `C/experiments/relative_width_20261111/` | `kernel.cpp`, `prepare_validate.py`, `test_kernel.py`, `run_suite.py`, `summarize.py` |
 | Figure 5; corner energy/boundary table | `C/experiments/pde_revision_20261112/corner_source/` and `runs/corner-energy-boundary.csv` | Preserved source/checkpoint, verifier hashes, provenance, replay history and validation comparison |
 | Figure 6; two tanh PDE residuals | `C/experiments/pde_revision_20261112/` | `validate_residual.py`, `replay.py` (1024 leaves), `replay.py --full` (65536 leaves) |
-| All active convergence reference triangles | `C/experiments/slope_triangles_20261112/` | Current `render.py` and independent `validate.py` |
+| All active convergence reference triangles | `C/experiments/slope_triangles_20261112/` | Current renderer in `LaTeX/revision_20261119/`; original independent `validate.py` retained |
 | Training provenance and historical model inputs | `C/results/paper-maxgap-v2/`, `C/results/validated-paper-suite-v1/` | Saved coefficients, checkpoints, training arrays, environments and source snapshots |
 | Supplement tables | `LaTeX/tables/` | `--render`; compile the separately supplied supplement source with `--build-paper --paper-source ...` |
 
@@ -93,3 +93,15 @@ solution-error bound or formal software verification is claimed.
 
 Software is MIT licensed; the manuscript retains the authors' copyright. See
 `LICENSE`, `RIGHTS.md`, `release/PROVENANCE.json` and `release/SHA256.json`.
+
+## Annotation revision, 19 November 2026
+
+The current rendering uses Adaptive/Uniform and explicit descriptions of
+polynomial and interval integration. Raw saved identifiers are unchanged.
+The 13 convergence data panels and all 20 reference triangle coordinates are
+identical to the preceding rendering. Figure 1 partitions are regenerated
+from the same two exact 16,384-box snapshots. All numeric strings in ten active
+tables are retained. `LaTeX/revision_20261119/render.py` applies the display
+labels after the original table generators, and records input hashes.
+No manuscript text, review annotations, source books or agent files are
+published by this update. The preceding immutable version remains available.
